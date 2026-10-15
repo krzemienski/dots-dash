@@ -34,6 +34,6 @@ The proposed /v1 APIs, richer event history, scheduler workers, generic source a
 
 ## What was actually verified
 
-Twelve isolated checks passed against actual SQLite persistence, validation, API contracts and rendering; typechecking and client build passed. The filesystem persistence check closed and reopened the database before confirming the saved instruction. HTTP smoke checks started the actual server: assets returned 200; unauthenticated work/history/health returned 401 with no-store; filesystem-sensitive paths returned 404.
+Fourteen isolated checks passed against actual SQLite persistence, validation, API contracts, bounded engineering snapshots and rendering; typechecking and client build passed. The filesystem persistence check closed and reopened the database before confirming the saved instruction. HTTP smoke checks started the actual server: assets returned 200; unauthenticated work/history/health returned 401 with no-store; filesystem-sensitive paths returned 404.
 
 The isolated API tests use a controlled principal function and do not establish a real authentication integration. Browser access to the local endpoint was attempted but connection refused across the tool-session boundary, so no signed-in browser or responsive interaction success is claimed. Clean dependency installation remains unverified due unavailable cached registry packages; checks reused existing installed dependencies. No live provider, hosted deployment, concurrency audit, security certification, or external action acceptance test was performed.

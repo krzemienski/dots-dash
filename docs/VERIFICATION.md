@@ -37,3 +37,7 @@ An isolated test pass must never be substituted for functional integration accep
 ## Application extraction update
 
 The package now includes the v6 commitment/observation views, complete generic dashboard client, actual SQLite storage, and a fail-closed generic HTTP API. Twelve isolated tests, typecheck, client build, and real unauthenticated HTTP smoke checks passed. See [application setup](APPLICATION_SETUP.md) for the exact implemented routes and remaining authentication/integration/browser limits. Earlier eight-test and empty-preview statements above describe the initial extraction, not the expanded application.
+
+## Public source release and Day/Project update
+
+The latest source release adds Day/Project views and bounded engineering evidence snapshots. Fourteen isolated tests, typecheck and build passed. See [release status](RELEASE_STATUS.md) for exact publication evidence and unresolved clean-install, real-authentication and live-integration gates.
