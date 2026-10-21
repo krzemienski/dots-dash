@@ -812,6 +812,117 @@
       "cleanup": "Owned completed-run resources closed; failed later driver never launched. Shared Chrome and other workers untouched.",
       "publication": "Local only; no push, merge, deploy or production write.",
       "nextTask": "Restore authorized isolated driver/browser pairing and verify scoped-correction H6; broader event contract remains a separate reviewed dependency."
+    },
+    {
+      "id": "selected-review-history-H6-completion",
+      "date": "2026-10-21",
+      "runtimeRevision": "8aa1d83ed1595f16c124503d624e96c4ce6c3bcb",
+      "label": "TEST DATA / LOCAL ONLY",
+      "completes": "H6 previously unperformed in local-selected-review-evidence-history; previous blocker/history retained",
+      "observations": [
+        {
+          "name": "H6a: earlier blocked record stays visible and links later scoped correction without global supersession",
+          "result": "pass",
+          "detail": {
+            "reviewId": "review-a55250f6d2827a8999c9a4b9",
+            "revision": "aaaaaaa",
+            "scope": [
+              "goal-save"
+            ],
+            "priorRevision": "ccccccc"
+          }
+        },
+        {
+          "name": "H6b: correction context reaches intended-goal drafts only; other goal and prior revision remain byte-identical",
+          "result": "pass",
+          "detail": {
+            "intendedGoal": "goal-save",
+            "unaffectedGoal": "goal-other",
+            "unaffectedReview": "review-03855f122856956df31f288d",
+            "otherTaskCount": 2
+          }
+        },
+        {
+          "name": "H6c: persisted reload and reverse keyboard navigation retain exact original outcome, pins and scope",
+          "result": "pass",
+          "detail": {
+            "databaseBytesUnchanged": true,
+            "apiReadbackMatches": true,
+            "humanAcceptance": "unperformed"
+          }
+        }
+      ],
+      "runtime": {
+        "playwright": "1.59.0",
+        "browserVersion": "147.0.7727.15",
+        "chromiumRevision": "1217",
+        "driverSha256": "a0f5715ea22354f922791a9c53dc012d5d5c067ff9cc4cd35ffb7cd272071a9f",
+        "coreManifestSha256": "469f17a82348978f79738981bc8af9b4e8516aac5a020018911fff39b755fe60"
+      },
+      "sourceHashes": {
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da",
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "lib/work/remediation-context.ts": "06a873f82fb110b81171746fc8052f53f40ab4a16492dcbb1d995769cec0c883",
+        "python/dots_engineering/admission.py": "052793abe1b12c4f709dfc91802a9f4430b4a93d1fc827dfa999865cd6c48867",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10"
+      },
+      "buildOutputs": {
+        "dist/main.js": "948e853c7267b573fb01d692e6bf24494d199bc83887317ff4c1ab6dd6054088",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "dependencyRestoration": {
+        "sources": [
+          "https://playwright.dev/docs/browsers",
+          "https://registry.npmjs.org/playwright-core/1.59.0"
+        ],
+        "officialManifestIntegrityVerified": true,
+        "pinnedVersion": "1.59.0",
+        "browserReused": "installed isolated Chromium 1217 / 147.0.7727.15",
+        "scope": "Ignored project node_modules; npm chose nearest existing project rather than intended validation subdirectory. Local cache and empty user/global npm configuration. No browser download, install scripts, global changes or tracked package/lockfile edit."
+      },
+      "priorAttempts": [
+        {
+          "result": "Driver expected a second persisted review but selected fixture import had rejected; no H6 pass claimed."
+        },
+        {
+          "result": "Exact POST response exposed Correction predates its target. Corrected only synthetic chronology; server validation unchanged."
+        }
+      ],
+      "checks": {
+        "runtimeBuildBindings": "matched",
+        "screenshot": "scoped correction inspected",
+        "documents": "relative links, JSON and diff checked before commit",
+        "existingTests": "not rerun; application runtime unchanged from recorded 14-test/typecheck/build pass"
+      },
+      "pageErrors": [],
+      "externalRequests": 0,
+      "skills": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": "read in originating evidence-history implementation",
+          "applied": "Preserved old negative result, scoped attribution and unchanged unrelated goal/revision; separated agent verification from human acceptance.",
+          "verified": "H6a-H6c actual persisted workflow; manual guidance use."
+        },
+        {
+          "source": "Playwright skill",
+          "selected": true,
+          "read": true,
+          "applied": "Checked driver prerequisite and version pairing; used owned fresh browser and ignored artifacts with the existing inline project harness, not new test files.",
+          "verified": "Actual H6 driver/browser workflow; no automatic skill invocation claim."
+        }
+      ],
+      "cleanup": "Owned browser/server/database closed; no shared Chrome or provider use. Restored ignored driver retained for authorized isolated validation.",
+      "limits": [
+        "H6 source assertions are supplied TEST DATA, not independently observed transcript authorship or human acceptance.",
+        "Maximum preview, legacy unusable timestamp, excluded correction endpoint and screen-reader scenarios remain unperformed.",
+        "No original-source completeness, processed progress or full V312 claim."
+      ],
+      "publication": "Local documentation/evidence only; no push, merge, deploy or production mutation.",
+      "nextTask": "Broader owner/store event contract remains separate; preserve occurrence/save-time and correction boundaries rather than claiming unified verified-work history."
     }
   ]
 }

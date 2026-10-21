@@ -2,8 +2,8 @@
 
 Local-only [evidence history by day](REVIEW_EVIDENCE_HISTORY.md) separates supplied
 source observation time from report save and checklist receipt times, retaining
-correction context. Five isolated scenarios passed; scoped-correction H6 remains
-unperformed because the isolated validation browser dependency is unavailable.
+correction context. Five initial isolated scenarios passed; scoped-correction H6
+subsequently passed on unchanged runtime source with its own environment binding.
 
 The [selected-review next-steps summary](REVIEW_NEXT_STEPS.md) connects each goal
 to recorded remediation, skill selection, checklist receipts and owner-reported

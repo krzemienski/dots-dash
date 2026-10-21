@@ -55,9 +55,9 @@ headless UI → real Node/Python API → disposable SQLite cases using labeled T
 | H3 | Passed: actual server microsecond report/receipt timestamps group correctly; two owner reports retain fail/pass history, while the earlier successful checklist receipt still reports historical acceptance fail |
 | H4 | Passed: keyboard report navigation reaches exact goal history; receipt navigation reaches exact receipt; records and bytes unchanged |
 | H5 | Passed: reload preserves evidence; 320/375px keyboard/date/empty-day checks preserve unknown coverage and database bytes |
-| H6 | **Unperformed:** separately imported selected-record scoped correction across a day boundary, with prior-review preservation |
+| H6 | Passed in the subsequent local follow-up below: scoped correction across a day boundary, intended-goal context, unchanged other goal/revision, exact readback and persisted reload |
 
-The H6 driver attempt failed during module loading before browser launch, fixture
+The initial H6 driver attempt failed during module loading before browser launch, fixture
 creation or any API/database operation. The previously used cached Playwright
 module had disappeared. The remaining cached driver expected Chromium 1247, whose
 executable was absent. No installation, shared-browser substitution or access
@@ -71,8 +71,8 @@ requests occurred. No unsolicited test files or private records were added.
 
 ## Remaining dependency and next task
 
-First restore an already-authorized isolated driver/browser pairing, then execute
-H6 against the unchanged source before broader history claims. Maximum-preview,
+The initial driver restoration/H6 dependency was closed by the follow-up below.
+Maximum-preview,
 unusable-timestamp legacy data, excluded correction endpoints, screen-reader and
 human-owner acceptance remain unperformed. No live source access, all-transcript
 coverage, completed processing or full V312 is established.
@@ -84,3 +84,47 @@ from `recordedAt`, classify imported evidence as an independent receipt, or join
 retained-item corrections into source supersession. Any migration or retention
 policy needed by that broader model must be reviewed explicitly. This slice adds
 no such model. Existing local-only publication and production boundaries remain.
+
+## H6 completion on unchanged runtime source
+
+At `8aa1d83ed1595f16c124503d624e96c4ce6c3bcb`, the installed isolated Chromium
+1217 executable was still available. The repository's historical alpha-driver
+version required revision 1212; the remaining cached driver required absent 1247.
+Official npm metadata and integrity-checked manifests established that stable
+Playwright **1.59.0** matches installed Chromium **1217 / 147.0.7727.15**.
+This follows Playwright's documented [driver/browser version pairing](https://playwright.dev/docs/browsers).
+
+The pinned driver was restored with scripts, browser downloads, audit and funding
+requests disabled, using empty local npm configuration and a local cache. npm
+selected the repository's ignored `node_modules`, rather than the intended ignored
+validation subdirectory. Tracked package manifests and lockfile remained unchanged;
+no global configuration or browser installation was changed. The restored pair
+launched a fresh owned headless context, never the shared authenticated browser.
+
+Three H6 subchecks passed through rendered imports, the real localhost API and
+disposable SQLite, using labeled TEST DATA:
+
+1. The earlier blocked source remained `recorded`, with its original outcome and
+   revision. A later-day scoped assertion linked back to it without global
+   supersession or authority.
+2. The scope reference appeared in the intended goal's derived remediation only.
+   An independently retained goal and its drafts received no correction context.
+   A separately saved review at another revision remained byte-identical.
+3. Reload retained the exact assertion, goal/revision pins and earlier evidence.
+   Reverse keyboard navigation reached the original source; exact API readback
+   matched the saved review. Read/navigation/reload left SQLite bytes unchanged.
+
+The first follow-up fixture accidentally placed the correction before its target;
+the API correctly rejected it. An initial driver assertion expected a second saved
+row without first checking that rejection; the corrected driver awaited and checked
+the actual POST response, then used chronologically valid synthetic dates. Neither
+attempt supports passed H6 evidence. These interruptions remain in the private
+artifacts and appended [public ledger](verification/request-evidence.json).
+
+The final scoped-correction screenshot was inspected, source/build hashes matched,
+and no page errors or external browser requests occurred. Owned resources closed.
+Only documentation/evidence changed in this follow-up; previous tests/typecheck
+remain their recorded results rather than newly rerun claims. H1–H5 retain their
+earlier environment bindings; H6 has its own recorded driver/browser fingerprints.
+All six named scenarios are now exercised in their stated scope, not a certification
+of all history behavior, human acceptance, source completeness or full V312.

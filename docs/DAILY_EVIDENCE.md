@@ -81,9 +81,9 @@ browser fixture. No external requests, shared Chrome use or production writes oc
 
 Subsequent local slice: [selected-review evidence history](REVIEW_EVIDENCE_HISTORY.md)
 uses existing source timestamps, saved owner reports and local checklist receipts
-without joining stores or inventing occurrence times. Five isolated scenarios
-passed; a separate scoped-correction scenario is blocked by unavailable validation
-tooling. This does not close the broader event-contract dependency below.
+without joining stores or inventing occurrence times. Five initial isolated
+scenarios passed; scoped-correction H6 subsequently passed after restoring a matching
+isolated driver. This does not close the broader event-contract dependency below.
 
 Full V312 needs actual event evidence rather than reinterpreted snapshot fields.
 Prioritize a **read-only summary input contract** before further aggregation:
