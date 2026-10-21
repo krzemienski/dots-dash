@@ -1,0 +1,137 @@
+{
+  "label": "TEST DATA \u2014 Session review save recovery",
+  "date": "2026-10-21",
+  "baseRevision": "1d79dc5f9f762fe21e7857cbfab4b45eeebb6150",
+  "acceptanceDefinedBeforeChanges": "Commit a local checklist run then lose its response; reconcile exact operation through UI with one receipt/version/audit. Repeat for owner observation. Distinguish confirmed POST/failed GET; check payload conflicts, owner/capability gates, persistence and interrupted/repeated navigation.",
+  "baselineReproduction": {
+    "name": "baseline defect reproduced: committed run loses UI operation and review",
+    "pass": true
+  },
+  "method": "Fresh owned headless Chrome; actual built React UI, loopback Node API and Python worker; isolated owner-bound SQLite. Existing synthetic selected-record fixture only. A browser route let the real POST commit before discarding its response; a separate route failed the following GET after acknowledged POST. Direct read-only SQLite snapshots checked reviews, operations and mutation audit. Synthetic authentication principal; no production identity claim.",
+  "observations": [
+    {
+      "name": "lost run response retains review and blocks conflicting saves",
+      "pass": true
+    },
+    {
+      "name": "read-only refresh does not clear unconfirmed operation",
+      "pass": true
+    },
+    {
+      "name": "refresh leaves settled unconfirmed run pending",
+      "pass": true
+    },
+    {
+      "name": "settled lost-run exact replay adds exactly one receipt version and audit",
+      "pass": true
+    },
+    {
+      "name": "observation replay preserves original payload despite form edits and adds once",
+      "pass": true
+    },
+    {
+      "name": "persisted failing observation remains owner reported",
+      "pass": true
+    },
+    {
+      "name": "confirmed POST plus failed GET is saved with read-only recovery",
+      "pass": true
+    },
+    {
+      "name": "confirmed-save recovery performs GET only and shows persisted receipt",
+      "pass": true
+    },
+    {
+      "name": "changed-payload replay conflicts",
+      "pass": true
+    },
+    {
+      "name": "wrong owner cannot replay or read",
+      "pass": true
+    },
+    {
+      "name": "stale version pins reject new operation",
+      "pass": true
+    },
+    {
+      "name": "guard failures leave receipt observation operation and audit unchanged",
+      "pass": true
+    },
+    {
+      "name": "disabled runner replay retains original envelope without duplicate writes",
+      "pass": true
+    },
+    {
+      "name": "restored isolated capability permits same-envelope reconciliation only",
+      "pass": true
+    },
+    {
+      "name": "within-review navigation retains pending operation and does not write",
+      "pass": true
+    },
+    {
+      "name": "leaving and reopening loses envelope as disclosed but never automatically replays",
+      "pass": true
+    },
+    {
+      "name": "reload shows persisted run and observation without writes",
+      "pass": true
+    },
+    {
+      "name": "no pending request persisted in browser storage",
+      "pass": true
+    },
+    {
+      "name": "navigation during committed in-flight POST does not duplicate or auto replay",
+      "pass": true
+    },
+    {
+      "name": "browser has no page errors",
+      "pass": true
+    }
+  ],
+  "harnessCorrections": [
+    "First final-code run assertion sampled the pending banner before the POST finished. The saved snapshot was premature; inspected SQLite and request IDs, confirmed one committed run, then repeated with the explicit outcome-unconfirmed alert as the synchronization boundary.",
+    "Node REPL crypto getter rejected one request-ID construction before any request executed; used node:crypto randomUUID and continued."
+  ],
+  "invalidatedHarnessAssertion": {
+    "name": "UI run replay uses identical envelope and exactly one receipt version audit",
+    "reason": "Premature pre-settlement snapshot, not a product acceptance result. Repeated with explicit outcome-unconfirmed alert synchronization; corrected scenario passed."
+  },
+  "sourceHashes": {
+    "ui/session-review.tsx": "ea198d015e806a0b77f2631fe9749509ee1a32301e85545af747655ca3277d45",
+    "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+    "python/dots_engineering/service.py": "0caca19ea5aa57177afd7018313bbb67783aaf81313a54c0818b80f27d084d61",
+    "server/api.ts": "d2a2d1822a2de84b8bab01b0fd0d237c822ccf3db3c9050f4c45078899c298f8",
+    "server/engineering.mjs": "610262982773c6c180814c33df5b58ac94078c59cc7aa5fe1976f14d7060577e",
+    "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852"
+  },
+  "buildOutputs": {
+    "index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5",
+    "main.js": "6e30b86369f084932c0559dcef4a1d598f7f55a4182cd73ebbea58465b0beb84",
+    "main.css": "df5964e4bb5d40ad006d53e65992466462a9be949456d163c20c5c29dc922d14"
+  },
+  "checks": {
+    "existingTests": "14 passed",
+    "typecheck": "passed",
+    "build": "passed before final-code browser workflow; runtime source unchanged after that build",
+    "pythonParse": "passed",
+    "diffWhitespace": "passed",
+    "screenshot": "Inspected unconfirmed-operation controls and disclosure in rendered UI"
+  },
+  "cleanup": {
+    "serverListening": false,
+    "browserConnected": false,
+    "ownedBrowserExitCode": 0
+  },
+  "limits": [
+    "Recovery envelope exists only in the mounted Session review view. Leaving/reloading loses it; no automatic replay or browser-storage persistence.",
+    "Exact reconciliation is a POST, not a read-only operation lookup. It may execute an uncommitted operation under current server gates.",
+    "A definitive rejection during replay does not settle an earlier uncertain attempt; the envelope remains pending.",
+    "No multi-tab or cross-device recovery guarantee; fresh reads and server version checks remain necessary.",
+    "Owner observations remain owner reported; checklist receipts cover bounded declarative checks only. No transcript completeness/authorship certification or external agent execution.",
+    "No private logs, shared/production database, provider calls, deployment or actual-user production authentication validation.",
+    "Only listed targeted workflows and existing checks were performed; prior owner-review report evidence remains historical."
+  ],
+  "nextTask": "Review the draft PR. Consider a separately scoped read-only operation-status contract if recovery must survive leaving the view without persisting sensitive payloads in browser storage."
+}

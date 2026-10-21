@@ -64,7 +64,24 @@ executable, arguments, paths, environment, owner or capabilities. The worker
 receives no inherited credential environment. It has no HTTP listener, shell
 tools, provider SDK client or external side effects. It has a ten-second host
 timeout and bounded input/output. A timeout reports an unconfirmed operation;
-refresh the ledger and use the same request ID to reconcile.
+keep Session review open and use **Reconcile exact pending save**. The UI resends
+the original request ID, serialized payload and version pins. This may finish a
+previously uncommitted operation; server authorization and capability checks
+still apply. New session saves and review switching stay blocked until the
+operation is confirmed. A read-only refresh alone does not clear uncertainty.
+
+A confirmed POST followed by a failed GET is shown as **Saved, but refresh
+failed**. **Refresh confirmed save** only reads persisted records; it never
+submits another operation. A first definitive rejection is reported separately.
+A rejection during reconciliation keeps the original uncertain envelope, because
+it cannot disprove a prior commit.
+
+Recovery is in memory only. Leaving Session review or reloading discards the
+envelope; no payload is written to browser storage and no replay happens on
+remount. Inspect persisted records before any new save after leaving. Durable
+cross-navigation recovery and a read-only operation lookup are not implemented
+for this endpoint. The separate retained-record report workflow has its own
+recovery contract. See the [isolated recovery evidence](verification/session-save-recovery.json).
 
 ## User flow
 

@@ -1,5 +1,5 @@
 'use client';
-import {useEffect,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import type {EngineeringState,SessionReview,Goal,SessionEvent,BrowserReceiptState} from '../lib/work/engineering';
 import ContextLinks from './context-links';
 import SourceCoverage from './source-coverage';
@@ -9,10 +9,14 @@ import {deriveRemediationPrompt} from '../lib/work/remediation-context';
 import OwnerReviewReports from './owner-review-reports';
 import {BrowserEvidenceLinks,BrowserRunList,noBrowserReceipts,readBrowserReceipts,type BrowserHistoryPaging} from './browser-receipts';
 
-async function request<T>(body?:Record<string,unknown>,reviewId?:string):Promise<T>{
- const response=await fetch('/api/engineering'+(reviewId?'?reviewId='+encodeURIComponent(reviewId):''),{method:body?'POST':'GET',credentials:'same-origin',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined});
+class ReviewRequestError extends Error { constructor(message:string,readonly status:number){super(message)} }
+type SaveReply={ok:boolean;review:SessionReview;executed:boolean};
+type PendingSave=Readonly<{body:string;requestId:string;action:string;reviewId?:string;version?:number;phase:'unconfirmed'|'saved';savedReviewId?:string;executed?:boolean}>;
+
+async function request<T>(body?:Record<string,unknown>|string,reviewId?:string):Promise<T>{
+ const response=await fetch('/api/engineering'+(reviewId?'?reviewId='+encodeURIComponent(reviewId):''),{method:body?'POST':'GET',credentials:'same-origin',headers:body?{'Content-Type':'application/json'}:undefined,body:body?(typeof body==='string'?body:JSON.stringify(body)):undefined});
  const data=await response.json() as {error?:string};
- if(!response.ok)throw new Error(data.error||'Session review unavailable');
+ if(!response.ok)throw new ReviewRequestError(data.error||'Session review unavailable',response.status);
  return data as T;
 }
 
@@ -100,31 +104,75 @@ export function ReviewDetails({review,capabilities,busy,onSave,browserReceipts=n
 
 export default function SessionReviewWorkspace({initialRequestId}:{initialRequestId?:string}={}){
  const [state,setState]=useState<EngineeringState|null>(null),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[payload,setPayload]=useState('');
+ const [pending,setPending]=useState<PendingSave|null>(null);
+ const pendingRef=useRef<PendingSave|null>(null),gate=useRef(false);
+ const locked=busy||!!pending;
+ function retain(value:PendingSave|null){pendingRef.current=value;setPending(value)}
+ const savedNotice=(executed?:boolean)=>executed?'Local checklist receipt saved. Product behavior still requires end-user evidence.':'Saved locally. No execution requested.';
  const [browserReceipts,setBrowserReceipts]=useState<BrowserReceiptState>(noBrowserReceipts);
  const [browserCursors,setBrowserCursors]=useState<string[]>([]),[browserPageError,setBrowserPageError]=useState('');
  const pageFailure='Run history could not be read. Showing the previously loaded page; retry navigation or use Latest runs.';
  async function readState(reviewId?:string){const [reviewState,receipts]=await Promise.all([request<EngineeringState>(undefined,reviewId),readBrowserReceipts(browserReceipts.page?.cursor||undefined)]);setState(reviewState);if(receipts.status==='unavailable'&&browserReceipts.status==='available'){setBrowserPageError(pageFailure);}else{setBrowserReceipts(receipts);setBrowserPageError('');if(!receipts.page?.cursor)setBrowserCursors([]);}}
  async function navigateRuns(direction:'older'|'newer'|'latest'){
+  if(gate.current)return;
   const cursor=direction==='older'?browserReceipts.page?.nextCursor:direction==='newer'?browserCursors.at(-1):undefined;
   if(direction!=='latest'&&!cursor)return;
-  setBusy(true);setBrowserPageError('');
+  gate.current=true;setBusy(true);setBrowserPageError('');
   try{const next=await readBrowserReceipts(cursor||undefined);if(next.status!=='available'){if(browserReceipts.status==='available')setBrowserPageError(pageFailure);else{setBrowserReceipts(next);setBrowserCursors([]);}return;}
    setBrowserReceipts(next);setBrowserCursors(direction==='latest'?[]:direction==='newer'?browserCursors.slice(0,-1):[...browserCursors,browserReceipts.page!.cursor!]);
    requestAnimationFrame(()=>{const target=document.getElementById('owned-browser-run-history');target?.focus({preventScroll:true});target?.scrollIntoView({block:'start'});});
-  }finally{setBusy(false);}
+  }finally{gate.current=false;setBusy(false);}
  }
  const browserPaging:BrowserHistoryPaging={busy,canGoNewer:browserCursors.length>0,error:browserPageError,onNavigate:direction=>{void navigateRuns(direction);}};
- async function load(reviewId?:string){setBusy(true);setError('');try{await readState(reviewId)}catch(e){setState(null);setError(e instanceof Error?e.message:'Review unavailable')}finally{setBusy(false)}}
+ async function load(reviewId?:string){
+  if(gate.current)return;
+  const attempt=pendingRef.current;
+  if(attempt&&reviewId&&reviewId!==(attempt.savedReviewId||attempt.reviewId)){setError('Resolve the pending save before opening another review.');return;}
+  gate.current=true;setBusy(true);setError('');
+  try{await readState(attempt?.savedReviewId||attempt?.reviewId||reviewId);if(attempt?.phase==='saved'){retain(null);setNotice(savedNotice(attempt.executed));}}
+  catch(e){setError(attempt?.phase==='saved'?'Saved, but refresh failed. Retry refresh; do not submit a new operation.':(e instanceof Error?e.message:'Review unavailable'))}
+  finally{gate.current=false;setBusy(false)}
+ }
  useEffect(()=>{void load()},[]);
- async function save(body:Record<string,unknown>){setBusy(true);setError('');setNotice('');try{const result=await request<{review:SessionReview;executed:boolean}>({...body,requestId:crypto.randomUUID()});if(body.action==='import_selection')setPayload('');await readState(result.review.id);setNotice(result.executed?'Local checklist receipt saved. Product behavior still requires end-user evidence.':'Saved locally. No execution requested.')}catch(e){setState(null);setError((e instanceof Error?e.message:'Operation not confirmed')+'. Refresh records before retrying.')}finally{setBusy(false)}}
+ async function submit(attempt:PendingSave,replay:boolean){
+  gate.current=true;setBusy(true);setError('');setNotice('');
+  let confirmed=false;
+  try{
+   const result=await request<SaveReply>(attempt.body);
+   if(result.ok!==true||!result.review?.id||typeof result.executed!=='boolean')throw new Error('Invalid save acknowledgement');
+   confirmed=true;
+   retain(Object.freeze({...attempt,phase:'saved',savedReviewId:result.review.id,executed:result.executed}));
+   if(attempt.action==='import'||attempt.action==='import_selection')setPayload('');
+   setNotice(savedNotice(result.executed));
+   await readState(result.review.id);
+   retain(null);
+  }catch(e){
+   if(confirmed){setError('Saved, but refresh failed. Retry refresh; do not submit a new operation.');}
+   else if(!replay&&e instanceof ReviewRequestError&&[400,401,403,404,409,413,415].includes(e.status)){
+    // A first, definitive rejection is not a lost acknowledgement. On replay,
+    // even a rejection cannot rule out an earlier committed attempt.
+    retain(null);setError(e.message+'. Save rejected; refresh before another write.');
+   }else{setError('Save outcome unconfirmed. New session saves are blocked. Reconcile the exact pending operation. '+(e instanceof Error?e.message:''));}
+  }finally{gate.current=false;setBusy(false)}
+ }
+ async function save(body:Record<string,unknown>){
+  if(gate.current||pendingRef.current)return;
+  const requestId=crypto.randomUUID();
+  // Store immutable wire bytes before fetch; form edits cannot alter replay pins.
+  const attempt:PendingSave=Object.freeze({body:JSON.stringify({...body,requestId}),requestId,action:String(body.action),reviewId:typeof body.reviewId==='string'?body.reviewId:undefined,version:typeof body.version==='number'?body.version:undefined,phase:'unconfirmed'});
+  retain(attempt);await submit(attempt,false);
+ }
+ async function reconcile(){const attempt=pendingRef.current;if(gate.current||!attempt)return;if(attempt.phase==='saved'){await load(attempt.savedReviewId);return;}await submit(attempt,true);}
  return <section className="session-review"><h2>Session intent and drift review</h2><p>Import a selected, sanitized visible export. Review source-linked goals, scope decisions and behavior gaps before authorizing a bounded checklist.</p>
   <button onClick={()=>void load()} disabled={busy}>Refresh session reviews</button>{busy&&<p role="status">Working…</p>}{error&&<p role="alert">{error}</p>}{notice&&<p role="status">{notice}</p>}
+  <p>Save recovery is held only in memory while this Session review view stays open. Leaving this view or reloading loses the pending request. Inspect persisted records before any further save; a refresh alone cannot prove an unconfirmed operation. Nothing is stored in browser storage.</p>
+  {pending&&<section aria-label="Session save recovery"><h3>{pending.phase==='saved'?'Save confirmed; refresh pending':'Unconfirmed session save'}</h3><p>Operation {pending.requestId} · {pending.action}{pending.reviewId?' · review '+pending.reviewId:''}{pending.version!==undefined?' · pinned version '+pending.version:''}</p><p>{pending.phase==='saved'?'The server acknowledged this save. Recovery only refreshes records.':'Reconciliation resends the same request ID, payload and version pins. It may complete a previously uncommitted operation; current server authorization and capability checks still apply. Read-only refresh does not clear this pending operation.'}</p><button disabled={busy} onClick={()=>void reconcile()}>{pending.phase==='saved'?'Refresh confirmed save':'Reconcile exact pending save'}</button></section>}
   <SourceInventory review={state?.reviews[0]} onOpenReview={load}/>
   {state&&<><p>Runner: {state.capabilities.runner}. External execution disabled. Named provider session adapters unavailable.</p>
    <p>{state.totalReviews} saved reviews; index shows the latest {state.reviewIndex.length}. One full review is loaded at a time.</p>
-   {!!state.reviewIndex.length&&<label>Saved session review<select disabled={busy} value={state.reviews[0]?.id||''} onChange={e=>void load(e.target.value)}>{state.reviewIndex.map(item=><option key={item.id} value={item.id}>{item.projectId} / {item.sessionId} · v{item.version}</option>)}</select></label>}
+   {!!state.reviewIndex.length&&<label>Saved session review<select disabled={locked} value={state.reviews[0]?.id||''} onChange={e=>void load(e.target.value)}>{state.reviewIndex.map(item=><option key={item.id} value={item.id}>{item.projectId} / {item.sessionId} · v{item.version}</option>)}</select></label>}
    <details><summary>Import sanitized owner export</summary><p>Use dots-visible-session v1, or dots-selected-records v1 for explicit attribution, project confirmation and scoped corrections. Source references are opaque names, not file paths or fetchable URLs. Do not paste raw transcripts, secrets or hidden instructions. Classification is owner-supplied; unknown origin must remain unknown.</p><a href="/api/engineering/schema" target="_blank" rel="noreferrer">View export schema</a> · <a href="/api/engineering/schema?format=selected-records" target="_blank" rel="noreferrer">View selected-record schema</a>
-    <form onSubmit={e=>{e.preventDefault();try{const value=JSON.parse(payload);void save(value?.format==='dots-selected-records'?{action:'import_selection',selection:value}:{action:'import',export:value})}catch{setError('Export must be valid JSON')}}}><label>Sanitized export JSON<textarea required maxLength={240000} value={payload} onChange={e=>setPayload(e.target.value)}/></label><button disabled={busy||!state.capabilities.import}>Import and analyze</button></form>{!state.capabilities.import&&<p>Owner session import is disabled.</p>}
-   </details><ContextLinks review={state.reviews[0]} onOpenReview={load} initialRequestId={initialRequestId}/>{!state.reviews.length&&<><p>No session exports imported. Empty coverage does not establish no work happened.</p><article className="card commitment-card"><h3>Actual review receipts</h3><BrowserRunList state={browserReceipts} paging={browserPaging}/></article></>}{state.reviews.map(review=><ReviewDetails key={review.id} review={review} capabilities={state.capabilities} busy={busy} onSave={save} browserReceipts={browserReceipts} browserPaging={browserPaging}/>)}</>}
+    <form onSubmit={e=>{e.preventDefault();try{const value=JSON.parse(payload);void save(value?.format==='dots-selected-records'?{action:'import_selection',selection:value}:{action:'import',export:value})}catch{setError('Export must be valid JSON')}}}><label>Sanitized export JSON<textarea required maxLength={240000} value={payload} onChange={e=>setPayload(e.target.value)}/></label><button disabled={locked||!state.capabilities.import}>Import and analyze</button></form>{!state.capabilities.import&&<p>Owner session import is disabled.</p>}
+   </details><ContextLinks review={state.reviews[0]} onOpenReview={load} initialRequestId={initialRequestId}/>{!state.reviews.length&&<><p>No session exports imported. Empty coverage does not establish no work happened.</p><article className="card commitment-card"><h3>Actual review receipts</h3><BrowserRunList state={browserReceipts} paging={browserPaging}/></article></>}{state.reviews.map(review=><ReviewDetails key={review.id} review={review} capabilities={state.capabilities} busy={locked} onSave={save} browserReceipts={browserReceipts} browserPaging={browserPaging}/>)}</>}
  </section>;
 }
