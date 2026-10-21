@@ -1,6 +1,15 @@
 # Engineering contexts and execution specification
 
+> Historical design and implementation context. See [current scoped verification](../verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
+
 Version 3 target design. None of the new provider session adapters, host controls, terminal streaming or subagent orchestration described here is established as shipped functionality.
+
+An optional local Python slice now supports owner-curated v1 visible exports,
+strict skill metadata/checklist inventory, evidence-gap analysis, source-linked
+remediation, local checklist receipts and owner-reported end-user observations.
+This does not establish named provider session compatibility, full skill
+execution, host controls or subagent orchestration. See
+[the implemented boundary](../SESSION_REVIEW.md).
 
 ## Link contexts without collapsing authority
 A WorkContext has kind correspondence, engineering, planning or mixed, and links the same Request to relevant threads, project, repository and execution runs. Linking a correspondence request to an engineering task does not grant permission to read an entire mailbox from that execution environment. An engineering result can be attached to a reply draft; it does not authorize sending the reply. Each context retains source coverage, permitted audience and capability grants.
@@ -13,6 +22,16 @@ Oh My Pi, Cursor, Claude and Codex are requested adapter targets, not verified c
 Accept only permitted user-visible session content: user requests, visible assistant responses, tool execution summaries exposed by that product, code changes, provided artifacts and verification receipts. Do not import hidden reasoning, system/developer instructions, internal assistant notes or secrets. Imported text is untrusted evidence, not a new instruction to the dashboard executor. A transcript saying “tests passed” is a claim until linked to actual run evidence.
 
 Capabilities are discovered independently per installation: list permitted sessions, import export, read supported visible events, link repository revision, lookup action receipt, and optional execution. Review/read integration never implies execute permission. Read-only is the default, and export ingestion remains bounded by owner, project and time window.
+
+The [proposed coverage companion](16-source-coverage-checkpoints.md) defines
+persistent tool/project/time inventory, distinct access observations and
+snapshot-bound processing checkpoints. It is design-only. Existing review
+versions and development evidence ledgers are not transcript-processing progress.
+
+A [bounded companion implementation](../SOURCE_INVENTORY.md) now records
+owner-reported inventory/access metadata behind a default-off capability.
+It does not implement processing checkpoints, verify original reads or close
+the design's functional acceptance gates.
 
 ## User-owned project skills and configuration
 Inventory only explicitly selected user-owned project files or documented project settings. Show file purpose, relative project path, revision/hash, provenance, inspection status and redaction status. Detect instructions as content for review; do not automatically load or execute them. Exclude credentials, environment values, private assistant instructions and unrelated global files. Repository symlinks and includes must resolve inside the authorized root before reading; blocked targets remain blocked.
@@ -46,6 +65,25 @@ Persist checkpoints and partial artifacts safely. On lost host contact, mark out
 ## Completion and next work
 A CompletionClaim names a concrete expected outcome and links code diff, revision, test execution, artifacts and deployment evidence where relevant. Distinguish code written, tests passed, committed, pushed, CI passed and deployed. Missing evidence leaves the claim unverified. Test result relevance expires when tested files, dependencies or environment assumptions materially change.
 
+The bounded local [runtime relevance implementation](../BROWSER_RUNTIME_RELEVANCE.md)
+compares only recorded allowlisted dependencies and explicit host-bound runtime
+inputs on demand. Its assessment is separate from the immutable historical
+outcome. Proven changes are stale; unavailable or unmeasurable fields are unknown,
+with field-level matches retained as scoped evidence. No new execution or access
+authority follows from the assessment. It does not implement continuous monitoring
+or full environment equivalence.
+
+
 Daily summaries cover the owner's chosen time zone and bounded period, identify coverage gaps, and separate requested work, actual changes, verified outcomes, pending decisions, failures and next steps. Summaries cite underlying event/evidence IDs and preserve corrections. A daily summary schedule requires a real configured scheduler and opt-in notification destination; it is not implied by this specification.
 
 Next-work prompts are reviewable drafts scoped to project, current revision, unresolved request and safe available capabilities. They must exclude secrets and internal instructions, cite evidence and known blockers, and never authorize execution or new access. One click to copy is distinct from approve-and-run. Any execution handoff must create a separately bounded authorized run.
+
+## Bounded local context-link implementation
+
+The [request association slice](../REQUEST_CONTEXT_LINKS.md) references an existing
+canonical imported commitment from a local repository-task association, then pins
+a session review by ID/version/project/revision. Opaque repository metadata grants
+no filesystem access. The host supplies request metadata; clients cannot supply
+permission state. Read projections distinguish stale and missing targets, and
+request coverage truncation remains unknown. The implementation is source-checked;
+actual synthetic browser acceptance is blocked, so no functional V301 claim follows.

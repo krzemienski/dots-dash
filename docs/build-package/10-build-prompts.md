@@ -1,5 +1,7 @@
 # Master and phase execution prompts
 
+> Historical design and implementation context. See [current scoped verification](../verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
+
 These prompts are reusable instructions for an authorized implementation task. They do not supply new authority to create accounts, grant persistent access, contact third parties, incur charges, publish or expose data. Replace only the project/environment references with verified values. Never paste runtime secrets or private source exports into a prompt or repository.
 
 ## Master execution prompt
@@ -60,8 +62,165 @@ Inspect only permitted interfaces and project sources. Inventory product/version
 ## Phase prompt E1
 Implement Python canonical contracts and compatibility server through the migration plan. Preserve fail-closed auth, disabled imports, idempotency, saved-not-delivered and executed:false semantics. Use isolated actual SQLite instances for parity, cutover and rollback testing. Gate: V314 plus existing storage/API security tests; no dual execution or silent replacement of current runtime.
 
+The local opt-in Python read adapter is a partial foundation. Keep Node as
+the sole writer while defining mutation parity. Before changing write ownership,
+specify user workflows for instruction replay/conflict, stale decisions,
+atomic audit failure and writes made during rollback windows. Exercise actual
+authorized local operations and inspect persisted outcomes; do not silently
+restore a stale database or call reader switching a full migration rollback.
+
+Instruction, decision and history rehearsals now have bounded disposable-snapshot
+evidence. Preserve their branches and receipts. Resolve unsupported legacy
+representations and inherited audit semantics before claiming full parity.
+Next define and rehearse single-writer cutover outcomes on disposable storage:
+writer fencing, checkpoints, in-flight requests, post-cutover writes, unknown
+outcomes and rollback without discarding newer data. Keep Node as the application
+writer. Existing evidence does not authorize production cutover or execution.
+
+The shared snapshot-ordering policy now compares supported instants inside
+SQLite writes, preserves first accepted evidence on ties and rejects ambiguous
+stored timestamps. Its synthetic before/after outcomes preserve original hashes
+and source references. Retain that boundary: do not normalize live records or
+count historical receipts as authority for fresh invalid imports. Next resolve
+remaining compatibility outcomes before broadening migration scope. Concurrent
+history replay and a history-only disposable epoch handoff now have evidence.
+Instruction/decision guarding and marked-session process-crash recovery now have
+bounded local evidence. Retained-handle supervision now covers surviving local
+Node workers; lost handles still supply no PID-based authority. Before dependent
+changes, preserve the independent exit-unconfirmed guard and storage retention
+documented in SUPERVISOR_HANDLE_LOSS.md; a resolved receipt cannot clear it. Before
+any broader lifecycle claim, preserve the serialized check/action boundary in
+LIFECYCLE_RACE_GUARDS.md. Bounded lock-path/startup checks are recorded in
+LOCK_DISRUPTION_AND_STARTUP.md; do not automatically expand concurrency scope.
+Contextual remediation-to-goal/receipt/observation navigation is now implemented
+with bounded isolated-browser evidence in REMEDIATION_NAVIGATION.md. Preserve
+its task-specific return paths and honest evidence labels. Before compatibility changes, obtain product choices for
+URL/join/date/hash/audit behavior
+and absent-receipt safe abort, as documented in COMPATIBILITY_POLICY_CHOICES.md.
+Never force-clear uncertainty or restore a stale checkpoint over newer data.
+These local receipts do not authorize production cutover.
+
+JOURNEY_ACCEPTANCE_REVIEW.md separates explicit acceptance from prioritization
+inference. Preserve historical assessment/draft labels and separately attributed
+owner observations. EVIDENCE_REVISION_RELEVANCE.md records bounded declared-review
+revision display with actual prior browser artifacts and persisted UI readback.
+Preserve its attribution, historical results and strict missing-revision denial.
+The remaining V310 outcome needs a concrete authorized check issuer, artifact
+validation and environment/relevant-input contract. Matching imported metadata
+does not establish independent verification. No new executor or follow-up work
+is implicitly authorized.
+
+The owner-selected candidate producer is now the existing isolated local browser
+workflow. V310_LOCAL_BROWSER_RECEIPT_ADAPTER.md records the inspected unsupported
+link and a prospective fixed adapter design. Reuse that workflow's authorization;
+do not ask the user to choose receipt plumbing. Establish owned browser lifecycle,
+host-created pending run and inherited result channel before enabling trusted
+receipts. Historical reports remain attributed artifacts, never retroactively
+authenticated runs. At that inspection baseline the adapter was design-only;
+the specification does not grant new access.
+
+Implementation follow-up: OWNED_BROWSER_RECEIPTS.md records a fixed host-internal
+adapter and fresh actual browser evidence. Preserve owned-handle/channel binding,
+immutable receipt identity, unknown outcomes and imported evidence attribution.
+Do not route arbitrary commands or caller-authored results through it. Receipt
+projection into the dashboard and restart recovery remain separate work; neither
+is authorized by a saved receipt or by this build prompt.
+
+Dashboard projection is now implemented in BROWSER_RECEIPT_DASHBOARD.md with
+fresh actual producer receipts and separate viewer evidence. Preserve its owner-
+bound read-only ledger, pending/unknown distinctions, historical outcome hashes,
+review role/version coverage and explicit measured-file comparison scope. A
+matching measurement or displayed pass must not promote owner reports, rewrite
+imports or authorize execution. Live monitoring and lost-coordinator recovery
+remain separate work; no compatibility decision is implied by this display.
+
+Receipt history pagination is now implemented in BROWSER_RECEIPT_PAGINATION.md
+with actual acceptance across 53 owned runs. Preserve the 50-row page bound,
+anchored membership, separate current/snapshot counts, page-scoped evidence and
+retained prior page on navigation failure. States/measurements remain read-time
+observations; cursors confer no authority. Reload returns Latest. Future changes
+must preserve immutable history, owner attribution and the single receipt writer.
+
+On-demand dependency/environment comparisons are now recorded in
+BROWSER_RUNTIME_RELEVANCE.md. Preserve the fixed recorded dependency allowlist,
+explicit host-only runtime bindings, bounded read-only measurements and visible
+unknown fields. Matching bytes do not establish unmeasured versions, browser
+settings or a new build. A changed input creates a new stale assessment without
+rewriting the original receipt or authorizing a rerun. Do not broaden source
+access, discover runtimes or add background monitoring to fill unknown coverage.
+
+The bounded V301 association implementation is recorded in REQUEST_CONTEXT_LINKS.md.
+Its synthetic browser/API acceptance is pending because automatic approval review
+rejected the workflow. Before claiming functional completion, resolve that approval
+boundary and perform the defined owned-disposable scenarios. Preserve canonical
+Node requests, separate Python link storage, immutable pins, explicit stale/missing/
+unknown states and independent permission state. Synthetic acceptance cannot close
+the actual correspondence/repository-request gate; do not broaden source access.
+
 ## Phase prompt E2
 Implement context links and real permitted session/export review, repository diff/evidence and selected user-owned configuration inventory. Redact before display, pin revisions and label unsupported adapters. Gate: V301-V304/V310 against authorized actual sources; transcript completion claims remain unverified without real checks.
+
+The [correction context projection](../CORRECTION_CONTEXT_DISPLAY.md) now exposes
+metadata differences on explicit supersession links without changing saved
+analysis. Next verify its listed scenarios only when that functional workflow
+is separately permitted. Static/build success is not browser or persistence
+evidence. Preserve the V301 execution denial and publication hold.
+
+For the integrated session-review slice, define end-user goals, observable
+acceptance and performed-user-step evidence before editing. Connect export
+events → goals/decisions → scoped findings → remediation tasks → selected
+skill → bounded runner receipt → observed acceptance in the same persisted
+flow and UI. Keep original skill invocation distinct from declarative checklist
+execution. Preserve explicit supersession and historical failures; never turn
+a targeted pass into release or current-head proof. Use the project
+`.agents/skills/session-intent-review/SKILL.md` workflow where applicable.
+Perform authorized end-user workflows and inspect outcomes; do not substitute
+test files for that verification. If browser allocation or real sign-in is
+unavailable, report those gates as pending and do not claim visual success.
+
+For source coverage, preserve the [display-only v1 projection](../SOURCE_COVERAGE_PROJECTION.md):
+selected export, referenced event records and inventory metadata remain separate;
+original-source read coverage stays unknown. Before adding persisted read-empty,
+unreadable or unsupported dispositions, settle an explicitly versioned Python
+companion contract and compatibility policy. Do not reinterpret stored exports,
+rewrite hashes or infer completion from coverage. Execute the documented
+sanitized UI acceptance cases under explicit browser allocation. The bounded
+2026-10-20 browser observations are recorded in the linked documents; API/storage
+checks remain separate and the persisted companion contract is still undecided.
+
+Use the [proposed coverage companion](16-source-coverage-checkpoints.md) to
+specify the next bounded schema/API/migration: inventory and access observations
+first, then snapshot/processor-pinned progress for a defined supplied-export
+item unit. Preserve unknown tool/time/denominator, attributed processing,
+inaccessible sources and explicit partial inventory pages. No implicit backfill
+from saved reviews, claim of all-transcript coverage or new source access.
+This proposal is not an implemented capability or functional acceptance.
+
+The subsequent [inventory/access implementation](../SOURCE_INVENTORY.md) is
+default-off and statically checked only. Next perform its documented bounded
+persistence/reconciliation/UI scenarios only when specifically permitted.
+Do not label supplied snapshot metadata as verified reads or processing progress.
+Processing checkpoints and original-source adapters remain unimplemented.
+
+For the separate snapshot/review gap, follow the
+[owner-asserted association design](../SNAPSHOT_REVIEW_ASSOCIATIONS.md). Preserve
+distinct hash domains, historical pins and attribution. Do not infer parsing,
+source access or processing from an association. The
+[bounded implementation](../SNAPSHOT_REVIEW_IMPLEMENTATION.md) adds that contract
+and display with a separate default-off capability. Its eight functional
+scenarios remain unperformed. Next, only when specifically permitted, validate
+owner/project isolation, unchanged target hashes, atomic correction/revocation,
+exact replay and complete-target versus unavailable lookup using isolated
+labeled TEST DATA, then observe reopen/keyboard/narrow-screen behavior. Keep
+V301, runtime acceptance and publication holds; do not infer execution permission
+from this prompt. Processing checkpoints remain separate work.
+
+Preserve the [artifact-evidence display boundary](../ARTIFACT_EVIDENCE_DISPLAY.md):
+derive build-output roles only from an already-bound owned-receipt manifest;
+unknown roles and older responses stay unknown. Changed generated outputs may
+invalidate relevance without establishing implementation edits. Do not infer
+artifact roles from filenames, revise persisted history, or upgrade imported
+claims, owner reports or skill selection to independently verified fixes.
 
 ## Phase prompt E3
 Implement an approved host adapter and read-only sanitized terminal observation. Verify host identity, workspace scope, cursor ordering, output gaps, redaction and revocation. Gate: V305/V311/V313. No arbitrary shell, credential scraping, stdin/signals or new host security settings to make the view work.

@@ -1,5 +1,11 @@
 # Source release status
 
+The session/source-review feature update has [scoped isolated verification](verification/source-review-publication.md)
+and a [source-bound observation ledger](verification/source-review-publication.json).
+The historical main-release checks below apply only to that original revision.
+Feature-branch publication and CI status must be read for the exact feature commit;
+neither source publication nor passing CI certifies production readiness.
+
 The sanitized reusable source was published to https://github.com/krzemienski/dots-dash on October 15, 2026. The first complete remote revision is `1651e397c8a3c1c6e9fd2c095e9bd0c5e6ec640d`. Its tree `1afe1bf3baffed108dfbb978e0928c329cc3f751` exactly matches reviewed local source revision `7a6eb7d6387a654c8c0ac0ecc6f73665e110a37a`.
 
 This publication contains generic source and documentation only. No private deployment history, runtime records, credentials, user source exports or generated runtime database is included. Public source availability does not make a runtime dashboard public and does not establish production readiness. License selection remains pending.
