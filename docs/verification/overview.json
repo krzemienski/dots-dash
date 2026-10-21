@@ -145,5 +145,103 @@
     "Selection uses the last successful database-read time, not continuous live updates.",
     "Earlier evidence stays historical; no all-transcript or certified-processing claim."
   ],
-  "nextTask": "Actual owner review of the three-question check-in and focused accessibility acceptance; keep provider and durable recovery work separately scoped."
+  "nextTask": "Actual owner review of the three-question check-in and focused accessibility acceptance; keep provider and durable recovery work separately scoped.",
+  "followups": [
+    {
+      "label": "TEST DATA: impossible calendar dates in Overview",
+      "baseRevision": "5ebcc58514d9d0bc72df5cc188a1bf52ca73f14e",
+      "date": "2026-10-21T09:58:47.472Z",
+      "baseline": "Real API accepted 2027-02-30T09:00:00Z; SQLite preserved that text; built Overview selected it as March 2. Reproduced before edits.",
+      "method": "Fresh owned headless Chrome, built React UI, actual loopback Node API, synthetic host principal and disposable SQLite. Inline workflow driver; no new test file.",
+      "scope": "Read projection only. Reuse strict snapshotInstant calendar-component validation; catch invalid input as unknown. Import validation and persisted strings unchanged.",
+      "observations": [
+        {
+          "name": "impossible-day",
+          "result": "pass",
+          "detail": "Actual API import \u2192 stored records \u2192 rendered Overview selection"
+        },
+        {
+          "name": "invalid-leap",
+          "result": "pass",
+          "detail": "Actual API import \u2192 stored records \u2192 rendered Overview selection"
+        },
+        {
+          "name": "valid-leap",
+          "result": "pass",
+          "detail": "Actual API import \u2192 stored records \u2192 rendered Overview selection"
+        },
+        {
+          "name": "offset-boundary",
+          "result": "pass",
+          "detail": "Actual API import \u2192 stored records \u2192 rendered Overview selection"
+        },
+        {
+          "name": "impossible-end",
+          "result": "pass",
+          "detail": "Actual API import \u2192 stored records \u2192 rendered Overview selection"
+        },
+        {
+          "name": "unknown-only",
+          "result": "pass",
+          "detail": "Actual API import \u2192 stored records \u2192 rendered Overview selection"
+        },
+        {
+          "name": "ongoing-and-all-day",
+          "result": "pass",
+          "detail": "Actual API import \u2192 stored records \u2192 rendered Overview selection"
+        },
+        {
+          "name": "malformed correspondence",
+          "result": "pass",
+          "detail": "Unknown exact time instead of normalized March 2"
+        },
+        {
+          "name": "reload/read-only persistence",
+          "result": "pass",
+          "detail": "Original timestamp strings, versions and records unchanged across reload and refresh"
+        },
+        {
+          "name": "imports disabled",
+          "result": "pass",
+          "detail": "Existing default-off boundary denies import"
+        },
+        {
+          "name": "owner isolation",
+          "result": "pass",
+          "detail": "Other owner cannot read synthetic owner data"
+        },
+        {
+          "name": "no external requests/errors",
+          "result": "pass",
+          "detail": "Owned fresh browser and loopback server only"
+        }
+      ],
+      "sourceHashes": {
+        "ui/overview.tsx": "eb00ce293a7f53b4d7bb767f1e0284c73613012113ed46402096d7c1fc8a6fc9",
+        "lib/work/history-time.mjs": "09b8b6866f5dab02173b57a83ae5f95998b80c1adfa0800e7bf4a0a6d79cd30d",
+        "dist/main.js": "b69ce28dbba035a652132ee7d91ce107360fbd10d74bf1cd8ed7a09b0f837f04"
+      },
+      "node": "v26.11.1",
+      "staticChecks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed"
+      },
+      "visualInspection": "Inspected full-page final screenshot: unknown message time, ongoing event and separate all-day date visible.",
+      "cleanup": "browser/server/database closed",
+      "externalRequests": 0,
+      "pageErrors": [],
+      "guidance": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "application": "Defined outcome before edits, reproduced actual stored-record/UI mismatch, verified correction and preserved historical evidence. Manual guidance application, not adapter invocation."
+      },
+      "limitations": [
+        "Legacy importer can still retain malformed record timestamps; Overview excludes them without rewriting source text.",
+        "Other full-list screens and global import validation were not changed or certified.",
+        "Strict comparison supports explicit-zone ISO timestamps with seconds and at most millisecond precision; unsupported forms remain unknown.",
+        "No production auth/provider, actual-owner usability, screen-reader, full DST/recurrence or whole-feature reacceptance. Previous 18 observations remain historical at their recorded source bindings."
+      ]
+    }
+  ]
 }

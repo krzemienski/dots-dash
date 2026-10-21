@@ -59,3 +59,23 @@ source. No new test files were added. Owned browser, loopback server and storage
 closed. This is not production identity/provider acceptance, real-owner timed
 usability, screen-reader certification or full all-day/DST/recurrence testing.
 The broader FR02/FR03/FR04 outcomes remain partial.
+
+### Calendar-date correction
+
+A follow-up reproduced an impossible stored timestamp (`2027-02-30T09:00:00Z`)
+ranking as March 2. Overview now reuses the strict calendar-component parser in
+`lib/work/history-time.mjs` before converting offsets. Impossible days and invalid
+leap days remain unranked; malformed correspondence timestamps display Unknown.
+The comparison accepts explicit-zone ISO timestamps with seconds and up to
+millisecond precision; unsupported forms remain unknown. Original strings and
+record versions are not rewritten. Legacy import validation is unchanged and can
+still retain malformed timestamps; this correction is scoped to Overview.
+
+The appended follow-up in the [ledger](verification/overview.json) records 12
+passing observations through the actual isolated API, SQLite and built UI:
+impossible starts/ends, invalid and valid leap dates, offset boundaries, unknown-only
+selection, ongoing/all-day behavior, unknown correspondence time, reload and
+unchanged persistence, disabled import, owner isolation and no external requests
+or browser errors. All 14 existing tests, typecheck and build passed again. The
+earlier 18 observations retain their historical source bindings. Full-list screens,
+production providers and complete calendar semantics were not reaccepted here.

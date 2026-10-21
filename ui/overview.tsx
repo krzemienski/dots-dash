@@ -1,8 +1,10 @@
 'use client';
+import {snapshotInstant} from '../lib/work/history-time.mjs';
 
 type Row={id:string;kind:string;data:Record<string,any>};
 type Props={records:Row[];serverTime:string;onNavigate:(view:string)=>void;onInstruction:()=>void};
-const instant=(value:unknown)=>typeof value==='string'&&/T.*(?:Z|[+-]\d\d:\d\d)$/.test(value)?Date.parse(value):NaN;
+// Validate calendar components before offset conversion; never normalize source evidence.
+const instant=(value:unknown)=>{try{return snapshotInstant(value)}catch{return NaN}};
 const day=(value:unknown)=>typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&Number.isFinite(Date.parse(value))&&new Date(value).toISOString().slice(0,10)===value?value:null;
 const stamp=(value:unknown)=>Number.isFinite(instant(value))?new Date(String(value)).toLocaleString('en-US',{year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'UTC'})+' UTC':day(value)?String(value)+' · exact time unknown':'Unknown';
 function sourceDay(now:number,zone:unknown){
@@ -40,7 +42,7 @@ export default function Overview({records,serverTime,onNavigate,onInstruction}:P
     {(dated.length>3||uncertain.length>2)&&<p className="overview-note">Preview shows up to three timed messages and two records without an exact time. Open all correspondence for the stored selection.</p>}
    </section>
    <section aria-labelledby="overview-schedule"><div className="section-head"><h2 id="overview-schedule" tabIndex={-1}>Next recorded personal event</h2><button onClick={()=>onNavigate('schedule')}>Full schedule →</button></div>
-    <p className="overview-note">Timed events shown in UTC. Includes recorded confirmed/tentative personal events; attendance is not inferred. Subscriptions, inferred deadlines, declined/canceled and unknown-status records are not ranked here.</p>
+    <p className="overview-note">Timed events shown in UTC. Includes recorded confirmed/tentative personal events; attendance is not inferred. Subscriptions, inferred deadlines, declined/canceled, unknown-status and invalid-time records are not ranked here.</p>
     {timed[0]?event(timed[0]):<p className="overview-empty">No eligible upcoming or ongoing timed event in this snapshot. Other commitments may be missing or uncertain.</p>}
     {allDay.length>0&&<><h3 className="overview-subheading">All-day dates, separately</h3>{allDay.slice(0,2).map(event)}{allDay.length>2&&<p className="overview-note">Showing two of {allDay.length} eligible all-day entries. Open the full schedule for more.</p>}</>}
     <p className="overview-note">Calendar records do not create a scheduler. No provider schedule or run is configured by this view.</p>

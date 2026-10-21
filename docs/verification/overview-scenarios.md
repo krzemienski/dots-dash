@@ -34,3 +34,15 @@ and disposable SQLite. No new provider, production identity or private records.
 
 Results belong in the final source-bound overview ledger, not in this acceptance
 definition. Proposed mockups and previous workflow evidence do not satisfy it.
+
+## Bounded calendar-date follow-up
+
+Outcome defined before the correction: impossible timed dates must not rank as
+confirmed upcoming events, while original source text remains intact. Reproduce
+the impossible February 30 case via import, SQLite and the built UI first. Then
+verify invalid non-leap February 29, valid leap February 29, offsets crossing UTC
+day boundaries, impossible ends and an all-invalid selection. Confirm ongoing
+events and separate all-day dates still render, malformed correspondence time
+stays unknown, and reload/read refresh leaves stored strings and versions intact.
+Recheck disabled imports, wrong-owner reads and unknown source coverage. This is
+read-projection acceptance, not a claim that legacy imports reject malformed dates.
