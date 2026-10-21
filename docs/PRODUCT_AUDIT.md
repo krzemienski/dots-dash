@@ -316,3 +316,11 @@ The [collision correction](SESSION_REVIEW.md#accessible-review-and-source-names)
 separates generated label IDs from stable navigation targets. Five isolated
 collision and ten existing-flow observations passed; the prior nine observations
 remain historical and did not cover the colliding IDs.
+
+
+The [retained-source navigation follow-up](OWNER_REVIEW_REPORTS.md#retained-source-inspection-without-leaving-the-review)
+fixes an observed coverage-review interruption: selecting an item's source used
+to route away from Session review. Eight isolated observations now show exact
+in-view source focus with drafts, pending replay and partial/unresolved checkpoints
+preserved. This closes that inspection gap, not original-source processing,
+complete transcript coverage or durable recovery.

@@ -326,5 +326,104 @@
     "Pending request recovery is mounted-view only; leaving the view loses its envelope.",
     "The 1000-event retention cap is enforced in source but its full boundary was not exercised; history navigation used 53 checkpoints.",
     "Previous verification artifacts remain historical to their exact source hashes."
+  ],
+  "followups": [
+    {
+      "id": "retained-source-navigation",
+      "observedAt": "2026-10-21T16:09:52.440274+00:00",
+      "baselineCommit": "1294a1c827f90ff49a5115528b23606de190587d",
+      "sourceBinding": {
+        "ui/owner-review-reports.tsx": "2ab423e3e747576b2247000439af0c8ed85638b73927b678a920dee0f1687a37",
+        "ui/session-review.tsx": "720df7722cd1a8656fd3d8f189c60a454742c274800269f0ca54b2f01d84e2a3",
+        "ui/dashboard.tsx": "4e518bb2046eeb439e79dcfa1d36c882ed1ec10def5f5d32ea1d51e726d0a1ae",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "python/dots_engineering/owner_reviews.py": "eeea5c693a32820bbe7b8ef3ea262f97bfe3bc6a8b2a98f537b1ec5736d674ff",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852"
+      },
+      "dataLabel": "TEST DATA",
+      "goal": "Inspect a retained record from the owner-review checkpoint without leaving Session review, losing its draft/pending operation or advancing coverage.",
+      "baselineObserved": "Ordinary source-link activation wrote #session-\u2026-event-intent; dashboard hash routing treated it as an unknown page and unmounted Session review. Database bytes stayed unchanged.",
+      "rootCause": "OwnerReviewReports used a plain fragment anchor, unlike existing in-review source navigation which prevents route changes.",
+      "remediation": "Pass the existing ReviewDetails event-navigation callback into OwnerReviewReports and prevent default routing on source-link activation. Preserve href target, pins, reports and all storage/permission semantics.",
+      "observations": [
+        {
+          "id": "N1",
+          "outcome": "Every retained item opens its exact focusable source section by keyboard or click without changing #day, unmounting Session review or creating a review checkpoint.",
+          "result": "pass"
+        },
+        {
+          "id": "N2",
+          "outcome": "Unsaved non-contiguous report draft and item selections survive source inspection; stored bytes and no-checkpoint state remain unchanged.",
+          "result": "pass"
+        },
+        {
+          "id": "N3",
+          "outcome": "After committed-response loss, source inspection preserves the exact pending operation and write lock; persisted reviewed 2/prefix 1 and bytes are unchanged.",
+          "result": "pass"
+        },
+        {
+          "id": "N4",
+          "outcome": "Exact replay uses identical body/request ID, retaining one report checkpoint and two operations/audit entries including manifest creation; partial count and gap remain.",
+          "result": "pass"
+        },
+        {
+          "id": "N5",
+          "outcome": "Unknown-attribution item source remains inspectable while retained-selection denominator, contiguous gap and original-transcript unknown limits stay explicit.",
+          "result": "pass"
+        },
+        {
+          "id": "N6",
+          "outcome": "Correction to unresolved retreats coverage to reviewed 1/prefix 0; source inspection preserves corrected state and both immutable checkpoints.",
+          "result": "pass"
+        },
+        {
+          "id": "N7",
+          "outcome": "Source navigation remains in-view at 320/375px and after reload; corrected prefix, history and database bytes survive unchanged.",
+          "result": "pass"
+        },
+        {
+          "id": "N8",
+          "outcome": "Exact target retains heading-derived accessibility name; no durable browser storage, original-source read or transcript-completeness claim introduced.",
+          "result": "pass"
+        }
+      ],
+      "externalRequests": 0,
+      "pageErrors": [],
+      "persistence": "Existing companion migration applied explicitly only to each newly created disposable owner-bound TEST DATA database. UI created manifest, appended items 1 and 3, reconciled the same committed-but-unseen body and corrected item 1 to unresolved. Replay retained one report checkpoint and two companion operations/audit entries including manifest creation. Correction preserved two immutable checkpoints. Navigation/reload retained exact database bytes at each checked stage.",
+      "coverage": "Five retained records, three excluded dispositions and one unknown-attribution record from the existing selected fixture. Reported reviewed 2/prefix 1 became reviewed 1/prefix 0 after correction. Original-transcript denominator/time and authorship remain unknown; source inspection never advances review counts.",
+      "visualInspection": "375px screenshot inspected: focused unknown-origin claim, unchanged provenance and explicit unverified-completion text. 320/375px overflow checks passed.",
+      "attempts": [
+        "Baseline reproduced before edits.",
+        "First verification stopped after four passing observations because the harness searched for unknown instead of contract enum origin_unknown.",
+        "Second stopped after five observations because exact getByLabel did not match the rendered select name; corrected to the accessible combobox locator.",
+        "Final eight-scenario run passed on final runtime source. No application behavior was changed to accommodate those harness issues."
+      ],
+      "checks": [
+        "npm test: 14 passed, 0 failed",
+        "npm run typecheck: passed",
+        "npm run build: passed",
+        "Final source/build-manifest hashes, ledger JSON and local documentation targets verified",
+        "git diff --check: passed"
+      ],
+      "skills": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Revisited product coverage outcome, traced actual route/unmount mismatch, reproduced it, reused existing navigation boundary and verified persisted results.",
+        "verified": "Eight bounded UI/API/SQLite observations. Manual guidance use, not automatic invocation or a full-skill runner receipt."
+      },
+      "cleanup": "Owned headless browsers, loopback servers and SQLite handles closed. No shared Chrome, Jobs, desktop focus or production storage touched.",
+      "limits": [
+        "Normal in-view click/keyboard activation only; fragment deep-link loading in a new tab remains unsupported.",
+        "Actual screen-reader acceptance remains unperformed; accessibility-tree name checked only.",
+        "No new source reader, provider execution, durable browser storage or recovery across explicit departure/reload.",
+        "No real-owner V301, complete transcript coverage, verified authorship or certified processing claim.",
+        "No migration/schema change; existing migration used only in disposable verification storage."
+      ],
+      "nextTask": "Review current owner-report freshness/relevance projection against saved manifest pins; leave actual-user and live-source gates open until their own authorized evidence exists."
+    }
   ]
 }

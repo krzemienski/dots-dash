@@ -56,3 +56,22 @@ Existing tests (14), final typecheck, build and Python AST parsing passed; these
 static checks do not substitute for owner acceptance. Prior reports remain
 historical to their recorded hashes. Actual-user V301, original transcript
 coverage, verified authorship and production acceptance remain unestablished.
+
+
+## Retained source inspection without leaving the review
+
+Activating a retained item's source reference now uses the existing Session review
+event-navigation callback. It focuses and scrolls to that exact retained event
+without changing the dashboard route. Previously the fragment was treated as an
+unknown page and switched to Overview, unmounting the report form. The source
+reference remains an opaque provenance label; no original source is opened.
+
+The [follow-up ledger](verification/owner-review-reports.json) records eight
+actual isolated TEST DATA UI/API/SQLite observations: all retained targets, draft
+preservation, uncertain-save preservation, identical replay without duplicate
+checkpoints, unknown attribution, unresolved correction, reload and 320/375px
+layouts. Inspection leaves persisted bytes and reported coverage unchanged.
+Explicitly leaving/reloading still loses any pending in-memory envelope, and
+opening these fragment references as standalone deep links is not supported.
+This follow-up changes neither the retained-selection denominator nor the
+unknown original-transcript coverage or the owner-reported evidence basis.

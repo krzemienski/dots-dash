@@ -13,7 +13,7 @@ const endpoint='/api/owner-review-reports';
 const canonical=(value:unknown):unknown=>Array.isArray(value)?value.map(canonical):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).sort(([a],[b])=>a<b?-1:a>b?1:0).map(([k,v])=>[k,canonical(v)])):value;
 async function payloadDigest(body:string){const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(canonical(JSON.parse(body)))));return Array.from(new Uint8Array(bytes),b=>b.toString(16).padStart(2,'0')).join('');}
 
-export default function OwnerReviewReports({review}:{review:SessionReview}){
+export default function OwnerReviewReports({review,onOpenEvent}:{review:SessionReview;onOpenEvent:(id:string)=>void}){
  const [state,setState]=useState<State|null>(null),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[pending,setPending]=useState<Pending|null>(null);
  const gate=useRef(false),pendingRef=useRef<Pending|null>(null);
  async function load(manifestId?:string,offset=0,ceiling?:number){
@@ -65,7 +65,7 @@ export default function OwnerReviewReports({review}:{review:SessionReview}){
     <p>{s.head?`${s.reviewedCount} of ${m.itemCount} retained records reported reviewed; contiguous prefix ${s.prefixCount} of ${m.itemCount}`:'No owner review checkpoint. Import and manifest creation establish no reported review.'}</p>
     {s.head&&s.prefixCount===m.itemCount&&<p>Owner reports reviewing all {m.itemCount} records in this retained selection. Original transcript coverage remains unknown.</p>}
     <p>{m.excludedCount} excluded dispositions; {m.unknownAttributionCount} retained records with unknown attribution. Excluded content is not included.</p>
-    <ol>{m.items.map(item=>{const report=s.activeReports[item.itemId];return <li key={item.itemId}>{item.itemId} · {item.attribution.replaceAll('_',' ')} · {report?report.result+' / owner_reported':'missing report'} · <a href={`#session-${review.id}-event-${item.itemId}`}>{item.sourceRef}</a>{report&&<p>{report.id} · {report.observedAt} · {report.evidenceRefs.join(', ')}</p>}</li>})}</ol>
+    <ol>{m.items.map(item=>{const report=s.activeReports[item.itemId];return <li key={item.itemId}>{item.itemId} · {item.attribution.replaceAll('_',' ')} · {report?report.result+' / owner_reported':'missing report'} · <a href={`#session-${review.id}-event-${item.itemId}`} onClick={event=>{event.preventDefault();onOpenEvent(item.itemId)}}>{item.sourceRef}</a>{report&&<p>{report.id} · {report.observedAt} · {report.evidenceRefs.join(', ')}</p>}</li>})}</ol>
     <details><summary>Report reviewed items</summary><form onSubmit={e=>submit(e,'append_reports')}><fieldset disabled={reportLocked}>
      {m.items.map(item=><label key={item.itemId}><input type="checkbox" name="itemId" value={item.itemId} disabled={!!s.activeReports[item.itemId]}/>Item {item.position}: {item.itemId}</label>)}{inputs}<button>Save item review reports</button>
     </fieldset></form></details>
