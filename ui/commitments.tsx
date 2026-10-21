@@ -1,6 +1,7 @@
 'use client';
 import {useEffect,useState} from 'react';
 import {historyTime} from './history-views';
+import RequestActionClaims from './request-action-claims';
 type R={id:string;kind:string;data:Record<string,any>};
 const titles:Record<string,string>={completed:'Completed',partial:'Partly done',pending:'Pending',blocked:'Blocked',paused:'Paused',needs_user:'Needs you'};
 const safeSource=(value:unknown)=>{try{if(typeof value!=='string')return null;const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password?url:null}catch{return null}};
@@ -9,7 +10,7 @@ export default function Commitments({records,compact=false,onTask,onNavigate}:{r
  const all=records.filter(r=>r.kind==='commitment').map(r=>r.data),active=all.filter(r=>r.status!=='completed');
  const list=(compact?active.slice().sort((a,b)=>Number(b.needsUser)-Number(a.needsUser)||Number(a.owner==='counterparty')-Number(b.owner==='counterparty')).slice(0,5):all).filter(r=>(filter==='all'||filter==='waiting'&&r.owner==='counterparty'||filter==='needs_user'&&r.needsUser||filter===r.status)&&`${r.title} ${r.requestSummary} ${r.completedSummary} ${r.pendingSummary} ${r.nextStep}`.toLowerCase().includes(query.toLowerCase()));
  const [focusedId,setFocusedId]=useState<string|null>(null);
- useEffect(()=>{const select=()=>{let id:null|string=null;try{const parts=location.hash.slice(1).split('/');if(parts[0]==='requests'&&parts.length===2)id=decodeURIComponent(parts[1]);}catch{}setFocusedId(id);if(id){setQuery('');setFilter('all');}};select();window.addEventListener('hashchange',select);return()=>window.removeEventListener('hashchange',select)},[]);
+ useEffect(()=>{const select=()=>{let id:null|string=null;try{const parts=location.hash.slice(1).split('/');if(parts[0]==='requests'&&parts.length>=2)id=decodeURIComponent(parts[1]);}catch{}setFocusedId(id);if(id){setQuery('');setFilter('all');}};select();window.addEventListener('hashchange',select);return()=>window.removeEventListener('hashchange',select)},[]);
  useEffect(()=>{if(focusedId&&!compact){const target=document.getElementById('request-'+focusedId);target?.focus();target?.scrollIntoView({block:'start'});}},[focusedId,compact]);
  const linked=(kind:string,id:string)=>records.find(r=>r.kind===kind&&(r.data.id===id||r.id===id));
  return <section className="commitments">
@@ -37,6 +38,7 @@ export default function Commitments({records,compact=false,onTask,onNavigate}:{r
     {!compact&&<><h4>Needs you</h4><p>{r.needsUser?'Input explicitly requested; review the next step and blocker above.':'No input request is flagged in this record. Unreviewed sources may contain more.'} Reading this request grants no execution or sending authority.</p>
      <div className="commitment-links">{related.map(({kind,id,label,target}:{kind:string;id:string;label:string;target?:R})=>target?<button className="inline-link" key={kind+id} onClick={()=>kind==='task'?onTask(target.id):onNavigate(kind==='opportunity'?'opportunities/'+encodeURIComponent(target.data.id):kind==='project'?'projects':'schedule')}>{label}: {target.data.title||id}{kind==='project'||kind==='schedule'?' (open list)':''} →</button>:<p key={kind+id}>{label} reference {id}: unavailable in this snapshot.</p>)}</div>
      {!related.length&&<p className="request-evidence-note">No related task, opportunity, project or schedule references supplied.</p>}
+     {focusedId===r.id?<RequestActionClaims key={r.id} requestId={'commitment:'+r.id}/>:<button className="inline-link" onClick={()=>onNavigate('requests/'+encodeURIComponent(r.id))}>Review action claims for {r.title} →</button>}
      <details><summary>Request dates & identity</summary><p>Request ID: {r.id}</p><p>Requested: {r.requestedAt?historyTime(r.requestedAt):'Exact request time unavailable'}</p><p>Snapshot reviewed: {r.snapshotReviewedAt?historyTime(r.snapshotReviewedAt):'Unknown'}. This is not the action time or a live source check.</p></details>
     </>}
    </article>;

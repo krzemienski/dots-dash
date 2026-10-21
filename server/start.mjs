@@ -31,6 +31,7 @@ const engineering=process.env.DASHBOARD_ENGINEERING_PYTHON?createEngineering({
  allowSourceInventory:process.env.DASHBOARD_ALLOW_SOURCE_INVENTORY==='true',
  allowSnapshotAssociations:process.env.DASHBOARD_ALLOW_SNAPSHOT_ASSOCIATIONS==='true',
  allowOwnerReviewReports:process.env.DASHBOARD_ALLOW_OWNER_REVIEW_REPORTS==='true',
+ allowRequestActionClaims:process.env.DASHBOARD_ALLOW_REQUEST_ACTION_CLAIMS==='true',
 }):undefined;
 const legacyReader=pythonReads?createLegacyReader({python:process.env.DASHBOARD_ENGINEERING_PYTHON,database:path.resolve(database),ownerId:process.env.DASHBOARD_OWNER_ID}):undefined;
 const browserReceiptReader=process.env.DASHBOARD_BROWSER_RECEIPTS_PATH?createBrowserReceiptReader({ledger:process.env.DASHBOARD_BROWSER_RECEIPTS_PATH,ownerId:process.env.DASHBOARD_OWNER_ID,measurementRoot:process.env.DASHBOARD_BROWSER_MEASUREMENT_ROOT}):undefined;

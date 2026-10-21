@@ -198,5 +198,15 @@
       ],
       "nextSlice": "Separately disabled owner-report companion: strict schema, explicit isolated migration, immutable pins/lifecycle/replay and one-event Request composer/history; verify A1\u2013A12 before feature claims."
     }
+  ],
+  "implementationFollowups": [
+    {
+      "artifact": "docs/REQUEST_ACTION_CLAIMS.md",
+      "ledger": "docs/verification/request-action-claims.json",
+      "contract": "docs/REQUEST_ACTION_EVIDENCE_CONTRACT.md",
+      "basis": "29 isolated TEST DATA observations; owner-report companion only",
+      "actualUserV301": "unperformed",
+      "priorEvidence": "Historical source bindings above unchanged"
+    }
   ]
 }

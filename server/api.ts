@@ -26,6 +26,20 @@ export function createApi(options:RuntimeOptions){return async function handle(r
   if(cursors.length>1)return json({error:'Invalid browser receipt cursor'},400);
   try{return json(await options.browserReceiptReader({principal,...(cursors.length?{cursor:cursors[0]}:{})}))}catch(error){if(error&&typeof error==='object'&&'code' in error&&error.code==='INVALID_BROWSER_RECEIPT_CURSOR')return json({error:'Invalid browser receipt cursor'},400);return json({status:'unavailable',total:0,runs:[]},503)}
  }
+ if(path==='/api/request-action-claims'){
+  if(!['GET','POST'].includes(request.method))return json({error:'Method not allowed'},405);
+  if(request.method==='POST'&&request.headers.get('origin')!==new URL(options.publicOrigin).origin)return json({error:'Same-origin request required'},403);
+  if(!options.engineering)return json({error:'Action claims are unconfigured'},503);
+  const query=new URL(request.url).searchParams;
+  if([...query.keys()].some(key=>!['sourceRequestId','claimId','cursor','operationId','reviewId','eventId','revision'].includes(key))||[...query.keys()].some(key=>query.getAll(key).length!==1)||(request.method==='POST'&&query.size))return json({error:'Invalid action claim query'},400);
+  const body=request.method==='POST'?await limitedBody(request,24000):Object.fromEntries(query);
+  const sourceRequestId=body?.sourceRequestId;
+  let sources:any={state:'unavailable',request:null,observedAt:new Date().toISOString()};
+  if(typeof sourceRequestId==='string'&&/^commitment:[A-Za-z0-9_.:-]{1,600}$/.test(sourceRequestId)){
+   try{const row=await D.prepare("SELECT id,version,data FROM work_records WHERE id=? AND kind='commitment'").bind(sourceRequestId).first<any>();sources={state:row?'available':'missing',request:row?{id:row.id,version:row.version,hash:createHash('sha256').update(row.data).digest('hex'),title:String(JSON.parse(row.data).title).slice(0,500)}:null,observedAt:new Date().toISOString()};}catch{/* unavailable is not missing */}
+  }
+  try{const result=await options.engineering({principal,method:request.method==='POST'?'CLAIMS_POST':'CLAIMS_GET',body,sources});return json(result.body,result.status)}catch{return json({error:'Action claim outcome unconfirmed. Reconcile the original operation before another write.'},503)}
+ }
  if(path==='/api/owner-review-reports'){
   if(!['GET','POST'].includes(request.method))return json({error:'Method not allowed'},405);
   if(request.method==='POST'&&request.headers.get('origin')!==new URL(options.publicOrigin).origin)return json({error:'Same-origin request required'},403);

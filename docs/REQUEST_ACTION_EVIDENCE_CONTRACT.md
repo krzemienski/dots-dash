@@ -1,6 +1,8 @@
 # Request action claims and evidence bindings — proposed v1
 
-**Design only**, based on `c3296c24bd2771206811796444341d685c942126`.
+**Historical design baseline**, based on `c3296c24bd2771206811796444341d685c942126`.
+The subsequent [bounded implementation report](REQUEST_ACTION_CLAIMS.md) and its
+source-bound ledger record implementation and performed acceptance separately.
 No schema, migration, endpoint, receipt resolver or completion certification is
 implemented by this document. Actual-user V301 and production identity remain open.
 
@@ -161,7 +163,8 @@ arbitrary user-supplied content contains no secrets.
 
 ## Acceptance before any implementation claim
 
-All scenarios below are **unperformed design criteria**, using isolated TEST DATA.
+At this design baseline, all scenarios below were **unperformed design criteria**,
+using isolated TEST DATA. Later results belong in the implementation report above.
 
 | ID | Owner action / perturbation | Required observable result |
 | --- | --- | --- |

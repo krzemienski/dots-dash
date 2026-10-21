@@ -60,3 +60,7 @@ or change status until that contract and its observable acceptance are agreed.
 The [proposed v1 action-claim contract](REQUEST_ACTION_EVIDENCE_CONTRACT.md) now
 defines that first bounded owner-report slice and A1–A12 acceptance. It is design
 only: no migration, API, binding persistence or completion certification has shipped.
+
+Subsequently, the [owner-reported action claim companion](REQUEST_ACTION_CLAIMS.md)
+implements that bounded contract with a separate default-off capability and explicit
+migration. Its results are recorded separately; completion certification remains absent.

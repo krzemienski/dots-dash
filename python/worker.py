@@ -9,6 +9,7 @@ from dots_engineering.context_links import handle_context
 from dots_engineering.source_inventory import handle_inventory
 from dots_engineering.snapshot_associations import handle_associations
 from dots_engineering.owner_reviews import handle_owner_reviews
+from dots_engineering.request_claims import handle_claims
 
 
 def main():
@@ -20,6 +21,10 @@ def main():
         if envelope.get("mode", "engineering") == "legacy_read":
             result = read_legacy(envelope["database"], envelope["owner"], envelope["principal"],
                                  envelope["method"], envelope.get("body"))
+        elif envelope.get("mode", "engineering") == "engineering" and envelope["method"] in ("CLAIMS_GET", "CLAIMS_POST"):
+            result = handle_claims(envelope["database"], envelope["owner"], envelope["principal"],
+                                   envelope["method"], envelope.get("body"), envelope.get("sources"),
+                                   envelope.get("allowRequestActionClaims") is True)
         elif envelope.get("mode", "engineering") == "engineering" and envelope["method"] in ("REPORT_GET", "REPORT_POST"):
             result = handle_owner_reviews(envelope["database"], envelope["owner"], envelope["principal"],
                                            envelope["method"], envelope.get("body"), envelope.get("allowOwnerReviewReports") is True)

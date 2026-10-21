@@ -2,7 +2,7 @@ import {spawn} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 
 /** Fixed local worker, no user-controlled executable, arguments, environment or paths. */
-export function createEngineering({python,database,ownerId,allowImport=false,allowRunner=false,allowContextLinks=false,allowSourceInventory=false,allowSnapshotAssociations=false,allowOwnerReviewReports=false,mode='engineering'}){
+export function createEngineering({python,database,ownerId,allowImport=false,allowRunner=false,allowContextLinks=false,allowSourceInventory=false,allowSnapshotAssociations=false,allowOwnerReviewReports=false,allowRequestActionClaims=false,mode='engineering'}){
  const script=fileURLToPath(new URL('../python/worker.py',import.meta.url));
  return async ({principal,method,body,sources})=>new Promise((resolve,reject)=>{
   const child=spawn(python,['-B',script],{shell:false,stdio:['pipe','pipe','ignore'],env:{PATH:process.env.PATH||'',LANG:'C.UTF-8'}});
@@ -12,7 +12,7 @@ export function createEngineering({python,database,ownerId,allowImport=false,all
   child.on('error',error=>finish(error));child.stdin.on('error',error=>finish(error));
   child.stdout.on('data',chunk=>{size+=chunk.length;if(size>16000000){child.kill();finish(new Error('Engineering response too large'))}else chunks.push(chunk)});
   child.on('close',code=>{if(code!==0)return finish(new Error('Engineering worker unavailable'));try{finish(null,JSON.parse(Buffer.concat(chunks).toString('utf8')))}catch{finish(new Error('Invalid engineering response'))}});
-  child.stdin.end(JSON.stringify({database,owner:ownerId,principal:principal.id,allowImport,allowRunner,allowContextLinks,allowSourceInventory,allowSnapshotAssociations,allowOwnerReviewReports,mode,method,body,sources}));
+  child.stdin.end(JSON.stringify({database,owner:ownerId,principal:principal.id,allowImport,allowRunner,allowContextLinks,allowSourceInventory,allowSnapshotAssociations,allowOwnerReviewReports,allowRequestActionClaims,mode,method,body,sources}));
  });
 }
 
