@@ -371,5 +371,141 @@
       ],
       "nextTask": "Review durable registration product decisions before implementation; keep read-only lookup distinct from reload-safe resubmission."
     }
+  ],
+  "verificationFollowups": [
+    {
+      "slice": "read-only lookup oversized and malformed receipt follow-up",
+      "runtimeSourceRevision": "e49d4cb0477c99d57fb8713cb89a4bf828c421fa",
+      "date": "2026-10-21T12:32:03.857426+00:00",
+      "status": "8 scoped runtime observations passed; no code or limit change",
+      "acceptanceDefinedBeforeExecution": "Actual owner lookup UI/API handles oversized/malformed synthetic saved receipts without raw response exposure or database mutation; compare exact byte boundary with one byte over.",
+      "method": "Fresh owned Chromium/loopback Node API/fixed Python worker/disposable SQLite; six directly seeded TEST DATA operation rows. Not naturally generated large review histories. Inline workflow, no new test file.",
+      "limitBytes": 2000000,
+      "cases": [
+        {
+          "operationId": "TEST-DATA-exact-bound",
+          "utf8Bytes": 2000000,
+          "characters": 2000000,
+          "status": 200
+        },
+        {
+          "operationId": "TEST-DATA-over-bound",
+          "utf8Bytes": 2000001,
+          "characters": 2000001,
+          "status": 503
+        },
+        {
+          "operationId": "TEST-DATA-utf8-over-bound",
+          "utf8Bytes": 2000001,
+          "characters": 1999001,
+          "status": 503
+        },
+        {
+          "operationId": "TEST-DATA-malformed-json",
+          "utf8Bytes": 63,
+          "characters": 63,
+          "status": 503
+        },
+        {
+          "operationId": "TEST-DATA-malformed-shape",
+          "utf8Bytes": 163,
+          "characters": 163,
+          "status": 503
+        },
+        {
+          "operationId": "TEST-DATA-invalid-hash",
+          "utf8Bytes": 400,
+          "characters": 400,
+          "status": 503
+        }
+      ],
+      "observations": [
+        {
+          "name": "TEST-DATA-exact-bound",
+          "detail": "2000000 stored UTF-8 bytes; HTTP 200; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-over-bound",
+          "detail": "2000001 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-utf8-over-bound",
+          "detail": "2000001 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-malformed-json",
+          "detail": "63 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-malformed-shape",
+          "detail": "163 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-invalid-hash",
+          "detail": "400 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "unknown after unavailable",
+          "detail": "Missing operation remains unknown and clears prior error; not reported as saved or safe retry.",
+          "result": "pass"
+        },
+        {
+          "name": "read-only recovery after failures",
+          "detail": "Exact-limit summary still succeeds; all six fixture rows and database bytes unchanged, no mutation audit.",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "python/dots_engineering/operation_lookup.py": "97132b7d2ef82e6968d3a2175916f6e0f2f5293487bcf574a5abfaea9ff953bc",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/worker.py": "c5a7a8165dd11553c32006dbfbb90baa62c9306c4b5cad3d0a8a839470710548",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "server/start.mjs": "90428006d4e6f4cff7b44ba406d402d09f27503ff4498b1648c3fe780e3cdfec",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/session-review.tsx": "c16c7b6e6a1f63a9d83bcc7c45dd604eb0e64ac8a777322c4179c0edc97f57c8",
+        "dist/main.js": "ea336fe8b622ec0b14554d35bb4e16b20e67978bace1c6eedf64af35ad68f9ad"
+      },
+      "databaseChecks": {
+        "nodeBeforeAfterSha256": "8786818fe6da4e22a28ddaaac03948e7c31f36d09ba3ea0aa48f346b4025b3db",
+        "engineeringBeforeAfterSha256": "8e199dec024e1bd8593a1d4e194c38d41ab877324a0df357ff49a8955e37c1a7",
+        "comparison": "Byte equality checked after each case and after recovery; six fixture operations retained, zero mutation audit entries."
+      },
+      "disclosureChecks": "Every response <1200 bytes; errors only error field; synthetic raw-content canary/extra field absent from network and rendered UI; stale success summary removed on error.",
+      "externalRequests": 0,
+      "pageErrors": [],
+      "visualInspection": "Inspected oversized unavailable UI: bounded error, no raw content/result/retry control.",
+      "checks": [
+        "Runtime/build source hashes equal prior verified e49d4cb bindings",
+        "Ledger JSON and local documentation targets validated",
+        "Diff whitespace and sanitized outgoing changes checked"
+      ],
+      "existingTestStatus": "No application code changed; prior 14 tests/typecheck/build remain bound to identical runtime source, not claimed rerun in this documentation-only pass. Exact outgoing commit CI checked separately.",
+      "skills": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": "Previously read unchanged project guidance",
+        "applied": "Close one named acceptance gap with source-bound UI/API/persistence outcomes; distinguish synthetic fixture from real history.",
+        "verified": "Eight bounded observations; no automatic invocation claim",
+        "browserGuidance": "Previously read Playwright guidance applied to fresh owned context, actual controls, inspected screenshot and cleanup."
+      },
+      "priorAttempt": "Orchestration template syntax error before tool execution; corrected call completed all eight observations.",
+      "cleanup": "Owned browser/context, loopback server and SQLite handles closed.",
+      "limits": [
+        "Directly seeded synthetic receipts, not natural 2MB user histories",
+        "Not general security, production identity, real-owner V301 or durable recovery acceptance",
+        "No schema/migration/persistence/retention/capability changes"
+      ],
+      "nextTask": "Keep durable registration decisions separate; review retention/conflict/restore requirements before any implementation."
+    }
   ]
 }

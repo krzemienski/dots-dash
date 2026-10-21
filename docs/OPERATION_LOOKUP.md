@@ -96,5 +96,37 @@ workflow; an intermediate run stopped after four checks on a fixture field looku
 See the appended [implementation evidence](verification/session-save-recovery.json)
 for exact source hashes. This does not pass the proposal's D1–D12 durable protocol
 suite, real-owner V301, production identity, full accessibility or backup/restore.
-The oversized receipt boundary is enforced in source but was not exercised by this
-UI run. Synthetic schema/owner failures used owned disposable fixture copies only.
+The original 11-observation run did not exercise oversized receipts. The follow-up
+below closes that specific gap. Synthetic schema/owner failures used owned
+disposable fixture copies only.
+
+### Follow-up: response size and malformed receipts
+
+Eight additional isolated observations used unchanged runtime source
+`e49d4cb0477c99d57fb8713cb89a4bf828c421fa`, the actual owner lookup form/API and
+six directly seeded synthetic receipt rows. These rows are TEST DATA, not evidence
+that naturally generated review histories reach this size. No limit was changed.
+
+| Stored response | Observed API/UI result |
+|---|---|
+| Exactly 2,000,000 UTF-8 bytes, supported result shape | HTTP 200; minimal historical summary only |
+| 2,000,001 ASCII bytes | HTTP 503; cannot safely summarize; no prior result or write-retry control |
+| 2,000,001 UTF-8 bytes, 1,999,001 characters | HTTP 503; confirms byte limit rather than character limit |
+| Malformed JSON (63 bytes) | HTTP 503; bounded unavailable message, no raw content |
+| Unsupported result shape (boolean review version) | HTTP 503; unavailable rather than found/unknown |
+| Invalid stored digest | HTTP 503; no digest or raw response disclosure |
+
+Subsequent unknown-ID lookup remained explicitly unknown; returning to the exact-limit
+receipt succeeded without changing it. Every network response was under 1,200 bytes,
+and the synthetic raw-content canary/extra field appeared in neither network response
+nor rendered page. Error responses contained only an error field. Both Node and
+engineering SQLite files remained byte-for-byte identical before/after every case;
+all six fixture rows remained and no mutation audit entry was added.
+
+The final unavailable-state screenshot was inspected. No external browser requests
+or page errors occurred; owned browser/server/SQLite resources closed. One initial
+orchestration syntax error executed no command; the corrected fresh workflow passed
+all eight observations. Source/build hash comparison, ledger JSON, documentation
+links and diff checks passed. No application code, schema, migration, persistence
+policy, runtime limit or capability changed. This adds boundary evidence only, not
+durable-recovery, production-authentication or general security certification.

@@ -258,6 +258,9 @@ the first read-only inspection slice, behind a separate disabled host capability
 Eleven isolated UI/API/SQLite observations cover known-ID reload lookup, uncertainty,
 privacy, owner/store gates and unchanged persistence. No server registration,
 persistent client payload, automatic retry or durable-discovery claim is added.
+Eight later isolated oversized/malformed-receipt observations close the documented
+size-boundary gap on unchanged `e49d4cb` runtime source; raw bodies stayed undisclosed
+and canonical database bytes unchanged. This does not expand the feature scope.
 
 The later [request discovery follow-up](REQUEST_CONTEXT_LINKS.md#follow-up-bounded-request-discovery)
 adds bounded request pages and exact off-page selection. Nine direct API/storage
