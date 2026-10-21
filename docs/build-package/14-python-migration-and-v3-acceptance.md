@@ -1,5 +1,10 @@
 # Python first migration and version 3 acceptance
 
+Local V312 follow-up: [daily evidence check-in](../DAILY_EVIDENCE.md) adds a bounded
+read-only stored-record projection with seven isolated synthetic observations.
+Review dates remain distinct from actual work dates; full real-event V312 remains
+open. This local follow-up does not change publication, migration or provider gates.
+
 > Current status index: [product and completion audit, 21 October 2026](../PRODUCT_AUDIT.md). Later isolated TEST DATA evidence covers principal context-link, inventory-pagination, association and correction workflows. Earlier blocked/unperformed statements below remain historical; actual-user V301, production integrations and full Python cutover remain open.
 
 > Historical design and implementation context. See [current scoped verification](../verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.

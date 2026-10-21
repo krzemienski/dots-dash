@@ -175,6 +175,12 @@ Historical ledgers are retained unchanged. Navigation notes and the current inde
 
 ## Ten prioritized unfinished outcomes
 
+Local-only V312 foundation: [daily evidence check-in](DAILY_EVIDENCE.md) now
+separates message occurrence days, evidence/lead review days, current pending
+input, calendar assertions/plans and source coverage. Seven isolated synthetic
+observations passed. It does not reconstruct verified-work history or complete
+full V312; publication is held.
+
 Current bounded follow-up: [selected-review next steps](REVIEW_NEXT_STEPS.md)
 connects each supplied goal to its remediation, selected skill, local receipts and
 owner-reported observations in one read-only summary. Seven isolated synthetic

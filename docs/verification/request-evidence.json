@@ -578,6 +578,137 @@
         "Existing permissions/capability paths unchanged; broad denial, accessibility, concurrency and provider acceptance not rerun."
       ],
       "nextTask": "Human judgment of represented request/goal/expected behavior/next step; stop dependent completion until obtained. Durable registration decisions remain separate."
+    },
+    {
+      "id": "local-daily-evidence-check-in",
+      "date": "2026-10-21",
+      "baseRevision": "116e50235f3c08acde9a6d8a0628cd8ca6ab5a80",
+      "label": "TEST DATA / LOCAL ONLY",
+      "acceptance": "docs/DAILY_EVIDENCE.md D1-D7; temporal and evidence distinctions stated before implementation",
+      "baseline": "Stored multi-domain synthetic records imported through API; old Day request-review projection had no daily evidence region or message list.",
+      "method": "Owned headless Chromium, random-port localhost real Node API and fresh disposable SQLite. Inline adapted synthetic fixtures; planned task explicitly seeded in owned fixture store.",
+      "observations": [
+        {
+          "name": "D1: UTC message day uses strict occurrence time; date-only and impossible dates stay unplaced",
+          "result": "pass",
+          "detail": {
+            "included": 2,
+            "unplaced": 2
+          }
+        },
+        {
+          "name": "D2: explicit zone changes membership; both repeated-hour DST instants remain",
+          "result": "pass",
+          "detail": {
+            "zone": "America/New_York",
+            "dstRecords": 2
+          }
+        },
+        {
+          "name": "D3: invalid zone retains scope; review-day leads/work separated from current pending snapshot",
+          "result": "pass",
+          "detail": {
+            "humanAcceptance": "not established"
+          }
+        },
+        {
+          "name": "D4: calendar events, deadlines, all-day source labels and plans stay distinct; old coverage stays supplied",
+          "result": "pass",
+          "detail": {
+            "providersCalled": 0
+          }
+        },
+        {
+          "name": "D5: draft cites bounded records, exact request navigation and reload are read-only",
+          "result": "pass",
+          "detail": {
+            "dateZonePersistence": "none",
+            "clipboard": "not exercised; visible draft only"
+          }
+        },
+        {
+          "name": "D6: keyboard date control and narrow viewport",
+          "result": "pass",
+          "detail": {
+            "widths": [
+              320,
+              375
+            ],
+            "screenReader": "unperformed"
+          }
+        },
+        {
+          "name": "D7: empty/invalid date does not assert no activity or drop current pending context",
+          "result": "pass",
+          "detail": {
+            "dbBytesUnchanged": true
+          }
+        }
+      ],
+      "negativeEvidence": "D3 additionally asserts recorded_failure and failure remains open alongside historical_pass.",
+      "sourceHashes": {
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "ui/day-workspace.tsx": "1d13259190bcdc3a199e5177c8da79955830af79db02cb4ec0fe1a0bc80f3720",
+        "ui/styles.css": "25ce2ae764ebebe8e805f81c9eb93dc996f07a0342253d09539de57847d88f6e",
+        "lib/work/history-time.mjs": "09b8b6866f5dab02173b57a83ae5f95998b80c1adfa0800e7bf4a0a6d79cd30d",
+        "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+        "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+        "tests/ui-render.test.mjs": "c75e28c486a448d84108d109ecde4a445190b7eb118ceabd767114e2d58b27d9"
+      },
+      "buildOutputs": {
+        "dist/main.js": "1c0041f2d2aba49d9aa039fd6dc39c13030f08ce7f1d0f6f1a9fff4dd0c26917",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "checks": {
+        "tests": "14 existing passed; existing empty-state assertions updated, no new test files",
+        "typecheck": "passed",
+        "build": "passed",
+        "hashes": "final source and build manifest matched",
+        "documents": "relative targets, ledger JSON and diff checked before commit",
+        "visual": "Narrow final-source layout inspected"
+      },
+      "priorAttempts": [
+        {
+          "scope": "Fixture import",
+          "result": "Unsupported hyphens in synthetic Gmail thread IDs rejected with 400; changed fixture IDs, no validation weakening."
+        },
+        {
+          "scope": "Draft accessible name",
+          "result": "Four scenarios passed before exact-label timeout; changed wrapping textarea label to explicit unique ID/htmlFor association."
+        },
+        {
+          "scope": "Existing render test",
+          "result": "Old fixed UTC label assertion failed; updated existing test for selectable day/timezone and unknown coverage."
+        },
+        {
+          "scope": "Browser run after failed chained build",
+          "result": "Used earlier bundle; discarded as final-source evidence. Final run follows successful tests/typecheck/build and source-hash verification."
+        }
+      ],
+      "pageErrors": [],
+      "externalRequests": 0,
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Defined V312 temporal/evidence boundaries; separated supplied claims/review dates from outcomes and validated persisted workflows.",
+        "verified": "Seven scoped UI/API/SQLite observations. Manual guidance application, not automatic invocation."
+      },
+      "limits": [
+        "No full V312 verified-work event history, real-owner acceptance or private data.",
+        "Current pending snapshots are not historical state; leads are reviewed, not newly discovered.",
+        "Timed calendar starts only; no earlier-starting ongoing/recurring expansion; all-day labels retain source date/zone.",
+        "At most 20 displayed records per group and explicit subset draft; maximum preview boundary not exercised.",
+        "Clipboard delivery, screen reader, spring DST and live provider scenarios not performed. Empty-coverage state checked by existing render test only.",
+        "Date/zone are transient; default UTC is explicit. No API/schema/capability/migration/scheduler change."
+      ],
+      "cleanup": "Owned browser/server/store handles closed. Shared Chrome, production, providers and other workers untouched.",
+      "publication": "Local only; earlier 116e502 documentation commit and publication hold preserved. No push or PR update.",
+      "nextTask": "Define bounded owner/store event-input contract with occurrence/review times, producer evidence and corrections before claiming verified-work V312."
     }
   ]
 }
