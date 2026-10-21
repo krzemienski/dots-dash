@@ -70,6 +70,9 @@ their goals, actual checklist receipts and verification forms, with local browse
 The [derived remediation view](docs/DERIVED_REMEDIATION_CONTEXT.md) preserves
 scoped correction, attribution and project-binding context without rewriting
 historical prompts or turning owner reports into certified success.
+The separately default-off [retained-selection review reports](docs/OWNER_REVIEW_REPORTS.md)
+record per-item owner assertions and contiguous gaps with immutable correction
+history. Import success does not advance these reports or establish transcript coverage.
 The [lock/startup assessment](docs/LOCK_DISRUPTION_AND_STARTUP.md) records lock
 identity binding, owned startup-failure outcomes and the next UI integration gap.
 The [lifecycle race fix](docs/LIFECYCLE_RACE_GUARDS.md) prevents concurrent local

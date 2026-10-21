@@ -142,6 +142,12 @@ adapter with a remote implementation inside the current transaction.
 
 ## Evidence limits
 
+[Retained-selection review reports](OWNER_REVIEW_REPORTS.md) are a separate,
+default-off owner assertion workflow with an explicit companion migration.
+They pin retained normalized records and derive gaps from active per-item reports.
+Neither imports nor skill/checklist/acceptance activity advances that history.
+These counts do not establish original transcript processing or authorship.
+
 Admitted selected-record reviews display a [context-preserving derived prompt](DERIVED_REMEDIATION_CONTEXT.md)
 with scoped correction references, supplied attribution, project-binding basis
 and same-revision owner observations. The original stored draft remains

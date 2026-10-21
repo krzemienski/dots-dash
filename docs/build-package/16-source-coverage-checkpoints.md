@@ -237,3 +237,188 @@ the denied V301 workflow or publication.
 
 The source/work checkpoint (historical local artifact omitted from the public package)
 records inspected sources, documentation checks and remaining functional gaps.
+
+## Retained-record owner review contract
+
+**Proposed 2026-10-21. Design only; no processing capability or certificate is implemented here.**
+This additive contract resolves the unit/order prerequisite above for one narrow
+workflow. It does not reinterpret the historical proposal or its acceptance
+results. Published source baseline: `e209aa2a2e222df214bae13e3c4a84c9559800f5`.
+Apply the [project review workflow](../../.agents/skills/session-intent-review/SKILL.md).
+
+### Owner outcome and evidence boundary
+
+An owner can reopen a bounded normalized selection, see which retained records
+they reported reviewing, identify gaps, and withdraw or correct mistaken reports.
+The display must say **Owner-reported review of retained normalized records**.
+It must never say verified authorship, original-source processing, remediation
+complete or all transcripts reviewed. Import creates no review reports.
+
+The [published admission path](https://github.com/krzemienski/dots-dash/blob/e209aa2a2e222df214bae13e3c4a84c9559800f5/python/dots_engineering/admission.py) retains exclusion
+metadata while removing excluded content; its classification array and retained
+event array can have different orders. The [review creator](../../python/dots_engineering/review.py)
+produces rule-based findings, not per-item review evidence. The existing
+[inventory snapshots](../../python/dots_engineering/source_inventory.py) contain
+owner-reported counts/hashes, and a [snapshot association](../SNAPSHOT_REVIEW_ASSOCIATIONS.md)
+asserts context only. None supplies this contract's manifest or reports.
+
+### Immutable manifest and independent identity
+
+Proposed format `dots-retained-record-review`, schema version 1. Only explicitly
+selected, already saved reviews with selected-record admission are eligible.
+Legacy v1 reviews and rejected/all-excluded selections have no eligible manifest;
+show unavailable, not zero processed or an invented empty review.
+
+`create_manifest` accepts a review ID plus expected review version,
+`reviewExportDigest` and `analysisVersion`. Resolve the complete review under the
+authenticated owner; reject stale pins or unavailable targets without creating
+anything. The server derives the manifest, never accepts client item arrays:
+
+- Server-assigned `id`, authenticated `ownerId`, declared `projectId`, `dataLabel`,
+  server `recordedAt`, and immutable creation pins for the selected review.
+- `selectionDigest = digest(storedReview.export)` with domain
+  `stored-normalized-review-export-v1`. Use the existing canonical
+  [digest function](../../python/dots_engineering/contracts.py); do not rewrite
+  export hashes, review IDs or historical records. This is neither the submitted
+  raw-byte digest nor the inventory's owner-reported content hash.
+- `orderContract: retained-export-array-v1`. Items follow the stored normalized
+  `export.events` array exactly, with one-based positions, unique event IDs and
+  `eventDigest = digest(storedEvent)`. Every item must have a matching retained
+  admission classification; inconsistent or duplicate bindings reject creation.
+  Do not sort by timestamp, source reference or classification-array position.
+- `itemCount` is exactly the number of those items, bounded 1–100. Each item
+  binds its supplied attribution and source reference through the selection
+  digest. A classification can remain unknown; human authorship is never verified.
+- `manifestDigest` binds the domain/version, owner/project, selection digest,
+  order contract and ordered item triples. Identity is unique within that tuple;
+  a duplicate creation returns the existing immutable manifest, without a new
+  report. Creation-version pins are history, not a continuously changing identity.
+
+Keep excluded dispositions separately visible using stored admission metadata;
+do not copy excluded content into the manifest, report or hash input. Their count
+is not reviewed work. Changes only to discarded raw content cannot be detected
+and do not constitute a new observed-source identity. A changed normalized
+selection/order produces a different manifest; never transfer reports. Later
+review versions caused by skill selection, runs or acceptance observations do
+not change the pinned selection or advance progress. Preserve unavailable or
+changed target relevance as unknown/stale, without deleting historical reports.
+
+### Processor meaning and per-item reports
+
+The sole initially allowed processor is `owner-record-review`, version `1`:
+the owner reports inspecting a retained record in its goal, supplied attribution
+and scoped correction context and records an evidence reference for that review.
+The application does not establish that inspection occurred or fetch references.
+No model, skill, source reader or background processor runs. A future changed
+definition requires a new allowlisted processor version and independent stream.
+Clients cannot invent processor versions or supply `adapter_receipt` basis.
+
+A stream is `(ownerId, manifestId, processorId, processorVersion)`, initially
+without a checkpoint. Server-assigned basis is always `owner_reported`.
+`append_reports` takes expected stream head (null initially) and 1–100 distinct
+manifest item IDs, each with `result: reviewed | unresolved`, `observedAt` and
+1–10 bounded opaque `evidenceRefs`. `reviewed` describes the reported review
+activity, not a positive product outcome. `unresolved` does not count toward a
+reviewed prefix. Both require evidence attribution, not arbitrary free text.
+Validate offset-bearing observation times and existing bounded identifier/reference
+rules; reject unknown fields, unsafe metadata and outside-manifest IDs. Assign
+report IDs and recording times on the server. One active report per item per
+stream; replacing a report requires the explicit correction operation below.
+
+Server-produced receipts are a separate future producer contract, requiring
+performed-operation evidence and its own capability/provenance. Do not convert
+owner reports into receipts, merge their bases, or accept a client-selected basis.
+Existing checklist receipts and owner product-acceptance observations remain
+separate evidence and cannot create these reports.
+
+### Append-only correction, withdrawal and derived prefix
+
+`correct_report` requires the current stream head, active report ID, replacement
+result/time/evidence references for the same item, and a bounded `reasonRef`.
+Atomically append a replacement report plus a lifecycle event superseding the
+old one. `withdraw_report` requires head, active report ID and `reasonRef`;
+append withdrawal without deleting the report or reactivating an older report.
+Re-reporting a withdrawn item uses a new report identity. Corrections cannot
+change manifest, item or processor pins; stale/concurrent targets reject.
+
+From the full committed stream, resolve each item's active report. Let `R` be
+positions with an active `reviewed` report. The contiguous prefix `p` is the
+largest integer in `[0, N]` for which every position `1..p` is in `R`.
+Compute `reviewedCount = |R|` independently. Clients never submit either count.
+Each accepted append/correction/withdrawal stores an immutable checkpoint with
+stream pins, predecessor checkpoint ID, operation/event references, server time,
+`owner_reported` basis and the two derived counts. Unresolved reports and missing
+positions are gaps; no timestamp watermark or highest position can bridge them.
+Withdrawal/correction can reduce the current prefix. Earlier counts remain
+dated history, not competing current progress. Never use maximum-ever prefix.
+
+Display `4 of 5 retained records reported reviewed; contiguous prefix 2 of 5`
+for positions 1, 2, 4, 5. At prefix N, say `Owner reports reviewing all N records
+in this retained selection`, followed by the original-source coverage limit.
+Show excluded count, unknown-attribution count and unresolved/missing positions
+separately. Original transcript denominator and time coverage stay unknown;
+event timestamps/capture time do not establish coverage intervals. Separately
+evidenced source scope may be displayed with its own basis, never inferred from
+this manifest. No transcript percentage or all-session claim is permitted.
+
+### Storage, capability, uncertainty and API boundary
+
+Require a separate default-off `ownerReviewReports` host capability for manifest
+creation and all report mutations. Owner authentication, same-origin checks and
+project/parent isolation apply before lookup/disclosure. No provider access,
+source-read capability, imported authority or automatic backfill is introduced.
+Use separately versioned companion tables/operation namespace; do not reuse
+existing review, coverage or association operation IDs. Reads do not migrate
+storage. Any future migration must be explicit and separately validated.
+
+Every mutation supplies `requestId` and closed versioned action fields. Check
+owner/capability first, then exact replay using a canonical validated payload
+digest; identical replay returns the original response without another report,
+checkpoint or audit row, even after head changes. Different content under the
+same request ID conflicts. For new requests, compare expected head and all
+target pins; reject stale predecessors atomically. Commit reports/lifecycle
+events, checkpoint, audit and replay response in one transaction. Preserve
+payload distinctions; do not silently normalize a changed request into a retry.
+
+Lost responses stay unknown: retain the original envelope while mounted, block
+replacement mutations, and offer explicit same-ID reconciliation. No automatic
+new-ID retry or claimed durable recovery across reload. Capability withdrawal
+blocks mutation replay too; authenticated read-only operation lookup may resolve
+a prior committed result, with not-found remaining unconfirmed rather than
+proving failure. UI history uses bounded owner-scoped pagination (50 entries),
+shows loaded range/total, and derives current counts from the complete stored
+stream, not its displayed page. Cap a stream at 1,000 lifecycle/report events;
+reject an operation exceeding the cap without silently dropping history or
+starting an allegedly complete successor stream.
+
+### Acceptance required before implementation claims
+
+All cases are **unperformed design requirements**, not test results.
+
+| ID | Isolated owner action | Required observable outcome |
+| --- | --- | --- |
+| R1 | Import a partial selection and create its manifest; reload. | Stable normalized-selection digest/order and scoped denominator. No review checkpoint until an explicit report; original denominator/time coverage unknown. |
+| R2 | Report positions 1, 2, 4, 5 of five; later report 3. | First reviewed count 4/prefix 2; then 5/5, each owner-reported with retained predecessor history. No transcript-completeness certificate. |
+| R3 | Include excluded classifications and unknown-origin retained records. | Excluded content absent; excluded items not in review denominator. Unknown attribution stays unknown even when its item is reported reviewed. |
+| R4 | Reject malformed/all-excluded selection or cross-owner/project pins. | No manifest/report/checkpoint or forbidden content retained; no inaccessible-target disclosure. |
+| R5 | Change normalized content/order or allowlisted processor version; separately change only review version. | New material/processor stream inherits no progress; version-only activity advances none. Raw excluded-only changes cannot be claimed observed. |
+| R6 | Correct a reviewed item to unresolved, withdraw another, then re-report. | Prefix can retreat; old reports/checkpoints remain immutable; withdrawn predecessors never revive. Stale concurrent correction rejects. |
+| R7 | Lose response; reconcile exact request, reuse ID with changed content, or use stale head. | At most one accepted append; original replay returned; conflict/stale writes leave all tables unchanged. Unknown stays unknown until reconciled. |
+| R8 | Disable capability before create/report/replay; inspect existing history. | Writes denied, owner-scoped history retained; no capability expansion or processing backfill. |
+| R9 | Open later history pages, unknown source interval, or a stale/unavailable target. | Page range and full-stream denominator distinguishable; source relevance unknown/stale; original-source percentages absent. |
+| R10 | Add a checklist receipt, successful product observation or import replay. | No new review report or prefix advance; product outcomes and reported review coverage stay independent. |
+
+### Exact next implementation task
+
+Implement only this versioned owner-report manifest/stream contract: closed Python
+schemas, explicit companion migration, separately default-off owner-scoped API,
+immutable replay/audit/lifecycle persistence, and a UI for manifest inspection,
+per-item report/correction/withdrawal and bounded history. Derive prefix from
+active item reports server-side. Preserve every existing export/hash and keep
+snapshot associations context-only; do not attach these counts to inventory
+source-byte coverage. Then perform R1–R10 using isolated labeled TEST DATA via
+the real UI/API/storage workflow, record final source bindings and distinguish
+each observed result from design-only cases. No new reader, provider execution,
+private data, automatic review or publication authority follows from this design.
+
+Implementation and separately recorded acceptance: [owner review reports](../OWNER_REVIEW_REPORTS.md). The proposal above remains historical design, not a verification result.

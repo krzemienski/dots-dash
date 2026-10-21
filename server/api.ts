@@ -26,6 +26,18 @@ export function createApi(options:RuntimeOptions){return async function handle(r
   if(cursors.length>1)return json({error:'Invalid browser receipt cursor'},400);
   try{return json(await options.browserReceiptReader({principal,...(cursors.length?{cursor:cursors[0]}:{})}))}catch(error){if(error&&typeof error==='object'&&'code' in error&&error.code==='INVALID_BROWSER_RECEIPT_CURSOR')return json({error:'Invalid browser receipt cursor'},400);return json({status:'unavailable',total:0,runs:[]},503)}
  }
+ if(path==='/api/owner-review-reports'){
+  if(!['GET','POST'].includes(request.method))return json({error:'Method not allowed'},405);
+  if(request.method==='POST'&&request.headers.get('origin')!==new URL(options.publicOrigin).origin)return json({error:'Same-origin request required'},403);
+  if(!options.engineering)return json({error:'Owner review reports are unconfigured'},503);
+  const query=new URL(request.url).searchParams;
+  if([...query.keys()].some(key=>!['reviewId','manifestId','operationId','offset','ceiling'].includes(key))||[...query.keys()].some(key=>query.getAll(key).length>1)||(request.method==='POST'&&query.size))return json({error:'Invalid report query'},400);
+  const body:Record<string,unknown>=Object.fromEntries(query);
+  for(const key of ['offset','ceiling'])if(query.has(key)){if(!/^(0|[1-9][0-9]{0,3})$/.test(query.get(key)!))return json({error:'Invalid report page'},400);body[key]=Number(query.get(key));}
+  const input={principal,method:request.method==='POST'?'REPORT_POST':'REPORT_GET',body:request.method==='POST'?await limitedBody(request,240000):body};
+  let result;try{result=await options.engineering(input)}catch{return json({error:'Report outcome unconfirmed. Reconcile the same operation before another write.'},503)}
+  return json(result.body,result.status);
+ }
  if(path==='/api/context-links'){
   if(!['GET','POST'].includes(request.method))return json({error:'Method not allowed'},405);
   if(request.method==='POST'&&request.headers.get('origin')!==new URL(options.publicOrigin).origin)return json({error:'Same-origin request required'},403);

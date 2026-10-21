@@ -1,0 +1,330 @@
+{
+  "label": "TEST DATA \u2014 owner retained-selection review verification",
+  "date": "2026-10-21",
+  "baseRevision": "e209aa2a2e222df214bae13e3c4a84c9559800f5",
+  "designBaseline": "local design ff4f578c9b440a67701a09a4969b1889a2b76c64",
+  "method": "Fresh owned headless Chrome, actual built React UI and loopback Node API/Python worker, disposable owner-bound SQLite. Existing selected-record synthetic fixture only; temporary variants change labeled synthetic content/order or exclude all records. No private data, providers or shared storage.",
+  "observations": [
+    {
+      "scenario": "R1",
+      "name": "UI import and GET do not initialize report schema",
+      "pass": true
+    },
+    {
+      "scenario": "R8",
+      "name": "disabled create rejected",
+      "pass": true
+    },
+    {
+      "scenario": "R1",
+      "name": "write does not implicitly migrate",
+      "pass": true
+    },
+    {
+      "scenario": "R1",
+      "name": "manifest pins five retained records without checkpoint",
+      "pass": true
+    },
+    {
+      "scenario": "R3",
+      "name": "excluded and unknown attribution remain separate",
+      "pass": true
+    },
+    {
+      "scenario": "R1",
+      "name": "manifest creation preserves original review audit",
+      "pass": true
+    },
+    {
+      "scenario": "R2",
+      "name": "out-of-order reports show four reviewed but prefix two",
+      "pass": true
+    },
+    {
+      "scenario": "R2",
+      "name": "gap fill appends prefix five and preserves predecessor",
+      "pass": true
+    },
+    {
+      "scenario": "R3",
+      "name": "reviewing unknown item does not verify authorship",
+      "pass": true
+    },
+    {
+      "scenario": "R6",
+      "name": "correction retreats prefix and retains old report",
+      "pass": true
+    },
+    {
+      "scenario": "R6",
+      "name": "withdrawal removes active report without resurrecting predecessor",
+      "pass": true
+    },
+    {
+      "scenario": "R7",
+      "name": "lost response commits once while UI blocks new reports",
+      "pass": true
+    },
+    {
+      "scenario": "R8",
+      "name": "disabled report replay rejected before reconciliation",
+      "pass": true
+    },
+    {
+      "scenario": "R7",
+      "name": "read-only lookup reconciles committed response without writes",
+      "pass": true
+    },
+    {
+      "scenario": "R7",
+      "name": "exact replay creates no second report",
+      "pass": true
+    },
+    {
+      "scenario": "R7",
+      "name": "changed replay conflicts",
+      "pass": true
+    },
+    {
+      "scenario": "R7",
+      "name": "stale predecessor conflicts",
+      "pass": true
+    },
+    {
+      "scenario": "R6",
+      "name": "rereport uses new identity",
+      "pass": true
+    },
+    {
+      "scenario": "R7",
+      "name": "rejections preserve immutable ledger",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "wrong authenticated owner cannot read or write",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "cross-project manifest pin rejected",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "outside manifest item rejected",
+      "pass": true
+    },
+    {
+      "scenario": "R5",
+      "name": "unsupported processor version cannot inherit progress",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "client receipt basis rejected",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "invalid nullable head and negative page rejected",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "all excluded selection creates no review",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "unresolved project selection rejected",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "rejections leave report ledger unchanged",
+      "pass": true
+    },
+    {
+      "scenario": "R7",
+      "name": "missing operation remains unconfirmed",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "cross-origin report write rejected",
+      "pass": true
+    },
+    {
+      "scenario": "R10",
+      "name": "skill run and product pass do not change report ledger",
+      "pass": true
+    },
+    {
+      "scenario": "R5",
+      "name": "review version change keeps manifest and prefix",
+      "pass": true
+    },
+    {
+      "scenario": "R5",
+      "name": "changed material and order create distinct manifest with no inherited progress",
+      "pass": true
+    },
+    {
+      "scenario": "R1",
+      "name": "return to original review preserves original manifest",
+      "pass": true
+    },
+    {
+      "scenario": "R6",
+      "name": "concurrent stale correction has one atomic winner",
+      "pass": true
+    },
+    {
+      "scenario": "R10",
+      "name": "import replay does not add reports",
+      "pass": true
+    },
+    {
+      "scenario": "R1",
+      "name": "reload retains scoped denominator unknown original coverage and history",
+      "pass": true
+    },
+    {
+      "scenario": "R9",
+      "name": "older history page preserves full-stream counts",
+      "pass": true
+    },
+    {
+      "scenario": "R9",
+      "name": "bounded history pages navigate in both directions",
+      "pass": true
+    },
+    {
+      "scenario": "R9",
+      "name": "stale target retains history and blocks new reports",
+      "pass": true
+    },
+    {
+      "scenario": "R9",
+      "name": "unavailable target schema is not missing and history remains",
+      "pass": true
+    },
+    {
+      "scenario": "R1",
+      "name": "manifest and report writes leave original export bytes unchanged",
+      "pass": true
+    },
+    {
+      "scenario": "R10",
+      "name": "admission still grants no source access or completion",
+      "pass": true
+    },
+    {
+      "scenario": "R9",
+      "name": "narrow report viewport has no horizontal overflow",
+      "pass": true
+    },
+    {
+      "scenario": "R1",
+      "name": "browser has no page errors",
+      "pass": true
+    },
+    {
+      "scenario": "R5",
+      "name": "excluded-only input changes do not masquerade as source observation",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "malformed selected input rejected",
+      "pass": true
+    },
+    {
+      "scenario": "R4",
+      "name": "stale manifest creation pins reject",
+      "pass": true
+    },
+    {
+      "scenario": "R6",
+      "name": "storage rejects update and delete of immutable history",
+      "pass": true
+    },
+    {
+      "scenario": "R9",
+      "name": "successful absent-row lookup differs from unavailable schema",
+      "pass": true
+    },
+    {
+      "scenario": "R1",
+      "name": "explicit migration replay preserves stored report history",
+      "pass": true
+    },
+    {
+      "scenario": "R9",
+      "name": "mobile owner scope and prefix remain visible",
+      "pass": true
+    }
+  ],
+  "scenarioStatus": {
+    "R1": "performed: UI import/create/reload; explicit migration and replay; no automatic schema creation or checkpoint",
+    "R2": "performed through UI: positions 1,2,4,5 yield reviewed 4/prefix 2; item 3 yields 5/5",
+    "R3": "performed: excluded count 3, retained count 5, unknown attribution count 1; reports do not change attribution",
+    "R4": "performed through isolated API and direct storage boundary: scope/authentication, malformed/all-excluded input, stale pins and client basis rejected",
+    "R5": "implemented boundaries performed: material/order changes create independent manifest; version-only changes do not advance; unsupported processor version rejects. A new allowlisted processor definition is not shipped, so cross-version stream creation remains unperformed.",
+    "R6": "performed: UI correction/withdrawal/rereport; API concurrent correction has one winner; direct SQLite rejects immutable update/delete",
+    "R7": "performed: commit-then-transport-failure leaves UI blocked, read-only lookup reconciles, identical API replay creates no rows, changed/stale request conflicts, absent lookup remains unconfirmed",
+    "R8": "performed: disabled create/replay, retained read-only history and operation lookup",
+    "R9": "performed: 53 checkpoints generated through API; UI pages 1\u201350/51\u201353 retain full-stream counts. Disposable database copies simulate stale target, unavailable schema and successful missing-row lookup. Mobile display inspected.",
+    "R10": "performed: rendered checklist/owner pass report and API import replay leave owner-review ledger unchanged; admission completion stays false"
+  },
+  "extraStorageChecks": [
+    "Wrong physical database owner read rejected 403",
+    "Wrong physical database owner migration rejected 403"
+  ],
+  "sourceHashes": {
+    "python/dots_engineering/owner_reviews.py": "eeea5c693a32820bbe7b8ef3ea262f97bfe3bc6a8b2a98f537b1ec5736d674ff",
+    "python/migrate_owner_reviews.py": "16a38501cc29cef53544a6560dcd54c8f499912820d93466fd276e21f2ba68d0",
+    "python/dots_engineering/source_inventory.py": "5eac9c5ff8c0c70ddedad47afe30a5119bb420f4c8dc95eb9af740627e30384d",
+    "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+    "python/dots_engineering/admission.py": "052793abe1b12c4f709dfc91802a9f4430b4a93d1fc827dfa999865cd6c48867",
+    "python/dots_engineering/service.py": "0caca19ea5aa57177afd7018313bbb67783aaf81313a54c0818b80f27d084d61",
+    "python/worker.py": "a0b75637081de995a033a88e98cd4777ffb4d7b940acdd2a923d9363f8339029",
+    "server/api.ts": "d2a2d1822a2de84b8bab01b0fd0d237c822ccf3db3c9050f4c45078899c298f8",
+    "server/engineering.mjs": "610262982773c6c180814c33df5b58ac94078c59cc7aa5fe1976f14d7060577e",
+    "server/start.mjs": "ba03c0e5e8e6bd42397e0641b045d426eb15d3021417356b62efc465c14e3d2f",
+    "ui/session-review.tsx": "128826ef8a2ba347caec4c80ff4b542ca079fa62ef54fd0ff8a3db0853f876b5",
+    "ui/owner-review-reports.tsx": "af47e82cba9f91be0cbe0bf732e1ae1edc8306904e77311b72a19b027d4c7a60",
+    "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852"
+  },
+  "buildOutputs": {
+    "index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5",
+    "main.js": "20a9c656b56acd1af9ba14e4bca7a7666db5a767609b225ecf4197adb133421c",
+    "main.css": "df5964e4bb5d40ad006d53e65992466462a9be949456d163c20c5c29dc922d14"
+  },
+  "checks": {
+    "existingTests": "14 passed",
+    "typecheck": "passed on final runtime code",
+    "build": "passed before isolated workflow; runtime code unchanged afterward",
+    "pythonParse": "passed",
+    "diffWhitespace": "passed"
+  },
+  "cleanup": {
+    "serverListening": false,
+    "browserConnected": false,
+    "ownedBrowserExitCode": 0
+  },
+  "harnessNotes": [
+    "Initial sandbox denied loopback listening with EPERM before imports/reports; the owned stalled process was identified and stopped. An authorized escalation then opened and closed a diagnostic listener and ran the isolated harness.",
+    "One disabled-control locator missed a form inside collapsed details; opened it and continued from inspected saved state. No duplicate action was retried."
+  ],
+  "limits": [
+    "Owner-reported review only; no certified processing, verified authorship, source bytes or original transcript denominator/time coverage.",
+    "Only owner-record-review version 1 is implemented; new supported processor-version stream acceptance is unperformed.",
+    "No claim of actual-user V301, production identity acceptance or live deployment.",
+    "No provider reader, background scan, arbitrary agent execution or private session ingestion.",
+    "Pending request recovery is mounted-view only; leaving the view loses its envelope.",
+    "The 1000-event retention cap is enforced in source but its full boundary was not exercised; history navigation used 53 checkpoints.",
+    "Previous verification artifacts remain historical to their exact source hashes."
+  ]
+}
