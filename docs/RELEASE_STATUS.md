@@ -1,5 +1,9 @@
 # Source release status
 
+Current local consolidation: [release readiness at `53c78ca`](RELEASE_READINESS.md).
+It preserves historical results and distinguishes source-matching isolated evidence
+from actual-owner and production acceptance; publication remains held.
+
 The session/source-review feature update has [scoped isolated verification](verification/source-review-publication.md)
 and a [source-bound observation ledger](verification/source-review-publication.json).
 The historical main-release checks below apply only to that original revision.

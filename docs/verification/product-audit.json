@@ -447,5 +447,117 @@
   "outputHashes": {
     "docs/PRODUCT_AUDIT.md": "a308e6493bee8408118adddac7878f8a5d1b51f60f64f853f4b0e1b620b7d211",
     "docs/mockups/product-review.html": "36de7528922c88f2b1d9b10f2e5361942379aae5be4e41615fd842acbc27b04f"
-  }
+  },
+  "auditFollowups": [
+    {
+      "id": "local-release-readiness-53c78ca",
+      "recordedAt": "2026-10-21T22:12:08.173032+00:00",
+      "baseline": "53c78ca57579bf2be635b936c2121492c25b49a9",
+      "scope": "Documentation-only bounded source/evidence consolidation; no new runtime or human-owner acceptance.",
+      "artifact": "docs/RELEASE_READINESS.md",
+      "sourceBindings": {
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "lib/work/remediation-context.ts": "06a873f82fb110b81171746fc8052f53f40ab4a16492dcbb1d995769cec0c883",
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da",
+        "docs/verification/request-evidence.json": "e308ef38133708cc03536957e2648cda280778079d2fb72c1ae94cf0217f9772",
+        "docs/verification/session-save-recovery.json": "d79e015a7af04da72dd4aed59eb2efd1eb271816d14c7d8f35a420ec2e77efc8",
+        "docs/build-package/02-prd-v2.md": "59de9891299aaae50ce41de4c321c5a34d2981bd8b68d99832e57fe1301c2e5d",
+        "docs/build-package/14-python-migration-and-v3-acceptance.md": "abbd7cfc0947c994b2b48d8379796fdd0b1f4f1d5ded2f27515dbfc15ec762e3",
+        "docs/DURABLE_OPERATION_RECONCILIATION.md": "67327f9cf6c70da64db1e5c08557f706208939a5d18126a438881b491ecb92f5"
+      },
+      "evidenceComparisons": [
+        {
+          "ledger": "docs/verification/request-evidence.json",
+          "entryId": "agent-public-project-request-review-walkthrough",
+          "savedObservationCount": 6,
+          "recordedSourceCount": 14,
+          "matchingSourceCount": 13,
+          "changedSourceFiles": [
+            "ui/session-review.tsx"
+          ],
+          "runtimeRerun": false
+        },
+        {
+          "ledger": "docs/verification/request-evidence.json",
+          "entryId": "local-daily-evidence-check-in",
+          "savedObservationCount": 7,
+          "recordedSourceCount": 9,
+          "matchingSourceCount": 9,
+          "changedSourceFiles": [],
+          "runtimeRerun": false
+        },
+        {
+          "ledger": "docs/verification/request-evidence.json",
+          "entryId": "local-selected-review-evidence-history",
+          "savedObservationCount": 5,
+          "recordedSourceCount": 12,
+          "matchingSourceCount": 12,
+          "changedSourceFiles": [],
+          "runtimeRerun": false
+        },
+        {
+          "ledger": "docs/verification/request-evidence.json",
+          "entryId": "selected-review-history-H6-completion",
+          "savedObservationCount": 3,
+          "recordedSourceCount": 6,
+          "matchingSourceCount": 6,
+          "changedSourceFiles": [],
+          "runtimeRerun": false
+        },
+        {
+          "ledger": "docs/verification/session-save-recovery.json",
+          "entryId": "selected-review-next-steps",
+          "savedObservationCount": 7,
+          "recordedSourceCount": 14,
+          "matchingSourceCount": 12,
+          "changedSourceFiles": [
+            "ui/session-review.tsx",
+            "ui/day-workspace.tsx"
+          ],
+          "runtimeRerun": false
+        }
+      ],
+      "statuses": [
+        "observed saved isolated behavior",
+        "historical changed-input evidence",
+        "claimed supplied content and owner reports",
+        "unverified owner and release outcomes"
+      ],
+      "topOutcomeGaps": [
+        "Actual-owner request-to-review acceptance (V301)",
+        "Full daily verified-work event history (V312)",
+        "Durable uncertain-operation discovery after reload, pending retention and stream-policy decisions"
+      ],
+      "skills": [
+        {
+          "path": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Manual source-linked intent/evidence distinctions, negative-history preservation, bounded remediation prompts.",
+          "verified": "Document and ledger inspection only; not automatic host invocation or runtime outcome verification."
+        }
+      ],
+      "checks": {
+        "sourceHashComparison": "Five saved entry maps compared; exact counts and changed paths retained above.",
+        "relativeDocumentTargets": "Checked for new readiness record and new cross-links.",
+        "json": "Product audit ledger parsed after append.",
+        "diff": "Whitespace/error and scoped outgoing diff inspected before local commit.",
+        "runtime": "Not run; no new defect established or code change.",
+        "testsTypecheckBuild": "Not repeated; prior results retain their recorded source/environment scope."
+      },
+      "limits": [
+        "No original-source/private-session coverage expansion or new processing checkpoint.",
+        "No actual human-owner acceptance or full V301/V312 certification.",
+        "No fresh remote head/CI check; publication remains held.",
+        "No browser, API, database, dependency/access setup, production writes, push, merge or deployment.",
+        "Hash equality covers listed inputs only, not full build/environment equivalence.",
+        "No new integration defect established by this bounded source review; correctness not certified."
+      ],
+      "publication": "Local only; no-push hold preserved."
+    }
+  ]
 }
