@@ -25,6 +25,10 @@ sanitized export evidence to intent, drift findings, remediation drafts,
 selected skill checklists and actual local review receipts. Imports and runner
 execution default disabled. Named provider adapters remain unavailable.
 
+The [selected-record envelope](docs/SELECTED_RECORD_ADMISSION.md) preserves safe
+goal text, reports exclusions and unknown attribution, requires explicit project
+binding, and displays scoped corrections without granting execution authority.
+
 An independent [opt-in Python read compatibility mode](docs/PYTHON_READ_COMPATIBILITY.md)
 preserves the current frontend routes while Node remains the sole writer.
 

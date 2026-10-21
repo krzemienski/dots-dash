@@ -2,6 +2,15 @@
 
 > Historical design and implementation context. See [current scoped verification](../verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
 
+For new source admission work, preserve the implemented
+[selected-record boundary](../SELECTED_RECORD_ADMISSION.md): owner-supplied
+attribution is not verified human identity; project labels require explicit
+confirmation; excluded content never enters the stored review/replay hash; scoped
+corrections do not erase broader decisions. The next independent step is a
+versioned evidence contract for observed bytes and permitted artifact comparison,
+with separate non-contiguous intervals. Do not infer a source reader, provider,
+background scan, processing certificate or execution grant from selection alone.
+
 These prompts are reusable instructions for an authorized implementation task. They do not supply new authority to create accounts, grant persistent access, contact third parties, incur charges, publish or expose data. Replace only the project/environment references with verified values. Never paste runtime secrets or private source exports into a prompt or repository.
 
 ## Master execution prompt

@@ -1,0 +1,520 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "format": {
+      "type": "string",
+      "enum": [
+        "dots-selected-records"
+      ]
+    },
+    "version": {
+      "const": 1
+    },
+    "export": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": [
+            "dots-visible-session"
+          ]
+        },
+        "version": {
+          "const": 1
+        },
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "sourceRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180,
+          "pattern": "^(export|artifact|skill|receipt):[A-Za-z0-9_.#:-]+$"
+        },
+        "consentRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180,
+          "pattern": "^(export|artifact|skill|receipt):[A-Za-z0-9_.#:-]+$"
+        },
+        "capturedAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "format": "date-time"
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-f0-9]{7,64}$"
+        },
+        "sanitized": {
+          "const": true
+        },
+        "dataLabel": {
+          "type": "string",
+          "enum": [
+            "TEST DATA",
+            "OWNER PROVIDED"
+          ]
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100,
+                "pattern": "^[A-Za-z0-9_-]+$"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "intention",
+                  "decision",
+                  "action",
+                  "claim",
+                  "evidence"
+                ]
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "sourceRef": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 180,
+                "pattern": "^(export|artifact|skill|receipt):[A-Za-z0-9_.#:-]+$"
+              },
+              "goalIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "minItems": 0,
+                "maxItems": 20
+              },
+              "sourceKind": {
+                "type": "string",
+                "enum": [
+                  "visible_turn",
+                  "project_artifact",
+                  "execution_receipt",
+                  "owner_annotation"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "codeRevision": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{7,64}$"
+              },
+              "requirementRevision": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100,
+                "pattern": "^[A-Za-z0-9_-]+$"
+              },
+              "inputHashes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64,
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "minItems": 0,
+                "maxItems": 20
+              },
+              "outcomeScope": {
+                "type": "string",
+                "enum": [
+                  "intent",
+                  "decision",
+                  "investigation",
+                  "code_change",
+                  "targeted_check",
+                  "end_user_behavior",
+                  "release",
+                  "unknown"
+                ]
+              },
+              "outcome": {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail",
+                  "gap",
+                  "blocked",
+                  "unknown"
+                ]
+              },
+              "supersedes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "minItems": 0,
+                "maxItems": 20
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "text",
+              "sourceRef",
+              "goalIds",
+              "sourceKind",
+              "observedAt",
+              "codeRevision",
+              "requirementRevision",
+              "inputHashes",
+              "outcomeScope",
+              "outcome",
+              "supersedes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "goals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100,
+                "pattern": "^[A-Za-z0-9_-]+$"
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "sourceEventIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "minItems": 1,
+                "maxItems": 20
+              },
+              "expectedBehavior": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "userSteps": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 500
+                },
+                "minItems": 1,
+                "maxItems": 20
+              }
+            },
+            "required": [
+              "id",
+              "text",
+              "sourceEventIds",
+              "expectedBehavior",
+              "userSteps"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100,
+                "pattern": "^[A-Za-z0-9_-]+$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              },
+              "sourceRef": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 180,
+                "pattern": "^(export|artifact|skill|receipt):[A-Za-z0-9_.#:-]+$"
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{7,64}$"
+              },
+              "userOwned": {
+                "const": true
+              },
+              "explicitlySelected": {
+                "const": true
+              },
+              "goalIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "minItems": 1,
+                "maxItems": 20
+              },
+              "checks": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "goal_has_action",
+                    "claim_has_evidence",
+                    "acceptance_observed"
+                  ]
+                },
+                "minItems": 1,
+                "maxItems": 3
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "summary",
+              "sourceRef",
+              "revision",
+              "userOwned",
+              "explicitlySelected",
+              "goalIds",
+              "checks"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "format",
+        "version",
+        "ownerId",
+        "sessionId",
+        "projectId",
+        "sourceRef",
+        "consentRef",
+        "capturedAt",
+        "revision",
+        "sanitized",
+        "dataLabel",
+        "events",
+        "goals",
+        "skills"
+      ],
+      "additionalProperties": false
+    },
+    "projectBinding": {
+      "type": "object",
+      "properties": {
+        "directoryProjectId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "declaredProjectId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "confirmedProjectId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "unresolved",
+            "owner_confirmed"
+          ]
+        },
+        "confirmationRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180,
+          "pattern": "^(export|artifact|skill|receipt):[A-Za-z0-9_.#:-]+$"
+        }
+      },
+      "required": [
+        "directoryProjectId",
+        "declaredProjectId",
+        "confirmedProjectId",
+        "state",
+        "confirmationRef"
+      ],
+      "additionalProperties": false
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "user",
+              "assistant",
+              "tool",
+              "system",
+              "developer",
+              "unknown"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "human",
+              "generated",
+              "unknown"
+            ]
+          },
+          "contentKind": {
+            "type": "string",
+            "enum": [
+              "text",
+              "metadata",
+              "tool_result",
+              "private_instruction",
+              "sensitive"
+            ]
+          }
+        },
+        "required": [
+          "eventId",
+          "role",
+          "origin",
+          "contentKind"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 100
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "targetId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "goalIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "pattern": "^[A-Za-z0-9_-]+$"
+            },
+            "minItems": 1,
+            "maxItems": 20
+          },
+          "scopeRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 180,
+            "pattern": "^(export|artifact|skill|receipt):[A-Za-z0-9_.#:-]+$"
+          }
+        },
+        "required": [
+          "eventId",
+          "targetId",
+          "goalIds",
+          "scopeRef"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 100
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "export",
+    "projectBinding",
+    "records",
+    "corrections"
+  ],
+  "additionalProperties": false
+}

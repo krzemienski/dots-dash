@@ -11,6 +11,7 @@ from .contracts import (EXPORT_SCHEMA, IDENTIFIER, REFERENCE, REVISION, Rejected
 from .review import create_review
 from .runner import LocalChecklistRunner
 from .store import Store
+from .admission import SELECTION_SCHEMA, normalize_selection
 
 
 class Service:
@@ -26,13 +27,15 @@ class Service:
                         "externalExecution": False, "providers": {name: "unavailable" for name in ("codex", "claude", "cursor", "oh_my_pi")}}
         if method == "SCHEMA":
             return {"$schema": "https://json-schema.org/draft/2020-12/schema", **EXPORT_SCHEMA}
+        if method == "SELECTION_SCHEMA":
+            return {"$schema": "https://json-schema.org/draft/2020-12/schema", **SELECTION_SCHEMA}
         if method not in ("GET", "POST"):
             raise Rejected("Method not allowed", 405)
         if method == "POST":
             if not isinstance(body, dict):
                 raise Rejected()
             validate(body.get("requestId"), IDENTIFIER)
-            if body.get("action") == "import" and not self.allow_import:
+            if body.get("action") in ("import", "import_selection") and not self.allow_import:
                 raise Rejected("Owner import capability is disabled", 403)
             if body.get("action") == "run" and not capabilities["executeChecklist"]:
                 raise Rejected("Runner is unconfigured", 403)
@@ -54,6 +57,10 @@ class Service:
 
     def normalize(self, body):
         action = body.get("action")
+        if action == "import_selection":
+            if set(body) != {"action", "requestId", "selection"}:
+                raise Rejected()
+            return {"action": action, "requestId": body["requestId"], "export": normalize_selection(body["selection"], self.owner)}
         if action == "import":
             if set(body) != {"action", "requestId", "export"}:
                 raise Rejected()
@@ -82,7 +89,7 @@ class Service:
     def apply(self, store, body):
         now = datetime.now(timezone.utc).isoformat()
         action = body["action"]
-        if action == "import":
+        if action in ("import", "import_selection"):
             review = create_review(body["export"])
             try:
                 existing = store.get(review["id"])

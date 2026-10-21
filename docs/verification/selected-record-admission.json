@@ -1,0 +1,160 @@
+{
+  "label": "TEST DATA \u2014 selected-record admission verification",
+  "date": "2026-10-21",
+  "baseRevision": "5ea206e68638ed7a404ef3464e31b2aaf01f155b",
+  "rootCause": "Broad whole-message keyword exclusion was in a private audit helper, not the published sanitizer. No published whole-message filter defect is claimed.",
+  "method": "Fresh owned headless browser, real Node API/Python worker, disposable owner-bound SQLite; synthetic principal and fixtures only. No private logs or provider API.",
+  "observations": [
+    {
+      "name": "unresolved project binding visible rejection without review",
+      "pass": true
+    },
+    {
+      "name": "safe password keyword goal imported visibly",
+      "pass": true
+    },
+    {
+      "name": "different directory explicit project binding visible",
+      "pass": true
+    },
+    {
+      "name": "unknown origin remains explicit",
+      "pass": true
+    },
+    {
+      "name": "admission attribution and project context survive reload",
+      "pass": true
+    },
+    {
+      "name": "final bundle import clears supplied draft",
+      "pass": true
+    },
+    {
+      "name": "recognized value redacted but safe event text retained",
+      "pass": true
+    },
+    {
+      "name": "metadata tool and private content excluded with reasons",
+      "pass": true
+    },
+    {
+      "name": "scoped correction retains negative original",
+      "pass": true
+    },
+    {
+      "name": "scoped correction navigates retained source",
+      "pass": true
+    },
+    {
+      "name": "unknown sensitive field rejected without review",
+      "pass": true
+    },
+    {
+      "name": "all excluded goals reject without invented intent",
+      "pass": true
+    },
+    {
+      "name": "mismatched project confirmation rejects",
+      "pass": true
+    },
+    {
+      "name": "missing correction scope rejects",
+      "pass": true
+    },
+    {
+      "name": "out of scope correction rejects",
+      "pass": true
+    },
+    {
+      "name": "correction predating target rejects",
+      "pass": true
+    },
+    {
+      "name": "wrong export owner rejects",
+      "pass": true
+    },
+    {
+      "name": "exact admitted envelope replays once",
+      "pass": true
+    },
+    {
+      "name": "changed admitted envelope conflicts",
+      "pass": true
+    },
+    {
+      "name": "disabled import denies replay",
+      "pass": true
+    },
+    {
+      "name": "disabled import control visible",
+      "pass": true
+    },
+    {
+      "name": "wrong authenticated owner denied",
+      "pass": true
+    },
+    {
+      "name": "excluded content and artificial secret absent from persisted review audit and replay",
+      "pass": true
+    },
+    {
+      "name": "no processed coverage or execution granted",
+      "pass": true
+    },
+    {
+      "name": "legacy v1 import retains original identity and no admission annotation",
+      "pass": true
+    },
+    {
+      "name": "authenticated selected schema exposed",
+      "pass": true
+    },
+    {
+      "name": "admission narrow viewport has no document overflow",
+      "pass": true
+    },
+    {
+      "name": "browser has no page errors",
+      "pass": true
+    }
+  ],
+  "sourceHashes": {
+    "python/dots_engineering/admission.py": "052793abe1b12c4f709dfc91802a9f4430b4a93d1fc827dfa999865cd6c48867",
+    "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+    "python/dots_engineering/service.py": "0caca19ea5aa57177afd7018313bbb67783aaf81313a54c0818b80f27d084d61",
+    "server/api.ts": "39596a3ec4681391652a495a4711f68d7e324fb75fef5bd465d84bd2337e78db",
+    "lib/work/engineering.ts": "60157fe0ec91bd6ce3fb89d4a2dc175b204842df7b3aa67640ea00e947469bac",
+    "ui/session-review.tsx": "ed4bdec5760495dc09bd95af48e52955928d930b63d9d0e85821acd8c21b0bbf",
+    "examples/selected-records.synthetic.json": "779de0f5401e17b93c4d0eb1161708f3e80e3bce8c24423f3b1fa55895808558",
+    "docs/build-package/selected-records.schema.json": "74fc824bb47b62eb008d47ffde8e2046edc1fd0fb2054166e22527793372bdb4"
+  },
+  "buildOutputs": {
+    "index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5",
+    "main.js": "afde18c6b2aa3259855e431f9d583a866b22285b4935ed926eda0e07d014bbf4",
+    "main.css": "df5964e4bb5d40ad006d53e65992466462a9be949456d163c20c5c29dc922d14"
+  },
+  "checks": {
+    "existingTests": "14 passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "pythonParse": "passed"
+  },
+  "harnessNotes": [
+    "Initial exact text locators timed out because rendered accessible labels included icon spacing or textarea contents. Adjusted selectors; these were harness failures, not claimed product defects.",
+    "After the final draft-clearing change, rebuilt and repeated import on the final bundle."
+  ],
+  "cleanup": {
+    "serverListening": false,
+    "browserConnected": false,
+    "ownedBrowserExitCode": 0
+  },
+  "limits": [
+    "Only owner-curated selected records; no file reader/provider parser/background scan.",
+    "Attribution and project confirmation are supplied assertions, not observed source identity.",
+    "Recognizable secret values are defense in depth; arbitrary secrets/private instructions must be removed before submission.",
+    "Corrections are context-only and do not globally supersede earlier records.",
+    "Raw excluded content is not retained or hashed; excluded-only changes have the same normalized replay meaning.",
+    "No original-source freshness/byte proof, contiguous processing checkpoint, actual-user V301 or production identity acceptance.",
+    "The previous source-review publication report remains historical evidence for its source hashes."
+  ]
+}

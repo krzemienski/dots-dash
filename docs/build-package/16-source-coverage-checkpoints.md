@@ -2,6 +2,13 @@
 
 > Historical design and implementation context. See [current scoped verification](../verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
 
+Current bounded addition: [selected-record admission](../SELECTED_RECORD_ADMISSION.md)
+normalizes an owner-curated selection with supplied attribution, exclusions,
+project confirmation and scoped corrections. It does not supply original-source
+access, observed-byte evidence, snapshot-derived parsing or contiguous progress.
+The broader source-admission matrix and A1–A8 below remain partly design-only;
+the new selection workflow is not proof those full scenarios passed.
+
 Original proposal baseline: `799a9c2baf25285f9cd2e7fdb4bd8e6f856dc70f`.
 The original model and source observations below describe that baseline.
 Subsequent [inventory/access persistence](../SOURCE_INVENTORY.md),

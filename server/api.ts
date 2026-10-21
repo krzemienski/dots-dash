@@ -64,7 +64,8 @@ export function createApi(options:RuntimeOptions){return async function handle(r
   if(path.endsWith('/schema')&&request.method!=='GET')return json({error:'Method not allowed'},405);
   if(!options.engineering)return json({error:'Python session review is not configured',capabilities:{runner:'unconfigured',externalExecution:false}},503);
   const selected=new URL(request.url).searchParams.get('reviewId');
-  const result=await options.engineering({principal,method:path.endsWith('/schema')?'SCHEMA':request.method,...(request.method==='POST'?{body:await limitedBody(request,240000)}:selected?{body:{reviewId:selected}}:{})});
+  const schemaMethod=new URL(request.url).searchParams.get('format')==='selected-records'?'SELECTION_SCHEMA':'SCHEMA';
+  const result=await options.engineering({principal,method:path.endsWith('/schema')?schemaMethod:request.method,...(request.method==='POST'?{body:await limitedBody(request,240000)}:selected?{body:{reviewId:selected}}:{})});
   return json(result.body,result.status);
  }
  if(request.method==='GET'){

@@ -10,12 +10,18 @@ this is a Python extension, not a completed backend migration.
 
 ## Supported input and privacy
 
-The only supported adapter is `dots-visible-session` version 1: an explicitly
+The original supported adapter is `dots-visible-session` version 1: an explicitly
 selected, owner-curated, already sanitized JSON export. Its canonical Python
 schema is `python/dots_engineering/contracts.py`; a generated JSON Schema is
 included in the build package and returned by authenticated
 `GET /api/engineering/schema`. The example under `examples/` is **TEST DATA**.
 It is not a captured session or evidence of any external integration.
+
+The optional [selected-record admission envelope](SELECTED_RECORD_ADMISSION.md)
+adds supplied attribution, field-level exclusion reasons, explicit project
+confirmation and scoped correction context around that curated export. It reads
+no original files and does not add a provider adapter. Both paths use the same
+default-disabled import capability; existing v1 hashes remain unchanged.
 
 The adapter accepts visible-turn summaries or selected project artifacts with
 explicit provenance. It never reads local paths, follows source references,
