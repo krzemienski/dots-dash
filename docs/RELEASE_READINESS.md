@@ -109,3 +109,24 @@ recorded source hashes and the local diff were checked. The appended
 [product audit ledger](verification/product-audit.json) records exact scope and
 manual skill use. No runtime checks, browser interaction, dependency restoration,
 private source expansion or remote verification occurred in this pass.
+
+## Attempt to refresh the two historical end-to-end runs
+
+Follow-up baseline: `1dad11761dccabd0f472d428768af7a3fc3dd010`.
+The intended rerun was limited to N1–N7 in the selected-review next-steps flow and
+W1–W6 in the labeled public-project request-copy walkthrough. The existing
+Playwright 1.59.0 package and Chromium 1217 executable were present; the three
+served build output hashes matched the recorded H6 build. No installation occurred.
+
+Neither workflow executed. The initial isolated harness created a disposable
+owner database, then stopped at loopback binding. A diagnostic reported
+`listen EPERM: operation not permitted 127.0.0.1`. Browser launch and application
+API operations had not started. The requested escalated run was rejected before
+execution by automatic approval review, which cited an earlier browser prohibition
+and did not accept the current delegated rerun as authorization. No workaround or
+further retry was attempted; no shared browser or production records were touched.
+
+Both source-changed end-to-end evidence entries remain historical, not refreshed
+passes. Resolving the authorization conflict for these exact two isolated browser/
+API workflows is the next prerequisite. No implementation defect was demonstrated.
+The appended product-audit ledger preserves the attempt and its limits.

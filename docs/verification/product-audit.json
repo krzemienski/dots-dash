@@ -558,6 +558,67 @@
         "No new integration defect established by this bounded source review; correctness not certified."
       ],
       "publication": "Local only; no-push hold preserved."
+    },
+    {
+      "id": "two-historical-workflow-refresh-blocked",
+      "recordedAt": "2026-10-21T23:09:38.897527+00:00",
+      "baseline": "1dad11761dccabd0f472d428768af7a3fc3dd010",
+      "scope": "Only selected-review-next-steps N1-N7 and agent-public-project-request-review-walkthrough W1-W6; TEST DATA and public-project copy, no human-owner acceptance.",
+      "result": "blocked; zero acceptance scenarios performed",
+      "preflight": {
+        "tree": "clean before attempt",
+        "driver": "Existing Playwright 1.59.0 package metadata read",
+        "browser": "Existing Chromium 1217 executable present; not launched",
+        "buildOutputs": "Three served build hashes matched H6 recorded outputs",
+        "dependenciesInstalled": false
+      },
+      "attempts": [
+        {
+          "step": "Initial isolated harness",
+          "result": "Disposable owner database initialized; loopback listen did not complete. No browser launch, engineering import, runner or observation operation."
+        },
+        {
+          "step": "Loopback diagnostic",
+          "result": "listen EPERM: operation not permitted 127.0.0.1; no listener created."
+        },
+        {
+          "step": "Escalated exact workflow request",
+          "result": "Rejected before execution by automatic approval review. Reviewer cited explicit earlier no-browser instruction; browser/API writes with escalation deemed unauthorized."
+        }
+      ],
+      "historicalEvidence": [
+        "selected-review-next-steps remains historical with changed UI bindings",
+        "agent-public-project-request-review-walkthrough remains historical with changed UI binding"
+      ],
+      "checks": {
+        "relativeLinks": "Existing new-readiness target links checked",
+        "json": "Appended ledger parsed",
+        "diff": "Checked before local commit",
+        "runtime": "N1-N7 and W1-W6 all unperformed in this follow-up"
+      },
+      "skillUse": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Defined exact prior scenarios, retained historical evidence and agent-versus-human distinction; honored execution denial.",
+          "verified": "No new end-user workflow verification."
+        },
+        {
+          "source": "playwright SKILL.md",
+          "selected": true,
+          "read": true,
+          "applied": "Checked existing tool pairing and planned isolated artifact capture; reused project inline harness convention without test files or install.",
+          "verified": "Browser not launched; no invocation success claimed."
+        }
+      ],
+      "limits": [
+        "No current acceptance refresh, human acceptance or regression conclusion.",
+        "No private-session read, shared browser, production write, dependency/access setup, remote action, push, merge or deployment.",
+        "No workaround or retry after automatic review rejection."
+      ],
+      "nextTask": "Obtain explicit approval resolving earlier no-browser prohibition for these two isolated localhost browser/API/persistence workflows; rerun only then."
     }
   ]
 }
