@@ -217,3 +217,19 @@ implementation roles. Imported artifact roles remain unknown. This optional
 read-only response annotation changes no receipt or historical outcome. All six
 defined artifact scenarios passed in the owned synthetic browser workflow at
 `1d54ae105fadae850959e487e4b0cae303407855`; broader product acceptance remains open.
+
+
+### Keyboard workspace navigation
+
+The workspace uses manually activated tabs. Left/Right arrows wrap between tabs;
+Home/End focus the first/last tab. These keys only move focus, preserving the active
+review and any in-memory pending save. Enter/Space explicitly selects a view. Tab
+leaves the list for the active named panel; re-entering the list returns to its
+selected tab. Focus has a visible outline.
+
+This follows the [W3C tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/).
+The [verification ledger](verification/session-save-recovery.json) records nine
+synthetic UI/API/SQLite observations, including lost-response reconciliation and
+320px/375px layout checks. Explicitly leaving Session review or reloading still
+loses the in-memory pending envelope. This is not durable recovery or a complete
+screen-reader/accessibility audit.

@@ -506,6 +506,128 @@
         "No schema/migration/persistence/retention/capability changes"
       ],
       "nextTask": "Keep durable registration decisions separate; review retention/conflict/restore requirements before any implementation."
+    },
+    {
+      "id": "workspace-keyboard-navigation",
+      "observedAt": "2026-10-21T14:09:31.799024+00:00",
+      "baselineCommit": "e2b8abad06087878bd1f76ab58f7e2d71a738e1a",
+      "sourceBinding": {
+        "ui/day-workspace.tsx": "40ef658f096604b20c4809d7727d7d46f70005fdbbe5e45e9cdf781cebb839b8",
+        "ui/styles.css": "24a13540951d1a6759bc0a34da540e384b03c52114d8badc45eba65cba925cb9",
+        "ui/session-review.tsx": "c16c7b6e6a1f63a9d83bcc7c45dd604eb0e64ac8a777322c4179c0edc97f57c8",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd",
+        "examples/request-context.synthetic.json": "28dd42fca3cee5384501080b7e1d23754ec11c90d868a84e4ac3a3b7cde639ac"
+      },
+      "dataLabel": "TEST DATA",
+      "goal": "Explore workspace views by keyboard without unintentionally leaving an uncertain Session review save.",
+      "baselineObserved": {
+        "ArrowRight": "Focus remained on Day",
+        "tabStops": 5,
+        "associatedTabPanels": 0
+      },
+      "rootCause": "Tab roles had no keyboard handling, roving focus or panel relationships.",
+      "remediation": "Manual activation: arrows/Home/End focus only; Enter/Space select. One roving tab stop resets to selected tab when leaving the list; all tabs reference associated panels.",
+      "reference": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/",
+      "observations": [
+        {
+          "id": "K1",
+          "outcome": "Arrow keys wrap and Home/End move focus; selection remains Day; one roving tab stop remains.",
+          "result": "pass"
+        },
+        {
+          "id": "K2",
+          "outcome": "Enter/Space activate; Tab reaches active named panel; Shift+Tab returns to selected tab; all five tab/panel relationships resolve.",
+          "result": "pass"
+        },
+        {
+          "id": "K3",
+          "outcome": "Committed import response lost; arrow/Home/End exploration preserves exact pending recovery text and active review; database bytes unchanged.",
+          "result": "pass"
+        },
+        {
+          "id": "K4",
+          "outcome": "Reconcile sends identical operation body; exactly one operation, version-1 review and audit entry remain.",
+          "result": "pass"
+        },
+        {
+          "id": "K5",
+          "outcome": "Known operation opens read-only saved receipt and focuses its result after keyboard-accessible lookup.",
+          "result": "pass"
+        },
+        {
+          "id": "K6",
+          "outcome": "Explicit tab departure, keyboard return and page reload read the persisted review without duplicate writes; in-memory recovery is not promised across departure.",
+          "result": "pass"
+        },
+        {
+          "id": "K7",
+          "outcome": "320px and 375px keyboard exploration has visible 2px focus outline and no horizontal page overflow.",
+          "result": "pass"
+        },
+        {
+          "id": "K8",
+          "outcome": "Final persisted counts unchanged; zero external browser requests and zero page errors. Fresh owned headless context only.",
+          "result": "pass"
+        },
+        {
+          "id": "K9",
+          "outcome": "Stored Request shortcut opens Session review with selected tab as entry stop; original review/operation/audit unchanged and one Request persists.",
+          "result": "pass"
+        }
+      ],
+      "externalRequests": 0,
+      "pageErrors": [],
+      "persistence": "Real rendered UI through Node API and fixed Python worker into owned disposable SQLite. After committed-response loss, exploration left database bytes unchanged. Exact replay retained one operation, one audit entry and review version 1. Stored Request shortcut retained one Request.",
+      "visualInspection": "Inspected 375px screenshot: distinct selected Session review and focused configuration tab, visible focus ring, honest in-memory recovery notice. Both 320/375px overflow and focus-style checks passed.",
+      "attempts": [
+        "Baseline failure reproduced before edits.",
+        "First verification inspected SQLite before controlled POST completed; harness corrected to wait for enabled recovery control. This was not an application failure.",
+        "Second verification exposed selected tab intercepting Tab exit from an unselected focused tab; roving focus corrected.",
+        "Eight scenarios then passed; final expanded nine-scenario run passed on final runtime source."
+      ],
+      "checks": [
+        "npm test: 14 passed, 0 failed",
+        "npm run typecheck: passed",
+        "npm run build: passed",
+        "Ledger JSON, recorded source hashes and changed documentation local targets checked",
+        "git diff --check: passed"
+      ],
+      "skills": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Defined observable owner outcome, reproduced source-level gap, bound remediation to UI/API/persistence observations.",
+          "verified": "Nine scoped synthetic observations; manual guidance application, no adapter invocation or automatic routing claim."
+        },
+        {
+          "source": "superpowers:systematic-debugging",
+          "selected": true,
+          "read": true,
+          "applied": "Baseline reproduction, focused hypothesis and correction of a demonstrated Tab-exit regression.",
+          "verified": "Final observed keyboard behavior and persisted state."
+        },
+        {
+          "source": "superpowers:verification-before-completion",
+          "selected": true,
+          "read": true,
+          "applied": "Fresh workflow checks before completion/publication claims.",
+          "verified": "Final observed workflow; static and CI checks recorded separately."
+        }
+      ],
+      "cleanup": "Owned browser/context, random-port loopback server and SQLite handles closed in finally blocks. No shared authenticated browser/profile used.",
+      "limits": [
+        "Chromium keyboard/DOM and narrow-width checks only; no screen-reader, Safari/Firefox, touch or complete accessibility certification.",
+        "Only arrow-key exploration preserves pending state. Explicit departure/reload still loses the in-memory envelope; existing UI disclosure remains.",
+        "No new persistence, registration, execution capability, provider access, auth adapter or migration.",
+        "Synthetic evidence is not actual-user V301, transcript review, authorship or product-completeness certification."
+      ],
+      "nextTask": "Review a bounded screen-reader/focus journey with an explicitly owned supported assistive-technology environment; durable recovery still needs separate product decisions."
     }
   ]
 }

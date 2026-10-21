@@ -293,3 +293,11 @@ It does not convert this design into a verified-action model or complete V301.
 Read scope: relevant repository PRD/spec/build/UX/security-boundary/setup documents, current UI/API/worker seams and the saved reports listed above; plus a supplied bounded original-intent research summary. No private logs or current Jobs tree were used. Source links identify implementation anchors, not proof a behavior ran. Older documents and evidence must retain their original dates and bindings.
 
 The [audit ledger](verification/product-audit.json) records source hashes, actual documentation/mockup checks, skill application and remaining limits. Update this completion register after an observed workflow or supported scope decision, with exact evidence. Do not advance a feature because a mockup looks finished, a build passes or an old report contains the word success.
+
+
+A later [workspace keyboard follow-up](SESSION_REVIEW.md#keyboard-workspace-navigation)
+closes the bounded tab-navigation gap with nine isolated TEST DATA observations in
+the [recovery ledger](verification/session-save-recovery.json). Manual tab activation
+preserves an uncertain save during arrow-key exploration; exact replay, persisted
+reload/return and a stored Request shortcut were observed. General accessibility,
+screen-reader acceptance, actual-user V301 and durable recovery remain open.
