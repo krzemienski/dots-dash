@@ -868,6 +868,97 @@
         "No provider execution, source ingestion, new storage/security assumptions, durable recovery or V301 certification."
       ],
       "nextTask": "Independent review of namespace separation; actual assistive-technology acceptance remains a separate owned-environment gate."
+    },
+    {
+      "id": "selected-review-refresh",
+      "observedAt": "2026-10-21T18:11:15.912621+00:00",
+      "baselineCommit": "f0cc8f13b88a9dd4a1dc50f6e5be0729a1a481b6",
+      "sourceBinding": {
+        "ui/session-review.tsx": "54424b20eab1ac4cd5bfac099877b11c9044a670361af70ae67614e14a9936db",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/day-workspace.tsx": "40ef658f096604b20c4809d7727d7d46f70005fdbbe5e45e9cdf781cebb839b8",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd"
+      },
+      "dataLabel": "TEST DATA",
+      "goal": "Keep the selected intent/remediation/verification context during ordinary refresh; do not discard an unsaved owner observation or silently substitute a newer review.",
+      "baselineObserved": "With older A selected and an observation draft entered, Refresh session reviews selected newer B and removed A draft. Database bytes were unchanged.",
+      "rootCause": "load without an explicit or pending review ID delegated to the backend latest-review default.",
+      "remediation": "Fallback to the currently displayed review ID after pending-save and explicit navigation IDs. Initial mount/reload still uses the existing latest-review default; no persistent selection storage.",
+      "observations": [
+        {
+          "id": "S1",
+          "outcome": "Refresh reads the explicitly displayed older review by ID; its unsaved observation draft, goal context and stored bytes remain unchanged.",
+          "result": "pass"
+        },
+        {
+          "id": "S2",
+          "outcome": "Saved draft belongs to review A only, retains fail/owner-reported result and does not create an observation on B.",
+          "result": "pass"
+        },
+        {
+          "id": "S3",
+          "outcome": "Explicit selection still switches; subsequent skill selection/run remains on A, preserves failing acceptance and refresh does not switch to B.",
+          "result": "pass"
+        },
+        {
+          "id": "S4",
+          "outcome": "A newer C arriving during lost-response recovery does not change A selection; refresh retains exact pending envelope/lock, replay is identical and creates no duplicate observation.",
+          "result": "pass"
+        },
+        {
+          "id": "S5",
+          "outcome": "Missing selected target surfaces its error without substituting B/C or changing stored bytes; restored synthetic target refreshes by the same ID.",
+          "result": "pass"
+        },
+        {
+          "id": "S6",
+          "outcome": "Unavailable selected-review response stays an explicit error with last displayed A; no implicit fallback, mutation or replacement save.",
+          "result": "pass"
+        },
+        {
+          "id": "S7",
+          "outcome": "Keyboard/narrow refresh preserves A; explicit reload retains existing latest-review behavior (C), with no persistent client selection. Returning to A retains its observations/receipt.",
+          "result": "pass"
+        }
+      ],
+      "externalRequests": 0,
+      "pageErrors": [],
+      "persistence": "Actual UI imports A/B, saves a failing observation on A, selects/runs its local checklist, and reconciles a second A observation after simulated committed-response loss. C was imported through the actual API while A was pending. A receipt acceptance remains fail; B receives neither observations nor runs. Exact replay retained the stored A snapshot unchanged. Read-only refresh checks preserved SQLite bytes.",
+      "fixtureBoundaries": "Fresh owned headless browser, loopback Node/Python API and disposable synthetic SQLite. Missing target was directly deleted/restored in that disposable store, preserving original rowid. Unavailability was a synthetic 503 browser interception. No migrations or private records.",
+      "attempts": [
+        "Baseline reproduced before edits.",
+        "Two full runs timed out on exact getByLabel after rerender; DOM probes confirmed same article, open details and entered values. Controlled textarea content was included in the label text; locator changed to stable prefix.",
+        "A subsequent run passed six observations then failed expected latest-C reload because synthetic delete/restore assigned A a new rowid. Fixture restore corrected to preserve original row order.",
+        "Final seven-scenario run passed on the unchanged one-line runtime fix."
+      ],
+      "checks": [
+        "npm test: 14 passed, 0 failed",
+        "npm run typecheck: passed",
+        "npm run build: passed",
+        "Final source/build-manifest hashes, ledger JSON and local documentation links checked",
+        "git diff --check: passed"
+      ],
+      "skills": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Defined owner context-preservation outcome, reproduced wrong-review drift, verified negative evidence and exact retry pins through real persisted flows.",
+        "verified": "Seven bounded synthetic observations; manual guidance application, not automatic invocation."
+      },
+      "cleanup": "Owned browser/context, random-port server and SQLite handles closed. Shared Chrome/Jobs untouched.",
+      "limits": [
+        "Same mounted Session review only; explicit switching or reload still discards unsaved drafts and pending envelopes.",
+        "Errors retain last displayed data with an error; they do not certify current source availability.",
+        "Latest-review index remains bounded to 50 and this does not add older-review discovery or durable selection.",
+        "No actual-user V301, screen-reader, live provider, original-transcript coverage or arbitrary agent-execution claim."
+      ],
+      "nextTask": "Independent review of refresh precedence and pending-save guard; keep remaining actual-owner/provider/durable-recovery gates separate."
     }
   ]
 }

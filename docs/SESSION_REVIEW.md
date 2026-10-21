@@ -266,3 +266,20 @@ Five collision observations and ten existing-flow observations passed on the
 corrected source, including exact focus/names, reload, Request links, lookup and
 a local checklist receipt. Earlier evidence remains historical and did not cover
 this adversarial ID pair. Actual screen-reader acceptance remains unperformed.
+
+
+### Refresh preserves the selected review
+
+**Refresh session reviews** reloads the currently displayed review by exact ID.
+A pending save's review ID and an explicitly selected/navigation target retain
+precedence. Refreshing an older review no longer silently switches to the newest
+one or removes its observation draft. Missing/unavailable responses remain errors
+against that selection rather than a fallback to another review.
+
+The [recovery ledger](verification/session-save-recovery.json), entry
+`selected-review-refresh`, records seven isolated TEST DATA observations: draft
+preservation, failing observation/checklist context, explicit selection, exact
+lost-response replay while a newer review arrives, error handling and keyboard/
+narrow-layout refresh. Initial mount and full page reload still load the existing
+latest-review default. No persistent selection or durable draft/retry storage is
+added; explicit departure or reload can still lose unsaved state.

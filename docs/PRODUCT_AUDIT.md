@@ -332,3 +332,11 @@ visible, while source inspection/report controls require matching saved and
 displayed selection pins. Ten isolated observations distinguish version-only
 activity, changed content and unavailable targets without transferring progress.
 Relevance remains a last-read snapshot; actual-owner/source-byte gates stay open.
+
+
+The [selected-review refresh follow-up](SESSION_REVIEW.md#refresh-preserves-the-selected-review)
+fixes a reproduced context switch: refreshing older review A previously opened
+newer B and discarded A's observation draft. Seven isolated observations now show
+exact-ID refresh, preserved negative evidence and pending replay, explicit
+switching and truthful errors. Initial latest-review loading and mounted-memory
+limits remain unchanged; no durable recovery or actual-user gate is closed.

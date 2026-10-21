@@ -133,7 +133,7 @@ export default function SessionReviewWorkspace({initialRequestId}:{initialReques
   const attempt=pendingRef.current;
   if(attempt&&reviewId&&reviewId!==(attempt.savedReviewId||attempt.reviewId)){setError('Resolve the pending save before opening another review.');return;}
   gate.current=true;setBusy(true);setError('');
-  try{await readState(attempt?.savedReviewId||attempt?.reviewId||reviewId);if(attempt?.phase==='saved'){retain(null);setNotice(savedNotice(attempt.executed));}}
+  try{await readState(attempt?.savedReviewId||attempt?.reviewId||reviewId||state?.reviews[0]?.id);if(attempt?.phase==='saved'){retain(null);setNotice(savedNotice(attempt.executed));}}
   catch(e){setError(attempt?.phase==='saved'?'Saved, but refresh failed. Retry refresh; do not submit a new operation.':(e instanceof Error?e.message:'Review unavailable'))}
   finally{gate.current=false;setBusy(false)}
  }
