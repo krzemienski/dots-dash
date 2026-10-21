@@ -19,6 +19,7 @@ Set these in the operator's private runtime, not source control:
 - DASHBOARD_AUTH_MODULE: absolute path to an operator-controlled server module exporting async authenticate(request). It must verify a real session with the chosen supported identity provider and return {id} only after verification, or null on failure. No provider implementation is bundled.
 - DASHBOARD_SOURCE_ACCOUNT: trusted source account binding for Gmail correspondence imports. No default. This is an account-match constraint, not authentication.
 - DASHBOARD_ALLOW_IMPORT: defaults to disabled; set true only after the authenticated owner import workflow and destination/source permissions are established.
+- DASHBOARD_ALLOW_OPERATION_LOOKUP: defaults to disabled. With an existing owner-bound Python engineering store, enables [manual read-only receipt inspection](OPERATION_LOOKUP.md); it performs no migration or retry and adds no write permission.
 
 The auth module is executable server configuration. Do not load an unreviewed module, use a client-supplied identity/header as authentication, return a constant owner, disable verification, or commit credentials to make the app appear usable. The identity provider, session expiry/revocation, CSRF and deployment proxy behavior must be verified independently before production use. No signup, OAuth grant, secret, paid service, or persistent external integration was created by this implementation.
 

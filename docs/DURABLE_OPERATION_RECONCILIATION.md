@@ -4,6 +4,12 @@ Design only, 21 October 2026. Inspected source: `fb086b81a7f4631c2b2030d4f04fd6f
 No implementation, migration, client persistence, capability change or runtime
 acceptance is included. This addresses priority 3 of the [product audit](PRODUCT_AUDIT.md).
 
+Subsequent implementation: the [manual shared-store receipt lookup](OPERATION_LOOKUP.md)
+now provides the first bounded read-only slice described below. The source baseline
+and proposal remain historical; registration, retention, migrations and the D1–D12
+durable protocol are still unimplemented/unperformed. Its separate 11-observation
+lookup evidence does not establish durable discovery or retry after reload.
+
 ## Outcome and boundary
 
 After a lost save response, navigation, browser restart or server restart, the

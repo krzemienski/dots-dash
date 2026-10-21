@@ -241,5 +241,135 @@
       ],
       "nextTask": "Authorize bounded read-only operation-summary lookup and UI; keep registration/migration/client persistence out of that first implementation."
     }
+  ],
+  "implementationFollowups": [
+    {
+      "slice": "manual read-only shared-operation lookup",
+      "sourceBase": "d74c31c8f85c2f564d00b449de6a0ebe94a25daf",
+      "date": "2026-10-21T12:25:44.872293+00:00",
+      "acceptanceDefinedBeforeImplementation": "Known saved operation after reload; unknown IDs; owner/store denial; disabled lookup; unchanged persistence; no execution/completion upgrade or raw payload disclosure.",
+      "artifact": "docs/OPERATION_LOOKUP.md",
+      "method": "Fresh owned Chromium context, rendered React, loopback Node API, fixed Python worker, disposable synthetic SQLite. Existing synthetic examples; inline driver, no new test file.",
+      "observations": [
+        {
+          "name": "pending isolation",
+          "detail": "A committed lost import response is inspectable without clearing the original pending save or retrying.",
+          "result": "pass"
+        },
+        {
+          "name": "reload lookup",
+          "detail": "Manual known ID finds committed import after reload; no input/payload browser persistence, action binding unknown, result focus.",
+          "result": "pass"
+        },
+        {
+          "name": "digest comparison",
+          "detail": "Matching/mismatching expected digests are explicit; no action identity or permission inferred.",
+          "result": "pass"
+        },
+        {
+          "name": "unknown is not negative proof",
+          "detail": "Unknown operation has no retry/result control and leaves physical SQLite bytes unchanged.",
+          "result": "pass"
+        },
+        {
+          "name": "bounded execution and negative observation",
+          "detail": "Actual checklist/observation receipts have distinct stored flags; lookup excludes review/observation bodies.",
+          "result": "pass"
+        },
+        {
+          "name": "context receipt and current review",
+          "detail": "Only task/Request/review IDs and version exposed; exact current review preserves failing owner observation, storage bytes unchanged.",
+          "result": "pass"
+        },
+        {
+          "name": "read permission separate from write",
+          "detail": "Lookup succeeds with import/checklist/link writes disabled; mutation capability still denies.",
+          "result": "pass"
+        },
+        {
+          "name": "lookup capability and owner gates",
+          "detail": "Default-off control represented in UI and enforced by worker; other owner denied before lookup.",
+          "result": "pass"
+        },
+        {
+          "name": "store/schema failure states",
+          "detail": "Wrong binding denies; missing file/schema not initialized; malformed receipt fails unavailable without body disclosure.",
+          "result": "pass"
+        },
+        {
+          "name": "bounded transport",
+          "detail": "Unknown fields, invalid IDs/digests, query-string IDs, wrong method and cross-origin lookup reject.",
+          "result": "pass"
+        },
+        {
+          "name": "interruption keyboard and persistence",
+          "detail": "Unmount discards input/stale response; keyboard lookup focuses result; 320/375px overflow checks pass; all canonical SQLite bytes unchanged by lookup.",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "python/dots_engineering/operation_lookup.py": "97132b7d2ef82e6968d3a2175916f6e0f2f5293487bcf574a5abfaea9ff953bc",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/worker.py": "c5a7a8165dd11553c32006dbfbb90baa62c9306c4b5cad3d0a8a839470710548",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "server/start.mjs": "90428006d4e6f4cff7b44ba406d402d09f27503ff4498b1648c3fe780e3cdfec",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/session-review.tsx": "c16c7b6e6a1f63a9d83bcc7c45dd604eb0e64ac8a777322c4179c0edc97f57c8",
+        "dist/main.js": "ea336fe8b622ec0b14554d35bb4e16b20e67978bace1c6eedf64af35ad68f9ad"
+      },
+      "staticChecks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "pythonAst": "passed",
+        "ledgerJsonSourceBindingsLocalLinks": "passed",
+        "diff": "passed"
+      },
+      "visualInspection": "Inspected desktop and 375px result screenshots: stored-result/unknown-binding language, no execution certification, wrapped hashes/IDs, visible focus; 320/375px horizontal overflow checks passed.",
+      "privacy": "Raw review/observation/task contents excluded from lookup response; operation/digest sent only in JSON body; browser local/session storage empty; no durable client storage code.",
+      "persistence": "Canonical engineering SQLite bytes identical before/after lookup sequence including current-review read; wrong-owner/schema fixtures unchanged; absent database remained absent.",
+      "externalRequests": 0,
+      "pageErrors": [],
+      "priorAttempts": [
+        "Driver regular-expression syntax error before workflow execution.",
+        "Intermediate run passed four observations then stopped on driver reference review.goals; corrected to review.export.goals. Final fresh run passed all 11."
+      ],
+      "skills": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Outcome/acceptance first; source-bound unknown legacy action, no automatic pending resolution or completion claim.",
+          "verified": "11 scoped UI/API/storage observations, not automatic invocation."
+        },
+        {
+          "source": "playwright skill",
+          "selected": true,
+          "read": true,
+          "applied": "Fresh isolated installed Chromium, rendered controls, screenshots, settled state/focus, owned-resource cleanup; inline driver follows existing workflow conventions.",
+          "verified": "11 final observations, zero external browser requests/page errors; no test specs."
+        },
+        {
+          "source": "vercel:react-best-practices",
+          "selected": true,
+          "read": true,
+          "applied": "Bounded component state, generation guard after unmount/capability change, accessible labels/status/focus, no persistent client data.",
+          "verified": "Typecheck/build plus keyboard, interruption and narrow-layout observations."
+        }
+      ],
+      "cleanup": "Owned browser/context, loopback server and SQLite handles closed; Python workers exited.",
+      "limits": [
+        "Manual known-ID inspection only; no automatic discovery or durable recovery.",
+        "Legacy action/namespace remains unknown; digest equality cannot establish action identity.",
+        "No server registration, migration, retention change, provider access, retry or execution authority.",
+        "D1\u2013D12 durable protocol remains design-only; real-owner V301/live identity/full accessibility/backup restore not proved.",
+        "2,000,000-byte stored-response materialization bound is source-enforced but not exercised in this UI run."
+      ],
+      "nextTask": "Review durable registration product decisions before implementation; keep read-only lookup distinct from reload-safe resubmission."
+    }
   ]
 }

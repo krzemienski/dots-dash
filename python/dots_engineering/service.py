@@ -15,14 +15,15 @@ from .admission import SELECTION_SCHEMA, normalize_selection
 
 
 class Service:
-    def __init__(self, filename, owner=None, allow_import=False, runner=None):
+    def __init__(self, filename, owner=None, allow_import=False, runner=None, allow_operation_lookup=False):
         self.filename, self.owner = filename, owner
         self.allow_import, self.runner = allow_import, runner
+        self.allow_operation_lookup = allow_operation_lookup
 
     def handle(self, principal, method, body=None):
         if not self.owner or principal != self.owner:
             raise Rejected("Owner authentication required", 401)
-        capabilities = {"import": self.allow_import, "runner": self.runner.name if self.runner else "unconfigured",
+        capabilities = {"import": self.allow_import, "operationLookup": self.allow_operation_lookup, "runner": self.runner.name if self.runner else "unconfigured",
                         "executeChecklist": bool(self.runner and "review_checklist" in self.runner.capabilities()),
                         "externalExecution": False, "providers": {name: "unavailable" for name in ("codex", "claude", "cursor", "oh_my_pi")}}
         if method == "SCHEMA":

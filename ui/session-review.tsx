@@ -2,6 +2,7 @@
 import {useEffect,useRef,useState} from 'react';
 import type {EngineeringState,SessionReview,Goal,SessionEvent,BrowserReceiptState} from '../lib/work/engineering';
 import ContextLinks from './context-links';
+import OperationLookup from './operation-lookup';
 import SourceCoverage from './source-coverage';
 import CorrectionContext from './correction-context';
 import SourceInventory from './source-inventory';
@@ -167,6 +168,7 @@ export default function SessionReviewWorkspace({initialRequestId}:{initialReques
   <button onClick={()=>void load()} disabled={busy}>Refresh session reviews</button>{busy&&<p role="status">Working…</p>}{error&&<p role="alert">{error}</p>}{notice&&<p role="status">{notice}</p>}
   <p>Save recovery is held only in memory while this Session review view stays open. Leaving this view or reloading loses the pending request. Inspect persisted records before any further save; a refresh alone cannot prove an unconfirmed operation. Nothing is stored in browser storage.</p>
   {pending&&<section aria-label="Session save recovery"><h3>{pending.phase==='saved'?'Save confirmed; refresh pending':'Unconfirmed session save'}</h3><p>Operation {pending.requestId} · {pending.action}{pending.reviewId?' · review '+pending.reviewId:''}{pending.version!==undefined?' · pinned version '+pending.version:''}</p><p>{pending.phase==='saved'?'The server acknowledged this save. Recovery only refreshes records.':'Reconciliation resends the same request ID, payload and version pins. It may complete a previously uncommitted operation; current server authorization and capability checks still apply. Read-only refresh does not clear this pending operation.'}</p><button disabled={busy} onClick={()=>void reconcile()}>{pending.phase==='saved'?'Refresh confirmed save':'Reconcile exact pending save'}</button></section>}
+  <OperationLookup enabled={state?.capabilities.operationLookup===true} onOpenReview={load}/>
   <SourceInventory review={state?.reviews[0]} onOpenReview={load}/>
   {state&&<><p>Runner: {state.capabilities.runner}. External execution disabled. Named provider session adapters unavailable.</p>
    <p>{state.totalReviews} saved reviews; index shows the latest {state.reviewIndex.length}. One full review is loaded at a time.</p>

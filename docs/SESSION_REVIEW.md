@@ -79,14 +79,16 @@ it cannot disprove a prior commit.
 Recovery is in memory only. Leaving Session review or reloading discards the
 envelope; no payload is written to browser storage and no replay happens on
 remount. Inspect persisted records before any new save after leaving. Durable
-cross-navigation recovery and a read-only operation lookup are not implemented
-for this endpoint. The separate retained-record report workflow has its own
+cross-navigation recovery is not implemented. The separate default-off
+[manual operation lookup](OPERATION_LOOKUP.md) can inspect a known shared-store
+receipt after reload without resubmission or clearing an uncertain form. It is not
+automatic operation discovery. The separate retained-record report workflow has its own
 recovery contract. See the [isolated recovery evidence](verification/session-save-recovery.json).
 
 The [proposed cross-reload reconciliation contract](DURABLE_OPERATION_RECONCILIATION.md)
-compares minimal receipt lookup with a later server-only registration index. It is
-design only: no client persistence, durable registration, expiry policy or new
-recovery endpoint is implemented. Its D1–D12 acceptance scenarios remain unperformed.
+compares minimal receipt lookup with a later server-only registration index. The
+manual lookup slice is implemented separately; client persistence, durable
+registration and expiry policy remain design only. D1–D12 remain unperformed.
 
 ## User flow
 

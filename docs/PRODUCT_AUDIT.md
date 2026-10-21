@@ -253,6 +253,12 @@ registration for action claims. It does not close reload recovery or add persist
 browser storage. Retention, migration and implementation decisions remain open;
 all D1–D12 scenarios are unperformed.
 
+The subsequent [manual saved-operation lookup](OPERATION_LOOKUP.md) implements only
+the first read-only inspection slice, behind a separate disabled host capability.
+Eleven isolated UI/API/SQLite observations cover known-ID reload lookup, uncertainty,
+privacy, owner/store gates and unchanged persistence. No server registration,
+persistent client payload, automatic retry or durable-discovery claim is added.
+
 The later [request discovery follow-up](REQUEST_CONTEXT_LINKS.md#follow-up-bounded-request-discovery)
 adds bounded request pages and exact off-page selection. Nine direct API/storage
 observations and 13 subsequent rendered UI/API/disposable SQLite observations passed

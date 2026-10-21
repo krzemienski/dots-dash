@@ -19,6 +19,14 @@ export function createApi(options:RuntimeOptions){return async function handle(r
  if(!options.ownerId||!principal||principal.id!==options.ownerId)return json({error:'Owner authentication is not configured or this session is not authorized.'},401);
  const D=options.db;
  try{
+ if(path==='/api/operation-lookup'){
+  if(request.method!=='POST')return json({error:'Read-only lookup requires POST'},405);
+  if(new URL(request.url).search)return json({error:'Lookup identifiers belong in the JSON body'},400);
+  if(request.headers.get('origin')!==new URL(options.publicOrigin).origin)return json({error:'Same-origin request required'},403);
+  if(!options.engineering)return json({error:'Operation lookup is unconfigured'},503);
+  const body=await limitedBody(request,2000);
+  try{const result=await options.engineering({principal,method:'OPERATION_LOOKUP',body});return json(result.body,result.status)}catch{return json({error:'Receipt lookup unavailable. No operation outcome established.'},503)}
+ }
  if(path==='/api/browser-receipts'){
   if(request.method!=='GET')return json({error:'Method not allowed'},405);
   if(!options.browserReceiptReader)return json({status:'unconfigured',total:0,runs:[]});
