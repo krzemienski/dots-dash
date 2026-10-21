@@ -255,3 +255,14 @@ and dense maximum-size reviews remain unperformed. An isolated screen-reader
 driver was not exposed by the available tools; no system-wide settings or shared
 browser were used. The next acceptance step needs an owned assistive-technology
 environment to exercise those same journeys and record actual spoken outcomes.
+
+
+The heading-name follow-up initially used ambiguous hyphen-concatenated IDs:
+valid event IDs `foo` and `heading-foo` produced a duplicate target/heading ID.
+The later `review-heading-id-collision` ledger entry records reproduction in both
+orders and the correction: heading labels use a separate React-generated namespace,
+while all existing event/goal/task/receipt target IDs and source links remain stable.
+Five collision observations and ten existing-flow observations passed on the
+corrected source, including exact focus/names, reload, Request links, lookup and
+a local checklist receipt. Earlier evidence remains historical and did not cover
+this adversarial ID pair. Actual screen-reader acceptance remains unperformed.

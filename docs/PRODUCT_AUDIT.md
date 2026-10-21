@@ -309,3 +309,10 @@ source target named from its prose. Nine isolated accessibility-tree/keyboard
 UI/API/SQLite observations cover source focus, Request/task/review returns and
 lookup states. Actual screen-reader and dense-review acceptance remain open;
 these observations do not complete the general accessibility gate.
+
+
+Independent review subsequently found a valid-ID collision in that naming change.
+The [collision correction](SESSION_REVIEW.md#accessible-review-and-source-names)
+separates generated label IDs from stable navigation targets. Five isolated
+collision and ten existing-flow observations passed; the prior nine observations
+remain historical and did not cover the colliding IDs.

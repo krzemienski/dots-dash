@@ -1,5 +1,5 @@
 'use client';
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useId,useRef,useState} from 'react';
 import type {EngineeringState,SessionReview,Goal,SessionEvent,BrowserReceiptState} from '../lib/work/engineering';
 import ContextLinks from './context-links';
 import OperationLookup from './operation-lookup';
@@ -48,6 +48,9 @@ export function ReviewDetails({review,capabilities,busy,onSave,browserReceipts=n
  const [returnTaskId,setReturnTaskId]=useState<string|null>(null);
  const returnTask=review.tasks.find(task=>task.id===returnTaskId);
  const anchor=(kind:string,id:string)=>`session-${review.id}-${kind}-${id}`;
+ // Labels never share the source-target namespace; valid IDs may contain hyphens.
+ const labelPrefix='review-label-'+useId();
+ const heading=(kind:string,id:string)=>`${labelPrefix}-${kind}-${id}`;
  function navigate(kind:string,id:string,fromTask?:string){
   const target=document.getElementById(anchor(kind,id));
   if(!target)return;
@@ -58,8 +61,8 @@ export function ReviewDetails({review,capabilities,busy,onSave,browserReceipts=n
  }
  function returnToTask(id:string){navigate('task',id);setReturnTaskId(null)}
  const followSource=(event:React.MouseEvent<HTMLAnchorElement>,id:string)=>{event.preventDefault();navigate('event',id)};
- return <article className="card commitment-card session-review" id={'saved-session-review-'+review.id} tabIndex={-1} aria-labelledby={anchor('heading','review')}>
-  <span className="badge gray">{review.export.dataLabel}</span><h2 id={anchor('heading','review')}>{review.export.projectId} / {review.export.sessionId}</h2>
+ return <article className="card commitment-card session-review" id={'saved-session-review-'+review.id} tabIndex={-1} aria-labelledby={heading('review','title')}>
+  <span className="badge gray">{review.export.dataLabel}</span><h2 id={heading('review','title')}>{review.export.projectId} / {review.export.sessionId}</h2>
   <p>{review.coverage}</p><p>Captured {review.export.capturedAt} · review version {review.version}</p><p>Revision <code>{review.export.revision}</code> · source {review.export.sourceRef}</p>
   <SourceCoverage source={review.export}/>
   {review.export.admission&&<section aria-label="Selected record admission"><h3>Selected record admission</h3>
@@ -72,7 +75,7 @@ export function ReviewDetails({review,capabilities,busy,onSave,browserReceipts=n
   </section>}
   <OwnerReviewReports key={review.id} review={review}/>
   <h3>Intent and observable acceptance</h3>
-  {review.export.goals.map(goal=><section key={goal.id} className="bubble" id={anchor('goal',goal.id)} tabIndex={-1} aria-labelledby={anchor('goal-heading',goal.id)}><h4 id={anchor('goal-heading',goal.id)}>{goal.text}</h4>
+  {review.export.goals.map(goal=><section key={goal.id} className="bubble" id={anchor('goal',goal.id)} tabIndex={-1} aria-labelledby={heading('goal',goal.id)}><h4 id={heading('goal',goal.id)}>{goal.text}</h4>
    {returnTask?.goalId===goal.id&&<button type="button" className="inline-link" onClick={()=>returnToTask(returnTask.id)}>Back to remediation</button>}
    <p><strong>Expected behavior:</strong> {goal.expectedBehavior}</p><ol>{goal.userSteps.map((step,i)=><li key={i}>{step}</li>)}</ol><p>Intent sources: {goal.sourceEventIds.map(id=><a key={id} href={'#'+anchor('event',id)} onClick={event=>followSource(event,id)}>{id} </a>)}</p>
    {review.observations.filter(o=>o.goalId===goal.id).map(o=><div key={o.id}><p><strong>{o.result} · {o.basis}</strong> · {o.recordedAt}</p><p>{o.observed}</p><ol>{o.performedSteps.map((s,i)=><li key={i}>{s}</li>)}</ol><p>{o.sourceRef} · revision {o.revision}</p></div>)}
@@ -83,10 +86,10 @@ export function ReviewDetails({review,capabilities,busy,onSave,browserReceipts=n
   <BrowserEvidenceLinks state={browserReceipts} review={review}/>
   <CorrectionContext events={review.export.events} eventHref={id=>'#'+anchor('event',id)} onNavigate={id=>navigate('event',id)}/>
   <h3>Decisions, observed actions and claims</h3><p>These are export-attributed records. Evidence entries are not independently verified by this application.</p>
-  {review.export.events.map(event=><section className="bubble" key={event.id} id={anchor('event',event.id)} tabIndex={-1} aria-labelledby={anchor('event-heading',event.id)}><h4 id={anchor('event-heading',event.id)}>{event.kind} · {event.id} · {event.status}</h4><p>{event.text}</p><p>{event.sourceRef} · {event.sourceKind} · {event.basis}</p><p>Scope {event.outcomeScope} · outcome {event.outcome} · observed {event.observedAt}</p>{event.kind==='evidence'&&<EvidenceRevision event={event} reviewRevision={review.export.revision}/>}<details><summary>Revision and decision provenance</summary><p>Code {event.codeRevision} · requirement {event.requirementRevision}</p><p>Input hashes: {event.inputHashes.join(', ')||'Missing'}</p><p>Supersedes: {event.supersedes.join(', ')||'None recorded'}</p></details></section>)}
+  {review.export.events.map(event=><section className="bubble" key={event.id} id={anchor('event',event.id)} tabIndex={-1} aria-labelledby={heading('event',event.id)}><h4 id={heading('event',event.id)}>{event.kind} · {event.id} · {event.status}</h4><p>{event.text}</p><p>{event.sourceRef} · {event.sourceKind} · {event.basis}</p><p>Scope {event.outcomeScope} · outcome {event.outcome} · observed {event.observedAt}</p>{event.kind==='evidence'&&<EvidenceRevision event={event} reviewRevision={review.export.revision}/>}<details><summary>Revision and decision provenance</summary><p>Code {event.codeRevision} · requirement {event.requirementRevision}</p><p>Input hashes: {event.inputHashes.join(', ')||'Missing'}</p><p>Supersedes: {event.supersedes.join(', ')||'None recorded'}</p></details></section>)}
   <h3>Drift findings and remediation</h3>
-  {review.findings.map(finding=>{const task=review.tasks.find(t=>t.findingId===finding.id)!;const selected=review.export.skills.find(s=>s.id===task.selectedSkillId);const goal=review.export.goals.find(g=>g.id===task.goalId);const runs=review.runs.filter(run=>run.taskId===task.id);const latestRun=runs.at(-1);const observations=review.observations.filter(o=>o.goalId===task.goalId&&o.revision===review.export.revision);const latestObservation=observations.at(-1);return <section className="bubble" key={finding.id} id={anchor('task',task.id)} tabIndex={-1} aria-labelledby={anchor('task-heading',task.id)}>
-   <h4 id={anchor('task-heading',task.id)}>{finding.kind.replaceAll('_',' ')}</h4><p><strong>Assessment at import:</strong> {finding.critique}</p><p>{finding.basis} · {finding.status}</p><p>Sources: {finding.sourceEventIds.map(id=><a key={id} href={'#'+anchor('event',id)} onClick={event=>followSource(event,id)}>{id} </a>)}</p>
+  {review.findings.map(finding=>{const task=review.tasks.find(t=>t.findingId===finding.id)!;const selected=review.export.skills.find(s=>s.id===task.selectedSkillId);const goal=review.export.goals.find(g=>g.id===task.goalId);const runs=review.runs.filter(run=>run.taskId===task.id);const latestRun=runs.at(-1);const observations=review.observations.filter(o=>o.goalId===task.goalId&&o.revision===review.export.revision);const latestObservation=observations.at(-1);return <section className="bubble" key={finding.id} id={anchor('task',task.id)} tabIndex={-1} aria-labelledby={heading('task',task.id)}>
+   <h4 id={heading('task',task.id)}>{finding.kind.replaceAll('_',' ')}</h4><p><strong>Assessment at import:</strong> {finding.critique}</p><p>{finding.basis} · {finding.status}</p><p>Sources: {finding.sourceEventIds.map(id=><a key={id} href={'#'+anchor('event',id)} onClick={event=>followSource(event,id)}>{id} </a>)}</p>
    {goal?<><p><strong>Goal:</strong> {goal.text}</p><div className="review-navigation" role="group" aria-label="Goal and verification"><button type="button" className="inline-link" onClick={()=>navigate('goal',goal.id,task.id)}>View goal</button><button type="button" className="inline-link" onClick={()=>navigate('verification',goal.id,task.id)}>Record verification</button></div></>:<p>Scope unresolved: no goal is linked to this remediation.</p>}
    {finding.kind==='acceptance_gap'&&goal&&<div className="review-observation-context">
     {latestObservation?<><p>{observations.length} owner-reported {observations.length===1?'observation':'observations'} for this goal at revision {review.export.revision}.</p><p><strong>Latest owner report:</strong> {latestObservation.result} · {latestObservation.recordedAt}</p><p>{latestObservation.sourceRef}</p><button type="button" className="inline-link" onClick={()=>navigate('goal',goal.id,task.id)}>View recorded observations</button><p>Owner reports do not independently verify product behavior or complete remediation. Earlier reports remain in the goal history.</p></>:<p>No owner-reported observation for this goal at revision {review.export.revision}.</p>}
@@ -99,7 +102,7 @@ export function ReviewDetails({review,capabilities,busy,onSave,browserReceipts=n
   </section>})}
   <h3>User-selected skill inventory</h3>{!review.export.skills.length&&<p>No skills supplied.</p>}{review.export.skills.map(skill=><div className="bubble" key={skill.id}><h4>{skill.name}</h4><p>{skill.summary}</p><p>{skill.sourceRef} · revision {skill.revision}</p><p>Invocation scope: {skill.invocationScope}</p></div>)}
   <h3>Actual review receipts</h3><BrowserRunList state={browserReceipts} review={review} paging={browserPaging}/><h4>Local checklist receipts</h4>{!review.runs.length&&<p>No checklist has run. Provider agents are unconfigured.</p>}
-  {review.runs.map(run=><section className="bubble" key={run.id} id={anchor('run',run.id)} tabIndex={-1} aria-labelledby={anchor('run-heading',run.id)}><h4 id={anchor('run-heading',run.id)}>{run.state} · local checklist invocation</h4><button type="button" className="inline-link" onClick={()=>returnToTask(run.taskId)}>Back to remediation</button><p>{run.recordedAt} · {run.id}</p><p>Task {run.taskId} · skill {run.skillId} · {run.scope}</p><ul>{run.checks.map(check=><li key={check.check}>{check.check}: {check.result} · {check.sourceRefs.join(', ')||'No source receipt'}</li>)}</ul><p>Product acceptance: {run.acceptance} ({run.acceptanceBasis}). {run.productVerification.replaceAll('_',' ')}.</p><p>No external execution. Completing this review does not complete the remediation.</p><details><summary>Pinned execution evidence</summary><p>Revision {run.revision} · skill {run.skillRevision}</p><p>Input hash {run.inputHash}</p><p>Authorization hash {run.authorizationHash}</p></details></section>)}
+  {review.runs.map(run=><section className="bubble" key={run.id} id={anchor('run',run.id)} tabIndex={-1} aria-labelledby={heading('run',run.id)}><h4 id={heading('run',run.id)}>{run.state} · local checklist invocation</h4><button type="button" className="inline-link" onClick={()=>returnToTask(run.taskId)}>Back to remediation</button><p>{run.recordedAt} · {run.id}</p><p>Task {run.taskId} · skill {run.skillId} · {run.scope}</p><ul>{run.checks.map(check=><li key={check.check}>{check.check}: {check.result} · {check.sourceRefs.join(', ')||'No source receipt'}</li>)}</ul><p>Product acceptance: {run.acceptance} ({run.acceptanceBasis}). {run.productVerification.replaceAll('_',' ')}.</p><p>No external execution. Completing this review does not complete the remediation.</p><details><summary>Pinned execution evidence</summary><p>Revision {run.revision} · skill {run.skillRevision}</p><p>Input hash {run.inputHash}</p><p>Authorization hash {run.authorizationHash}</p></details></section>)}
  </article>;
 }
 
