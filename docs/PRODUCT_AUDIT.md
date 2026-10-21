@@ -301,3 +301,11 @@ the [recovery ledger](verification/session-save-recovery.json). Manual tab activ
 preserves an uncertain save during arrow-key exploration; exact replay, persisted
 reload/return and a stored Request shortcut were observed. General accessibility,
 screen-reader acceptance, actual-user V301 and durable recovery remain open.
+
+
+The later [review/source naming follow-up](SESSION_REVIEW.md#accessible-review-and-source-names)
+adds heading relationships after reproducing an unnamed review article and a
+source target named from its prose. Nine isolated accessibility-tree/keyboard
+UI/API/SQLite observations cover source focus, Request/task/review returns and
+lookup states. Actual screen-reader and dense-review acceptance remain open;
+these observations do not complete the general accessibility gate.

@@ -233,3 +233,25 @@ synthetic UI/API/SQLite observations, including lost-response reconciliation and
 320px/375px layout checks. Explicitly leaving Session review or reloading still
 loses the in-memory pending envelope. This is not durable recovery or a complete
 screen-reader/accessibility audit.
+
+
+### Accessible review and source names
+
+The review article is named by its visible project/session heading. Each source
+event destination is named by its visible kind, ID and status heading, consistent
+with the existing named goal/remediation sections. Source links still focus the
+exact retained event; names do not certify attribution, outcome or completeness.
+Heading-based region naming follows the [W3C example](https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html).
+
+The [recovery ledger](verification/session-save-recovery.json), entry
+`review-accessibility-names`, records nine isolated synthetic observations: named
+review/event targets, keyboard goal/remediation and Request/task/review returns,
+saved/unknown lookup result focus, unavailable-result alert semantics, 320px/375px
+layouts and unchanged persisted bytes during read-only navigation/reload.
+
+These are Chromium accessibility-tree and keyboard observations. Actual
+screen-reader speech, reading/rotor order, announcement timing, other browsers
+and dense maximum-size reviews remain unperformed. An isolated screen-reader
+driver was not exposed by the available tools; no system-wide settings or shared
+browser were used. The next acceptance step needs an owned assistive-technology
+environment to exercise those same journeys and record actual spoken outcomes.

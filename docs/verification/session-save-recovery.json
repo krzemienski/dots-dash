@@ -628,6 +628,114 @@
         "Synthetic evidence is not actual-user V301, transcript review, authorship or product-completeness certification."
       ],
       "nextTask": "Review a bounded screen-reader/focus journey with an explicitly owned supported assistive-technology environment; durable recovery still needs separate product decisions."
+    },
+    {
+      "id": "review-accessibility-names",
+      "observedAt": "2026-10-21T15:09:57.906169+00:00",
+      "baselineCommit": "fd0c1d7f120920562cf9e867636e8363508a8eb8",
+      "sourceBinding": {
+        "ui/session-review.tsx": "3ba13c9c03393b59e2357b9e059c950b010fde7cde44adc37f669e495c012c70",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/day-workspace.tsx": "40ef658f096604b20c4809d7727d7d46f70005fdbbe5e45e9cdf781cebb839b8",
+        "ui/styles.css": "24a13540951d1a6759bc0a34da540e384b03c52114d8badc45eba65cba925cb9",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd",
+        "examples/request-context.synthetic.json": "28dd42fca3cee5384501080b7e1d23754ec11c90d868a84e4ac3a3b7cde639ac"
+      },
+      "dataLabel": "TEST DATA",
+      "goal": "Identify the current review and source-link destination by visible heading; follow Request/task/review links and distinguish saved, unknown and unavailable lookup results.",
+      "baselineObserved": [
+        "Keyboard intent link focused a generic AX node whose computed name included event prose and provenance.",
+        "Review article AX node had an empty accessible name."
+      ],
+      "rootCause": "Review article and event target sections lacked explicit heading relationships; existing goal and remediation sections already had them.",
+      "remediation": "Add aria-labelledby relationships and IDs to existing visible review/event headings. No navigation, data, permission or persistence behavior changed.",
+      "reference": "https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html",
+      "observations": [
+        {
+          "id": "A1",
+          "outcome": "Imported review article exposes its visible project/session heading as its accessible name.",
+          "result": "pass"
+        },
+        {
+          "id": "A2",
+          "outcome": "Keyboard source link focuses a named region; every retained event has its visible kind/ID/status heading as name, without event prose in the name.",
+          "result": "pass"
+        },
+        {
+          "id": "A3",
+          "outcome": "Existing keyboard remediation \u2192 goal \u2192 remediation focus and heading names remain intact.",
+          "result": "pass"
+        },
+        {
+          "id": "A4",
+          "outcome": "Keyboard save and Request/task/review return controls land on correctly named targets; review article retains project/session identity.",
+          "result": "pass"
+        },
+        {
+          "id": "A5",
+          "outcome": "Keyboard lookup of persisted association focuses named result; AX tree exposes polite status, saved receipt and non-completion wording remain visible.",
+          "result": "pass"
+        },
+        {
+          "id": "A6",
+          "outcome": "Unknown lookup focuses the same named result while preserving unknown-outcome and no-safe-retry wording.",
+          "result": "pass"
+        },
+        {
+          "id": "A7",
+          "outcome": "Synthetic transport unavailability exposes assertive alert semantics and removes stale result; spoken announcement not tested.",
+          "result": "pass"
+        },
+        {
+          "id": "A8",
+          "outcome": "Named source targets persist at 320/375px without page overflow and after reload. Both SQLite files remain byte-identical through read-only navigation/lookups.",
+          "result": "pass"
+        },
+        {
+          "id": "A9",
+          "outcome": "No browser storage, external browser requests or page errors. Exact persisted history retained; screen-reader speech and shared desktop remain untested/untouched.",
+          "result": "pass"
+        }
+      ],
+      "verificationBasis": "Rendered React + Node API + fixed Python worker + disposable SQLite. Chromium CDP Accessibility.getPartialAXTree reads actual browser roles/names/live properties. This is accessibility-tree and keyboard evidence, not a screen-reader result.",
+      "persistence": "UI import and task-link save produced two operations, one review audit and one link audit. After those intended saves, both SQLite files stayed byte-identical through source navigation, operation lookups and reload; original review JSON and link records unchanged.",
+      "externalRequests": 0,
+      "pageErrors": [],
+      "visualInspection": "Inspected 375px source-focus screenshot: visible outlined intent event, retained TEST DATA/provenance/unknown outcome and no horizontal overflow. Both 320/375px overflow checks passed.",
+      "attempts": [
+        "First baseline harness waited on all selects, including intentionally disabled unrelated controls, and timed out; corrected wait scoped to review refresh. No application defect inferred from that timeout.",
+        "Corrected baseline reproduced both AX naming observations. Final nine-scenario run passed on final runtime source."
+      ],
+      "checks": [
+        "npm test: 14 passed, 0 failed",
+        "npm run typecheck: passed",
+        "npm run build: passed",
+        "Final source bindings, build manifest input hashes, ledger JSON and changed documentation links checked",
+        "git diff --check: passed"
+      ],
+      "skills": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Outcome-first source-backed reproduction, minimal heading bindings, actual UI/API/persistence verification and explicit coverage limits. Previously read systematic-debugging and verification-before-completion guidance also applied.",
+        "verified": "Nine scoped synthetic observations; manual guidance use, not automatic skill invocation or a runner receipt."
+      },
+      "cleanup": "Fresh owned headless Chromium/context, random-port localhost server and SQLite handles closed in finally. No shared browser/profile, desktop focus or system accessibility setting accessed.",
+      "limits": [
+        "No isolated screen-reader driver was exposed by the available tools; actual speech, rotor/browse-mode behavior, reading order and announcement timing remain unperformed. No claim that screen-reader software is absent from the machine.",
+        "Chromium only; no Safari/Firefox or full accessibility certification.",
+        "Fixture-scale named regions only; dense maximum-size review landmark usability unperformed.",
+        "Transport error was a synthetic 503 injection, not a real provider outage.",
+        "Lookup-to-current-review button focus was not exercised in this pass; Request/task/review return navigation was.",
+        "No durable pending-envelope recovery, real-owner V301, live identity/provider, original-source coverage or authorship claim."
+      ],
+      "nextTask": "In a separately owned supported assistive-technology environment, validate spoken review/event names, Request return context, saved/unknown/error announcements and dense-review navigation; retain failed or unperformed outcomes without changing system-wide settings."
     }
   ]
 }
