@@ -709,6 +709,109 @@
       "cleanup": "Owned browser/server/store handles closed. Shared Chrome, production, providers and other workers untouched.",
       "publication": "Local only; earlier 116e502 documentation commit and publication hold preserved. No push or PR update.",
       "nextTask": "Define bounded owner/store event-input contract with occurrence/review times, producer evidence and corrections before claiming verified-work V312."
+    },
+    {
+      "id": "local-selected-review-evidence-history",
+      "date": "2026-10-21",
+      "baseRevision": "86dea069c00baa13542c7eb95ab736f0fad15209",
+      "label": "TEST DATA / LOCAL ONLY",
+      "acceptance": "docs/REVIEW_EVIDENCE_HISTORY.md H1-H6; primary outcomes stated before implementation",
+      "baseline": "Actual isolated import retained timestamps and supersession but had no date-scoped evidence history.",
+      "method": "Owned isolated headless UI, real localhost Node/Python API, disposable SQLite. Existing synthetic visible-export fixture with later correction timestamp; actual UI owner reports and local checklist.",
+      "observations": [
+        {
+          "name": "H1: selected-day original negative/superseded evidence retains a later correction link",
+          "result": "pass",
+          "detail": {
+            "original": "old-block",
+            "correctionOutsideDay": "new-decision",
+            "bytesUnchanged": true
+          }
+        },
+        {
+          "name": "H2: supplied observation day respects zone boundary and rejects unknown zone",
+          "result": "pass",
+          "detail": {
+            "occurrenceTime": "not inferred"
+          }
+        },
+        {
+          "name": "H3: microsecond server timestamps group saved reports/receipt without changing historical acceptance",
+          "result": "pass",
+          "detail": {
+            "reportSavedAt": "2026-10-21T21:02:05.280911+00:00",
+            "receiptRecordedAt": "2026-10-21T21:02:05.801122+00:00",
+            "acceptance": "fail",
+            "productVerification": "not_independently_verified"
+          }
+        },
+        {
+          "name": "H4: exact report/receipt navigation is read-only",
+          "result": "pass",
+          "detail": {
+            "exportUnchanged": true
+          }
+        },
+        {
+          "name": "H5: reload/narrow keyboard/empty-day preserve evidence and unknown scope",
+          "result": "pass",
+          "detail": {
+            "humanAcceptance": "unperformed",
+            "screenReader": "unperformed"
+          }
+        }
+      ],
+      "unperformed": [
+        {
+          "case": "H6",
+          "reason": "Cached Playwright module disappeared; next attempt failed at module resolution before executing. Remaining installed driver expects absent Chromium 1247. No install or shared-browser substitution."
+        }
+      ],
+      "sourceHashes": {
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da",
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "lib/work/history-time.mjs": "09b8b6866f5dab02173b57a83ae5f95998b80c1adfa0800e7bf4a0a6d79cd30d",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd"
+      },
+      "buildOutputs": {
+        "dist/main.js": "948e853c7267b573fb01d692e6bf24494d199bc83887317ff4c1ab6dd6054088",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "checks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed; hashes match five completed workflow cases",
+        "screenshot": "Partial narrow long-page capture inspected; no full visual certification",
+        "documents": "Relative targets, JSON and diff checked before commit"
+      },
+      "pageErrors": [],
+      "externalRequests": 0,
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Scoped existing evidence by time basis, retained negative/correction history and separated owner reports from independent receipt and occurrence claims.",
+        "verified": "Five real isolated workflow cases; manual guidance application, not automatic invocation. H6 not performed."
+      },
+      "limits": [
+        "Single saved review only, not all daily work, all transcripts or full V312.",
+        "Supplied observedAt and saved recordedAt do not establish actual workflow occurrence.",
+        "No retained-item correction stream or browser-receipt aggregation; no cross-store identity invented.",
+        "H6, maximum-preview boundary, unusable legacy timestamp, excluded correction endpoint, screen-reader and human-owner acceptance unperformed."
+      ],
+      "cleanup": "Owned completed-run resources closed; failed later driver never launched. Shared Chrome and other workers untouched.",
+      "publication": "Local only; no push, merge, deploy or production write.",
+      "nextTask": "Restore authorized isolated driver/browser pairing and verify scoped-correction H6; broader event contract remains a separate reviewed dependency."
     }
   ]
 }

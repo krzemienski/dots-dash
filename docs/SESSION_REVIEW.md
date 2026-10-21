@@ -1,5 +1,10 @@
 # Local session intent and drift slice
 
+Local-only [evidence history by day](REVIEW_EVIDENCE_HISTORY.md) separates supplied
+source observation time from report save and checklist receipt times, retaining
+correction context. Five isolated scenarios passed; scoped-correction H6 remains
+unperformed because the isolated validation browser dependency is unavailable.
+
 The [selected-review next-steps summary](REVIEW_NEXT_STEPS.md) connects each goal
 to recorded remediation, skill selection, checklist receipts and owner-reported
 observations. It is read-only and never certifies completion or grants execution.
