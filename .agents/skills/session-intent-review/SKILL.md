@@ -1,6 +1,6 @@
 ---
 name: session-intent-review
-description: Review permitted visible exports against source-linked intentions, scoped decisions and observable end-user acceptance, then draft bounded remediation.
+description: Review selected session evidence or session-accountability behavior against source-linked intent and observable acceptance, then draft bounded remediation. Use for session intent/drift work, not unrelated edits or catalog-only discovery.
 ---
 
 # Session intent review
@@ -33,6 +33,10 @@ applicability is a recommendation; selection is not evidence of invocation.
    and verification basis. Owner reports remain distinct from independent
    receipts. Skill invocation requires an actual adapter receipt identifying
    scope; the local declarative checklist is not execution of a full skill.
+   Separately record any guidance manually read and applied: exact skill source
+   and hash, routing reason, affected decision/artifact, verification result and
+   limits. A selected catalog entry or unchanged historical result supplies no
+   new application evidence. Use the [skill evidence record](../../../docs/SKILL_WORKFLOW.md#evidence-record).
 8. Report concrete changes, observed behavior and remaining gaps. Publication,
    model calls, external application actions and deployment each require their
    own existing authorization; this workflow creates none.

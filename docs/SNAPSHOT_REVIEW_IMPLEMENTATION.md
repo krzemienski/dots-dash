@@ -1,5 +1,7 @@
 # Owner-asserted snapshot/review associations
 
+> Status reconciliation, 21 October 2026: the later [isolated publication report](verification/source-review-publication.md) exercised the principal paths described here. “Unperformed” and holds below describe the original design/implementation baseline, not the later publication workflow. Not every fault permutation or real-owner/production scenario is verified. See the [product audit](PRODUCT_AUDIT.md) for current source bindings and remaining gaps.
+
 > Historical design and implementation context. See [current scoped verification](verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
 
 Baseline: `730cd5af8ce98225bb35094a9668d687c52d5a22`.

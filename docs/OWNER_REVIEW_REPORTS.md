@@ -56,3 +56,47 @@ Existing tests (14), final typecheck, build and Python AST parsing passed; these
 static checks do not substitute for owner acceptance. Prior reports remain
 historical to their recorded hashes. Actual-user V301, original transcript
 coverage, verified authorship and production acceptance remain unestablished.
+
+
+## Retained source inspection without leaving the review
+
+Activating a retained item's source reference now uses the existing Session review
+event-navigation callback. It focuses and scrolls to that exact retained event
+without changing the dashboard route. Previously the fragment was treated as an
+unknown page and switched to Overview, unmounting the report form. The source
+reference remains an opaque provenance label; no original source is opened.
+
+The [follow-up ledger](verification/owner-review-reports.json) records eight
+actual isolated TEST DATA UI/API/SQLite observations: all retained targets, draft
+preservation, uncertain-save preservation, identical replay without duplicate
+checkpoints, unknown attribution, unresolved correction, reload and 320/375px
+layouts. Inspection leaves persisted bytes and reported coverage unchanged.
+Explicitly leaving/reloading still loses any pending in-memory envelope, and
+opening these fragment references as standalone deep links is not supported.
+This follow-up changes neither the retained-selection denominator nor the
+unknown original-transcript coverage or the owner-reported evidence basis.
+
+
+## Historical reports and displayed-selection freshness
+
+Historical manifest counts remain tied to their immutable normalized selection.
+The panel separately shows creation/displayed review versions and target relevance
+at the last report read. A version-only observation or checklist activity changes
+no selection identity and adds no reported review progress.
+
+Source links and new report controls require both matching last-read server
+relevance and a matching displayed export digest, review/project and analysis pins.
+Stale, missing or unresolved material stays visible as historical metadata without
+a source link. Candidate manifest creation also waits for the displayed selection
+to match the candidate. Failed browser digest computation stays unresolved.
+Refresh Session review and owner review reports to compare a newly loaded target;
+no continuous monitoring or cross-read atomicity is implied. Exact pending replay
+retains its existing server checks and is not replaced by a new operation.
+
+The [freshness follow-up](verification/owner-review-reports.json) records ten
+isolated UI/API/SQLite observations, including version-only activity, same-version
+changed content, stale display versus matching server pins, a new manifest with
+no inherited progress, missing/unavailable targets, reload and unavailable digest.
+Changed/restored/missing storage rows were explicitly synthetic fixtures, not
+production restoration acceptance. Original reports/checkpoints remain historical.
+This comparison proves neither original-source access nor verified authorship.

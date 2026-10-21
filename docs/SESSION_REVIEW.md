@@ -1,5 +1,9 @@
 # Local session intent and drift slice
 
+The [selected-review next-steps summary](REVIEW_NEXT_STEPS.md) connects each goal
+to recorded remediation, skill selection, checklist receipts and owner-reported
+observations. It is read-only and never certifies completion or grants execution.
+
 > Historical design and implementation context. See [current scoped verification](verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
 
 The Day workspace's **Session review** tab connects permitted export evidence
@@ -64,7 +68,31 @@ executable, arguments, paths, environment, owner or capabilities. The worker
 receives no inherited credential environment. It has no HTTP listener, shell
 tools, provider SDK client or external side effects. It has a ten-second host
 timeout and bounded input/output. A timeout reports an unconfirmed operation;
-refresh the ledger and use the same request ID to reconcile.
+keep Session review open and use **Reconcile exact pending save**. The UI resends
+the original request ID, serialized payload and version pins. This may finish a
+previously uncommitted operation; server authorization and capability checks
+still apply. New session saves and review switching stay blocked until the
+operation is confirmed. A read-only refresh alone does not clear uncertainty.
+
+A confirmed POST followed by a failed GET is shown as **Saved, but refresh
+failed**. **Refresh confirmed save** only reads persisted records; it never
+submits another operation. A first definitive rejection is reported separately.
+A rejection during reconciliation keeps the original uncertain envelope, because
+it cannot disprove a prior commit.
+
+Recovery is in memory only. Leaving Session review or reloading discards the
+envelope; no payload is written to browser storage and no replay happens on
+remount. Inspect persisted records before any new save after leaving. Durable
+cross-navigation recovery is not implemented. The separate default-off
+[manual operation lookup](OPERATION_LOOKUP.md) can inspect a known shared-store
+receipt after reload without resubmission or clearing an uncertain form. It is not
+automatic operation discovery. The separate retained-record report workflow has its own
+recovery contract. See the [isolated recovery evidence](verification/session-save-recovery.json).
+
+The [proposed cross-reload reconciliation contract](DURABLE_OPERATION_RECONCILIATION.md)
+compares minimal receipt lookup with a later server-only registration index. The
+manual lookup slice is implemented separately; client persistence, durable
+registration and expiry policy remain design only. D1–D12 remain unperformed.
 
 ## User flow
 
@@ -105,12 +133,17 @@ reader or processing checkpoint. Selected persistence/UI workflows now have
 original-source access and processing remain unavailable.
 The [read-only inventory pagination](SOURCE_INVENTORY_PAGINATION.md) exposes
 older saved inventories with explicit browsing and selected-record scope.
-Its 51-inventory acceptance remains unperformed.
+The 51-inventory principal path was subsequently exercised in the
+[isolated publication workflow](verification/source-review-publication.md);
+that report remains historical to its pinned source files.
 The [snapshot-to-review association design](SNAPSHOT_REVIEW_ASSOCIATIONS.md)
 defines an owner assertion with separate identity/freshness pins and
 append-only correction/revocation. The [bounded implementation](SNAPSHOT_REVIEW_IMPLEMENTATION.md)
-adds a separate default-off contract and display. Its eight acceptance scenarios
-remain unperformed; association supplies no read/processing certificate.
+adds a separate default-off contract and display. The subsequent
+[isolated publication workflow](verification/source-review-publication.md) covers
+the principal association scenarios, not every fault permutation. Association
+supplies no read/processing certificate. See the [current product audit](PRODUCT_AUDIT.md)
+for later evidence and remaining gates.
 
 `GET /api/engineering` returns schema version, capability states, a metadata
 index of the latest 50 reviews, the total count and one complete review.
@@ -188,3 +221,69 @@ implementation roles. Imported artifact roles remain unknown. This optional
 read-only response annotation changes no receipt or historical outcome. All six
 defined artifact scenarios passed in the owned synthetic browser workflow at
 `1d54ae105fadae850959e487e4b0cae303407855`; broader product acceptance remains open.
+
+
+### Keyboard workspace navigation
+
+The workspace uses manually activated tabs. Left/Right arrows wrap between tabs;
+Home/End focus the first/last tab. These keys only move focus, preserving the active
+review and any in-memory pending save. Enter/Space explicitly selects a view. Tab
+leaves the list for the active named panel; re-entering the list returns to its
+selected tab. Focus has a visible outline.
+
+This follows the [W3C tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/).
+The [verification ledger](verification/session-save-recovery.json) records nine
+synthetic UI/API/SQLite observations, including lost-response reconciliation and
+320px/375px layout checks. Explicitly leaving Session review or reloading still
+loses the in-memory pending envelope. This is not durable recovery or a complete
+screen-reader/accessibility audit.
+
+
+### Accessible review and source names
+
+The review article is named by its visible project/session heading. Each source
+event destination is named by its visible kind, ID and status heading, consistent
+with the existing named goal/remediation sections. Source links still focus the
+exact retained event; names do not certify attribution, outcome or completeness.
+Heading-based region naming follows the [W3C example](https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html).
+
+The [recovery ledger](verification/session-save-recovery.json), entry
+`review-accessibility-names`, records nine isolated synthetic observations: named
+review/event targets, keyboard goal/remediation and Request/task/review returns,
+saved/unknown lookup result focus, unavailable-result alert semantics, 320px/375px
+layouts and unchanged persisted bytes during read-only navigation/reload.
+
+These are Chromium accessibility-tree and keyboard observations. Actual
+screen-reader speech, reading/rotor order, announcement timing, other browsers
+and dense maximum-size reviews remain unperformed. An isolated screen-reader
+driver was not exposed by the available tools; no system-wide settings or shared
+browser were used. The next acceptance step needs an owned assistive-technology
+environment to exercise those same journeys and record actual spoken outcomes.
+
+
+The heading-name follow-up initially used ambiguous hyphen-concatenated IDs:
+valid event IDs `foo` and `heading-foo` produced a duplicate target/heading ID.
+The later `review-heading-id-collision` ledger entry records reproduction in both
+orders and the correction: heading labels use a separate React-generated namespace,
+while all existing event/goal/task/receipt target IDs and source links remain stable.
+Five collision observations and ten existing-flow observations passed on the
+corrected source, including exact focus/names, reload, Request links, lookup and
+a local checklist receipt. Earlier evidence remains historical and did not cover
+this adversarial ID pair. Actual screen-reader acceptance remains unperformed.
+
+
+### Refresh preserves the selected review
+
+**Refresh session reviews** reloads the currently displayed review by exact ID.
+A pending save's review ID and an explicitly selected/navigation target retain
+precedence. Refreshing an older review no longer silently switches to the newest
+one or removes its observation draft. Missing/unavailable responses remain errors
+against that selection rather than a fallback to another review.
+
+The [recovery ledger](verification/session-save-recovery.json), entry
+`selected-review-refresh`, records seven isolated TEST DATA observations: draft
+preservation, failing observation/checklist context, explicit selection, exact
+lost-response replay while a newer review arrives, error handling and keyboard/
+narrow-layout refresh. Initial mount and full page reload still load the existing
+latest-review default. No persistent selection or durable draft/retry storage is
+added; explicit departure or reload can still lose unsaved state.

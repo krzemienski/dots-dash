@@ -1,5 +1,7 @@
 # Work dashboard product requirements version 3
 
+> Current status index: [product and completion audit, 21 October 2026](../PRODUCT_AUDIT.md). Later isolated TEST DATA evidence covers principal context-link, inventory-pagination, association and correction workflows. Earlier blocked/unperformed statements below remain historical; actual-user V301, production integrations and full Python cutover remain open.
+
 > Historical design and implementation context. See [current scoped verification](../verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
 
 ## Product outcome
@@ -65,7 +67,7 @@ bug until its canonical semantics are established.
 The [correction context display](../CORRECTION_CONTEXT_DISPLAY.md) compares
 explicit supersession metadata and keeps original outcomes visible separately
 from active findings. Differences require review; matching metadata does not
-validate a correction. Its functional acceptance remains unperformed.
+validate a correction. Later [isolated correction acceptance](../verification/source-review-publication.md) exercised its principal paths; broader real-owner and production acceptance remains open.
 FR23: Show skill applicability, selection and proven invocation separately.
 A local declarative checklist receipt must identify that limited scope and
 must not claim the full skill or a provider agent executed.

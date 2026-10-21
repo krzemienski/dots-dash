@@ -1,0 +1,451 @@
+{
+  "label": "Sanitized product scope, completion and mockup audit",
+  "recordedAt": "2026-10-21T09:32:41.767873+00:00",
+  "baseline": "a059e971af73b4a830690426e9fdf1f89afcdee4",
+  "scope": "Documentation reconciliation and proposed synthetic experiences only; no application runtime source changed.",
+  "intentBasis": {
+    "repository": "FR01\u2013FR23 and existing F/V acceptance plans",
+    "supplement": "Bounded original-intent research supplied by parent; not independently retrieved and not all correspondence",
+    "privateContentPublished": false
+  },
+  "sourceBindings": {
+    "docs/APPLICATION_SETUP.md": "3789db3e9988a8b3cf9af34e3b84b6e543254b7e296c7320f60c4964e455f889",
+    "docs/ARCHITECTURE.md": "108b07bbf89d59c86665115bfa2950e836ea1d9f5772fd59f166bff0fd1c75fa",
+    "docs/ARTIFACT_EVIDENCE_DISPLAY.md": "1026f65085e1044020265a8dd3de885f0cc57d0f0adb187b0fb96aa2fe9fd5db",
+    "docs/BROWSER_RECEIPT_PAGINATION.md": "8a21027109cb8fe0eda4ad31d9106495c95246f3d8df7e44e13f3ed6eb6ff1df",
+    "docs/BROWSER_RUNTIME_RELEVANCE.md": "e2f78684e72f4b47369000ad8f5337cbcfe2c4fda7f01a92f1cd8e843bfb3776",
+    "docs/CORRECTION_CONTEXT_DISPLAY.md": "8574584c3c9390252ee3382883ecf88f9edd37dce1095927acd3d2428eab6ac4",
+    "docs/DERIVED_REMEDIATION_CONTEXT.md": "fbacfa1eabd07f4a9eea5cff484af76dea10bb06170e1fbe1859803d3e652f73",
+    "docs/LIFECYCLE_RACE_GUARDS.md": "514e451414d98c8156fc07df7ba2c1e44ab58507025ebab66fe5c63c25754f33",
+    "docs/OWNED_BROWSER_RECEIPTS.md": "3006cd3a5b7c7db05fb247d2e6c5c3a9f03ab5149aaf063b0ab41251b63c2da4",
+    "docs/OWNED_PROCESS_SUPERVISION.md": "8a823dd4f39f7daef306620af3022b95c7f4f22c837dd4795325c5ddeea4c3a2",
+    "docs/OWNER_REVIEW_REPORTS.md": "de826ad83991815e7cfb2b24e12cb44de4245bdd2ff541952de1c2372362c673",
+    "docs/PYTHON_DECISION_REHEARSAL.md": "40403b7e57e8337a18bac1620b4458211425b3bbac4e7754cccbd85edf90141c",
+    "docs/PYTHON_READ_COMPATIBILITY.md": "feecb8bfccf2e3c4c47f103807b487288df6c11546bfe2b0573d44821f41eb40",
+    "docs/REPLAY_AND_HANDOFF_REHEARSAL.md": "62db72f15569c3a9cb1da6ef7fc9e073c7f16503deb6448031983b716f8e0877",
+    "docs/REQUEST_CONTEXT_LINKS.md": "03728ae63e45ceb84bbfcd605f01eb6c41b9171cb778212b1578feffb238d117",
+    "docs/SELECTED_RECORD_ADMISSION.md": "69c441c58d109108ff043b38f869a3b97abe4b06d6579130e8b04ff12c8dbe92",
+    "docs/SESSION_REVIEW.md": "93a4d659329f8e35d66f74923e70cff79a57335618f02a5b5b4f086b73d8ce05",
+    "docs/SETUP.md": "11616b74dd2e56c787d8966748c4c483566a32b617f15520e257720b4a36a3fc",
+    "docs/SKILL_WORKFLOW.md": "3894fde42900b580f4278915308b861502098787c4c6216cb0aa2edbc9d0b948",
+    "docs/SOURCE_INVENTORY.md": "4b7ede54e7a51067240bed6df723251c660c84e8de505ee96ddd9e4ff577b308",
+    "docs/SOURCE_INVENTORY_PAGINATION.md": "794a17b20654fed50d31846ef02425d9eaa3c0135869564763640aa69fa0aa6c",
+    "docs/build-package/02-prd-v2.md": "59de9891299aaae50ce41de4c321c5a34d2981bd8b68d99832e57fe1301c2e5d",
+    "docs/build-package/03-functional-technical-spec.md": "e6f332c5a9f39c0317891e645b23d9ba2a7588344fc7d881d0860c02f989ca91",
+    "docs/build-package/04-domain-event-schema.md": "4afe7efe7dc49568a6d449798c1279f710300faaef01e50513b27b9776e1d5ba",
+    "docs/build-package/06-ux-flows.md": "11696abbb286b661902a92b0627a0aa1896bde59c001fcf53391fbb37db6504d",
+    "docs/build-package/07-connectors-and-bridge.md": "c494084a0df9b2f174a47f9373a3bf637d354cca36e1d4d6ac3896f9fddf9a31",
+    "docs/build-package/11-verification-plan.md": "0f4d6dbe197787928438b6cd01fc81a6f2783644c73a3cb5a9100afc3cfe81ca",
+    "docs/build-package/12-release-roadmap.md": "77545409c6c33cfc52dbe2a65feeb431bd57b513b214338ca06824c11d55b365",
+    "docs/build-package/13-engineering-contexts-and-execution.md": "c14a51a48f4fe39c4aab499c5b735226f3bb3083048fc5a101d1c5427931e980",
+    "docs/build-package/14-python-migration-and-v3-acceptance.md": "81de2ce7f83a2553aa97de73a4cfa30386510978b194b6ada6db13cf772ff560",
+    "docs/build-package/16-source-coverage-checkpoints.md": "716af161fc9a43f888c0e1482404554ac9bb5fb1c159438734e88d9f217a1e04",
+    "docs/mockups/product-review.html": "36de7528922c88f2b1d9b10f2e5361942379aae5be4e41615fd842acbc27b04f",
+    "docs/verification/derived-remediation-context.json": "3e9a884239f11b85d041d7beaf23290965b134ce39b8504b035a2beca2545e7c",
+    "docs/verification/owner-review-reports.json": "032d12f54d7dc05b45ea7c2c24f65c653ef34208d5afb1435d7a15e226e52433",
+    "docs/verification/selected-record-admission.json": "ed746e0ed982be92eee2f6689038f2c1a3d79271e3a8898372fa0d368da63a9d",
+    "docs/verification/session-save-recovery.json": "1e8ae53a216f9fde5cd23d6751820576deb65df718a64ca610c07c8f5ed87dd0",
+    "docs/verification/skill-workflow.json": "ccfbbfbed8cfce5b7da2b9b7ff2e0cd97fb0bb674501bd7531e2b76c454e7772",
+    "docs/verification/source-review-publication.json": "2754321a479ce732b310ce88dc22d78bb4dbd13f5d3b76d6040cae24e65f42bc",
+    "lib/work/contracts.ts": "01f51dea4ac588cbfe3ba75b8e8d33fa8e829ee8e26c3e80f88592e718c2b40f",
+    "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+    "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+    "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+    "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+    "server/api.ts": "d2a2d1822a2de84b8bab01b0fd0d237c822ccf3db3c9050f4c45078899c298f8",
+    "server/engineering.mjs": "610262982773c6c180814c33df5b58ac94078c59cc7aa5fe1976f14d7060577e",
+    "server/start.mjs": "ba03c0e5e8e6bd42397e0641b045d426eb15d3021417356b62efc465c14e3d2f",
+    "ui/commitments.tsx": "b38c7c8fffe547bae6db9bddb2d79a55ddc52d3822c3552d724990c78f33fa27",
+    "ui/context-links.tsx": "0bc6b1ffb25c2d0136b865d6ee74f4fb9a72b78adf1fe6f2e399cce3ecb8483a",
+    "ui/dashboard.tsx": "18519d98e8a350166213bc68a875e0a29b2fcf27208cb38fa69f3e5d72374f7a",
+    "ui/day-workspace.tsx": "f2038fb5f57f831fe9c37e18c1cb9cd9921b3e96b43c6a1fa202011d7addd48c",
+    "ui/history-views.tsx": "dbb6d8065a1c8b2a4dc9cdcc66c05e663a8fee16dc8f58b48cc7292182cfc904",
+    "ui/session-review.tsx": "ea198d015e806a0b77f2631fe9749509ee1a32301e85545af747655ca3277d45"
+  },
+  "historicalEvidenceComparison": [
+    {
+      "report": "docs/verification/source-review-publication.json",
+      "reportHash": "2754321a479ce732b310ce88dc22d78bb4dbd13f5d3b76d6040cae24e65f42bc",
+      "observationEntries": 86,
+      "matchingFiles": [
+        "db/0001_empty.sql",
+        "examples/request-context.synthetic.json",
+        "examples/session-review.synthetic.json",
+        "lib/work/contracts.ts",
+        "lib/work/correction-context.ts",
+        "lib/work/history-time.mjs",
+        "lib/work/history-validation.mjs",
+        "lib/work/history.ts",
+        "lib/work/snapshot-associations.ts",
+        "lib/work/source-coverage.ts",
+        "lib/work/source-inventory.ts",
+        "lib/work/validation.mjs",
+        "output/playwright/evidence-relevance/matching-export.json",
+        "package-lock.json",
+        "package.json",
+        "python/dots_engineering/__init__.py",
+        "python/dots_engineering/context_links.py",
+        "python/dots_engineering/contracts.py",
+        "python/dots_engineering/decision_rehearsal.py",
+        "python/dots_engineering/handoff_rehearsal.py",
+        "python/dots_engineering/history_rehearsal.py",
+        "python/dots_engineering/history_time.py",
+        "python/dots_engineering/history_validation.py",
+        "python/dots_engineering/instruction_rehearsal.py",
+        "python/dots_engineering/legacy_read.py",
+        "python/dots_engineering/lifecycle_lock.py",
+        "python/dots_engineering/rehearsal_receipts.py",
+        "python/dots_engineering/rehearsal_supervisor.py",
+        "python/dots_engineering/review.py",
+        "python/dots_engineering/runner.py",
+        "python/dots_engineering/snapshot_associations.py",
+        "python/dots_engineering/source_inventory.py",
+        "python/dots_engineering/store.py",
+        "python/dots_engineering/supervision_state.py",
+        "python/rehearse_decisions.py",
+        "python/rehearse_history.py",
+        "python/rehearse_instructions.py",
+        "scripts/build.mjs",
+        "server/browser-receipt-reader.mjs",
+        "server/browser-receipt-storage.mjs",
+        "server/browser-runtime-relevance.mjs",
+        "server/browser-workflow-driver.mjs",
+        "server/owned-browser-receipts.mjs",
+        "server/rehearsal-fence.mjs",
+        "server/rehearsal-transport.mjs",
+        "server/rehearse-handoff.mjs",
+        "server/store.mjs",
+        "server/supervised-rehearsal.mjs",
+        "tests/api.test.mjs",
+        "tests/core.test.mjs",
+        "tests/ui-render.test.mjs",
+        "ui/browser-receipts.tsx",
+        "ui/commitments.tsx",
+        "ui/context-links.tsx",
+        "ui/correction-context.tsx",
+        "ui/dashboard.tsx",
+        "ui/day-workspace.tsx",
+        "ui/history-views.tsx",
+        "ui/main.tsx",
+        "ui/observations.tsx",
+        "ui/snapshot-associations.tsx",
+        "ui/source-coverage.tsx",
+        "ui/source-inventory.tsx",
+        "ui/styles.css"
+      ],
+      "changedOrMissingFiles": [
+        "lib/work/engineering.ts",
+        "python/dots_engineering/service.py",
+        "python/worker.py",
+        "server/api.ts",
+        "server/engineering.mjs",
+        "server/start.mjs",
+        "ui/session-review.tsx"
+      ],
+      "runtimeRerun": false
+    },
+    {
+      "report": "docs/verification/selected-record-admission.json",
+      "reportHash": "ed746e0ed982be92eee2f6689038f2c1a3d79271e3a8898372fa0d368da63a9d",
+      "observationEntries": 28,
+      "matchingFiles": [
+        "python/dots_engineering/admission.py",
+        "python/dots_engineering/contracts.py",
+        "python/dots_engineering/service.py",
+        "lib/work/engineering.ts",
+        "docs/build-package/selected-records.schema.json"
+      ],
+      "changedOrMissingFiles": [
+        "server/api.ts",
+        "ui/session-review.tsx",
+        "examples/selected-records.synthetic.json"
+      ],
+      "runtimeRerun": false
+    },
+    {
+      "report": "docs/verification/derived-remediation-context.json",
+      "reportHash": "3e9a884239f11b85d041d7beaf23290965b134ce39b8504b035a2beca2545e7c",
+      "observationEntries": 32,
+      "matchingFiles": [
+        "lib/work/remediation-context.ts",
+        "examples/selected-records.synthetic.json",
+        "python/dots_engineering/admission.py",
+        "python/dots_engineering/contracts.py",
+        "python/dots_engineering/review.py",
+        "python/dots_engineering/service.py",
+        "python/dots_engineering/runner.py",
+        "lib/work/engineering.ts"
+      ],
+      "changedOrMissingFiles": [
+        "ui/session-review.tsx",
+        "server/api.ts"
+      ],
+      "runtimeRerun": false
+    },
+    {
+      "report": "docs/verification/owner-review-reports.json",
+      "reportHash": "032d12f54d7dc05b45ea7c2c24f65c653ef34208d5afb1435d7a15e226e52433",
+      "observationEntries": 52,
+      "matchingFiles": [
+        "python/dots_engineering/owner_reviews.py",
+        "python/migrate_owner_reviews.py",
+        "python/dots_engineering/source_inventory.py",
+        "python/dots_engineering/contracts.py",
+        "python/dots_engineering/admission.py",
+        "python/dots_engineering/service.py",
+        "python/worker.py",
+        "server/api.ts",
+        "server/engineering.mjs",
+        "server/start.mjs",
+        "ui/owner-review-reports.tsx",
+        "examples/selected-records.synthetic.json"
+      ],
+      "changedOrMissingFiles": [
+        "ui/session-review.tsx"
+      ],
+      "runtimeRerun": false
+    },
+    {
+      "report": "docs/verification/session-save-recovery.json",
+      "reportHash": "1e8ae53a216f9fde5cd23d6751820576deb65df718a64ca610c07c8f5ed87dd0",
+      "observationEntries": 20,
+      "matchingFiles": [
+        "ui/session-review.tsx",
+        "python/dots_engineering/store.py",
+        "python/dots_engineering/service.py",
+        "server/api.ts",
+        "server/engineering.mjs",
+        "examples/selected-records.synthetic.json"
+      ],
+      "changedOrMissingFiles": [],
+      "runtimeRerun": false
+    }
+  ],
+  "mockupChecks": {
+    "kind": "Final mockup artifact validation; not application acceptance",
+    "views": [
+      {
+        "view": "today",
+        "visible": true,
+        "overflow": false
+      },
+      {
+        "view": "request",
+        "visible": true,
+        "overflow": false
+      },
+      {
+        "view": "sources",
+        "visible": true,
+        "overflow": false
+      },
+      {
+        "view": "review",
+        "visible": true,
+        "overflow": false
+      },
+      {
+        "view": "verify",
+        "visible": true,
+        "overflow": false
+      }
+    ],
+    "mobile": [
+      {
+        "width": 320,
+        "view": "today",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 320,
+        "view": "request",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 320,
+        "view": "sources",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 320,
+        "view": "review",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 320,
+        "view": "verify",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 375,
+        "view": "today",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 375,
+        "view": "request",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 375,
+        "view": "sources",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 375,
+        "view": "review",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 375,
+        "view": "verify",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 390,
+        "view": "today",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 390,
+        "view": "request",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 390,
+        "view": "sources",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 390,
+        "view": "review",
+        "pageOverflow": false,
+        "itemOverflow": false
+      },
+      {
+        "width": 390,
+        "view": "verify",
+        "pageOverflow": false,
+        "itemOverflow": false
+      }
+    ],
+    "networkRequests": 0,
+    "errors": [],
+    "screenshots": [
+      "docs/mockups/today-desktop.png",
+      "docs/mockups/request-desktop.png",
+      "docs/mockups/sources-desktop.png",
+      "docs/mockups/review-desktop.png",
+      "docs/mockups/verify-desktop.png",
+      "docs/mockups/sources-mobile.png"
+    ],
+    "disclosureOpen": true,
+    "keyboardFocus": "request",
+    "contrast": {
+      "--ink / --bg": 18.09,
+      "--muted / --bg": 9.79,
+      "--dim / --bg": 7.03,
+      "--accent / --bg": 10.15,
+      "--pink / --bg": 10.66,
+      "--warn / --bg": 12.36,
+      "--good / --bg": 11.66,
+      "--ink / --surface": 16.98,
+      "--muted / --surface": 9.19,
+      "--dim / --surface": 6.6,
+      "--accent / --surface": 9.53,
+      "--pink / --surface": 10,
+      "--warn / --surface": 11.61,
+      "--good / --surface": 10.94,
+      "--ink / --raised": 15.74,
+      "--muted / --raised": 8.52,
+      "--dim / --raised": 6.12,
+      "--accent / --raised": 8.84,
+      "--pink / --raised": 9.27,
+      "--warn / --raised": 10.76,
+      "--good / --raised": 10.15
+    },
+    "noJsVisibleViews": 5,
+    "browserClosed": true,
+    "sourceHash": "36de7528922c88f2b1d9b10f2e5361942379aae5be4e41615fd842acbc27b04f",
+    "initialCorrection": "Initial visual inspection found crowded 375px retained-item labels despite no document overflow; final mobile layout uses full-width rows and checks each item for overflow."
+  },
+  "screenshots": {
+    "docs/mockups/today-desktop.png": "04a4c975a5541f8cea2a114459cdda8ed815a6a731ff4052a2dc02b65c77bfce",
+    "docs/mockups/request-desktop.png": "1c1737cd48e2ac2824ab31abb51887abf506545fa003b449e2c62bdb5ca9d652",
+    "docs/mockups/sources-desktop.png": "bf87a1fd012afc6f19eee8c3d4eb5ebd6551ae28557021c3817305fa7b5852d1",
+    "docs/mockups/review-desktop.png": "b6046e5d87a086f0b6b5473186c094313f267c704742d8d4f76500b913e2aa38",
+    "docs/mockups/verify-desktop.png": "7a5f0dab0262bdc4f1de24445cb86e3dea2a716a70d97b183e242c05fb876eb1",
+    "docs/mockups/sources-mobile.png": "03e78b3e8bef61d73a81cd14d54d06e18665d142babc0a2e550b951152f761ac"
+  },
+  "skills": [
+    {
+      "skill": "ak:frontend-design",
+      "version": "2.0.0",
+      "entrypointSha256": "22d79aa97b15f192bd1263c398bfacf91bb352bb2418bf4d570e4fd60e1e35ff",
+      "selected": true,
+      "read": true,
+      "applied": "Product hierarchy, tokenized restrained dark theme, state labels, navigation and responsive composition",
+      "verification": "Rendered proposal, visual inspection and scoped artifact checks; not provider invocation",
+      "designDecision": "Product register, variance/motion/density 3/2/6. Name seed dots-dash length 9 selects zero-indexed neo-grotesque product direction. Existing product dark palette overrides menu light palette; one local Avenir Next family and modest headings preserve product register. Evidence differentiation is the emphasized dimension."
+    },
+    {
+      "skill": ".agents/skills/session-intent-review/SKILL.md",
+      "entrypointSha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+      "selected": true,
+      "read": true,
+      "applied": "Source-linked claims, scoped historical evidence and observable acceptance; no original-source review claim",
+      "verification": "Five report hash comparisons and requirement/source map; not a new user workflow run"
+    }
+  ],
+  "publication": {
+    "skillCommit": "a059e971af73b4a830690426e9fdf1f89afcdee4",
+    "newApprovalReceived": true,
+    "correctedPushAttempts": 1,
+    "remoteBranchConfirmed": true,
+    "draftPr": "https://github.com/krzemienski/dots-dash/pull/2",
+    "ci": "https://github.com/krzemienski/dots-dash/actions/runs/39576142674",
+    "ciConclusion": "success",
+    "mainReadback": "1d79dc5f9f762fe21e7857cbfab4b45eeebb6150",
+    "productAuditPublished": false,
+    "merged": false,
+    "deployed": false
+  },
+  "checks": {
+    "json": "parsed on final validation",
+    "documentationLinks": {
+      "relativeTargetsAndAnchorsChecked": 260,
+      "errors": []
+    },
+    "diffWhitespace": "git diff --check passed",
+    "applicationTests": "Not run: documentation/mockup-only changes",
+    "applicationTypecheckBuild": "Not rerun: no application runtime source changes; exact-head CI above applies to the earlier skill commit only",
+    "mockupVisualInspection": "All five desktop views and corrected mobile screenshot inspected",
+    "mockupOnly": true
+  },
+  "limits": [
+    "All operational mockup rows are synthetic TEST DATA; proposals are not shipped experiences.",
+    "No application/database/provider acceptance rerun in this audit.",
+    "Older reports retain their original observations; changed file bindings are explicit, not silently carried forward.",
+    "No full correspondence or filesystem inventory completeness claim; private discovery paused with saved cursors.",
+    "Screen-reader and actual-owner production acceptance remain unperformed.",
+    "No live providers, full agent fleet, original transcript processing, verified authorship or full Python cutover claimed."
+  ],
+  "nextTask": "Review proposed scope, then implement the existing Overview composition around correspondence, next personal commitment and Needs you using stored records only; verify navigation, evidence/coverage labels, empty/error and accessible responsive states.",
+  "outputHashes": {
+    "docs/PRODUCT_AUDIT.md": "a308e6493bee8408118adddac7878f8a5d1b51f60f64f853f4b0e1b620b7d211",
+    "docs/mockups/product-review.html": "36de7528922c88f2b1d9b10f2e5361942379aae5be4e41615fd842acbc27b04f"
+  }
+}

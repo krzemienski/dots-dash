@@ -1,5 +1,7 @@
 # Engineering contexts and execution specification
 
+> Current status index: [product and completion audit, 21 October 2026](../PRODUCT_AUDIT.md). Later isolated TEST DATA evidence covers principal context-link, inventory-pagination, association and correction workflows. Earlier blocked/unperformed statements below remain historical; actual-user V301, production integrations and full Python cutover remain open.
+
 > Historical design and implementation context. See [current scoped verification](../verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
 
 Version 3 target design. None of the new provider session adapters, host controls, terminal streaming or subagent orchestration described here is established as shipped functionality.

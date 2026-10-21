@@ -6,6 +6,16 @@ A private-first dashboard for understanding an assistant's correspondence, sched
 
 [Public repository](https://github.com/krzemienski/dots-dash) · [Release status and verification](docs/RELEASE_STATUS.md)
 
+## Product scope and completion
+
+Start with the [product and feature audit](docs/PRODUCT_AUDIT.md): outcomes, actual screens, FR01–FR23 status, source-bound evidence and ten prioritized gaps. The [proposed experience mockups](docs/mockups/product-review.html) use synthetic TEST DATA and do not add live functionality.
+
+The [correspondence-first Overview](docs/OVERVIEW.md) uses existing saved records for messages, eligible personal events and explicitly flagged requests, with bounded isolated verification and no live sync claim.
+
+The [request evidence view](docs/REQUEST_EVIDENCE.md) separates recorded completion claims, request-level sources and missing support. Status and links do not certify an action.
+
+The optional [Request action claim companion](docs/REQUEST_ACTION_CLAIMS.md) pins owner reports to selected retained evidence, with immutable correction/withdrawal history. Writes default off and require an explicit isolated migration; it does not verify completion or execute actions.
+
 ## Local checks and application
 
 Use Node 24 or newer. Run `npm ci`, `npm test`, `npm run typecheck`, `npm run build`, then `npm start`. Read [application setup and actual verification](docs/APPLICATION_SETUP.md) before configuring authentication or importing data. The default server runs on loopback and refuses private API access; it does not fabricate a demo identity. `node --test tests/core.test.mjs tests/api.test.mjs` runs dependency-free isolated core/API checks.
