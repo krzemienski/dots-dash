@@ -959,6 +959,119 @@
         "No actual-user V301, screen-reader, live provider, original-transcript coverage or arbitrary agent-execution claim."
       ],
       "nextTask": "Independent review of refresh precedence and pending-save guard; keep remaining actual-owner/provider/durable-recovery gates separate."
+    },
+    {
+      "id": "selected-review-next-steps",
+      "date": "2026-10-21",
+      "baseRevision": "0587a232ca91cf8871b64fb6421cd2669c951988",
+      "scope": "Read-only selected-review next-work composition; no API/schema/capability changes.",
+      "acceptance": "docs/REVIEW_NEXT_STEPS.md N1-N7; user outcome and primary scenarios stated before implementation.",
+      "baseline": "Rendered import saved goals/tasks but exposed no consolidated next-steps region. Missing composition, not a persistence defect.",
+      "method": "Owned isolated headless Chromium, random-port localhost real Node/Python API, disposable synthetic SQLite. Existing TEST DATA fixtures. No unsolicited test files.",
+      "observations": [
+        {
+          "name": "N1: imported selection exposes bounded next work, missing observation and unknown attribution",
+          "result": "pass",
+          "detail": {
+            "reviewId": "review-d27eb2e08a0abafd4a67056e",
+            "version": 1,
+            "goals": 1
+          }
+        },
+        {
+          "name": "N2: keyboard exact navigation preserves unsaved observation, correction context and database bytes",
+          "result": "pass",
+          "detail": {
+            "taskId": "task-finding-2"
+          }
+        },
+        {
+          "name": "N3: selection is not invocation; local receipt succeeds while owner-reported acceptance remains fail",
+          "result": "pass",
+          "detail": {
+            "runId": "run-69483ec3f0fb4dcc8046e815681233b6",
+            "reviewVersion": 4,
+            "audit": 4
+          }
+        },
+        {
+          "name": "N4: a later owner pass neither erases failure nor upgrades remediation/checklist evidence",
+          "result": "pass",
+          "detail": {
+            "observations": 2
+          }
+        },
+        {
+          "name": "N5: gap and historical evidence survive real reload without additional writes",
+          "result": "pass",
+          "detail": {
+            "reviewVersion": 6,
+            "audit": 6,
+            "operations": 6
+          }
+        },
+        {
+          "name": "N6: keyboard target and 320/375px layout",
+          "result": "pass",
+          "detail": {
+            "screenReader": "not performed"
+          }
+        },
+        {
+          "name": "N7: another review stays separate; unscoped action remains unresolved; original evidence returns",
+          "result": "pass",
+          "detail": {
+            "otherReview": "review-cec653fda8ce7822f34e68b4",
+            "unscopedTask": "task-finding-5"
+          }
+        }
+      ],
+      "errors": [],
+      "externalRequests": 0,
+      "sourceHashes": {
+        "ui/review-next-steps.tsx": "103796d76d927265e1495860fd0dcdb90484f2373744e98ea19b2df2c9032ffb",
+        "ui/session-review.tsx": "6d9390ed3be4db9ad8991e221f868f0eb6a82fcff48167ec78b97b8c1f18bb3d",
+        "ui/day-workspace.tsx": "40ef658f096604b20c4809d7727d7d46f70005fdbbe5e45e9cdf781cebb839b8",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "lib/work/remediation-context.ts": "06a873f82fb110b81171746fc8052f53f40ab4a16492dcbb1d995769cec0c883",
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd"
+      },
+      "buildOutputs": {
+        "dist/main.js": "40782456256f18a333a7840dd18b3d778545e35a251acf936eea3f2a27e4fc29",
+        "dist/main.css": "90df6cea75859feaead03c3261c20e5c84782e001b2bb355dab8b504bc83758b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "checks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "screenshot": "Final selected-review summary inspected",
+        "linksJSONDiff": "checked separately before commit"
+      },
+      "skillUse": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Chose evidence-linked next-work outcome from engineering spec; separated review suggestions from authority and owner reports from receipts; verified real persisted workflows.",
+        "verified": "Seven bounded synthetic observations of resulting UI. Manual application, not automatic host invocation."
+      },
+      "cleanup": "Owned browser/context/server and SQLite handles closed; shared browser and Jobs untouched.",
+      "limits": [
+        "Single selected review, last-read data; no daily or whole-transcript coverage.",
+        "No actual-user V301, all-source V312 or screen-reader acceptance.",
+        "No new provider/skill executor, completion transitions, durable recovery or privacy policy.",
+        "No repeat of all historical capability/owner-denial cases; backend guards unchanged."
+      ],
+      "nextTask": "Owner-selected sanitized request-to-review next-step acceptance; durable registration still requires its separate retention/unresolved-stream decisions."
     }
   ]
 }

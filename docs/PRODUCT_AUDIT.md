@@ -175,6 +175,12 @@ Historical ledgers are retained unchanged. Navigation notes and the current inde
 
 ## Ten prioritized unfinished outcomes
 
+Current bounded follow-up: [selected-review next steps](REVIEW_NEXT_STEPS.md)
+connects each supplied goal to its remediation, selected skill, local receipts and
+owner-reported observations in one read-only summary. Seven isolated synthetic
+workflows are recorded; this does not complete actual-owner V301 or all-source
+daily-summary V312. The historical priorities below retain their original scope.
+
 This sequence favors the original daily owner outcome over adding more execution machinery. Priorities are recommendations within existing scope, not permission to connect accounts, send messages or deploy.
 
 | Priority | Deliverable | Observable acceptance before calling it complete |

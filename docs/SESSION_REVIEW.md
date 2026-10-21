@@ -1,5 +1,9 @@
 # Local session intent and drift slice
 
+The [selected-review next-steps summary](REVIEW_NEXT_STEPS.md) connects each goal
+to recorded remediation, skill selection, checklist receipts and owner-reported
+observations. It is read-only and never certifies completion or grants execution.
+
 > Historical design and implementation context. See [current scoped verification](verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
 
 The Day workspace's **Session review** tab connects permitted export evidence

@@ -4,6 +4,7 @@ import type {EngineeringState,SessionReview,Goal,SessionEvent,BrowserReceiptStat
 import ContextLinks from './context-links';
 import OperationLookup from './operation-lookup';
 import SourceCoverage from './source-coverage';
+import ReviewNextSteps from './review-next-steps';
 import CorrectionContext from './correction-context';
 import SourceInventory from './source-inventory';
 import {deriveRemediationPrompt} from '../lib/work/remediation-context';
@@ -65,6 +66,7 @@ export function ReviewDetails({review,capabilities,busy,onSave,browserReceipts=n
   <span className="badge gray">{review.export.dataLabel}</span><h2 id={heading('review','title')}>{review.export.projectId} / {review.export.sessionId}</h2>
   <p>{review.coverage}</p><p>Captured {review.export.capturedAt} · review version {review.version}</p><p>Revision <code>{review.export.revision}</code> · source {review.export.sourceRef}</p>
   <SourceCoverage source={review.export}/>
+  <ReviewNextSteps review={review} onNavigate={navigate}/>
   {review.export.admission&&<section aria-label="Selected record admission"><h3>Selected record admission</h3>
    <p>Owner-supplied selection and attribution. Human origin is asserted, not independently verified. Unknown origin stays unknown. No original-source read, completed processing or execution authority is established.</p>
    <p>Directory label: {review.export.admission.projectBinding.directoryProjectId}. Declared project: {review.export.admission.projectBinding.declaredProjectId}. Owner-confirmed project: {review.export.admission.projectBinding.confirmedProjectId}.</p>
