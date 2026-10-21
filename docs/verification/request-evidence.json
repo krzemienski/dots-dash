@@ -325,6 +325,135 @@
       ],
       "cleanup": "Direct API run closed owned SQLite handles; Python workers exited. No browser or listening server started.",
       "nextTask": "After explicit isolated-browser approval, execute documented UI scenarios on final source, fix bounded defects, inspect sanitized outgoing diff, then publish and verify exact-head CI."
+    },
+    {
+      "slice": "bounded request pagination \u2014 rendered acceptance",
+      "baseRevision": "5b4fb312cf5fa221d527387fa48e133f45c1dd1f",
+      "date": "2026-10-21T12:07:22.809012+00:00",
+      "status": "13 fresh scoped rendered observations passed; ready for sanitized publication",
+      "method": "Actual rendered React, owned fresh Chromium context, real loopback API/Python transport and disposable SQLite; existing synthetic examples; inline driver, no new test file",
+      "observations": [
+        {
+          "name": "rendered 51-request discovery",
+          "detail": "Next/Previous exposes Request 51 with truthful page counts and page-region focus.",
+          "result": "pass"
+        },
+        {
+          "name": "UI import and uncertain-save reconciliation",
+          "detail": "UI-imported sanitized review linked to Request 51; committed response dropped; original operation retry produced exactly one persisted link/audit.",
+          "result": "pass"
+        },
+        {
+          "name": "reload and exact return",
+          "detail": "Reloaded persisted task links to exact Request 51 outside first page, with focus and selection scope.",
+          "result": "pass"
+        },
+        {
+          "name": "review round trip",
+          "detail": "Saved task opens selected review and return control focuses same task.",
+          "result": "pass"
+        },
+        {
+          "name": "Day exact shortcut",
+          "detail": "Request 51 Day shortcut reaches and focuses canonical target outside page 1.",
+          "result": "pass"
+        },
+        {
+          "name": "keyboard and narrow display",
+          "detail": "Keyboard Next moves focus; 320/375px document has no horizontal overflow.",
+          "result": "pass"
+        },
+        {
+          "name": "ceiling and restart UI",
+          "detail": "Later Request is excluded under old ceiling, disclosed in total, reachable after Restart.",
+          "result": "pass"
+        },
+        {
+          "name": "confirmed save failed refresh",
+          "detail": "UI explicitly reports saved-but-refresh-failed; refresh restarts list, exposes persisted link without write retry.",
+          "result": "pass"
+        },
+        {
+          "name": "UI stale evidence and replay",
+          "detail": "Changed target visible as stale; old pins reject for new operation, exact historical replay retained.",
+          "result": "pass"
+        },
+        {
+          "name": "exact missing target",
+          "detail": "Explicit selected target missing notice; partial-page historical task stays unknown and retained.",
+          "result": "pass"
+        },
+        {
+          "name": "disabled capability and owner isolation",
+          "detail": "Read-only navigation remains; disabled write and wrong-owner API rejected.",
+          "result": "pass"
+        },
+        {
+          "name": "interrupted navigation",
+          "detail": "Leaving during pending GET and remounting discards old view state and opens valid first page.",
+          "result": "pass"
+        },
+        {
+          "name": "final persistence",
+          "detail": "Two intended links and audit entries, original historical link bytes unchanged; no external execution.",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "server/api.ts": "d604c1c1defdba14e434194eac4ed2ec57f9095c6e12d744b113d83c9a5d2f2c",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "ui/context-links.tsx": "ad55039f41f5fcd8aa9974234f7c5d34f231e7cedd35a7a207e0c4268556d118",
+        "dist/main.js": "97659fe98b8b2b0a0b8a6ef1ce45b0cc3315c34c9f4c3948331ca8aef7a3877a"
+      },
+      "staticChecks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "pythonAst": "passed",
+        "ledgerBindingsAndLinks": "passed",
+        "diff": "passed"
+      },
+      "externalRequests": 0,
+      "pageErrors": [],
+      "visualInspection": "Inspected desktop and 375px screenshots: explicit page counts, selected/missing-target scope and unavailable execution; 320/375px overflow and keyboard focus checks passed. Not full mobile/screen-reader certification.",
+      "priorAttempts": [
+        "Prior automatic approval denial did not execute. Later explicit isolated-verification instruction permitted one retry.",
+        "Approved launch attempts found old Playwright revision 1200 absent. Existing installed revision 1217 used with fresh isolated context; no new install.",
+        "Intermediate drivers interrupted on exact wrapped-select label, premature animation-frame focus assertion and nested locator. Final fresh run passed all 13 observations. No app defect established by those interruptions."
+      ],
+      "skillApplication": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Define observable outcome, preserve provenance/authority, verify real rendered and persisted results",
+          "verified": "13 scoped observations; not automatic host invocation"
+        },
+        {
+          "source": "playwright skill",
+          "selected": true,
+          "read": true,
+          "applied": "Fresh isolated browser, rendered controls, settled state/focus, inspected screenshots and owned-resource cleanup",
+          "verified": "Actual rendered observations, zero external requests; terminal driver used existing package and no test specs"
+        },
+        {
+          "source": "vercel:react-best-practices",
+          "selected": true,
+          "read": true,
+          "applied": "Stale-read guard, primitive dependencies, bounded projections, navigation/focus controls",
+          "verified": "Typecheck/build plus interrupted-navigation and keyboard observations; no automatic invocation claim"
+        }
+      ],
+      "cleanup": "Owned browser context/browser, loopback server and SQLite handles closed; fixed Python workers exited",
+      "limits": [
+        "Synthetic principal is not production authentication or actual-user V301.",
+        "ID ceiling is not a frozen snapshot; inserts before cursor require restart.",
+        "Mounted-memory pending operations are lost on unmount/reload; no durable recovery.",
+        "Narrow overflow and keyboard checks are not full screen-reader/mobile acceptance.",
+        "No schema migration, provider access, source reader, external execution, merge or deployment."
+      ],
+      "nextTask": "Define read-only durable operation reconciliation before adding cross-navigation recovery; retain actual-owner and live-identity gates."
     }
   ]
 }

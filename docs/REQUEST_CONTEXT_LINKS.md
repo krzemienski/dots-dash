@@ -1,6 +1,6 @@
 # Local request, repository task and review associations
 
-## Follow-up: bounded request discovery (rendered acceptance pending)
+## Follow-up: bounded request discovery
 
 The product audit identified Requests beyond the first 50 as undiscoverable in
 Session review. The local follow-up adds canonical-ID pages of at most 50 candidates,
@@ -53,14 +53,29 @@ Observable acceptance, with synthetic TEST DATA only:
    stale responses and error recovery work without misleading missing-target claims.
 
 Nine direct real-API-handler/Python/SQLite observations passed, including physical
-database reopen and exactly one association/audit entry after replay. This is **not
-rendered end-user acceptance**. The isolated headless-browser attempt was rejected
-by automatic approval review because it interpreted the prior inventory-only browser
-prohibition as still applying; the rejected command did not execute. Browser scenarios
-above, including focus, layout, UI lost-response recovery and interruption, remain
-unperformed for this follow-up. Publication waits for that verification. See the
-appended [request evidence ledger](verification/request-evidence.json); historical
-observations below retain their original scope and revision.
+database reopen and exactly one association/audit entry after replay. A subsequent
+fresh rendered React → loopback API → Python → disposable SQLite workflow passed
+13 scoped observations on source revision `5b4fb312cf5fa221d527387fa48e133f45c1dd1f`.
+It exercised the eight scenarios above: 51-request navigation and exact Day shortcut,
+UI import/link/reload, committed-response loss and exact reconciliation, failed GET
+after confirmed save, stale/missing targets, disabled writes, owner rejection,
+keyboard/focus, 320/375px overflow checks and interrupted navigation. Two intentional
+saves produced exactly two associations and audit entries; original link bytes
+remained unchanged. No external browser requests or page errors occurred.
+
+The original browser denial was lifted by later explicit isolated-verification
+authorization. Two approved launch attempts failed because the old cached package's
+browser binaries were absent. An already-installed matching package/browser was
+used without installation or shared-profile access. Intermediate driver attempts
+stopped on wrapped-select/nested-locator matching and a premature focus assertion;
+these are disclosed interruptions, not final passing observations or established
+application defects. No code changed after the final source binding above. Owned
+browser, loopback server and database handles closed.
+
+This is synthetic local acceptance, not production identity, real-owner V301, full
+screen-reader/mobile acceptance or a frozen source snapshot. Cross-reload uncertain
+save recovery remains unsupported. See the appended [request evidence ledger](verification/request-evidence.json);
+historical observations below retain their original scope and revision.
 
 > Historical design and implementation context. See [current scoped verification](verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
 
