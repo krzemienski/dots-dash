@@ -256,6 +256,11 @@ it does not supply action-to-receipt bindings, verify external outcomes or compl
 actual-user V301. FR04 remains partial. Baseline tables and prior reports above
 remain historical.
 
+The subsequent [action-to-evidence contract](REQUEST_ACTION_EVIDENCE_CONTRACT.md)
+is design only. It specifies owner-reported claims pinned to Requests and selected
+normalized events, with append-only corrections and A1–A12 unperformed acceptance.
+It adds no trusted result producer or completion transition.
+
 Read scope: relevant repository PRD/spec/build/UX/security-boundary/setup documents, current UI/API/worker seams and the saved reports listed above; plus a supplied bounded original-intent research summary. No private logs or current Jobs tree were used. Source links identify implementation anchors, not proof a behavior ran. Older documents and evidence must retain their original dates and bindings.
 
 The [audit ledger](verification/product-audit.json) records source hashes, actual documentation/mockup checks, skill application and remaining limits. Update this completion register after an observed workflow or supported scope decision, with exact evidence. Do not advance a feature because a mockup looks finished, a build passes or an old report contains the word success.

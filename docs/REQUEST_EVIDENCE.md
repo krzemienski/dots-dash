@@ -56,3 +56,7 @@ Next model-level task: define an explicit versioned completed-action claim and
 its evidence association, including receipt provenance, scope, uncertainty and
 contrary evidence. Keep request-context links separate. Do not add certification
 or change status until that contract and its observable acceptance are agreed.
+
+The [proposed v1 action-claim contract](REQUEST_ACTION_EVIDENCE_CONTRACT.md) now
+defines that first bounded owner-report slice and A1–A12 acceptance. It is design
+only: no migration, API, binding persistence or completion certification has shipped.

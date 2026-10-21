@@ -140,5 +140,63 @@
     "Present task modal and positive project/schedule list navigation branches were source-inspected, not exercised in this fixture.",
     "No private sources, new provider, schema or API; no merge/deploy. Prior verification retains original source hashes."
   ],
-  "nextTask": "Define per-action claim-to-evidence association before adding completion certification; preserve provenance, uncertainty and contrary evidence."
+  "nextTask": "Define per-action claim-to-evidence association before adding completion certification; preserve provenance, uncertainty and contrary evidence.",
+  "designFollowups": [
+    {
+      "label": "Proposed request action-to-evidence binding v1",
+      "date": "2026-10-21T10:16:48.247075+00:00",
+      "baseRevision": "c3296c24bd2771206811796444341d685c942126",
+      "artifact": "docs/REQUEST_ACTION_EVIDENCE_CONTRACT.md",
+      "status": "design_only",
+      "duplicateSpecReview": "Existing generic Action/Attempt/Evidence targets and review/association receipts do not specify a Request action-claim binding. This contract narrows them to owner reports; no new trusted verifier.",
+      "sourceHashes": {
+        "docs/REQUEST_ACTION_EVIDENCE_CONTRACT.md": "bdb11e677f108a1c4f17b06567696b44a13c0379fbeeed8e9769fab309dbe4a4",
+        "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+        "server/api.ts": "d2a2d1822a2de84b8bab01b0fd0d237c822ccf3db3c9050f4c45078899c298f8",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "python/dots_engineering/context_links.py": "dc4116937082a5159d18671ae8c5f6dfdd4909f76d875a245df107fc63b6d7dd",
+        "python/dots_engineering/snapshot_associations.py": "d9228133e3c64eb151fa3381224532ca5b30f39abf10b3c84a16b0b2d5d86b65",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "docs/build-package/03-functional-technical-spec.md": "e6f332c5a9f39c0317891e645b23d9ba2a7588344fc7d881d0860c02f989ca91",
+        "docs/build-package/contracts.proposed.ts": "fbd7ff6c9a5cbf99f9108d85a9ebd590f98e66fe1bb2df3ceb7f97ab6401998c",
+        "docs/build-package/contracts_v3_proposed.py": "c6458d931168fa16abc9557eeacdf4eba7b0f64c1d6e6fc21e01b2953b3d237f",
+        "docs/OWNER_REVIEW_REPORTS.md": "de826ad83991815e7cfb2b24e12cb44de4245bdd2ff541952de1c2372362c673",
+        "docs/OWNED_BROWSER_RECEIPTS.md": "3006cd3a5b7c7db05fb247d2e6c5c3a9f03ab5149aaf063b0ab41251b63c2da4",
+        "docs/ARTIFACT_EVIDENCE_DISPLAY.md": "1026f65085e1044020265a8dd3de885f0cc57d0f0adb187b0fb96aa2fe9fd5db"
+      },
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "hash": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": "Source-linked intent, claim/evidence boundaries and observable acceptance",
+        "read": true,
+        "applied": "Separated design from implemented behavior and defined A1\u2013A12 without promoting imported evidence",
+        "verification": "Documentation consistency/link/hash review only; no runtime or adapter invocation"
+      },
+      "acceptance": {
+        "A1": "unperformed",
+        "A2": "unperformed",
+        "A3": "unperformed",
+        "A4": "unperformed",
+        "A5": "unperformed",
+        "A6": "unperformed",
+        "A7": "unperformed",
+        "A8": "unperformed",
+        "A9": "unperformed",
+        "A10": "unperformed",
+        "A11": "unperformed",
+        "A12": "unperformed"
+      },
+      "checks": [
+        "Relative document/source targets exist",
+        "JSON parses; recorded hashes match",
+        "Diff whitespace check"
+      ],
+      "limitations": [
+        "No schema, migration, API, UI binding or runtime validation implemented/executed",
+        "No historical request links promoted to per-action evidence",
+        "Actual-user V301, trusted producer mapping and live identity gates remain open"
+      ],
+      "nextSlice": "Separately disabled owner-report companion: strict schema, explicit isolated migration, immutable pins/lifecycle/replay and one-event Request composer/history; verify A1\u2013A12 before feature claims."
+    }
+  ]
 }
