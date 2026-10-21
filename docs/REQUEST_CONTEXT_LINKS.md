@@ -1,5 +1,11 @@
 # Local request, repository task and review associations
 
+The [project-copy acceptance walkthrough](REVIEW_NEXT_STEPS.md#agent-performed-project-copy-walkthrough--21-october-2026)
+records six agent-performed request → task → review → evidence → request cases at
+`1f272833`. It uses public project evidence in an isolated labeled copy, not
+original correspondence or human-owner acceptance. No runtime change was needed;
+real-owner V301 remains open.
+
 ## Follow-up: bounded request discovery
 
 The product audit identified Requests beyond the first 50 as undiscoverable in

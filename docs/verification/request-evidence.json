@@ -455,5 +455,129 @@
       ],
       "nextTask": "Define read-only durable operation reconciliation before adding cross-navigation recovery; retain actual-owner and live-identity gates."
     }
+  ],
+  "verificationFollowups": [
+    {
+      "id": "agent-public-project-request-review-walkthrough",
+      "date": "2026-10-21",
+      "runtimeRevision": "1f2728338cf62c31b374249197256b1adbbf6f68",
+      "label": "TEST DATA / AGENT-CURATED PUBLIC PROJECT COPY",
+      "acceptance": "docs/REVIEW_NEXT_STEPS.md agent-performed project-copy walkthrough; primary scenarios stated before execution",
+      "inputSourceHashesAtRuntimeRevision": {
+        "docs/REVIEW_NEXT_STEPS.md": "e32eb959de6c6f02e024cbd302ce2bf41c0869de12b6fef65bc5bbf79fc3713b",
+        "docs/verification/session-save-recovery.json": "d79e015a7af04da72dd4aed59eb2efd1eb271816d14c7d8f35a420ec2e77efc8",
+        "ui/review-next-steps.tsx": "103796d76d927265e1495860fd0dcdb90484f2373744e98ea19b2df2c9032ffb"
+      },
+      "scope": {
+        "sources": [
+          "docs/REVIEW_NEXT_STEPS.md",
+          "docs/verification/session-save-recovery.json",
+          "ui/review-next-steps.tsx"
+        ],
+        "privateProductionReads": 0,
+        "originalTranscripts": 0,
+        "recordSelection": "One copied request, three project-artifact events, one goal, one synthetic checklist; no original session denominator"
+      },
+      "method": "Existing supported history API import, rendered review import/link/selection/local-checklist/observation/reload through real Node/Python and disposable SQLite. Agent-performed only.",
+      "observations": [
+        {
+          "name": "W1: copied public project request persists with source URL and human acceptance pending",
+          "result": "pass",
+          "detail": {
+            "requestId": "commitment:TEST-DATA-next-steps-request",
+            "originalCorrespondence": "not accessed",
+            "humanAcceptance": "unperformed"
+          }
+        },
+        {
+          "name": "W2: rendered association binds exact canonical request, review and declared source revision",
+          "result": "pass",
+          "detail": {
+            "taskId": "context-317de62ed1354a64ba150f7e99b26aa1",
+            "requestPin": "ca5def22b1924fe3ec5768c2352efafeeb5f892753689b1e771e4767857690de",
+            "reviewVersion": 1
+          }
+        },
+        {
+          "name": "W3: request to repository task to review to intent navigates exact targets",
+          "result": "pass",
+          "detail": {
+            "scope": "Agent-performed isolated copy, not human-owner acceptance"
+          }
+        },
+        {
+          "name": "W4: imported historical claim remains unverified; selection and bounded execution are distinct",
+          "result": "pass",
+          "detail": {
+            "runId": "run-960ef212d7fa4e9182b8988c2cf6a522",
+            "acceptance": "gap",
+            "scope": "declarative_checklist_only"
+          }
+        },
+        {
+          "name": "W5: agent observation preserves human gate, request bytes and historical association pins",
+          "result": "pass",
+          "detail": {
+            "observation": "observation-fbb5a0068aa7418c95c4dc9b656cd46d",
+            "basis": "owner_reported",
+            "actorEvidence": "Explicit agent-performed text; synthetic host principal is not proof of human authorship",
+            "reviewState": "stale"
+          }
+        },
+        {
+          "name": "W6: reload preserves exact association and review; request return neither upgrades status nor adds writes",
+          "result": "pass",
+          "detail": {
+            "reviewVersion": 4,
+            "audit": 4,
+            "operations": 5
+          }
+        }
+      ],
+      "humanAcceptance": "unperformed; saved observation explicitly says agent-performed and result gap",
+      "sourceHashes": {
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/session-review.tsx": "6d9390ed3be4db9ad8991e221f868f0eb6a82fcff48167ec78b97b8c1f18bb3d",
+        "ui/review-next-steps.tsx": "103796d76d927265e1495860fd0dcdb90484f2373744e98ea19b2df2c9032ffb",
+        "ui/commitments.tsx": "70a71e3e08dfff0a620346fa897e528f0cbac77e34220e4ec4780e6c62ecf6a7",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+        "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+        "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709"
+      },
+      "buildOutputs": {
+        "dist/main.js": "40782456256f18a333a7840dd18b3d778545e35a251acf936eea3f2a27e4fc29",
+        "dist/main.css": "90df6cea75859feaead03c3261c20e5c84782e001b2bb355dab8b504bc83758b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "driverCorrection": "Initial source-link count assertion was non-discriminating; final complete run used exact URL presence. Initial run is not source-link proof.",
+      "pageErrors": [],
+      "externalRequests": 0,
+      "visualInspection": "Request and review summary screenshots inspected",
+      "staticChecks": "Runtime and build input hashes match; documentation link/JSON/diff checks run separately. No runtime edits; previous 14 tests/typecheck/build remain historical, not rerun in this pass.",
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Defined request/intent acceptance and separated agent evidence, historical claims and human acceptance; no private production source reads.",
+        "verified": "Six scoped UI/API/persistence observations; manual guidance application, no automatic host invocation claim."
+      },
+      "result": "No functional defect established in this bounded journey; documentation/evidence only.",
+      "cleanup": "Owned browser/server/database handles closed. No shared browser use.",
+      "limits": [
+        "Public project-artifact copy, not original correspondence or transcript ingestion.",
+        "No actual human-owner V301 or intent agreement; no human certification on behalf of the owner.",
+        "Owner_reported basis is not verified human authorship; agent origin is explicit in observation text.",
+        "Existing permissions/capability paths unchanged; broad denial, accessibility, concurrency and provider acceptance not rerun."
+      ],
+      "nextTask": "Human judgment of represented request/goal/expected behavior/next step; stop dependent completion until obtained. Durable registration decisions remain separate."
+    }
   ]
 }

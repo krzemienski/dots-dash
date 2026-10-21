@@ -69,3 +69,52 @@ performed observation. Synthetic checks cannot settle that intent judgment.
 Separately, durable recovery still needs the explicit retention and unresolved
 stream decisions in [its proposal](DURABLE_OPERATION_RECONCILIATION.md); this
 summary does not implement or approve them.
+
+## Agent-performed project-copy walkthrough — 21 October 2026
+
+At runtime revision `1f2728338cf62c31b374249197256b1adbbf6f68`, a further
+walkthrough used the already authorized next-steps project outcome and its saved
+verification evidence. The input was an explicitly labeled **TEST DATA / AGENT-CURATED
+PUBLIC PROJECT COPY**, not an original user conversation or production record.
+The copied requirement came from this document at that revision; the implementation
+and historical verification came from `ui/review-next-steps.tsx` and the
+`selected-review-next-steps` entry in `verification/session-save-recovery.json`.
+Their exact hashes are retained in the [request ledger](verification/request-evidence.json).
+
+Six observed cases passed through a fresh owned headless browser, real local
+Node/Python API and disposable SQLite:
+
+1. Import the copied request through the supported isolated history API; render
+   its exact public source URL, pending status and need for human input.
+2. Import three curated project-artifact events and one goal through Session
+   review; create a repository task association in the UI with exact request,
+   review, project and revision pins.
+3. Navigate request → task → review → intent with exact target focus.
+4. Inspect the imported historical completion claim and remediation; select the
+   synthetic checklist without invocation, then run it explicitly. Its bounded
+   receipt succeeds while acceptance remains gap/missing observation.
+5. Save an explicitly agent-performed observation with result **gap** because
+   human judgment was not performed. Request data/version and imported export
+   remain unchanged. The link retains its original review-version pin and
+   correctly becomes stale after new review activity.
+6. Reload and return to the exact request. Association, observation and receipt
+   persist, with no additional operation/audit rows or completion upgrade.
+
+No functional defect was established in this bounded journey, so no runtime code
+was changed. The first driver run had a non-discriminating source-link count
+assertion; the final six-case run replaced it with an exact URL check. Only that
+final run supports source-link acceptance. Both runs remain in the private ledger.
+
+The server's existing `owner_reported` basis identifies evidence supplied through
+the owner-bound application; it is not independent proof that a human authored the
+observation. The saved text expressly identifies the agent and unperformed human
+judgment. No real-owner acceptance is claimed. Original correspondence, private
+production records and raw sessions were not accessed, and source scope is only
+one copied request, three project-artifact events, one goal and one synthetic
+checklist. No source-history denominator or processing progress follows.
+
+**Remaining acceptance:** the human owner must judge whether the represented goal,
+expected behavior and suggested next step match the intended request. That dependent
+step stops here. Real-owner V301 and original-correspondence provenance remain open;
+the agent cannot resolve them by marking another local check passed. Shared Chrome,
+production state, provider access and deployment remain outside this walkthrough.
