@@ -18,3 +18,12 @@ private-data/
 local-secrets/
 
 .ui-test-*/
+__pycache__/
+*.pyc
+.venv/
+
+# Local workflow artifacts; the fixed synthetic adapter input is explicitly kept.
+output/**
+!output/playwright/
+!output/playwright/evidence-relevance/
+!output/playwright/evidence-relevance/matching-export.json

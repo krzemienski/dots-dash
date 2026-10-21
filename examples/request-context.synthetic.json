@@ -1,0 +1,24 @@
+{
+  "batchId": "synthetic-request-context",
+  "verifiedAt": "2026-10-16T12:00:00Z",
+  "commitments": [
+    {
+      "id": "synthetic-context-request",
+      "title": "TEST DATA: trace a local repository task",
+      "verifiedAt": "2026-10-16T12:00:00Z",
+      "requestSummary": "TEST DATA owner-curated request. No actual correspondence or private transcript is represented.",
+      "status": "pending",
+      "completedSummary": "",
+      "pendingSummary": "Observe the local request/task/review links.",
+      "nextStep": "Review a linked task and its session review.",
+      "needsUser": false,
+      "sourceUrls": [],
+      "requestedAt": null,
+      "owner": "Owner",
+      "relatedOpportunityIds": [],
+      "relatedTaskIds": [],
+      "relatedProjectIds": [],
+      "relatedScheduleIds": []
+    }
+  ]
+}

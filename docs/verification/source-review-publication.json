@@ -1,0 +1,473 @@
+{
+  "label": "TEST DATA \u2014 isolated local verification, not transcript or production acceptance",
+  "date": "2026-10-21",
+  "baseRevision": "0a9611f9441f18810210da54dfc4d3974c61e5e0",
+  "evidenceBinding": "Source hashes below identify the application tested before sanitized publication; test helper registration was corrected after initial suite failure. Documentation and CI do not change runtime behavior.",
+  "runtime": {
+    "node": "26.11.1",
+    "python": "3.15",
+    "browser": "Chrome 156.0.8078.48",
+    "identity": "synthetic host principal; no production sign-in",
+    "storage": "new disposable work and engineering SQLite databases",
+    "network": "owned loopback only in fresh browser context"
+  },
+  "observations": [
+    {
+      "name": "visible import persisted",
+      "pass": true
+    },
+    {
+      "name": "request task review navigation and return focus",
+      "pass": true
+    },
+    {
+      "name": "context exact replay",
+      "pass": true
+    },
+    {
+      "name": "context conflict",
+      "pass": true
+    },
+    {
+      "name": "context persisted after reload",
+      "pass": true
+    },
+    {
+      "name": "inventory and source saved through UI",
+      "pass": true
+    },
+    {
+      "name": "read empty metadata without invented goals",
+      "pass": true
+    },
+    {
+      "name": "empty snapshot associated with independent hashes",
+      "pass": true
+    },
+    {
+      "name": "association target navigation focus",
+      "pass": true
+    },
+    {
+      "name": "association exact replay",
+      "pass": true
+    },
+    {
+      "name": "association conflicting replay",
+      "pass": true
+    },
+    {
+      "name": "replay no duplicate rows",
+      "pass": true
+    },
+    {
+      "name": "/api/source-coverage anonymous rejected",
+      "pass": true
+    },
+    {
+      "name": "/api/source-coverage wrong owner rejected",
+      "pass": true
+    },
+    {
+      "name": "/api/snapshot-review-associations anonymous rejected",
+      "pass": true
+    },
+    {
+      "name": "/api/snapshot-review-associations wrong owner rejected",
+      "pass": true
+    },
+    {
+      "name": "/api/context-links anonymous rejected",
+      "pass": true
+    },
+    {
+      "name": "/api/context-links wrong owner rejected",
+      "pass": true
+    },
+    {
+      "name": "association wrong origin rejected",
+      "pass": true
+    },
+    {
+      "name": "revoked capability blocks replay",
+      "pass": true
+    },
+    {
+      "name": "stale creation pins reject",
+      "pass": true
+    },
+    {
+      "name": "body authority injection rejects",
+      "pass": true
+    },
+    {
+      "name": "owner observation saved",
+      "pass": true
+    },
+    {
+      "name": "version only relevance",
+      "pass": true
+    },
+    {
+      "name": "exact replay survives changed pins",
+      "pass": true
+    },
+    {
+      "name": "access denied retained",
+      "pass": true
+    },
+    {
+      "name": "access unreadable retained",
+      "pass": true
+    },
+    {
+      "name": "access unsupported retained",
+      "pass": true
+    },
+    {
+      "name": "access unknown retained",
+      "pass": true
+    },
+    {
+      "name": "later failed reads preserve snapshot and association",
+      "pass": true
+    },
+    {
+      "name": "nonempty snapshot report saved",
+      "pass": true
+    },
+    {
+      "name": "lost response retried identical body",
+      "pass": true
+    },
+    {
+      "name": "replacement replay one event set",
+      "pass": false,
+      "measurementIssue": "Pending button becomes visible while first request is still saving; pre-retry count sampled before commit. Not evidence of duplicate mutation."
+    },
+    {
+      "name": "replacement committed exactly once with preserved targets",
+      "pass": true
+    },
+    {
+      "name": "both targets replaced with immutable predecessor",
+      "pass": true
+    },
+    {
+      "name": "predecessor successor history navigation",
+      "pass": true
+    },
+    {
+      "name": "replacement history survives whole view reload",
+      "pass": true
+    },
+    {
+      "name": "revocation retains both identities",
+      "pass": true
+    },
+    {
+      "name": "stale correction rejects",
+      "pass": true
+    },
+    {
+      "name": "reassert creates new identity",
+      "pass": true
+    },
+    {
+      "name": "material change distinct from version only",
+      "pass": true
+    },
+    {
+      "name": "absent target schema unavailable",
+      "pass": true
+    },
+    {
+      "name": "unavailable schema displayed unknown not missing",
+      "pass": true
+    },
+    {
+      "name": "successful missing row lookup",
+      "pass": true
+    },
+    {
+      "name": "missing parent schema unknown even for absent snapshot",
+      "pass": true
+    },
+    {
+      "name": "target bytes preserved after fault restoration",
+      "pass": true
+    },
+    {
+      "name": "cross project pair has no candidate",
+      "pass": true
+    },
+    {
+      "name": "cross project forged pins rejected",
+      "pass": true
+    },
+    {
+      "name": "providers remain unavailable",
+      "pass": true
+    },
+    {
+      "name": "51 inventory first page bounded",
+      "pass": true
+    },
+    {
+      "name": "older page reaches retained original inventory",
+      "pass": true
+    },
+    {
+      "name": "paging refresh leaves persisted records unchanged",
+      "pass": true
+    },
+    {
+      "name": "association opens snapshot outside latest page",
+      "pass": true
+    },
+    {
+      "name": "correction scope mismatch retains negative original",
+      "pass": true
+    },
+    {
+      "name": "correction source keyboard navigation",
+      "pass": true
+    },
+    {
+      "name": "correction goal sets ignore order and duplicates",
+      "pass": true
+    },
+    {
+      "name": "equal metadata does not certify correction",
+      "pass": true
+    },
+    {
+      "name": "unknown correction dimensions not false mismatch",
+      "pass": true
+    },
+    {
+      "name": "unique directed correction edges retain superseded source",
+      "pass": true
+    },
+    {
+      "name": "legacy stored response missing correction target stays unresolved",
+      "pass": true
+    },
+    {
+      "name": "correction reload keyboard and immutable view",
+      "pass": true
+    },
+    {
+      "name": "narrow viewport no document overflow",
+      "pass": true
+    },
+    {
+      "name": "no inferred correction without supersession",
+      "pass": false,
+      "measurementIssue": "Incorrect fixture: selected baseline export explicitly supersedes old-block. Rechecked with an export containing no supersedes edges."
+    },
+    {
+      "name": "no inferred correction for export without explicit edges",
+      "pass": true
+    },
+    {
+      "name": "unconfigured runner rejects execution",
+      "pass": true
+    },
+    {
+      "name": "skill selection is not invocation",
+      "pass": true
+    },
+    {
+      "name": "pinned local checklist persisted gap without remediation certification",
+      "pass": true
+    },
+    {
+      "name": "checklist identical replay once",
+      "pass": true
+    },
+    {
+      "name": "checklist stale version rejects",
+      "pass": true
+    },
+    {
+      "name": "canonical request updated through history API",
+      "pass": true
+    },
+    {
+      "name": "context retains original pins and marks both stale",
+      "pass": true
+    },
+    {
+      "name": "context stale visible after refresh",
+      "pass": true
+    },
+    {
+      "name": "context invalid title 0",
+      "pass": true
+    },
+    {
+      "name": "context invalid title 1",
+      "pass": true
+    },
+    {
+      "name": "context invalid title 2",
+      "pass": true
+    },
+    {
+      "name": "context disabled replay denied",
+      "pass": true
+    },
+    {
+      "name": "context unknown target rejected",
+      "pass": true
+    },
+    {
+      "name": "context body authority rejected",
+      "pass": true
+    },
+    {
+      "name": "context successful lookup missing targets retains association",
+      "pass": true
+    },
+    {
+      "name": "missing context navigation disabled",
+      "pass": true
+    },
+    {
+      "name": "context uncertain save freezes edit",
+      "pass": true
+    },
+    {
+      "name": "context revoked retry retains uncertainty",
+      "pass": true
+    },
+    {
+      "name": "context lost response replay exactly once",
+      "pass": true
+    },
+    {
+      "name": "no browser page errors recorded",
+      "pass": true
+    },
+    {
+      "name": "concurrent corrections one winner one stale",
+      "pass": true
+    },
+    {
+      "name": "association audit failure rolls back whole operation",
+      "pass": true
+    }
+  ],
+  "staticChecks": {
+    "existingTests": {
+      "passed": 14,
+      "failed": 0,
+      "initialFailure": "Two existing custom SQLite test-helper checks lacked history_snapshot_ms; registered the same production timestamp function and reran all 14."
+    },
+    "typecheck": "passed",
+    "build": "passed",
+    "cleanCandidate": {
+      "install": "npm ci --ignore-scripts with isolated temporary cache passed; earlier offline install lacked cached dependencies",
+      "node": "26.11.1",
+      "tests": "14 passed, 0 failed",
+      "typecheck": "passed",
+      "build": "passed; output hashes equal tested bundle",
+      "pythonAST": "passed",
+      "json": "passed",
+      "localMarkdownTargets": "passed",
+      "diffWhitespace": "passed",
+      "targetedPrivacyScan": "No private host/session path or credential indicators; only email indicator was reserved synthetic@example.invalid."
+    }
+  },
+  "cleanup": {
+    "ownedBrowserAndServerClosed": true,
+    "productionResourcesTouched": false
+  },
+  "limitations": [
+    "Two failed measurement attempts are retained and explained; corrected checks passed.",
+    "Actual-user V301, production authentication and deployment are unverified.",
+    "Before-commit loss, success-followed-by-list-refresh-failure, durable pending-operation recovery and all cross-process permutations were not exercised.",
+    "Source admission A1\u2013A8 remain design-only; no live provider, ingestion or contiguous processing checkpoint is implemented.",
+    "Screenshots and raw runtime ledgers are excluded; this is a summarized observation record, not an independently signed receipt.",
+    "No broad transcript completeness claim follows from these TEST DATA workflows."
+  ],
+  "sourceHashes": {
+    "db/0001_empty.sql": "13aafcee360b9f2eb4862528a5ba9838ddfe7355051bcafafa82f19b58c550ad",
+    "examples/request-context.synthetic.json": "28dd42fca3cee5384501080b7e1d23754ec11c90d868a84e4ac3a3b7cde639ac",
+    "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd",
+    "lib/work/contracts.ts": "01f51dea4ac588cbfe3ba75b8e8d33fa8e829ee8e26c3e80f88592e718c2b40f",
+    "lib/work/correction-context.ts": "b8a3ed47a40a482da06ef9fa6466683ed6ec60cb453ef473dda6a08a313e6b34",
+    "lib/work/engineering.ts": "16b5305261be7946682bd8176db8afdc6a064e8e5a2afc7b26127777e9b395b4",
+    "lib/work/history-time.mjs": "09b8b6866f5dab02173b57a83ae5f95998b80c1adfa0800e7bf4a0a6d79cd30d",
+    "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+    "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+    "lib/work/snapshot-associations.ts": "6da5a68280a859bb24bb25a8af5cf1779eebc9b73ff226ccf838bf2ca0bbc407",
+    "lib/work/source-coverage.ts": "dd226924e271d4282e31be17f3f9e94849a54d2b3c1de0312d0cdf2ff7473aea",
+    "lib/work/source-inventory.ts": "59a297fc208cf554f7434df32bb50aeb9e874958dc612f3e7c32d5e3d0663590",
+    "lib/work/validation.mjs": "08e55c81a48ee0aa5cbf6f94d5a8ab8525efdaf0490060822bf5f96053377fc3",
+    "output/playwright/evidence-relevance/matching-export.json": "fde298982b825c9acb70870e18df16ef7eef88a9fe7e364bc9efc56520d0451d",
+    "package-lock.json": "384384c1c398d2eb15734a5b60085bb0bc6be63aada98cd1301f6bc4f92f2789",
+    "package.json": "a6a52e23699e366cbaf67645831a372a6821550450aa95e5d19a61aeed249cb0",
+    "python/dots_engineering/__init__.py": "44e66e579616ce492f2f60570b8df308bce909aef143b9ce37a09f8152d78388",
+    "python/dots_engineering/context_links.py": "dc4116937082a5159d18671ae8c5f6dfdd4909f76d875a245df107fc63b6d7dd",
+    "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+    "python/dots_engineering/decision_rehearsal.py": "080fb85fdfba52e0ecabe316b20dbcf8e30547d320318abde0914b241c834dc3",
+    "python/dots_engineering/handoff_rehearsal.py": "3ed85ea87863279dd43509fe70b297ab11229c7c9c35c590e8e6e4829c2ce677",
+    "python/dots_engineering/history_rehearsal.py": "159e76f1b0d51a689eb67f0abdfc6602e6da7e8c8698e21957fdeba96b58379f",
+    "python/dots_engineering/history_time.py": "f536f50f951667662740efaaf16c6e61a8fdb45582f3f421ec020a9b80ad8eaf",
+    "python/dots_engineering/history_validation.py": "065f2508d511f6565fbcc0428ccf77650d42652181af104046f8f589068de709",
+    "python/dots_engineering/instruction_rehearsal.py": "a500a10ad2465e537a4c7be02da149703d5fe11dac99a11e08696c9ed503bcae",
+    "python/dots_engineering/legacy_read.py": "4dafe5a8b4db89ea7ba9a4c6d2f1777432df554841f50b58d742f1c96efed8b7",
+    "python/dots_engineering/lifecycle_lock.py": "3968cfc1d907685370b0fe48a24e14867c6f9d34b99a7ab94da6c7fdf8ac8b0b",
+    "python/dots_engineering/rehearsal_receipts.py": "5639aca9cccec9f1da6152ec929709adc6aa8f6f96ddd3841a8b685fb9bd36f3",
+    "python/dots_engineering/rehearsal_supervisor.py": "72cfc5a7a1ec4010822ab73425bf5e069c7d17959e8ff2ccd42b3f2f75b6598f",
+    "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+    "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+    "python/dots_engineering/service.py": "9fe547e3e0bef26dbfb572cf3ff729e9ba1e7f3d4a227eac18f12120c6b8dcd3",
+    "python/dots_engineering/snapshot_associations.py": "d9228133e3c64eb151fa3381224532ca5b30f39abf10b3c84a16b0b2d5d86b65",
+    "python/dots_engineering/source_inventory.py": "5eac9c5ff8c0c70ddedad47afe30a5119bb420f4c8dc95eb9af740627e30384d",
+    "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+    "python/dots_engineering/supervision_state.py": "16cbf1b6da7819afcb0e94ba16afba8170df4914f16e4100dfb23476b4917062",
+    "python/rehearse_decisions.py": "6966fa15832260b3a11aafe39e79cd8330a007bcf8950cdd7cd73afc0a97eedb",
+    "python/rehearse_history.py": "279701b0c7467c161af2717c666fd33638030bd232d4398cff3e04013656143a",
+    "python/rehearse_instructions.py": "886676c079f3222372f820a7c14ebf7b5f78a03436b57d77569db8725368948e",
+    "python/worker.py": "39896670db3136250d6ed85eec11b8aefc958625468b693d02db85e1a364ea22",
+    "scripts/build.mjs": "2271a0e98fd76352e7d6e462ac5fe4a976b718bc68eea3952f8c91f914511383",
+    "server/api.ts": "8e3b01e863342f37064f49374a7ef4930fce337f6e8078da93027810613a7e04",
+    "server/browser-receipt-reader.mjs": "a8e3393db8a8462330a7547a71bd2ad7e5918cd96f47288486cc7ef5028e1b34",
+    "server/browser-receipt-storage.mjs": "a3836cd6e0879bb7ee8cfe7b8f530b76f88785dc8c11ef795ede428829615f45",
+    "server/browser-runtime-relevance.mjs": "c1692a68841eba84a7f2d19f33f81b2c31aa781bc0b9d2ad54b1892cefa95b84",
+    "server/browser-workflow-driver.mjs": "989ad9a087a1157d687f097779e9cbbacdd31339facecc266b994ff2570c6980",
+    "server/engineering.mjs": "51c4b9fea1280b62c9ba6ca711a699654679afb62d7e021fbc53bb9d0bcf25e2",
+    "server/owned-browser-receipts.mjs": "298b72589efc39dc5db3b4823fd2bbec857abdbf242c70c8fb1438ac6e48aca5",
+    "server/rehearsal-fence.mjs": "c80d7ed0b344c5a03a5594683af911e509c2d8c37175564e288cedec857ea45e",
+    "server/rehearsal-transport.mjs": "2251dec1aa8880815c4ae043c24557883b08f4b5e142f61d1bb2ed5e1eb11f0b",
+    "server/rehearse-handoff.mjs": "61d9c4b3dbad0f337c1b1d2db8ef07045db65e0409221173235ead057963b1aa",
+    "server/start.mjs": "5feeae780aa6ed3e365bbb0d0343bc894e5df4db97eb1c198964c738bb6d2394",
+    "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+    "server/supervised-rehearsal.mjs": "09e7306473f0051865efd10798c32473f876d885ce450146db11003aaf6f21bb",
+    "tests/api.test.mjs": "4dad218d291dd56421a33899468583cab8712c2be7d63f16c33f49591b0ae50f",
+    "tests/core.test.mjs": "fffc1aaeb5794d90a8b36713146ebf7c7148da8e5aad06ab885f5ac8fb8ddc0d",
+    "tests/ui-render.test.mjs": "4e546b795ab0965469e8df340b7b5e864fd21d4125fbcd1dac926cc89df8b50c",
+    "ui/browser-receipts.tsx": "7335796f6f1f7827db89eb03475f5de95ba9b645b69e0143ca262e70287d1f02",
+    "ui/commitments.tsx": "b38c7c8fffe547bae6db9bddb2d79a55ddc52d3822c3552d724990c78f33fa27",
+    "ui/context-links.tsx": "0bc6b1ffb25c2d0136b865d6ee74f4fb9a72b78adf1fe6f2e399cce3ecb8483a",
+    "ui/correction-context.tsx": "9d574ecf06ed3c7ae3e9248102438ccb247d1a745a337885bd5fea2ecc3b15f4",
+    "ui/dashboard.tsx": "18519d98e8a350166213bc68a875e0a29b2fcf27208cb38fa69f3e5d72374f7a",
+    "ui/day-workspace.tsx": "f2038fb5f57f831fe9c37e18c1cb9cd9921b3e96b43c6a1fa202011d7addd48c",
+    "ui/history-views.tsx": "dbb6d8065a1c8b2a4dc9cdcc66c05e663a8fee16dc8f58b48cc7292182cfc904",
+    "ui/main.tsx": "c5e1b782477dd401ea3211ad3cb60a9ccefd8b8fba0eeec68d3fcb9d8cda6302",
+    "ui/observations.tsx": "f49e354af49d76df053bb8e7b9606d120ecc9fa386177d2ea2e0c51a6531ab96",
+    "ui/session-review.tsx": "072ff28a8565d6f1137899a85c55f3e8231db0aaf4e3b3203f87602768f73244",
+    "ui/snapshot-associations.tsx": "8b4515f6474942d3cbbe8e04b63d447bef995bf967060615a2a627ca1f8c347f",
+    "ui/source-coverage.tsx": "8c79ad2c598d2d51f8de9d272fe80d108274b4957f994429dfbfa4d97fd0597d",
+    "ui/source-inventory.tsx": "de6e3f4b515725b9a86cbc43f1353761e9dad62625a2a8333f0f907f19e735a8",
+    "ui/styles.css": "4ad9e3ce3ac129f567f66a616b437e0a6631405624dce505a25e3f5b2a3e0a1e"
+  },
+  "buildOutputs": {
+    "index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5",
+    "main.js": "7fcebd792604542da4dc3b8fe2238f58abea981305e3d3370a474fda57575592",
+    "main.css": "df5964e4bb5d40ad006d53e65992466462a9be949456d163c20c5c29dc922d14"
+  }
+}

@@ -1,5 +1,7 @@
 # Work dashboard product requirements version 3
 
+> Historical design and implementation context. See [current scoped verification](../verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
+
 ## Product outcome
 The owner can answer: What correspondence happened? What is on my schedule? What did I ask for? What has actually been done? What remains? What requires me? Each answer includes evidence and coverage limitations rather than confident-looking estimates.
 
@@ -50,3 +52,30 @@ No public personal dashboard, automatic third-party communications, unapproved c
 - FR20 Python-first delivery: new backend/orchestration/adapters use Python-first architecture. Retain the current frontend boundary and migrate existing backend behavior with functional parity and rollback evidence.
 
 Acceptance for FR13-FR20 is defined by V301-V315 in the migration plan. A product name in a connector list is a target, not a supported integration claim.
+
+## Session accountability acceptance refinement
+
+FR21: Before execution, capture the user's goal, expected observable behavior,
+ordered user steps and source references. Persist performed steps, observed
+evidence, pass/fail/gap and attribution separately from completion claims.
+FR22: Link scoped drift findings to remediation tasks and reviewable prompts;
+preserve requirement revisions, explicit decision supersession, code/input
+provenance and negative outcomes. A status representation mismatch is not a
+bug until its canonical semantics are established.
+The [correction context display](../CORRECTION_CONTEXT_DISPLAY.md) compares
+explicit supersession metadata and keeps original outcomes visible separately
+from active findings. Differences require review; matching metadata does not
+validate a correction. Its functional acceptance remains unperformed.
+FR23: Show skill applicability, selection and proven invocation separately.
+A local declarative checklist receipt must identify that limited scope and
+must not claim the full skill or a provider agent executed.
+
+The optional local slice implements this chain for owner-curated sanitized
+exports. See [implementation boundaries](../SESSION_REVIEW.md). It does not
+close the live provider, independent verification or browser acceptance gates.
+
+Source coverage must distinguish the selected export from referenced event
+records and skill inventory metadata. The current [display-only projection](../SOURCE_COVERAGE_PROJECTION.md)
+keeps original-source read coverage unknown and preserves v1 persistence.
+A future versioned companion contract is still needed to represent valid-empty,
+unreadable and unsupported selected sources without fabricating goal events.

@@ -20,6 +20,68 @@ The dashboard should never imply that saving a draft sends it, approving a recor
 
 ## Full product build package
 
+The optional [local Python session review](docs/SESSION_REVIEW.md) links
+sanitized export evidence to intent, drift findings, remediation drafts,
+selected skill checklists and actual local review receipts. Imports and runner
+execution default disabled. Named provider adapters remain unavailable.
+
+The [selected-record envelope](docs/SELECTED_RECORD_ADMISSION.md) preserves safe
+goal text, reports exclusions and unknown attribution, requires explicit project
+binding, and displays scoped corrections without granting execution authority.
+
+An independent [opt-in Python read compatibility mode](docs/PYTHON_READ_COMPATIBILITY.md)
+preserves the current frontend routes while Node remains the sole writer.
+
+A [disposable instruction-write rehearsal](docs/PYTHON_INSTRUCTION_REHEARSAL.md)
+advances Python mutation parity without enabling application writes.
+The corresponding [decision-write rehearsal](docs/PYTHON_DECISION_REHEARSAL.md)
+preserves approval versions, atomic audit and `executed:false` on scratch snapshots.
+The [history-import rehearsal](docs/PYTHON_HISTORY_REHEARSAL.md) adds bounded
+snapshot/replay parity and source-link preservation on disposable storage.
+Its [compatibility assessment](docs/PYTHON_HISTORY_COMPATIBILITY.md) records
+remaining blockers before any writer cutover rehearsal.
+The [shared instant-ordering fix](docs/HISTORY_INSTANT_ORDERING.md) addresses the
+demonstrated snapshot chronology defect without rewriting source evidence.
+The [replay and handoff rehearsal](docs/REPLAY_AND_HANDOFF_REHEARSAL.md) verifies
+history-only writer epochs and receipt-based recovery on disposable storage.
+The [fenced restart extension](docs/FENCED_RESTART_REHEARSAL.md) adds instruction
+and decision fencing plus marked-session process-crash recovery evidence.
+The [journey acceptance review](docs/JOURNEY_ACCEPTANCE_REVIEW.md) distinguishes
+historical assessments from recorded observations and prioritizes the remaining V310 gap.
+The [evidence revision display](docs/EVIDENCE_REVISION_RELEVANCE.md) marks imported
+evidence stale against a different declared review revision, preserving history
+and attribution. Broader verification and live relevance invalidation remain open.
+The [owned local browser adapter](docs/OWNED_BROWSER_RECEIPTS.md) now produces
+immutable receipts for one fresh synthetic workflow using retained process
+handles. The [dashboard receipt view](docs/BROWSER_RECEIPT_DASHBOARD.md) reads that
+ledger with explicit outcome, provenance and stale-input distinctions.
+[Read-only history pagination](docs/BROWSER_RECEIPT_PAGINATION.md) reaches older
+runs with stable membership and page-scoped evidence links.
+[On-demand runtime relevance](docs/BROWSER_RUNTIME_RELEVANCE.md) compares recorded
+allowlisted dependency and runtime inputs, keeping unavailable coverage unknown
+and historical outcomes intact. Production verification, live monitoring and
+lost-coordinator recovery remain open.
+The [request/task/review association slice](docs/REQUEST_CONTEXT_LINKS.md) is
+implemented with separate permission state. Selected isolated TEST DATA browser/API
+workflows now have [scoped verification](docs/verification/source-review-publication.md).
+Actual-request V301 remains open.
+The [remediation navigation](docs/REMEDIATION_NAVIGATION.md) connects cards to
+their goals, actual checklist receipts and verification forms, with local browser evidence.
+The [derived remediation view](docs/DERIVED_REMEDIATION_CONTEXT.md) preserves
+scoped correction, attribution and project-binding context without rewriting
+historical prompts or turning owner reports into certified success.
+The separately default-off [retained-selection review reports](docs/OWNER_REVIEW_REPORTS.md)
+record per-item owner assertions and contiguous gaps with immutable correction
+history. Import success does not advance these reports or establish transcript coverage.
+The [lock/startup assessment](docs/LOCK_DISRUPTION_AND_STARTUP.md) records lock
+identity binding, owned startup-failure outcomes and the next UI integration gap.
+The [lifecycle race fix](docs/LIFECYCLE_RACE_GUARDS.md) prevents concurrent local
+worker launch from passing cleanup's guard before storage is deleted.
+The [handle-loss safeguards](docs/SUPERVISOR_HANDLE_LOSS.md) report unconfirmed
+worker exit separately from receipt resolution and keep lifecycle operations blocked.
+The [owned-process supervisor](docs/OWNED_PROCESS_SUPERVISION.md) covers retained
+worker handles across controller failure and records remaining policy choices.
+
 [Read the complete PRD, technical specifications, API/domain design, build milestones, execution prompts, and functional acceptance plan](docs/build-package/README.md). These describe the full target product; proposed contracts are not claims of implemented integrations.
 
 ## Documentation

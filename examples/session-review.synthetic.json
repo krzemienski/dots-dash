@@ -1,0 +1,186 @@
+{
+  "format": "dots-visible-session",
+  "version": 1,
+  "ownerId": "synthetic-owner",
+  "sessionId": "synthetic-session",
+  "projectId": "synthetic-project",
+  "sourceRef": "export:synthetic",
+  "consentRef": "receipt:synthetic-consent",
+  "capturedAt": "2026-10-16T12:30:00Z",
+  "revision": "aaaaaaa",
+  "sanitized": true,
+  "dataLabel": "TEST DATA",
+  "events": [
+    {
+      "id": "intent",
+      "kind": "intention",
+      "text": "TEST DATA: retain the instruction without delivering it.",
+      "sourceRef": "export:synthetic#intent",
+      "goalIds": [
+        "goal-save"
+      ],
+      "sourceKind": "project_artifact",
+      "observedAt": "2026-10-16T12:00:00Z",
+      "codeRevision": "aaaaaaa",
+      "requirementRevision": "req-1",
+      "inputHashes": [],
+      "outcomeScope": "intent",
+      "outcome": "unknown",
+      "supersedes": []
+    },
+    {
+      "id": "action",
+      "kind": "action",
+      "text": "TEST DATA: an archived note says a save was attempted.",
+      "sourceRef": "export:synthetic#action",
+      "goalIds": [
+        "goal-save"
+      ],
+      "sourceKind": "project_artifact",
+      "observedAt": "2026-10-16T12:00:00Z",
+      "codeRevision": "aaaaaaa",
+      "requirementRevision": "req-1",
+      "inputHashes": [],
+      "outcomeScope": "unknown",
+      "outcome": "unknown",
+      "supersedes": []
+    },
+    {
+      "id": "claim",
+      "kind": "claim",
+      "text": "TEST DATA: archived completion claim, not independently verified.",
+      "sourceRef": "export:synthetic#claim",
+      "goalIds": [
+        "goal-save"
+      ],
+      "sourceKind": "project_artifact",
+      "observedAt": "2026-10-16T12:00:00Z",
+      "codeRevision": "aaaaaaa",
+      "requirementRevision": "req-1",
+      "inputHashes": [],
+      "outcomeScope": "unknown",
+      "outcome": "unknown",
+      "supersedes": []
+    },
+    {
+      "id": "old-block",
+      "kind": "decision",
+      "text": "TEST DATA: earlier review was blocked.",
+      "sourceRef": "export:synthetic#old-block",
+      "goalIds": [
+        "goal-save"
+      ],
+      "sourceKind": "project_artifact",
+      "observedAt": "2026-10-16T12:00:00Z",
+      "codeRevision": "aaaaaaa",
+      "requirementRevision": "req-1",
+      "inputHashes": [],
+      "outcomeScope": "decision",
+      "outcome": "blocked",
+      "supersedes": []
+    },
+    {
+      "id": "new-decision",
+      "kind": "decision",
+      "text": "TEST DATA: later scoped review decision supersedes the old blocker.",
+      "sourceRef": "export:synthetic#new-decision",
+      "goalIds": [
+        "goal-save"
+      ],
+      "sourceKind": "project_artifact",
+      "observedAt": "2026-10-16T12:00:00Z",
+      "codeRevision": "aaaaaaa",
+      "requirementRevision": "req-1",
+      "inputHashes": [],
+      "outcomeScope": "decision",
+      "outcome": "unknown",
+      "supersedes": [
+        "old-block"
+      ]
+    },
+    {
+      "id": "receipt",
+      "kind": "evidence",
+      "text": "TEST DATA: older targeted pass is not current release proof.",
+      "sourceRef": "export:synthetic#receipt",
+      "goalIds": [
+        "goal-save"
+      ],
+      "sourceKind": "project_artifact",
+      "observedAt": "2026-10-16T12:00:00Z",
+      "codeRevision": "ccccccc",
+      "requirementRevision": "req-1",
+      "inputHashes": [],
+      "outcomeScope": "targeted_check",
+      "outcome": "pass",
+      "supersedes": []
+    },
+    {
+      "id": "release-fail",
+      "kind": "evidence",
+      "text": "TEST DATA: release criterion failed; targeted pass does not close it.",
+      "sourceRef": "export:synthetic#release-fail",
+      "goalIds": [
+        "goal-save"
+      ],
+      "sourceKind": "project_artifact",
+      "observedAt": "2026-10-16T12:00:00Z",
+      "codeRevision": "aaaaaaa",
+      "requirementRevision": "req-1",
+      "inputHashes": [
+        "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      ],
+      "outcomeScope": "release",
+      "outcome": "fail",
+      "supersedes": []
+    },
+    {
+      "id": "unlinked",
+      "kind": "action",
+      "text": "TEST DATA: unrelated action needs scope review.",
+      "sourceRef": "export:synthetic#unlinked",
+      "goalIds": [],
+      "sourceKind": "project_artifact",
+      "observedAt": "2026-10-16T12:00:00Z",
+      "codeRevision": "aaaaaaa",
+      "requirementRevision": "req-1",
+      "inputHashes": [],
+      "outcomeScope": "unknown",
+      "outcome": "unknown",
+      "supersedes": []
+    }
+  ],
+  "goals": [
+    {
+      "id": "goal-save",
+      "text": "TEST DATA: save an instruction and recover it after refresh",
+      "sourceEventIds": [
+        "intent"
+      ],
+      "expectedBehavior": "Exactly one instruction persists as saved_not_delivered; no assistant delivery occurs.",
+      "userSteps": [
+        "Save a uniquely identified instruction through the authenticated work API.",
+        "Read the work API again and inspect the saved status and bridge."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "evidence-review",
+      "name": "Synthetic evidence review checklist",
+      "summary": "TEST DATA: declarative checklist, not a real installed skill invocation.",
+      "sourceRef": "skill:synthetic-review",
+      "revision": "bbbbbbb",
+      "userOwned": true,
+      "explicitlySelected": true,
+      "goalIds": [
+        "goal-save"
+      ],
+      "checks": [
+        "goal_has_action",
+        "claim_has_evidence",
+        "acceptance_observed"
+      ]
+    }
+  ]
+}

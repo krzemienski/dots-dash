@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {readFileSync} from 'node:fs';
+import {snapshotInstant} from '../lib/work/history-time.mjs';
 import {importHistory,readHistory} from '../lib/work/history.ts';
 import {validateHistory} from '../lib/work/history-validation.mjs';
 import {validateInstruction,validateDecision,canDecide,isSafeOrigin} from '../lib/work/validation.mjs';
@@ -13,7 +14,7 @@ const fixture=()=>({batchId:'synthetic-batch',verifiedAt,
  opportunities:[{id:'demo-opportunity',verifiedAt,title:'Example role',organization:'Example organization',category:'role',classificationBasis:'explicit',status:'review',nextStep:'Review synthetic evidence',summary:'Fictional test record',threadUrls:[]}],
  correspondence:[{id:'gmail-syntheticmessage',verifiedAt,opportunityId:'demo-opportunity',messageId:'syntheticmessage',threadId:'syntheticthread',threadUrl:'https://mail.google.com/mail/#all/syntheticthread',channel:'email',sourceAccount:account,direction:'outbound',status:'sent',subject:'Synthetic correspondence',participants:['recipient@example.test'],summary:'Fictional message; never sent',occurredAt:verifiedAt,occurredDate:null,evidence:'mailbox_message'}],
  schedule:[{id:'synthetic-event',verifiedAt,title:'Example event',timeZone:'UTC',kind:'confirmed_event',status:'confirmed',summary:'Fictional calendar event',nextStep:'No action',sourceLabel:'Synthetic calendar',sourceUrl:null,allDay:false,startAt:'2026-01-02T12:00:00Z',endAt:'2026-01-02T13:00:00Z',calendarScope:'personal'}]});
-function storage(){const sql=new DatabaseSync(':memory:');sql.exec(readFileSync(new URL('../db/0001_empty.sql',import.meta.url),'utf8'));
+function storage(){const sql=new DatabaseSync(':memory:');sql.function('history_snapshot_ms',{deterministic:true},snapshotInstant);sql.exec(readFileSync(new URL('../db/0001_empty.sql',import.meta.url),'utf8'));
  const prepare=(q,args=[])=>({q,args,bind(...v){return prepare(q,v)},async first(){return sql.prepare(q).get(...args)||null},async all(){return {results:sql.prepare(q).all(...args)}}});
  const db={prepare,async batch(statements){sql.exec('BEGIN');try{const r=statements.map(s=>sql.prepare(s.q).run(...s.args));sql.exec('COMMIT');return r}catch(e){sql.exec('ROLLBACK');throw e}}};return {sql,db};}
 

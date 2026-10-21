@@ -1,0 +1,264 @@
+{
+  "format": "dots-selected-records",
+  "version": 1,
+  "export": {
+    "format": "dots-visible-session",
+    "version": 1,
+    "ownerId": "synthetic-owner",
+    "sessionId": "TEST-DATA-selected-records",
+    "projectId": "synthetic-project",
+    "sourceRef": "export:synthetic",
+    "consentRef": "receipt:synthetic-consent",
+    "capturedAt": "2026-10-16T12:30:00Z",
+    "revision": "aaaaaaa",
+    "sanitized": true,
+    "dataLabel": "TEST DATA",
+    "events": [
+      {
+        "id": "intent",
+        "kind": "intention",
+        "text": "TEST DATA: explain the password reset process without requesting credentials.",
+        "sourceRef": "export:TEST-DATA-selection#intent",
+        "goalIds": [
+          "goal-save"
+        ],
+        "sourceKind": "visible_turn",
+        "observedAt": "2026-10-21T00:00:00Z",
+        "codeRevision": "aaaaaaa",
+        "requirementRevision": "synthetic-requirement",
+        "inputHashes": [],
+        "outcomeScope": "intent",
+        "outcome": "unknown",
+        "supersedes": []
+      },
+      {
+        "id": "redaction",
+        "kind": "action",
+        "text": "TEST DATA: keep this safe context; password=TEST_DATA_REDACTION_CANARY",
+        "sourceRef": "export:TEST-DATA-selection#redaction",
+        "goalIds": [
+          "goal-save"
+        ],
+        "sourceKind": "visible_turn",
+        "observedAt": "2026-10-21T00:00:00Z",
+        "codeRevision": "aaaaaaa",
+        "requirementRevision": "synthetic-requirement",
+        "inputHashes": [],
+        "outcomeScope": "investigation",
+        "outcome": "unknown",
+        "supersedes": []
+      },
+      {
+        "id": "unknown",
+        "kind": "claim",
+        "text": "TEST DATA: origin is unknown; completion has not been verified.",
+        "sourceRef": "export:TEST-DATA-selection#unknown",
+        "goalIds": [
+          "goal-save"
+        ],
+        "sourceKind": "visible_turn",
+        "observedAt": "2026-10-21T00:00:00Z",
+        "codeRevision": "aaaaaaa",
+        "requirementRevision": "synthetic-requirement",
+        "inputHashes": [],
+        "outcomeScope": "intent",
+        "outcome": "unknown",
+        "supersedes": []
+      },
+      {
+        "id": "generated",
+        "kind": "intention",
+        "text": "TEST_DATA_EXCLUDED_METADATA",
+        "sourceRef": "export:TEST-DATA-selection#generated",
+        "goalIds": [
+          "excluded-goal"
+        ],
+        "sourceKind": "visible_turn",
+        "observedAt": "2026-10-21T00:00:00Z",
+        "codeRevision": "aaaaaaa",
+        "requirementRevision": "synthetic-requirement",
+        "inputHashes": [],
+        "outcomeScope": "intent",
+        "outcome": "unknown",
+        "supersedes": []
+      },
+      {
+        "id": "tool-result",
+        "kind": "action",
+        "text": "TEST_DATA_EXCLUDED_TOOL",
+        "sourceRef": "export:TEST-DATA-selection#tool-result",
+        "goalIds": [],
+        "sourceKind": "visible_turn",
+        "observedAt": "2026-10-21T00:00:00Z",
+        "codeRevision": "aaaaaaa",
+        "requirementRevision": "synthetic-requirement",
+        "inputHashes": [],
+        "outcomeScope": "intent",
+        "outcome": "unknown",
+        "supersedes": []
+      },
+      {
+        "id": "private-field",
+        "kind": "decision",
+        "text": "TEST_DATA_EXCLUDED_PRIVATE",
+        "sourceRef": "export:TEST-DATA-selection#private-field",
+        "goalIds": [],
+        "sourceKind": "visible_turn",
+        "observedAt": "2026-10-21T00:00:00Z",
+        "codeRevision": "aaaaaaa",
+        "requirementRevision": "synthetic-requirement",
+        "inputHashes": [],
+        "outcomeScope": "intent",
+        "outcome": "unknown",
+        "supersedes": []
+      },
+      {
+        "id": "earlier",
+        "kind": "decision",
+        "text": "TEST DATA: earlier approval remains blocked.",
+        "sourceRef": "export:TEST-DATA-selection#earlier",
+        "goalIds": [
+          "goal-save"
+        ],
+        "sourceKind": "visible_turn",
+        "observedAt": "2026-10-21T00:00:00Z",
+        "codeRevision": "aaaaaaa",
+        "requirementRevision": "synthetic-requirement",
+        "inputHashes": [],
+        "outcomeScope": "decision",
+        "outcome": "blocked",
+        "supersedes": []
+      },
+      {
+        "id": "correction",
+        "kind": "decision",
+        "text": "TEST DATA: review only the reset explanation; retain other approval limits.",
+        "sourceRef": "export:TEST-DATA-selection#correction",
+        "goalIds": [
+          "goal-save"
+        ],
+        "sourceKind": "visible_turn",
+        "observedAt": "2026-10-21T00:00:00Z",
+        "codeRevision": "aaaaaaa",
+        "requirementRevision": "synthetic-requirement",
+        "inputHashes": [],
+        "outcomeScope": "decision",
+        "outcome": "unknown",
+        "supersedes": [
+          "earlier"
+        ]
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-save",
+        "text": "TEST DATA: explain password reset safely",
+        "sourceEventIds": [
+          "intent"
+        ],
+        "expectedBehavior": "Describe reset steps without collecting or sending a password.",
+        "userSteps": [
+          "Read the selected goal and its source.",
+          "Confirm no submission or execution occurred."
+        ]
+      },
+      {
+        "id": "excluded-goal",
+        "text": "TEST_DATA_EXCLUDED_GOAL",
+        "sourceEventIds": [
+          "generated"
+        ],
+        "expectedBehavior": "TEST DATA excluded metadata must not become human intent.",
+        "userSteps": [
+          "TEST DATA omitted source."
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "id": "synthetic-evidence-review",
+        "name": "TEST DATA evidence-presence checklist",
+        "summary": "TEST DATA: three local presence checks, not a full skill or provider invocation.",
+        "sourceRef": "skill:TEST-DATA-evidence-review",
+        "revision": "bbbbbbb",
+        "userOwned": true,
+        "explicitlySelected": true,
+        "goalIds": [
+          "goal-save"
+        ],
+        "checks": [
+          "goal_has_action",
+          "claim_has_evidence",
+          "acceptance_observed"
+        ]
+      }
+    ]
+  },
+  "projectBinding": {
+    "directoryProjectId": "synthetic-directory",
+    "declaredProjectId": "synthetic-project",
+    "confirmedProjectId": "synthetic-project",
+    "state": "owner_confirmed",
+    "confirmationRef": "receipt:TEST-DATA-project-confirmation"
+  },
+  "records": [
+    {
+      "eventId": "intent",
+      "role": "user",
+      "origin": "human",
+      "contentKind": "text"
+    },
+    {
+      "eventId": "redaction",
+      "role": "user",
+      "origin": "human",
+      "contentKind": "text"
+    },
+    {
+      "eventId": "unknown",
+      "role": "user",
+      "origin": "unknown",
+      "contentKind": "text"
+    },
+    {
+      "eventId": "generated",
+      "role": "user",
+      "origin": "generated",
+      "contentKind": "metadata"
+    },
+    {
+      "eventId": "tool-result",
+      "role": "user",
+      "origin": "unknown",
+      "contentKind": "tool_result"
+    },
+    {
+      "eventId": "private-field",
+      "role": "user",
+      "origin": "unknown",
+      "contentKind": "private_instruction"
+    },
+    {
+      "eventId": "earlier",
+      "role": "user",
+      "origin": "human",
+      "contentKind": "text"
+    },
+    {
+      "eventId": "correction",
+      "role": "user",
+      "origin": "human",
+      "contentKind": "text"
+    }
+  ],
+  "corrections": [
+    {
+      "eventId": "correction",
+      "targetId": "earlier",
+      "goalIds": [
+        "goal-save"
+      ],
+      "scopeRef": "receipt:TEST-DATA-correction-scope"
+    }
+  ]
+}

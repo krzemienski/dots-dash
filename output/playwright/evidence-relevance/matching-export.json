@@ -1,0 +1,85 @@
+{
+  "format": "dots-visible-session",
+  "version": 1,
+  "ownerId": "synthetic-owner",
+  "sessionId": "matching-revision",
+  "projectId": "synthetic-evidence-relevance",
+  "sourceRef": "export:synthetic-relevance",
+  "consentRef": "export:synthetic-consent",
+  "capturedAt": "2026-10-16T21:04:06.482712+00:00",
+  "revision": "4f40741f79a7c5227f8b54e10f7dbc6f05cdc43d",
+  "sanitized": true,
+  "dataLabel": "TEST DATA",
+  "events": [
+    {
+      "id": "intent",
+      "kind": "intention",
+      "text": "TEST DATA wrapper: retain the earlier real browser assessment-context evidence and its provenance.",
+      "sourceRef": "export:synthetic-relevance#intent",
+      "goalIds": [
+        "historical-context"
+      ],
+      "sourceKind": "owner_annotation",
+      "observedAt": "2026-10-16T21:04:06.482712+00:00",
+      "codeRevision": "4f40741f79a7c5227f8b54e10f7dbc6f05cdc43d",
+      "requirementRevision": "assessment-context-acceptance",
+      "inputHashes": [],
+      "outcomeScope": "intent",
+      "outcome": "unknown",
+      "supersedes": []
+    },
+    {
+      "id": "claim",
+      "kind": "claim",
+      "text": "TEST DATA completion claim; this claim is not independent verification.",
+      "sourceRef": "export:synthetic-relevance#claim",
+      "goalIds": [
+        "historical-context"
+      ],
+      "sourceKind": "owner_annotation",
+      "observedAt": "2026-10-16T21:04:06.482712+00:00",
+      "codeRevision": "4f40741f79a7c5227f8b54e10f7dbc6f05cdc43d",
+      "requirementRevision": "assessment-context-acceptance",
+      "inputHashes": [],
+      "outcomeScope": "unknown",
+      "outcome": "unknown",
+      "supersedes": []
+    },
+    {
+      "id": "browser-evidence",
+      "kind": "evidence",
+      "text": "Earlier real isolated Chrome workflow: historical assessment labels, goal-return navigation and persisted owner reports were observed. Scope: synthetic data, local Node/Python/SQLite; no production identity or independent product verifier. The recorded timestamp is the original workflow report timestamp.",
+      "sourceRef": "artifact:assessment-context-workflow",
+      "goalIds": [
+        "historical-context"
+      ],
+      "sourceKind": "project_artifact",
+      "observedAt": "2026-10-16T21:04:06.482712+00:00",
+      "codeRevision": "4f40741f79a7c5227f8b54e10f7dbc6f05cdc43d",
+      "requirementRevision": "assessment-context-acceptance",
+      "inputHashes": [
+        "59c3758b8496733e776a84fabee6de3236f6c463a331b3e4de6d2e44569573c2",
+        "c682897980e8153c7a54b837bd809cba52dc2fdd2a2c66007fa5f54e7a3967fd",
+        "c61d42814c939422646c56b90777fb6339e2a7ab4992ccb9e8e5eaf4efd67964"
+      ],
+      "outcomeScope": "end_user_behavior",
+      "outcome": "pass",
+      "supersedes": []
+    }
+  ],
+  "goals": [
+    {
+      "id": "historical-context",
+      "text": "Historical assessment context remains distinguishable from owner reports.",
+      "sourceEventIds": [
+        "intent"
+      ],
+      "expectedBehavior": "Display historical assessment separately from recorded owner reports.",
+      "userSteps": [
+        "Read the historical assessment and recorded observation summary.",
+        "Open the goal and return to its remediation card."
+      ]
+    }
+  ],
+  "skills": []
+}
