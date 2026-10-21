@@ -324,3 +324,11 @@ to route away from Session review. Eight isolated observations now show exact
 in-view source focus with drafts, pending replay and partial/unresolved checkpoints
 preserved. This closes that inspection gap, not original-source processing,
 complete transcript coverage or durable recovery.
+
+
+The [manifest freshness follow-up](OWNER_REVIEW_REPORTS.md#historical-reports-and-displayed-selection-freshness)
+closes a reproduced stale-source projection gap. Historical owner counts remain
+visible, while source inspection/report controls require matching saved and
+displayed selection pins. Ten isolated observations distinguish version-only
+activity, changed content and unavailable targets without transferring progress.
+Relevance remains a last-read snapshot; actual-owner/source-byte gates stay open.

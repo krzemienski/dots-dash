@@ -16,6 +16,15 @@ async function payloadDigest(body:string){const bytes=await crypto.subtle.digest
 export default function OwnerReviewReports({review,onOpenEvent}:{review:SessionReview;onOpenEvent:(id:string)=>void}){
  const [state,setState]=useState<State|null>(null),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[pending,setPending]=useState<Pending|null>(null);
  const gate=useRef(false),pendingRef=useRef<Pending|null>(null);
+ const [displayedSelection,setDisplayedSelection]=useState<{source:SessionReview['export'];digest:string|null}|null>(null);
+ useEffect(()=>{
+  let current=true;const source=review.export;
+  void payloadDigest(JSON.stringify(source)).then(digest=>{if(current)setDisplayedSelection({source,digest})}).catch(()=>{if(current)setDisplayedSelection({source,digest:null})});
+  return()=>{current=false};
+ },[review.export]);
+ function matchesDisplayed(pins:Manifest|null|undefined){
+  return !!pins&&displayedSelection?.source===review.export&&displayedSelection.digest===pins.selectionDigest&&pins.reviewId===review.id&&pins.projectId===review.export.projectId&&pins.analysisVersion===review.analysisVersion;
+ }
  async function load(manifestId?:string,offset=0,ceiling?:number){
   const q=new URLSearchParams({reviewId:review.id});if(manifestId)q.set('manifestId',manifestId);if(offset)q.set('offset',String(offset));if(ceiling!==undefined)q.set('ceiling',String(ceiling));
   try{const r=await fetch(endpoint+'?'+q,{credentials:'same-origin'});if(!r.ok)throw new Error();const next=await r.json() as State;setState(next);}
@@ -41,7 +50,9 @@ export default function OwnerReviewReports({review,onOpenEvent}:{review:SessionR
  }
  const m=state?.manifest,s=state?.stream;
  const locked=busy||!!pending||!state?.writeEnabled||!state.initialized;
- const reportLocked=locked||!['pins_match','pins_match_version_changed'].includes(state?.relevance||'');
+ const serverPinsMatch=['pins_match','pins_match_version_changed'].includes(state?.relevance||'');
+ const sourceInspectionAvailable=serverPinsMatch&&matchesDisplayed(m);
+ const reportLocked=locked||!sourceInspectionAvailable;
  const pins=()=>({manifestId:m!.id,manifestDigest:m!.manifestDigest,projectId:m!.projectId,processorId:state!.processorId,processorVersion:state!.processorVersion,expectedHead:s!.head});
  function submit(event:React.FormEvent<HTMLFormElement>,action:string){event.preventDefault();if(!m||!s)return;const data=new FormData(event.currentTarget);const value=(name:string)=>String(data.get(name)||'');
   const report=(itemId:string)=>({itemId,result:value('result'),observedAt:value('observedAt'),evidenceRefs:value('evidenceRefs').split('\n').filter(Boolean)});
@@ -58,14 +69,19 @@ export default function OwnerReviewReports({review,onOpenEvent}:{review:SessionR
    {!state.initialized&&<p>Report storage is not initialized. An explicit operator migration is required; this view does not migrate storage.</p>}
    {!state.writeEnabled&&<p>Owner review report writes are disabled.</p>}
    <p>Processor: {state.processorId} version {state.processorVersion}. Owner-reported inspection only; no adapter receipt or certified processing.</p>
-   {state.candidate?<><p>Eligible selection: {state.candidate.itemCount} retained normalized records. {state.candidate.excludedCount} excluded dispositions remain separate.</p><button disabled={locked} onClick={()=>void save({action:'create_manifest',reviewId:review.id,reviewVersion:state.candidate!.reviewVersion,projectId:state.candidate!.projectId,reviewExportDigest:state.candidate!.selectionDigest,analysisVersion:state.candidate!.analysisVersion})}>Create retained-selection manifest</button></>:<p>Manifest eligibility: {state.candidateStatus.replaceAll('_',' ')}. No review checkpoint is inferred.</p>}
+   {state.candidate?<><p>Eligible selection: {state.candidate.itemCount} retained normalized records. {state.candidate.excludedCount} excluded dispositions remain separate.</p><button disabled={locked||!matchesDisplayed(state.candidate)} onClick={()=>void save({action:'create_manifest',reviewId:review.id,reviewVersion:state.candidate!.reviewVersion,projectId:state.candidate!.projectId,reviewExportDigest:state.candidate!.selectionDigest,analysisVersion:state.candidate!.analysisVersion})}>Create retained-selection manifest</button></>:<p>Manifest eligibility: {state.candidateStatus.replaceAll('_',' ')}. No review checkpoint is inferred.</p>}
+   {state.candidate&&!matchesDisplayed(state.candidate)&&<p role="status">Manifest creation is unavailable while the displayed selection comparison is unresolved or differs from the last report read. Refresh Session review and owner review reports.</p>}
    {!!state.manifests.length&&<label>Retained selection manifest<select value={m?.id||''} disabled={busy||!!pending} onChange={e=>void refresh(e.target.value)}>{state.manifests.map(row=><option key={row.id} value={row.id}>{row.id}</option>)}</select></label>}
    {m&&s&&<>
-    <p>Manifest {m.id}; {state.relevance.replaceAll('_',' ')}. Creation review version {m.reviewVersion}.</p><details><summary>Immutable selection pins</summary><p>Selection digest (stored normalized export): {m.selectionDigest}</p><p>Manifest digest: {m.manifestDigest}. Order: retained export array, version 1.</p></details>
+    <p>Manifest {m.id}. Creation review version {m.reviewVersion}; displayed review version {review.version}.</p>
+    <p>Target relevance at last report read: {state.relevance.replaceAll('_',' ')}. This is a snapshot comparison, not live source monitoring.</p>
+    {state.relevance==='pins_match_version_changed'&&<p>The saved review version changed, but its normalized selection and analysis pins still match. Version-only activity adds no reported review progress.</p>}
+    {!sourceInspectionAvailable&&<p role="status">Historical report counts and evidence are retained. Source inspection and new reports are unavailable: the saved target or displayed selection does not match these pins, or the comparison is unresolved. Refresh Session review and owner review reports before using current material.</p>}
+    {sourceInspectionAvailable&&<p>Displayed normalized selection matches this manifest. Source links inspect retained events only; they do not open original sources or advance reported coverage.</p>}<details><summary>Immutable selection pins</summary><p>Selection digest (stored normalized export): {m.selectionDigest}</p><p>Manifest digest: {m.manifestDigest}. Order: retained export array, version 1.</p></details>
     <p>{s.head?`${s.reviewedCount} of ${m.itemCount} retained records reported reviewed; contiguous prefix ${s.prefixCount} of ${m.itemCount}`:'No owner review checkpoint. Import and manifest creation establish no reported review.'}</p>
     {s.head&&s.prefixCount===m.itemCount&&<p>Owner reports reviewing all {m.itemCount} records in this retained selection. Original transcript coverage remains unknown.</p>}
     <p>{m.excludedCount} excluded dispositions; {m.unknownAttributionCount} retained records with unknown attribution. Excluded content is not included.</p>
-    <ol>{m.items.map(item=>{const report=s.activeReports[item.itemId];return <li key={item.itemId}>{item.itemId} · {item.attribution.replaceAll('_',' ')} · {report?report.result+' / owner_reported':'missing report'} · <a href={`#session-${review.id}-event-${item.itemId}`} onClick={event=>{event.preventDefault();onOpenEvent(item.itemId)}}>{item.sourceRef}</a>{report&&<p>{report.id} · {report.observedAt} · {report.evidenceRefs.join(', ')}</p>}</li>})}</ol>
+    <ol>{m.items.map(item=>{const report=s.activeReports[item.itemId];return <li key={item.itemId}>{item.itemId} · {item.attribution.replaceAll('_',' ')} · {report?report.result+' / owner_reported':'missing report'} · {sourceInspectionAvailable?<a href={`#session-${review.id}-event-${item.itemId}`} onClick={event=>{event.preventDefault();onOpenEvent(item.itemId)}}>{item.sourceRef}</a>:<span>{item.sourceRef} · source inspection unavailable</span>}{report&&<p>{report.id} · {report.observedAt} · {report.evidenceRefs.join(', ')}</p>}</li>})}</ol>
     <details><summary>Report reviewed items</summary><form onSubmit={e=>submit(e,'append_reports')}><fieldset disabled={reportLocked}>
      {m.items.map(item=><label key={item.itemId}><input type="checkbox" name="itemId" value={item.itemId} disabled={!!s.activeReports[item.itemId]}/>Item {item.position}: {item.itemId}</label>)}{inputs}<button>Save item review reports</button>
     </fieldset></form></details>

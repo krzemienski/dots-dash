@@ -424,6 +424,111 @@
         "No migration/schema change; existing migration used only in disposable verification storage."
       ],
       "nextTask": "Review current owner-report freshness/relevance projection against saved manifest pins; leave actual-user and live-source gates open until their own authorized evidence exists."
+    },
+    {
+      "id": "manifest-display-freshness",
+      "observedAt": "2026-10-21T16:49:44.064857+00:00",
+      "baselineCommit": "c452a49e382c92988e39675ace5ab3478d226065",
+      "sourceBinding": {
+        "ui/owner-review-reports.tsx": "2bcb0c93b84d034fd333f2b7a412ba10fd0d310e6e992d2ad9610c76d4ad49e7",
+        "ui/session-review.tsx": "720df7722cd1a8656fd3d8f189c60a454742c274800269f0ca54b2f01d84e2a3",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "python/dots_engineering/owner_reviews.py": "eeea5c693a32820bbe7b8ef3ea262f97bfe3bc6a8b2a98f537b1ec5736d674ff",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852"
+      },
+      "dataLabel": "TEST DATA",
+      "contract": "docs/build-package/16-source-coverage-checkpoints.md: immutable manifest identity, independent version pins, R5/R9/R10",
+      "goal": "Distinguish historical owner reports from current displayed content; do not offer changed/unresolved material as the manifest source or transfer progress.",
+      "baselineObserved": "After changing a synthetic stored event while retaining its ID, API relevance was stale but the manifest source link focused changed text. Manifest bytes remained unchanged.",
+      "remediation": "Compare the actually displayed normalized export digest plus review/project/analysis pins with the selected manifest; require matching last-read server relevance for source inspection and report writes. Candidate creation also requires the displayed selection to match its candidate pins. Missing/failed local digest comparison remains unresolved. Existing canonical SHA-256 helper reused; no stored digest or backend contract changed.",
+      "observations": [
+        {
+          "id": "F1",
+          "outcome": "Matching server/displayed selection permits exact retained-source inspection; one owner report remains reviewed 1/prefix 1.",
+          "result": "pass"
+        },
+        {
+          "id": "F2",
+          "outcome": "Actual owner product observation changes review version only; selection pins match, links remain usable, report tables/counts unchanged and explicit no-progress explanation shown.",
+          "result": "pass"
+        },
+        {
+          "id": "F3",
+          "outcome": "Changed normalized target at same review version becomes stale; historical counts remain, source links/report writes blocked, candidate creation blocked while displayed export differs.",
+          "result": "pass"
+        },
+        {
+          "id": "F4",
+          "outcome": "After loading changed content, explicit new manifest gets no inherited progress; Unicode selection digest comparison permits matching source links.",
+          "result": "pass"
+        },
+        {
+          "id": "F5",
+          "outcome": "Old manifest stays historical; restoring server pins alone does not enable links or reports against a different displayed export at the same version.",
+          "result": "pass"
+        },
+        {
+          "id": "F6",
+          "outcome": "Refreshing displayed selection and selecting the matching historical manifest restores exact source inspection without changing report history or transferring progress.",
+          "result": "pass"
+        },
+        {
+          "id": "F7",
+          "outcome": "Missing target retains historical coverage with explicit missing relevance and no source links/new report writes; no empty/completed inference.",
+          "result": "pass"
+        },
+        {
+          "id": "F8",
+          "outcome": "Unavailable report transport clears the unconfirmed projection and shows an explicit unknown-coverage alert; subsequent read restores history with no database mutation.",
+          "result": "pass"
+        },
+        {
+          "id": "F9",
+          "outcome": "320/375px layouts and persisted reload retain historical counts, unknown attribution/original coverage and empty browser storage; no certified-processing claim.",
+          "result": "pass"
+        },
+        {
+          "id": "F10",
+          "outcome": "Unavailable browser digest leaves comparison unresolved, visibly disables manifest creation/source inspection and changes no stored bytes.",
+          "result": "pass"
+        }
+      ],
+      "externalRequests": 0,
+      "pageErrors": [],
+      "persistence": "Actual UI imports, explicit manifest creation, one item report and one owner product-gap observation via API/Python/SQLite. Product observation changed review version only and left all report tables unchanged. A second changed-selection manifest began with no checkpoint. Original manifest, reports and checkpoints remained unchanged through all subsequent read-only inspection, missing/unavailable states and reload.",
+      "fixtureBoundaries": "Existing companion migration only on fresh disposable owner-bound TEST DATA stores. Same-version changed export, restoration and missing target were explicit direct synthetic fixture mutations, not claims of supported production import mutation or restoration workflows. Unavailable transport and crypto digest were injected browser conditions.",
+      "coverage": "Five retained records, three excluded dispositions, one unknown attribution. Owner reviewed 1/prefix 1 remains scoped to its immutable selection. No original-source denominator/time or authorship proof.",
+      "visualInspection": "Inspected 375px report screenshot: creation v1/displayed v2, last-read relevance, explicit version-only no-progress explanation, retained counts and unknown coverage readable. 320/375px overflow checks passed.",
+      "attempts": [
+        "Baseline reproduced before edits.",
+        "Nine freshness scenarios passed, then an explicit unavailable-digest explanation/case was added.",
+        "Final ten-scenario workflow passed on final runtime source."
+      ],
+      "checks": [
+        "npm test: 14 passed, 0 failed",
+        "npm run typecheck: passed",
+        "npm run build: passed",
+        "Source/build-manifest hashes, ledger JSON and local documentation links checked",
+        "git diff --check: passed"
+      ],
+      "skills": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Compared visible provenance with immutable selection contract, reproduced stale-source drift, verified exact UI/API/persisted behavior while preserving historical evidence.",
+        "verified": "Ten bounded synthetic observations; manual guidance, not automatic invocation or certified processing."
+      },
+      "cleanup": "Fresh owned headless Chromium contexts, random-port loopback servers and SQLite handles closed. Shared Chrome, Jobs and production settings untouched.",
+      "limits": [
+        "Relevance is a last-read snapshot, not continuous monitoring or atomicity across separate reads.",
+        "Original source content was not fetched; digest comparison is normalized stored export metadata, not a source-byte receipt.",
+        "Actual screen-reader, real-owner V301, live identity/providers and full transcript coverage remain unperformed.",
+        "Pending envelopes still do not survive explicit departure/reload. No new browser storage, schema, migration logic or durable-registration policy."
+      ],
+      "nextTask": "Independently review displayed-selection matching and asynchronous refresh boundaries; retain separate gates for actual-owner acceptance and source-byte coverage."
     }
   ]
 }
