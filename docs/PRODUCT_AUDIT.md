@@ -3,6 +3,10 @@
 Audit date: 21 October 2026. Source baseline: `a059e971af73b4a830690426e9fdf1f89afcdee4`.
 This document reconciles the product requirements with the current reusable application and saved execution evidence. It is not production acceptance or a new grant of access. [Proposed experience mockups](mockups/product-review.html) are synthetic design artifacts, not shipped screens.
 
+## Subsequent bounded implementation
+
+The [correspondence-first Overview](OVERVIEW.md) now implements the next local composition described by this audit, with 18 isolated UI/API/storage observations and explicit snapshot limits. The baseline matrix and older hashes below remain historical to `a059e97`; this follow-up does not close live correspondence/calendar, actual-user acceptance or production gates. Mockups remain proposals.
+
 ## What the product is for
 
 dots-dash should let one person understand and manage assistant-supported work: correspondence, commitments, scheduled work, requested outcomes, actual results, remaining work and decisions that need the owner. Correspondence and scheduled tasks are the original first priorities. Engineering review is an extension of that purpose, not the entire product.

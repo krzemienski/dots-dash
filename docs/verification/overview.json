@@ -1,0 +1,149 @@
+{
+  "label": "TEST DATA: correspondence-first Overview verification",
+  "date": "2026-10-21T09:48:26.315497+00:00",
+  "baseRevision": "65b5b443bcfa1d40233691db872c6f98d060de8d",
+  "acceptance": "docs/verification/overview-scenarios.md",
+  "method": "Built React UI, actual loopback Node API, synthetic host principal, fresh disposable owner SQLite and fresh owned headless Chrome. Existing importer; no live source or production identity.",
+  "node": "v26.11.1",
+  "observations": [
+    {
+      "name": "Empty states distinguish missing stored data from empty original sources",
+      "pass": true
+    },
+    {
+      "name": "Default-off import gate rejects",
+      "pass": true
+    },
+    {
+      "name": "Offset-aware message chronology; date-only/unknown records remain separate",
+      "pass": true
+    },
+    {
+      "name": "Original source link and unknown review time retained; no actor/delivery inference",
+      "pass": true
+    },
+    {
+      "name": "Ongoing and all-day records selected; past/subscription/inferred/cancelled/declined/unknown-status/invalid-zone excluded",
+      "pass": true
+    },
+    {
+      "name": "Only explicitly flagged requests shown; paused status preserved",
+      "pass": true
+    },
+    {
+      "name": "Keyboard request link focuses exact record",
+      "pass": true
+    },
+    {
+      "name": "Editing request search retains focus",
+      "pass": true
+    },
+    {
+      "name": "Deep link and exact focus survive reload",
+      "pass": true
+    },
+    {
+      "name": "Read navigation and reload leave durable records and audits unchanged",
+      "pass": true
+    },
+    {
+      "name": "Next-event jump reaches focused section without changing routes",
+      "pass": true
+    },
+    {
+      "name": "320px/375px long-text layout, section jumps and exact request navigation pass",
+      "pass": true
+    },
+    {
+      "name": "UI save persists once as saved-not-delivered across reload",
+      "pass": true
+    },
+    {
+      "name": "Failed refresh retains prior snapshot with explicit error",
+      "pass": true
+    },
+    {
+      "name": "Wrong-owner read clears private display",
+      "pass": true
+    },
+    {
+      "name": "API readback preserves 19 domain records plus import receipt; bridge remains disconnected",
+      "pass": true
+    },
+    {
+      "name": "Newer persisted cancellation removes former next event and reveals next eligible event",
+      "pass": true
+    },
+    {
+      "name": "No external requests or application JavaScript errors",
+      "pass": true
+    }
+  ],
+  "sourceHashes": {
+    "ui/overview.tsx": "8fe5522bd5330b1f50bf968f0967e2d7a141999e7ef8aa559b66d213da8c6c6b",
+    "ui/dashboard.tsx": "ae30115c86cca2befbb24eff250d38a07cf6790b12bb23ce3bb12618d813bbe7",
+    "ui/commitments.tsx": "33cf0c0e142926258ba2e2d6eee19481956f4e1ddcd39b1ffcd1e4a567072dbd",
+    "ui/styles.css": "338b1413facf8f50d258a98563aebfbaf01812d04bc5887a7963bfcb02be6f19",
+    "server/api.ts": "d2a2d1822a2de84b8bab01b0fd0d237c822ccf3db3c9050f4c45078899c298f8",
+    "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+    "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+    "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01"
+  },
+  "buildOutputs": {
+    "dist/main.js": "30e1f0b3c141eda052e6757a4d597ea0c11b51fcb7e20ad04f4e97ec647f8347",
+    "dist/main.css": "9dae0752ce402848a2b1c5f9012973ffd5d380a742951cc482ec30a4851dad7c",
+    "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+  },
+  "privateEvidenceHashes": {
+    "fixture.json": "bd20a7467b282756ea263c6629f80a78a0c6a9c3f5ac5ac8f383d96e93f9d651",
+    "observations.json": "b9732dcaaa2938c071906110be60be27c288ad3e2eaf011faaa97a62ae5630b3",
+    "persisted-readback.json": "72332ae62a723b55cc12054bb4ec324b4a3f6d7f36d991da44fda8ad0b3288a1",
+    "overview-desktop.png": "234d1f45bff385fcf55155557fbf258e0c1a08e67f44f61373ab547bd0a68bf6",
+    "overview-mobile.png": "30b2fcbd78368f5e2e4f3640ba2ff0dc0dacf8663e963ade762f8b43414a2906"
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "storageClosed": true
+  },
+  "harnessNotes": [
+    "Initial run stopped after seven observations: navigation selector omitted its icon. Its Node wrapper was v22; final run uses explicit Node 26.11.1.",
+    "Second run stopped after twelve observations: exact descendant text selector did not match the alert container with its retry button. Corrected to inspect the alert text.",
+    "Both interrupted runs closed owned browser/server/storage and are not represented as final acceptance.",
+    "Source review removed query/filter from request-focus effect dependencies to preserve editing focus. Section-jump controls were added after visual review. Final runtime source was rebuilt and all 18 observations rerun."
+  ],
+  "checks": {
+    "tests": "14 existing tests passed on final runtime code under Node 26",
+    "typecheck": "passed",
+    "build": "passed before final workflow",
+    "diff": "passed",
+    "screenshots": "Final desktop/mobile inspected",
+    "newTestFiles": false,
+    "documentationLinks": "125 relative targets/line anchors checked"
+  },
+  "skills": [
+    {
+      "name": "ak:frontend-design",
+      "basis": "Previously read guidance manually applied to restrained black surfaces, limited purple/pink accents, readable context and focused section navigation.",
+      "providerInvocation": false
+    },
+    {
+      "name": "react-best-practices",
+      "basis": "Read and manually applied: derive projections during render, preserve input focus, no extra fetch waterfall, no new package or client storage.",
+      "providerInvocation": false
+    },
+    {
+      "name": "session-intent-review",
+      "basis": "Previously read project skill applied to acceptance-first scope, actual outcomes and evidence limits.",
+      "providerInvocation": false
+    }
+  ],
+  "limits": [
+    "No production authentication, live mailbox/calendar/provider action or actual-user V301.",
+    "No measured ten-second owner usability or screen-reader certification.",
+    "Full DST/recurrence/provider status taxonomy is not implemented or exhaustively tested. Unknown statuses stay out of the next-event ranking.",
+    "Selection uses the last successful database-read time, not continuous live updates.",
+    "Earlier evidence stays historical; no all-transcript or certified-processing claim."
+  ],
+  "nextTask": "Actual owner review of the three-question check-in and focused accessibility acceptance; keep provider and durable recovery work separately scoped."
+}

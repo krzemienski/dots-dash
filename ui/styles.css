@@ -19,3 +19,17 @@ nav .nav-more{display:none}.rail{overflow-y:auto}.rail .brand{margin-bottom:24px
 .source-inventory input,.source-inventory select{width:100%;min-width:0;box-sizing:border-box}
 
 .snapshot-associations{border-top:1px solid var(--line);margin-top:24px;padding-top:20px}.snapshot-associations h4,.snapshot-associations code{overflow-wrap:anywhere}[id^="inventory-snapshot-"]:focus,[id^="saved-session-review-"]:focus,[id^="snapshot-association-"]:focus{outline:2px solid #c5c5c5;outline-offset:3px}
+
+/* Overview uses stored snapshots only. Its accents identify navigation, not health. */
+.owner-overview{--overview-muted:#b7b3bd;--overview-accent:#cfb6fa;--overview-pink:#f2accf}
+.owner-overview .page-heading p,.owner-overview .overview-note{color:var(--overview-muted)}
+.overview-scope{border-bottom:1px solid var(--line);padding:0 0 24px;margin-bottom:32px;color:var(--overview-muted);font-size:13px;line-height:1.7}
+.overview-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:48px}
+.overview-grid section{margin-bottom:40px;min-width:0}.overview-grid .section-head{align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:12px}.overview-grid .section-head h2{font-size:20px}.overview-grid .section-head span{font-size:12px;color:var(--overview-muted)}
+.overview-row{padding:20px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.overview-row h3{font-size:17px;line-height:1.5;margin:8px 0}.overview-row p{font-size:14px;line-height:1.7;margin:8px 0}.overview-meta,.overview-note{font-size:12px;line-height:1.7;color:var(--overview-muted)}
+.overview-row a,.owner-overview button{display:inline-flex;align-items:center;min-height:44px;text-align:left;font-size:13px;color:var(--overview-accent);padding:8px 0;overflow-wrap:anywhere}.owner-overview button:hover,.overview-row a:hover{text-decoration:underline;text-underline-offset:4px;background:transparent}.owner-overview button:focus-visible,.overview-row a:focus-visible{outline-color:var(--overview-accent)}
+.overview-empty{color:var(--overview-muted);font-size:14px;line-height:1.7;padding:24px 0}.overview-subheading{font-size:14px;margin:24px 0 0;color:var(--overview-pink)}
+.overview-next{border-top:1px solid var(--line);padding-top:24px}.overview-next p{color:var(--overview-muted);margin-top:8px}.overview-next>div{display:flex;flex-wrap:wrap;gap:24px;margin-top:12px}.commitment-card:focus{outline:2px solid #cfb6fa;outline-offset:4px;scroll-margin-top:24px}
+@media(max-width:1000px){.overview-grid{grid-template-columns:1fr;gap:0}.overview-grid>aside{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}}
+@media(max-width:600px){.overview-grid>aside{grid-template-columns:1fr;gap:0}.overview-grid section{margin-bottom:32px}.overview-grid .section-head h2{font-size:18px}.overview-next>div{gap:16px}.owner-overview h1{font-size:30px;letter-spacing:-.5px}}
+.owner-overview .overview-jumps{display:flex;flex-wrap:wrap;gap:24px;margin:0 0 32px}.owner-overview .overview-jumps button{width:auto;margin:0;padding:8px 0;background:transparent}.owner-overview h2:focus{outline:2px solid var(--overview-accent);outline-offset:4px;scroll-margin-top:24px}
