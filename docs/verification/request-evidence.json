@@ -1,0 +1,144 @@
+{
+  "label": "TEST DATA: request evidence projection",
+  "baseRevision": "56c0baa3ee2f425dc8f3aae7eadfef7ccfb24b56",
+  "date": "2026-10-21T10:08:26.300Z",
+  "acceptance": "docs/verification/request-evidence-scenarios.md",
+  "method": "Actual built React UI, loopback Node API, synthetic host principal and fresh disposable SQLite. Inline driver, no new test file.",
+  "observations": [
+    {
+      "name": "existing import capability",
+      "result": "pass",
+      "detail": "Disabled import rejected, explicitly enabled synthetic import persisted"
+    },
+    {
+      "name": "unsupported completion",
+      "result": "pass",
+      "detail": "Recorded completed status retains claim, explicit missing support and neutral status"
+    },
+    {
+      "name": "partial request evidence",
+      "result": "pass",
+      "detail": "Visible source and supplied note; failure, pending work, attribution and per-claim binding limits retained"
+    },
+    {
+      "name": "paused and unflagged",
+      "result": "pass",
+      "detail": "No status-derived certification or invented input need"
+    },
+    {
+      "name": "related context and return",
+      "result": "pass",
+      "detail": "Present opportunity opens; missing references remain explicit; browser back restores exact request route"
+    },
+    {
+      "name": "keyboard disclosure/source focus",
+      "result": "pass",
+      "detail": "Native disclosure expands via keyboard; source link focusable without fetching"
+    },
+    {
+      "name": "claim search",
+      "result": "pass",
+      "detail": "Recorded completion text searchable; typing keeps focus"
+    },
+    {
+      "name": "exact ID reload",
+      "result": "pass",
+      "detail": "Original request focused after reload"
+    },
+    {
+      "name": "failed read recovery",
+      "result": "pass",
+      "detail": "Old request evidence remains beside failed-refresh error; read-only retry restores"
+    },
+    {
+      "name": "interrupted navigation",
+      "result": "pass",
+      "detail": "Delayed read across route change followed by exact request selection retains evidence"
+    },
+    {
+      "name": "narrow layouts",
+      "result": "pass",
+      "detail": "320/375px long context wraps without horizontal overflow"
+    },
+    {
+      "name": "missing target and unchanged persistence",
+      "result": "pass",
+      "detail": "Unknown exact ID explicitly unavailable; read/navigation/reload left all four durable tables unchanged"
+    },
+    {
+      "name": "instruction boundary",
+      "result": "pass",
+      "detail": "Existing UI save persisted once across reload as saved_not_delivered"
+    },
+    {
+      "name": "owner isolation",
+      "result": "pass",
+      "detail": "Other principal cannot read request records"
+    },
+    {
+      "name": "isolated execution",
+      "result": "pass",
+      "detail": "No external browser requests or page errors"
+    }
+  ],
+  "sourceHashes": {
+    "ui/commitments.tsx": "f64e652a446ff8863e0b9fe06ba249c95685a95353b12b17d9351b05c260b924",
+    "ui/dashboard.tsx": "4e518bb2046eeb439e79dcfa1d36c882ed1ec10def5f5d32ea1d51e726d0a1ae",
+    "ui/styles.css": "394ac53c514a5cd84ed8754b762f93f10bf27ff53eff1823307a9a9e54706a3e",
+    "dist/main.js": "49b662b47cec547c52dccd4b0ac7d5da8c3baed4bbe19336735515d3ae81c60f",
+    "dist/main.css": "9762a1a40835e9a5e10415cc015bd4d3803f71c158a25ab0bbd03f29397832f4"
+  },
+  "node": "v26.11.1",
+  "fixtureHash": "ff7af9379f87e6c4af6a1d2d9ff60d2442e0f2b5c51ef0c23744a470aa49db32",
+  "staticChecks": {
+    "existingTests": "14 passed",
+    "typecheck": "passed",
+    "build": "passed"
+  },
+  "visualInspection": "Desktop and 320px full-page screenshots inspected; 375px overflow assertion also passed.",
+  "priorAttempt": {
+    "result": "Driver stopped after 12 observations on incorrect column assertion instructions.delivery_state; actual column is status.",
+    "applicationOutcome": "UI instruction save and reload occurred in disposable storage; driver schema error, not an established application defect.",
+    "cleanup": "Owned browser, server and writer closed; process exited. Fresh rerun used independent storage."
+  },
+  "skills": [
+    {
+      "source": ".agents/skills/session-intent-review/SKILL.md",
+      "hash": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+      "available": true,
+      "selected": "FR04 source-linked accountability and claim/evidence distinction",
+      "read": true,
+      "applied": "Acceptance before implementation, preserved historical/unknown evidence, actual UI/API/storage observations",
+      "verified": "Observed claim/gap/pending visibility and unchanged read-only persistence; manual application, not provider invocation"
+    },
+    {
+      "source": "vercel:react-best-practices",
+      "resource": "skill://plugin_connector_690a90ec05c881918afb6a55dc9bbaa1/react-best-practices/SKILL.md",
+      "available": true,
+      "selected": "Review modified TSX projections and focus effects",
+      "read": true,
+      "applied": "Derived evidence during render; no new fetch/effect/storage; native disclosure and existing focus behavior retained",
+      "verified": "Search focus, keyboard disclosure, exact navigation and layout observed",
+      "limits": "Provider resource returned no pinned version/hash; manual guidance use only"
+    },
+    {
+      "source": ".agents/skills/skill-use-review/SKILL.md",
+      "hash": "55d3305a59e1679a790296f1b1d2fb554df2e7ddeb58099faf08091419d0303a",
+      "available": true,
+      "selected": "Record actual guidance application and verification separately",
+      "read": true,
+      "applied": "This bounded skill evidence record; no catalog discovery or skill edits",
+      "verified": "Source hashes captured and matching; no automatic invocation assertion"
+    }
+  ],
+  "externalRequests": 0,
+  "pageErrors": [],
+  "cleanup": "Owned browser, server and writer closed",
+  "limits": [
+    "Existing source URLs and notes are request context, not per-action proof.",
+    "Actual-user V301, production identity, external source content and full accessibility remain unverified.",
+    "Present task modal and positive project/schedule list navigation branches were source-inspected, not exercised in this fixture.",
+    "No private sources, new provider, schema or API; no merge/deploy. Prior verification retains original source hashes."
+  ],
+  "nextTask": "Define per-action claim-to-evidence association before adding completion certification; preserve provenance, uncertainty and contrary evidence."
+}

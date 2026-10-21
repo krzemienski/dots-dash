@@ -32,7 +32,7 @@ return <div className="app"><aside className="rail"><a className="brand" href="#
 {!snapshot?<div className="empty" aria-busy={refreshing}>{refreshing?'Loading your private workspace…':'Workspace unavailable. Use Retry read above.'}</div>:<>
 {view==='day'&&<DayWorkspace records={records} instructions={snapshot.instructions} onNavigate={go}/>}
 {view==='observations'&&<Observations records={records}/>}
-{view==='requests'&&<>{heading('REQUESTS & ACCOUNTABILITY','Asked. Done. Still open.','Your instructions, the verified progress and the next step for each request.')}<Commitments records={records} onTask={showTask} onNavigate={go}/></>}
+{view==='requests'&&<>{heading('REQUESTS & ACCOUNTABILITY','Asked. Done. Still open.','Requested outcomes, recorded claims, evidence gaps and next steps.')}<Commitments records={records} onTask={showTask} onNavigate={go}/></>}
 {['opportunities','correspondence','projects','schedule'].includes(view)&&<HistoryViews view={view} records={records}/>}
 {view==='more'&&<>{heading('YOUR WHOLE WORKSPACE','More to explore.','Projects, work, decisions and the evidence behind them.')}<div className="card">{views.filter(v=>['opportunities','work','projects','approvals','activity','sources','observations'].includes(v[0])).map(([id,icon,name])=><button className="task-row" key={id} onClick={()=>go(id)}><span className="task-icon">{icon}</span><h3>{name}</h3><span className="arrow">→</span></button>)}</div></>}
 {view==='overview'&&<Overview records={records} serverTime={snapshot.serverTime} onNavigate={go} onInstruction={()=>openChat(null)}/>}

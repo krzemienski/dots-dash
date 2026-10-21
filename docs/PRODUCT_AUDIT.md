@@ -245,6 +245,17 @@ Production identity, live providers, real-owner V301, full V310/V314/V315, scree
 
 ## Audit coverage and maintenance
 
+### Follow-up: request evidence projection
+
+After the Overview date correction at `56c0baa`, the [request evidence view](REQUEST_EVIDENCE.md)
+removes blanket verified-snapshot wording and exposes request-level sources,
+completion claims, pending work and unavailable references together. The
+[follow-up ledger](verification/request-evidence.json) records 15 isolated TEST DATA
+observations on its exact source hashes. This improves the existing owner workflow;
+it does not supply action-to-receipt bindings, verify external outcomes or complete
+actual-user V301. FR04 remains partial. Baseline tables and prior reports above
+remain historical.
+
 Read scope: relevant repository PRD/spec/build/UX/security-boundary/setup documents, current UI/API/worker seams and the saved reports listed above; plus a supplied bounded original-intent research summary. No private logs or current Jobs tree were used. Source links identify implementation anchors, not proof a behavior ran. Older documents and evidence must retain their original dates and bindings.
 
 The [audit ledger](verification/product-audit.json) records source hashes, actual documentation/mockup checks, skill application and remaining limits. Update this completion register after an observed workflow or supported scope decision, with exact evidence. Do not advance a feature because a mockup looks finished, a build passes or an old report contains the word success.
