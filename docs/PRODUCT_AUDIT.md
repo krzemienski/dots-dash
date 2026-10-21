@@ -247,6 +247,12 @@ Production identity, live providers, real-owner V301, full V310/V314/V315, scree
 
 ### Follow-up: request evidence projection
 
+Priority 3 now has a [design-only reconciliation contract](DURABLE_OPERATION_RECONCILIATION.md).
+It recommends read-only receipt inspection first, then separately gated server-side
+registration for action claims. It does not close reload recovery or add persistent
+browser storage. Retention, migration and implementation decisions remain open;
+all D1–D12 scenarios are unperformed.
+
 The later [request discovery follow-up](REQUEST_CONTEXT_LINKS.md#follow-up-bounded-request-discovery)
 adds bounded request pages and exact off-page selection. Nine direct API/storage
 observations and 13 subsequent rendered UI/API/disposable SQLite observations passed

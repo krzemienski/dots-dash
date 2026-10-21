@@ -83,6 +83,11 @@ cross-navigation recovery and a read-only operation lookup are not implemented
 for this endpoint. The separate retained-record report workflow has its own
 recovery contract. See the [isolated recovery evidence](verification/session-save-recovery.json).
 
+The [proposed cross-reload reconciliation contract](DURABLE_OPERATION_RECONCILIATION.md)
+compares minimal receipt lookup with a later server-only registration index. It is
+design only: no client persistence, durable registration, expiry policy or new
+recovery endpoint is implemented. Its D1–D12 acceptance scenarios remain unperformed.
+
 ## User flow
 
 1. Open Day workspace → Session review. If unavailable, configure the operator

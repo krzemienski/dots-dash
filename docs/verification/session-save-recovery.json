@@ -133,5 +133,113 @@
     "No private logs, shared/production database, provider calls, deployment or actual-user production authentication validation.",
     "Only listed targeted workflows and existing checks were performed; prior owner-review report evidence remains historical."
   ],
-  "nextTask": "Review the draft PR. Consider a separately scoped read-only operation-status contract if recovery must survive leaving the view without persisting sensitive payloads in browser storage."
+  "nextTask": "Review the draft PR. Consider a separately scoped read-only operation-status contract if recovery must survive leaving the view without persisting sensitive payloads in browser storage.",
+  "designFollowups": [
+    {
+      "kind": "design_only",
+      "date": "2026-10-21T12:15:41.950993+00:00",
+      "sourceRevision": "fb086b81a7f4631c2b2030d4f04fd6f948ffedcf",
+      "artifact": "docs/DURABLE_OPERATION_RECONCILIATION.md",
+      "outcome": "Recover evidence for the original attempt after reload without storing private request payloads in the browser or automatically resubmitting.",
+      "inspection": "Compared four existing mounted recovery flows, shared and companion operation stores, owner binding, digest schemes and read-only lookup gaps. Searched relevant existing documentation for duplicate durable-recovery contract.",
+      "sourceHashes": {
+        "ui/session-review.tsx": "ea198d015e806a0b77f2631fe9749509ee1a32301e85545af747655ca3277d45",
+        "ui/context-links.tsx": "ad55039f41f5fcd8aa9974234f7c5d34f231e7cedd35a7a207e0c4268556d118",
+        "ui/owner-review-reports.tsx": "af47e82cba9f91be0cbe0bf732e1ae1edc8306904e77311b72a19b027d4c7a60",
+        "ui/request-action-claims.tsx": "6e264d56be2bfcde9f86fbc4c5905478c4132d3b3f90fa69f5808105be07f3fa",
+        "server/api.ts": "d604c1c1defdba14e434194eac4ed2ec57f9095c6e12d744b113d83c9a5d2f2c",
+        "server/start.mjs": "4e4c84f4022f6df75aa1b62e77296f452c1dd46267dc8f35f3280a6a55ffb34a",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/service.py": "0caca19ea5aa57177afd7018313bbb67783aaf81313a54c0818b80f27d084d61",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "python/dots_engineering/owner_reviews.py": "eeea5c693a32820bbe7b8ef3ea262f97bfe3bc6a8b2a98f537b1ec5736d674ff",
+        "python/dots_engineering/request_claims.py": "65d9883208d4f59c87bc307510be6e73c80f0b5e0dcc5cbed2d3195a9b5a3e63",
+        ".agents/skills/session-intent-review/SKILL.md": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a"
+      },
+      "recommendation": "Read-only minimal receipt lookup first; later explicitly migrated/default-off server metadata registration for action claims only. No durable client payload or retry reconstruction.",
+      "decisionsBeforeImplementation": [
+        "Review server-only metadata registration choice",
+        "Review 100 active-entry bound, 30-day acknowledged-entry retirement and indefinite unresolved retention",
+        "Review stream conflict scope and deferred unresolved deletion/sealing",
+        "Authorize implementation separately from this design-only task; applying migration/enabling an owner instance needs separate authorization",
+        "Define store-generation/backup-restore boundary before claiming restore recovery"
+      ],
+      "acceptance": [
+        {
+          "id": "D1",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D2",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D3",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D4",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D5",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D6",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D7",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D8",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D9",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D10",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D11",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D12",
+          "status": "unperformed_design_only"
+        }
+      ],
+      "checks": [
+        "Markdown local file targets exist",
+        "Linked source line anchors within file bounds",
+        "JSON parses; inspected source hashes match",
+        "Diff whitespace check; only design/docs/ledger changes"
+      ],
+      "runtimeExecution": false,
+      "browserUsed": false,
+      "databaseReadOrWrite": false,
+      "persistentClientStorageImplemented": false,
+      "capabilityOrSecurityChanges": false,
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "User outcome first, source-bound distinction between claims and observed code, preserved uncertainty, explicit unperformed acceptance.",
+        "verified": "Document/source-link and hash checks only; no runtime or automatic invocation claim"
+      },
+      "limits": [
+        "Proposal, not implemented durable reconciliation or processing certification",
+        "Legacy receipts lack complete action/namespace metadata; no inferred binding",
+        "No read of private runtime data or session stores",
+        "Earlier runtime evidence retained at its original bindings"
+      ],
+      "nextTask": "Authorize bounded read-only operation-summary lookup and UI; keep registration/migration/client persistence out of that first implementation."
+    }
+  ]
 }
