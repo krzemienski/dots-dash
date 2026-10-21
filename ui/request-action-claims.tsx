@@ -38,7 +38,7 @@ export default function RequestActionClaims({requestId}:{requestId:string}){
  function submit(form:HTMLFormElement){if(!state?.request?.request)return;const data=new FormData(form),v=(k:string)=>String(data.get(k)||'');const request=state.request.request;
   void save({action:editing?'correct':'create',...(editing?{claimId:editing.claimId,expectedRevision:editing.revision,reason:v('reason')}:{}),sourceRequestId:requestId,sourceRequestVersion:request.version,sourceRequestHash:request.hash,requestHashAlgorithm:'node-stored-json-sha256-v1',projectId:v('projectId'),actionSummary:v('actionSummary'),expectedResult:v('expectedResult'),performance:v('performance'),reportedResult:v('reportedResult'),reportedAt:v('reportedAt')||null,evidence:candidate?{...candidate.pins,relation:v('relation')}:null});
  }
- const locked=busy||!!pending||!state?.writeEnabled,head=state?.records?.[0];
+ const locked=busy||!!pending||!state?.writeEnabled,selectedRevision=state?.records?.[0];
  return <section className="request-claims" aria-label="Owner-reported action claims">
   <h4>Owner-reported action claims</h4><p>No completion certification. Imported evidence, source links and owner reports do not establish authorship, execution or original-source coverage.</p>
   <p>Pending recovery stays in memory only. Leaving or reloading loses the envelope; inspect recent operations before creating a replacement.</p>
@@ -48,8 +48,8 @@ export default function RequestActionClaims({requestId}:{requestId:string}){
   {state&&<>
    {!state.writeEnabled&&<p>Action claim writes are disabled. Existing reports remain readable.</p>}
    <p>Request target: {state.request?.state||'unavailable'}. Request/project association is owner asserted.</p>
-   {claimId&&<button disabled={busy||!!pending} onClick={()=>navigate()}>Back to request claims</button>}
-   {eventView?<><button disabled={busy||!!pending} onClick={()=>navigate(claimId)}>Back to claim history</button>{head?.evidence?<><h4>Exact retained review event</h4><p>Review {head.evidence.reviewId} · event {head.evidence.eventId}</p><pre>{JSON.stringify(head.evidenceSnapshot,null,2)}</pre><button disabled={busy} onClick={()=>{setInspect(null);void read({reviewId:head.evidence.reviewId,eventId:head.evidence.eventId}).then(d=>setInspect(d.candidate)).catch(e=>setError(e.message))}}>Read current exact event</button>{inspect&&<pre>{JSON.stringify(inspect,null,2)}</pre>}</>:<p>No event bound.</p>}</>:<>
+   {claimId&&<><button disabled={busy||!!pending} onClick={()=>navigate()}>Back to request claims</button><p>History is read-only. Return to request claims and refresh to inspect the current claim before correcting or withdrawing it.</p></>}
+   {eventView?<><button disabled={busy||!!pending} onClick={()=>navigate(claimId)}>Back to claim history</button>{selectedRevision?.evidence?<><h4>Exact retained review event</h4><p>Review {selectedRevision.evidence.reviewId} · event {selectedRevision.evidence.eventId}</p><pre>{JSON.stringify(selectedRevision.evidenceSnapshot,null,2)}</pre><button disabled={busy} onClick={()=>{setInspect(null);void read({reviewId:selectedRevision.evidence.reviewId,eventId:selectedRevision.evidence.eventId}).then(d=>setInspect(d.candidate)).catch(e=>setError(e.message))}}>Read current exact event</button>{inspect&&<pre>{JSON.stringify(inspect,null,2)}</pre>}</>:<p>No event bound.</p>}</>:<>
    <p>Showing {state.records.length} of {state.page.total} {claimId?'revisions':'claims'} at sequence ceiling {state.page.ceiling}; offset {state.page.offset}. Withdrawn history remains visible.</p>
    {!state.records.length&&<p>No owner-reported action claims in this selection. No completion inferred.</p>}
    {state.records.map((r:Data)=><article className="bubble" key={r.claimId+':'+r.revision}>
@@ -59,7 +59,7 @@ export default function RequestActionClaims({requestId}:{requestId:string}){
     {r.reason&&<p>Revision reason: {r.reason}</p>}
     <details><summary>Historical pins and operation</summary><pre>{JSON.stringify({requestVersion:r.sourceRequestVersion,requestHash:r.sourceRequestHash,projectId:r.projectId,evidence:r.evidence,operationId:r.operationId},null,2)}</pre></details>
     {!claimId&&<button disabled={busy||!!pending} onClick={()=>navigate(r.claimId)}>Open claim history</button>}
-    {r.lifecycle==='active'&&(!claimId||r.revision===head?.revision)&&<><button disabled={locked} onClick={()=>{setEditing(r);setCandidate(null)}}>Correct claim revision {r.revision}</button><form onSubmit={e=>{e.preventDefault();void save({action:'withdraw',claimId:r.claimId,expectedRevision:r.revision,reason:String(new FormData(e.currentTarget).get('reason'))})}}><fieldset disabled={locked}><label>Withdrawal reason<input name="reason" required maxLength={500}/></label><button>Withdraw claim revision {r.revision}</button></fieldset></form></>}
+    {r.lifecycle==='active'&&!claimId&&<><button disabled={locked} onClick={()=>{setEditing(r);setCandidate(null)}}>Correct claim revision {r.revision}</button><form onSubmit={e=>{e.preventDefault();void save({action:'withdraw',claimId:r.claimId,expectedRevision:r.revision,reason:String(new FormData(e.currentTarget).get('reason'))})}}><fieldset disabled={locked}><label>Withdrawal reason<input name="reason" required maxLength={500}/></label><button>Withdraw claim revision {r.revision}</button></fieldset></form></>}
    </article>)}
    {state.page.next&&<button disabled={busy||!!pending} onClick={()=>void refresh(state.page.next)}>Next 50 {claimId?'revisions':'claims'}</button>}
    <details><summary>Recent claim operations</summary><p>{state.operationScope}</p>{state.recentOperations.map((op:Data)=><p key={op.operationId}>{op.operationId} · {op.claimId} revision {op.revision} · saved owner report</p>)}</details>

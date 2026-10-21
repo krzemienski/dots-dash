@@ -69,6 +69,12 @@ heads derive from the complete bounded stream, not the visible page. Limits are
 1,000 claims per request and 1,000 revisions per claim; further mutation conflicts.
 Recent-operation scope is explicitly latest 50; older known IDs remain queryable.
 
+History views are read-only on every page, including the first. Correct/Withdraw
+controls are offered only in the current claim list for active records; return
+to that list and refresh before making a change. A visible historical revision
+is never used as the mutation head. List snapshots can still become stale after
+their read, so server CAS and terminal-withdrawal guards remain authoritative.
+
 POST supports create/correct/withdraw, exact payload replay, CAS revision checks
 and atomic revision/operation/audit commit. Auth/capability checks precede replay;
 replay precedes current-target checks. Identical replay after a source change
@@ -95,3 +101,14 @@ whole-request acceptance, actual-user V301, live identity/providers, durable cli
 recovery, event selection search and full accessibility. The feature does not
 advance source-processing checkpoints, infer original-source coverage or change
 the saved-not-delivered instruction boundary.
+
+### History-control follow-up
+
+At baseline `550a6d2`, an isolated 51-revision workflow reproduced page 2 offering
+Correct/Withdraw for revision 1, even when revision 51 was terminally withdrawn.
+The server rejected stale operations and durable rows stayed unchanged. The UI
+now suppresses mutation controls throughout history; inspection, exact-event
+navigation and stable pagination remain available. The appended follow-up in the
+[ledger](verification/request-action-claims.json) records fresh source-bound results
+separately from the earlier 29 observations. This corrects misleading controls,
+not an established storage-corruption defect.

@@ -326,5 +326,103 @@
     "Request/review pins reflect separate database observations, not an atomic cross-store snapshot.",
     "No new source readers, provider calls, browser storage, background jobs, merge or deployment."
   ],
-  "migrationRisk": "Explicit new immutable companion schema only; no HTTP migration or original-record rewrite. Production/shared migration unperformed. Disable writes to roll back availability; preserve history."
+  "migrationRisk": "Explicit new immutable companion schema only; no HTTP migration or original-record rewrite. Production/shared migration unperformed. Disable writes to roll back availability; preserve history.",
+  "followups": [
+    {
+      "label": "TEST DATA: historical revision mutation controls",
+      "baseRevision": "550a6d23218afbcb12e7496cf32f5df2cb03d8c4",
+      "date": "2026-10-21T10:42:40.148Z",
+      "baseline": "Actual API-created active and terminally withdrawn 51-revision claims both offered Correct/Withdraw for revision 1 on page 2. Server rejected stale writes; all durable records unchanged.",
+      "change": "Historical revision views expose no Correct/Withdraw controls. Only current active claim-list rows offer mutations. The first displayed history row is used only for exact-event inspection, never as a mutation head.",
+      "method": "Built React, actual loopback Node/Python transport and disposable SQLite. Both 51-revision histories created through API; no seeded history rows.",
+      "observations": [
+        {
+          "name": "API fixtures",
+          "detail": "Two actual API-created 51-revision claims: one active, one terminally withdrawn",
+          "result": "pass"
+        },
+        {
+          "name": "active first page",
+          "detail": "Historical first page exposes no mutation controls",
+          "result": "pass"
+        },
+        {
+          "name": "active second page",
+          "detail": "Revision 1 inspectable without mutation controls; stable sequence ceiling",
+          "result": "pass"
+        },
+        {
+          "name": "active original evidence",
+          "detail": "Exact revision-1 failed event and pins survive keyboard inspection/navigation/reload",
+          "result": "pass"
+        },
+        {
+          "name": "active server guards",
+          "detail": "Historical correction and withdrawal rejected; no corruption",
+          "result": "pass"
+        },
+        {
+          "name": "withdrawn first page",
+          "detail": "Historical first page exposes no mutation controls",
+          "result": "pass"
+        },
+        {
+          "name": "withdrawn second page",
+          "detail": "Revision 1 inspectable without mutation controls; stable sequence ceiling",
+          "result": "pass"
+        },
+        {
+          "name": "withdrawn original evidence",
+          "detail": "Exact revision-1 failed event and pins survive keyboard inspection/navigation/reload",
+          "result": "pass"
+        },
+        {
+          "name": "withdrawn server guards",
+          "detail": "Historical correction and withdrawal rejected; no corruption",
+          "result": "pass"
+        },
+        {
+          "name": "current claim list",
+          "detail": "Only current active claim offers revision-51 mutation; withdrawn claim offers none",
+          "result": "pass"
+        },
+        {
+          "name": "narrow history",
+          "detail": "320/375px read-only history fits without horizontal overflow",
+          "result": "pass"
+        },
+        {
+          "name": "persistence and isolation",
+          "detail": "Reads and rejected stale writes leave all original/companion records unchanged; no external requests or page errors",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "ui/request-action-claims.tsx": "6e264d56be2bfcde9f86fbc4c5905478c4132d3b3f90fa69f5808105be07f3fa",
+        "python/dots_engineering/request_claims.py": "65d9883208d4f59c87bc307510be6e73c80f0b5e0dcc5cbed2d3195a9b5a3e63",
+        "dist/main.js": "425d4b48244549a9d37acd3e3d3c992a3a0550d018927c7b69b9d7aa3e020d8b"
+      },
+      "staticChecks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "diff": "passed"
+      },
+      "visualInspection": "Settled desktop page 2 inspected: revision 1, explicit read-only history note, failed evidence and no Correct/Withdraw controls. 320/375px overflow checks passed.",
+      "priorAttempt": "First fixed run passed both history cases and current-list controls, then stopped on a nested driver locator. Locator corrected; fresh full run passed 12 observations. No new test file.",
+      "skillApplication": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "hash": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "basis": "Previously read project guidance manually applied: reproduce source-backed defect, distinguish misleading UI from rejected storage mutation, preserve historical evidence and verify actual outcomes. Not adapter invocation."
+      },
+      "externalRequests": 0,
+      "pageErrors": [],
+      "cleanup": "Owned browser/server and SQLite handles closed",
+      "limits": [
+        "Current claim-list snapshots may become stale after their read; server CAS/terminal guards remain authoritative.",
+        "No backend/schema/migration change, source access or execution expansion.",
+        "Earlier 29 observations retain historical source bindings; broader V301/live identity/full accessibility remain open."
+      ]
+    }
+  ]
 }
