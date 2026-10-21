@@ -242,3 +242,12 @@ Implement completion-claim verification, evidence-linked daily summaries and nex
 
 ## Phase prompt E6
 Run independent private setup, permission revocation, session/config/terminal privacy review, Python migration recovery and actual orchestration acceptance. Gate: V301-V315 as applicable plus prior release gates. Keep unavailable integrations explicit and report unrun checks. Do not publish, deploy externally or create credentials without separate authority.
+
+## Skill-use evidence and narrow improvement
+
+For an explicit skill discovery/use audit or demonstrated missed guidance, use
+[skill-use-review](../../.agents/skills/skill-use-review/SKILL.md) and the
+[evidence workflow](../SKILL_WORKFLOW.md). Record why the selected version was
+read/applied, its artifact and observed outcome; do not count catalog entries as
+invocations. Improve only authorized project-owned guidance from actual feedback.
+No scheduler, provider execution or global skill configuration is implied.
