@@ -122,12 +122,17 @@ reader or processing checkpoint. Selected persistence/UI workflows now have
 original-source access and processing remain unavailable.
 The [read-only inventory pagination](SOURCE_INVENTORY_PAGINATION.md) exposes
 older saved inventories with explicit browsing and selected-record scope.
-Its 51-inventory acceptance remains unperformed.
+The 51-inventory principal path was subsequently exercised in the
+[isolated publication workflow](verification/source-review-publication.md);
+that report remains historical to its pinned source files.
 The [snapshot-to-review association design](SNAPSHOT_REVIEW_ASSOCIATIONS.md)
 defines an owner assertion with separate identity/freshness pins and
 append-only correction/revocation. The [bounded implementation](SNAPSHOT_REVIEW_IMPLEMENTATION.md)
-adds a separate default-off contract and display. Its eight acceptance scenarios
-remain unperformed; association supplies no read/processing certificate.
+adds a separate default-off contract and display. The subsequent
+[isolated publication workflow](verification/source-review-publication.md) covers
+the principal association scenarios, not every fault permutation. Association
+supplies no read/processing certificate. See the [current product audit](PRODUCT_AUDIT.md)
+for later evidence and remaining gates.
 
 `GET /api/engineering` returns schema version, capability states, a metadata
 index of the latest 50 reviews, the total count and one complete review.

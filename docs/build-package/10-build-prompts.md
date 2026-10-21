@@ -251,3 +251,7 @@ For an explicit skill discovery/use audit or demonstrated missed guidance, use
 read/applied, its artifact and observed outcome; do not count catalog entries as
 invocations. Improve only authorized project-owned guidance from actual feedback.
 No scheduler, provider execution or global skill configuration is implied.
+
+## Product completion reconciliation
+
+Before selecting the next milestone, use the [completion register](../PRODUCT_AUDIT.md) and its source-bound evidence. Keep correspondence, schedule and request accountability primary. Treat [mockups](../mockups/product-review.html) as proposals. Start with one observable owner outcome; preserve historical report hashes, default-off capabilities and private runtime separation. A matching hash or successful build is not a new acceptance run.

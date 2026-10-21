@@ -6,6 +6,10 @@ A private-first dashboard for understanding an assistant's correspondence, sched
 
 [Public repository](https://github.com/krzemienski/dots-dash) · [Release status and verification](docs/RELEASE_STATUS.md)
 
+## Product scope and completion
+
+Start with the [product and feature audit](docs/PRODUCT_AUDIT.md): outcomes, actual screens, FR01–FR23 status, source-bound evidence and ten prioritized gaps. The [proposed experience mockups](docs/mockups/product-review.html) use synthetic TEST DATA and do not add live functionality.
+
 ## Local checks and application
 
 Use Node 24 or newer. Run `npm ci`, `npm test`, `npm run typecheck`, `npm run build`, then `npm start`. Read [application setup and actual verification](docs/APPLICATION_SETUP.md) before configuring authentication or importing data. The default server runs on loopback and refuses private API access; it does not fabricate a demo identity. `node --test tests/core.test.mjs tests/api.test.mjs` runs dependency-free isolated core/API checks.

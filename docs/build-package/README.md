@@ -4,6 +4,8 @@ Version 3.0 | October 15, 2026 | Public-safe product and engineering specificati
 
 Build a private, evidence-backed dashboard that connects correspondence, schedules and engineering execution while keeping their permissions and evidence distinct. Every request links to actions, outcomes, remaining work and user decisions. This package describes the full product and a gated implementation path. It does not claim every component exists.
 
+Read the [21 October product/completion audit](../PRODUCT_AUDIT.md) first for reconciled status and [proposed mockups](../mockups/product-review.html). Historical deltas below retain their original evidence boundaries; a later isolated check does not establish production acceptance.
+
 ## Read in this order
 1. [Current implementation and gaps](01-current-state.md)
 2. [Product requirements](02-prd-v2.md)
