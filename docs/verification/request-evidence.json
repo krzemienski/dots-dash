@@ -207,6 +207,124 @@
       "basis": "29 isolated TEST DATA observations; owner-report companion only",
       "actualUserV301": "unperformed",
       "priorEvidence": "Historical source bindings above unchanged"
+    },
+    {
+      "slice": "bounded request pagination and exact selection",
+      "baseRevision": "346a6c902e38280d09ffa0e7d9898e9a8df3805a",
+      "date": "2026-10-21T11:59:16.388232+00:00",
+      "status": "implemented locally; direct API/persistence verified; rendered acceptance blocked; not published",
+      "acceptance": "REQUEST_CONTEXT_LINKS.md follow-up scenarios 1\u20138; direct API results cover only backend portions",
+      "method": "Inline disposable real API handler, fixed Python worker and SQLite; no HTTP listener or browser; no new test file",
+      "observations": [
+        {
+          "name": "51-request discovery",
+          "detail": "First page 50; second page exact Request 51; totals and partial projection explicit.",
+          "result": "pass"
+        },
+        {
+          "name": "independent exact selection",
+          "detail": "Off-page exact target adds one metadata record; confirmed missing target is distinguished.",
+          "result": "pass"
+        },
+        {
+          "name": "save and replay",
+          "detail": "Exact off-page target saves; identical operation returns same association; changed-content replay conflicts.",
+          "result": "pass"
+        },
+        {
+          "name": "persisted exact navigation",
+          "detail": "Reopened SQLite and new Python worker preserve one link/audit; exact target current, off-page target unknown.",
+          "result": "pass"
+        },
+        {
+          "name": "stale pins and historical replay",
+          "detail": "Changed canonical target marks stale; new old-pin write conflicts; original operation still replays.",
+          "result": "pass"
+        },
+        {
+          "name": "ID ceiling and restart",
+          "detail": "New later Request excluded by old ceiling and visible after restart; totals distinguish stored from bounded.",
+          "result": "pass"
+        },
+        {
+          "name": "query bounds",
+          "detail": "Unknown, duplicated, malformed, unordered and POST query controls reject.",
+          "result": "pass"
+        },
+        {
+          "name": "owner and capability gates",
+          "detail": "Wrong owner and cross-origin denied; read remains available with writes disabled, including replay denial.",
+          "result": "pass"
+        },
+        {
+          "name": "immutable evidence",
+          "detail": "All historical association bytes and single audit entry unchanged after conflicts, replay and denied writes.",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "server/api.ts": "d604c1c1defdba14e434194eac4ed2ec57f9095c6e12d744b113d83c9a5d2f2c",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "ui/context-links.tsx": "ad55039f41f5fcd8aa9974234f7c5d34f231e7cedd35a7a207e0c4268556d118",
+        "dist/main.js": "97659fe98b8b2b0a0b8a6ef1ce45b0cc3315c34c9f4c3948331ca8aef7a3877a"
+      },
+      "staticChecks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "pythonAst": "passed",
+        "diff": "passed"
+      },
+      "skills": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Outcome-first bounded scenario, source pins, distinguish direct API evidence from rendered acceptance",
+          "verified": "Nine scoped API/storage observations; UI acceptance not verified",
+          "automaticInvocation": false
+        },
+        {
+          "source": "playwright skill",
+          "selected": true,
+          "read": true,
+          "applied": "Prepared fresh owned browser and loopback workflow; no shared profile",
+          "verified": false,
+          "limit": "Execution blocked by automatic approval review; browser never launched"
+        },
+        {
+          "source": "vercel:react-best-practices",
+          "selected": true,
+          "read": true,
+          "applied": "Primitive effect dependencies, stale-read guard, bounded client projection, focus/aria controls",
+          "verified": "Typecheck/build only; rendered focus and accessibility not verified"
+        },
+        {
+          "source": ".agents/skills/skill-use-review/SKILL.md",
+          "read": true,
+          "selected": false,
+          "applied": false,
+          "reason": "Inspected project guidance; its skill-audit/improvement trigger does not apply to this routine feature edit."
+        }
+      ],
+      "blockedValidation": {
+        "action": "Owned isolated headless browser plus loopback server with synthetic TEST DATA",
+        "reason": "Automatic approval review interpreted earlier inventory-only browser prohibition as still applying",
+        "executed": false,
+        "retryAttemptedAfterRejection": false,
+        "approvalRequested": true
+      },
+      "priorAttempt": "Initial non-escalated harness exited at unsettled listener await before imports or browser launch; empty owned SQLite artifact may remain ignored. Corrected escalation was rejected before execution.",
+      "limits": [
+        "No rendered baseline reproduction or final UI acceptance.",
+        "No keyboard, narrow-screen, interrupted navigation, UI lost-response or failed-GET observation in this follow-up.",
+        "ID ceiling is not a frozen snapshot; inserts before cursor need Restart.",
+        "Context views retain mounted-memory uncertainty only; no durable recovery.",
+        "No schema migration, external execution, provider access, real-owner V301 or production identity proof."
+      ],
+      "cleanup": "Direct API run closed owned SQLite handles; Python workers exited. No browser or listening server started.",
+      "nextTask": "After explicit isolated-browser approval, execute documented UI scenarios on final source, fix bounded defects, inspect sanitized outgoing diff, then publish and verify exact-head CI."
     }
   ]
 }

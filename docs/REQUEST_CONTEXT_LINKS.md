@@ -1,5 +1,67 @@
 # Local request, repository task and review associations
 
+## Follow-up: bounded request discovery (rendered acceptance pending)
+
+The product audit identified Requests beyond the first 50 as undiscoverable in
+Session review. The local follow-up adds canonical-ID pages of at most 50 candidates,
+Previous/Next/Restart controls, and one separately identified exact selected target.
+The user outcome is to find Request 51, link it to a retained review, reload, and
+return from its saved task to that exact Request without granting execution authority.
+
+`GET /api/context-links` accepts optional `after`, `ceiling` and `requestId`.
+Duplicate/unknown parameters, malformed IDs, an `after` without a ceiling, and an
+`after` greater than its ceiling reject. Node reads page metadata, candidates and
+the exact selection in one owner-authenticated database batch. The response adds
+`requestPage` with page IDs, next cursor, ceiling, current stored count, count within
+the ceiling and exact-selection state. At most 51 request projections reach Python:
+50 page candidates and one selected target outside that page. Titles remain bounded;
+no correspondence content or source URL is fetched.
+
+The ceiling limits later IDs; it is **not a frozen database snapshot**. Inserts
+before a cursor, changed rows and deletions can require restarting the list. Counts
+are stored-record counts, never reviewed/completed-work counts. Outside-page targets
+stay unknown unless included by exact selection. A successful exact query may say
+missing; query/transport failure cannot. Return navigation performs the exact lookup
+even when the historical target is outside the visible page. A failed list read
+clears that projection; refresh restarts pagination. Superseded reads are ignored.
+
+POST resolves its one exact canonical Request independently of any browsing page.
+Existing owner, same-origin, default-off capability, version/hash checks and operation
+replay remain authoritative. No schema migration, stored-link rewrite or completion
+transition is introduced. Paging and target changes are disabled during an uncertain
+save. The existing mounted-memory recovery limit remains; no durable browser storage
+or cross-reload recovery is added.
+
+Observable acceptance, with synthetic TEST DATA only:
+
+1. Persist 51 Requests; rendered page 1 shows 50 candidates, page 2 exposes Request
+   51, and Previous/Restart, page scope and exact selection are understandable.
+2. Import a sanitized review through the UI, select Request 51 and save a task link.
+   Reload/reopen, inspect persisted pins and return to its exact Request from page 1.
+3. Use the Day shortcut for Request 51; it opens/focuses the exact target even when
+   outside the first page. Missing and unavailable targets remain distinguishable.
+4. Add a later Request: the old ceiling excludes it, current stored counts disclose
+   it, and Restart makes it discoverable. No frozen-snapshot or completeness claim.
+5. Change target version/content: new stale-pin save conflicts, the historical link
+   stays intact, and exact old-operation replay does not create another audit entry.
+6. Wrong owner, cross-origin write, disabled capability and invalid page parameters
+   reject. Changing replay content conflicts; no external action executes.
+7. Lose a committed save response: the mounted UI blocks conflicting writes and
+   reconciles the original envelope once. Confirmed save plus failed GET remains
+   saved-but-refresh-failed. Reload recovery remains explicitly unsupported.
+8. Keyboard page/return navigation, focus, 320/375px widths, interrupted navigation,
+   stale responses and error recovery work without misleading missing-target claims.
+
+Nine direct real-API-handler/Python/SQLite observations passed, including physical
+database reopen and exactly one association/audit entry after replay. This is **not
+rendered end-user acceptance**. The isolated headless-browser attempt was rejected
+by automatic approval review because it interpreted the prior inventory-only browser
+prohibition as still applying; the rejected command did not execute. Browser scenarios
+above, including focus, layout, UI lost-response recovery and interruption, remain
+unperformed for this follow-up. Publication waits for that verification. See the
+appended [request evidence ledger](verification/request-evidence.json); historical
+observations below retain their original scope and revision.
+
 > Historical design and implementation context. See [current scoped verification](verification/source-review-publication.md) for newly performed checks and remaining gaps. Historical runtime artifacts are not distributed; references to local artifacts below are not public evidence.
 
 Local branch: `feature/local-request-context-links`. Static-checked source revision:

@@ -247,6 +247,13 @@ Production identity, live providers, real-owner V301, full V310/V314/V315, scree
 
 ### Follow-up: request evidence projection
 
+The later [request discovery follow-up](REQUEST_CONTEXT_LINKS.md#follow-up-bounded-request-discovery-rendered-acceptance-pending)
+adds bounded request pages and exact off-page selection locally. Nine direct
+API/Python/disposable SQLite observations passed; rendered browser acceptance is
+blocked by automatic approval review and remains unperformed. This closes no
+end-user gate and is not yet published. Existing evidence and priorities retain
+their historical bindings.
+
 After the Overview date correction at `56c0baa`, the [request evidence view](REQUEST_EVIDENCE.md)
 removes blanket verified-snapshot wording and exposes request-level sources,
 completion claims, pending work and unavailable references together. The

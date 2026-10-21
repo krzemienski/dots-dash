@@ -21,7 +21,8 @@ def handle_context(filename, owner, principal, method, body, sources, allow_link
         raise Rejected("Method not allowed", 405)
     if method == "CONTEXT_POST" and not allow_links:
         raise Rejected("Context link capability is disabled", 403)
-    if not isinstance(sources, dict) or not isinstance(sources.get("requests"), list) or len(sources["requests"]) > 50 or type(sources.get("complete")) is not bool:
+    # Fifty page candidates plus at most one independently selected exact target.
+    if not isinstance(sources, dict) or not isinstance(sources.get("requests"), list) or len(sources["requests"]) > 51 or type(sources.get("complete")) is not bool:
         raise Rejected("Request projection unavailable", 503)
     requests = []
     for source in sources["requests"]:

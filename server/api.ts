@@ -56,10 +56,33 @@ export function createApi(options:RuntimeOptions){return async function handle(r
   if(!['GET','POST'].includes(request.method))return json({error:'Method not allowed'},405);
   if(request.method==='POST'&&request.headers.get('origin')!==new URL(options.publicOrigin).origin)return json({error:'Same-origin request required'},403);
   if(!options.engineering)return json({error:'Session context is unconfigured'},503);
-  const rows=await D.prepare("SELECT id,version,data FROM work_records WHERE kind='commitment' ORDER BY id LIMIT 51").all<any>();
-  const sources={complete:rows.results.length<=50,requests:rows.results.slice(0,50).map((row:any)=>({id:row.id,version:row.version,hash:createHash('sha256').update(row.data).digest('hex'),title:String(JSON.parse(row.data).title).slice(0,200)}))};
-  const result=await options.engineering({principal,method:request.method==='GET'?'CONTEXT_GET':'CONTEXT_POST',sources,...(request.method==='POST'?{body:await limitedBody(request,6000)}:{})});
-  return json(result.body,result.status);
+  const query=new URL(request.url).searchParams;
+  const validId=(value:unknown):value is string=>typeof value==='string'&&/^commitment:[A-Za-z0-9_.:-]{1,600}$/.test(value);
+  if([...query.keys()].some(key=>!['after','ceiling','requestId'].includes(key))||[...query.keys()].some(key=>query.getAll(key).length!==1)||[...query.values()].some(value=>!validId(value))||(query.has('after')&&(!query.has('ceiling')||query.get('after')!>query.get('ceiling')!))||(request.method==='POST'&&query.size))return json({error:'Invalid request page'},400);
+  const body=request.method==='POST'?await limitedBody(request,6000):undefined;
+  if(body&&!validId(body.sourceRequestId))return json({error:'Invalid request identity'},400);
+  const selectedId=body?.sourceRequestId||query.get('requestId');
+  const selected=D.prepare("SELECT id,version,data FROM work_records WHERE kind='commitment' AND id=?").bind(selectedId||'');
+  const project=(row:any)=>({id:row.id,version:row.version,hash:createHash('sha256').update(row.data).digest('hex'),title:String(JSON.parse(row.data).title).slice(0,200)});
+  let sources,page;
+  if(request.method==='POST'){
+   const row=await selected.first<any>();
+   // Writes resolve the exact canonical target, independently of the visible page.
+   sources={complete:false,requests:row?[project(row)]:[]};
+  }else{
+   const after=query.get('after')||'',ceiling=query.get('ceiling');
+   const [metadata,rows,selection,count]=await D.batch<any>([
+    D.prepare("SELECT MAX(id) AS ceiling,COUNT(*) AS total FROM work_records WHERE kind='commitment'"),
+    D.prepare("SELECT id,version,data FROM work_records WHERE kind='commitment' AND id>? AND id<=COALESCE(?,(SELECT MAX(id) FROM work_records WHERE kind='commitment')) ORDER BY id LIMIT 51").bind(after,ceiling),
+    selected,
+    D.prepare("SELECT COUNT(*) AS total FROM work_records WHERE kind='commitment' AND id<=COALESCE(?,(SELECT MAX(id) FROM work_records WHERE kind='commitment'))").bind(ceiling)
+   ]);
+   const visible=rows.results.slice(0,50),extra=selection.results.filter((r:any)=>!visible.some((v:any)=>v.id===r.id));
+   sources={complete:!after&&rows.results.length<=50&&metadata.results[0].total===visible.length,requests:[...visible,...extra].map(project)};
+   page={after:after||null,ceiling:ceiling||metadata.results[0].ceiling,nextAfter:rows.results.length>50?visible[49].id:null,ids:visible.map((r:any)=>r.id),total:metadata.results[0].total,totalWithinCeiling:count.results[0].total,selectedId:selectedId||null,selectedState:selectedId?(selection.results.length?'available':'missing'):'unselected',selectedOutsidePage:extra.length>0};
+  }
+  const result=await options.engineering({principal,method:request.method==='GET'?'CONTEXT_GET':'CONTEXT_POST',sources,...(body?{body}:{})});
+  return json(page&&result.status===200?{...(result.body as object),requestPage:page}:result.body,result.status);
  }
  if(path==='/api/snapshot-review-associations'){
   if(!['GET','POST'].includes(request.method))return json({error:'Method not allowed'},405);
