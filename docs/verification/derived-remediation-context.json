@@ -1,0 +1,180 @@
+{
+  "label": "TEST DATA \u2014 derived remediation context verification",
+  "date": "2026-10-21",
+  "baseRevision": "8f567f558a97058334f311c8d26f6a04344110a9",
+  "method": "Fresh owned headless browser and real built UI, loopback Node API/Python worker, disposable owner-bound SQLite; synthetic principal and explicitly labeled fixture. No private logs or providers.",
+  "workflow": "Rendered selected-record import \u2192 goal/remediation \u2192 checklist selection \u2192 explicit bounded run \u2192 failing owner observation \u2192 second run \u2192 reload/source navigation.",
+  "observations": [
+    {
+      "name": "derived prompt retains scoped correction project and unknown attribution",
+      "pass": true
+    },
+    {
+      "name": "derived prompt carries no excluded text or artificial secret",
+      "pass": true
+    },
+    {
+      "name": "historical draft remains exact",
+      "pass": true
+    },
+    {
+      "name": "goal navigation preserves ledger",
+      "pass": true
+    },
+    {
+      "name": "return focus targets initiating remediation",
+      "pass": true
+    },
+    {
+      "name": "pure projection excludes unrelated correction scope",
+      "pass": true
+    },
+    {
+      "name": "missing endpoint is unavailable with no invented source",
+      "pass": true
+    },
+    {
+      "name": "UI checklist selection stores no invocation",
+      "pass": true
+    },
+    {
+      "name": "runner default off visible",
+      "pass": true
+    },
+    {
+      "name": "unconfigured runner rejects execution",
+      "pass": true
+    },
+    {
+      "name": "UI run saves pinned bounded receipt and leaves remediation incomplete",
+      "pass": true
+    },
+    {
+      "name": "receipt navigation focuses actual invocation",
+      "pass": true
+    },
+    {
+      "name": "failing owner observation persisted with attribution",
+      "pass": true
+    },
+    {
+      "name": "derived prompt carries failing report without certification",
+      "pass": true
+    },
+    {
+      "name": "second run preserves failing acceptance and incomplete remediation",
+      "pass": true
+    },
+    {
+      "name": "identical run replay adds no ledger entry",
+      "pass": true
+    },
+    {
+      "name": "changed skill pin rejected",
+      "pass": true
+    },
+    {
+      "name": "changed code pin rejected",
+      "pass": true
+    },
+    {
+      "name": "stale version rejected",
+      "pass": true
+    },
+    {
+      "name": "disabled runner blocks even replay",
+      "pass": true
+    },
+    {
+      "name": "rejected operations leave ledger unchanged",
+      "pass": true
+    },
+    {
+      "name": "all five stored versions preserve original prompts and export",
+      "pass": true
+    },
+    {
+      "name": "reload retains failing owner report and two receipts",
+      "pass": true
+    },
+    {
+      "name": "reload preserves scoped correction and original blocked outcome",
+      "pass": true
+    },
+    {
+      "name": "reload and display do not write ledger",
+      "pass": true
+    },
+    {
+      "name": "narrow viewport has no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "correction source navigation focuses retained event",
+      "pass": true
+    },
+    {
+      "name": "earlier blocked source remains navigable",
+      "pass": true
+    },
+    {
+      "name": "no source read processing or execution authority granted",
+      "pass": true
+    },
+    {
+      "name": "legacy projection preserves original prompt",
+      "pass": true
+    },
+    {
+      "name": "derived projection does not mutate review",
+      "pass": true
+    },
+    {
+      "name": "browser has no page errors",
+      "pass": true
+    }
+  ],
+  "apiChecks": "Exact run replay, changed skill/code pins, stale version and disabled-runner rejection exercised directly against the same isolated real API; no additional receipts or audit entries.",
+  "pureProjectionChecks": "Unrelated correction, unavailable endpoint, legacy fallback and input non-mutation exercised directly; these corner cases were not additional browser imports.",
+  "persistence": "Five immutable review versions: import, select, run, observe, run. Original prompt bytes and entire normalized export identical in each snapshot. View/navigation/reload/rejections/replay added no ledger writes.",
+  "result": "Second receipt succeeded only as declarative execution; acceptance stayed fail, owner_reported, not_independently_verified. Task remained reviewed_not_remediated. Source-read, processing-complete and execution-authority admission flags stayed false.",
+  "sourceHashes": {
+    "lib/work/remediation-context.ts": "06a873f82fb110b81171746fc8052f53f40ab4a16492dcbb1d995769cec0c883",
+    "ui/session-review.tsx": "16cb870aab76bfc0c86e510a6d0912e0d7d56bb4c1b976c280bad78cc2c462c5",
+    "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852",
+    "python/dots_engineering/admission.py": "052793abe1b12c4f709dfc91802a9f4430b4a93d1fc827dfa999865cd6c48867",
+    "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+    "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+    "python/dots_engineering/service.py": "0caca19ea5aa57177afd7018313bbb67783aaf81313a54c0818b80f27d084d61",
+    "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+    "server/api.ts": "39596a3ec4681391652a495a4711f68d7e324fb75fef5bd465d84bd2337e78db",
+    "lib/work/engineering.ts": "60157fe0ec91bd6ce3fb89d4a2dc175b204842df7b3aa67640ea00e947469bac"
+  },
+  "buildOutputs": {
+    "index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5",
+    "main.js": "5b61722e1dc0c84556acd67a5832188f7718b2521559ac5c065c7e81186b8dea",
+    "main.css": "df5964e4bb5d40ad006d53e65992466462a9be949456d163c20c5c29dc922d14"
+  },
+  "checks": {
+    "existingTests": "14 passed",
+    "typecheck": "passed",
+    "build": "passed on final runtime source before browser workflow",
+    "pythonParse": "passed"
+  },
+  "harnessNotes": [
+    "Two locators needed narrowing: multiple Back to remediation controls and Result label containing option text. Both failed before a write; saved state was inspected before continuing. These are harness selector failures, not product defects."
+  ],
+  "cleanup": {
+    "serverListening": false,
+    "browserConnected": false,
+    "ownedBrowserExitCode": 0
+  },
+  "limits": [
+    "Owner-curated selection and supplied attribution/project assertions only; no actual transcript review or provider/session reader.",
+    "Read-only derived display; stored historical templates and schema/hash contracts unchanged. No migration.",
+    "Current-revision owner reports remain reports; a presence check may pass while product acceptance fails.",
+    "No general agent fleet, full skill execution, automatic remediation or new authority.",
+    "No source-byte verification, contiguous processed coverage, actual-user V301, production identity acceptance, merge or deployment.",
+    "Earlier reports remain historical to their recorded hashes. This run does not recertify every prior scenario; its fixture now includes one synthetic skill."
+  ]
+}

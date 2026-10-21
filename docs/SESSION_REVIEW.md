@@ -142,6 +142,13 @@ adapter with a remote implementation inside the current transaction.
 
 ## Evidence limits
 
+Admitted selected-record reviews display a [context-preserving derived prompt](DERIVED_REMEDIATION_CONTEXT.md)
+with scoped correction references, supplied attribution, project-binding basis
+and same-revision owner observations. The original stored draft remains
+available unchanged. This read-only projection grants no execution authority;
+its [isolated observations](verification/derived-remediation-context.json)
+include a failing owner report that remains fail after a successful checklist run.
+
 Rule-based critique is not semantic intent extraction. Goals, associations,
 decisions and skill applicability come from the owner-curated export. A newer
 export is a separate review; historical evidence is retained, not silently

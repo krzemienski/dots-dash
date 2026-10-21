@@ -174,7 +174,25 @@
         ]
       }
     ],
-    "skills": []
+    "skills": [
+      {
+        "id": "synthetic-evidence-review",
+        "name": "TEST DATA evidence-presence checklist",
+        "summary": "TEST DATA: three local presence checks, not a full skill or provider invocation.",
+        "sourceRef": "skill:TEST-DATA-evidence-review",
+        "revision": "bbbbbbb",
+        "userOwned": true,
+        "explicitlySelected": true,
+        "goalIds": [
+          "goal-save"
+        ],
+        "checks": [
+          "goal_has_action",
+          "claim_has_evidence",
+          "acceptance_observed"
+        ]
+      }
+    ]
   },
   "projectBinding": {
     "directoryProjectId": "synthetic-directory",

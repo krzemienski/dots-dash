@@ -67,6 +67,9 @@ workflows now have [scoped verification](docs/verification/source-review-publica
 Actual-request V301 remains open.
 The [remediation navigation](docs/REMEDIATION_NAVIGATION.md) connects cards to
 their goals, actual checklist receipts and verification forms, with local browser evidence.
+The [derived remediation view](docs/DERIVED_REMEDIATION_CONTEXT.md) preserves
+scoped correction, attribution and project-binding context without rewriting
+historical prompts or turning owner reports into certified success.
 The [lock/startup assessment](docs/LOCK_DISRUPTION_AND_STARTUP.md) records lock
 identity binding, owned startup-failure outcomes and the next UI integration gap.
 The [lifecycle race fix](docs/LIFECYCLE_RACE_GUARDS.md) prevents concurrent local
