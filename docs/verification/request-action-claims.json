@@ -1,0 +1,428 @@
+{
+  "label": "TEST DATA: owner-reported request action claims",
+  "date": "2026-10-21T10:32:18.821Z",
+  "baseRevision": "3d3572a700a233bbec06108bf84d06218e5f2a32",
+  "contract": "docs/REQUEST_ACTION_EVIDENCE_CONTRACT.md",
+  "method": "Built React UI, actual Node API and fixed Python worker transport, fresh disposable owner-bound SQLite, explicit isolated companion migration and owned headless Chrome. No provider or shared browser.",
+  "observations": [
+    {
+      "id": "A6",
+      "name": "Unmigrated companion unavailable; no HTTP auto-migration",
+      "result": "pass"
+    },
+    {
+      "id": "A4/A6",
+      "name": "Physical-owner mismatch denied; exact unknown claim reports missing",
+      "result": "pass"
+    },
+    {
+      "id": "A4",
+      "name": "Writes separately disabled, owner reads available",
+      "result": "pass"
+    },
+    {
+      "id": "A1",
+      "name": "UI unbound claim saved; old completed status and URL remain context",
+      "result": "pass"
+    },
+    {
+      "id": "A8",
+      "name": "Lost POST response reconciled in UI with one revision/audit operation",
+      "result": "pass"
+    },
+    {
+      "id": "A2/A3",
+      "name": "Bound failed event survives reload alongside reported pass and owner attribution",
+      "result": "pass"
+    },
+    {
+      "id": "A11",
+      "name": "Exact bound review/event revision route reload and return",
+      "result": "pass"
+    },
+    {
+      "id": "A7",
+      "name": "UI correction preserves original revision while changing owner report",
+      "result": "pass"
+    },
+    {
+      "id": "A7",
+      "name": "UI withdrawal appends terminal revision; original failed event unchanged",
+      "result": "pass"
+    },
+    {
+      "id": "A9",
+      "name": "Confirmed save plus failed GET has read-only refresh recovery",
+      "result": "pass"
+    },
+    {
+      "id": "A9",
+      "name": "Unmount loses pending envelope honestly; persisted claim and recent operation visible after reload",
+      "result": "pass"
+    },
+    {
+      "id": "A8",
+      "name": "UI read-only lookup reconciles exact pending payload; missing operation remains unknown",
+      "result": "pass"
+    },
+    {
+      "id": "A4/A11",
+      "name": "Wrong owner/project, forged evidence, unsupported schema and URL field denied without writes",
+      "result": "pass"
+    },
+    {
+      "id": "A4",
+      "name": "Unsafe text returns sanitized preview without storing raw value",
+      "result": "pass"
+    },
+    {
+      "id": "A5/A8",
+      "name": "Independent request version/digest conflicts, exact replay despite source change, changed replay conflict and capability revocation",
+      "result": "pass"
+    },
+    {
+      "id": "A5",
+      "name": "Review version, event digest and missing identity checked independently",
+      "result": "pass"
+    },
+    {
+      "id": "A6/A7",
+      "name": "Unavailable request differs from missing; withdrawal works with missing target",
+      "result": "pass"
+    },
+    {
+      "id": "A3",
+      "name": "Receipt-like imported event remains owner-provided evidence",
+      "result": "pass"
+    },
+    {
+      "id": "A11",
+      "name": "Hostile-looking summary renders as text without DOM execution or fetch",
+      "result": "pass"
+    },
+    {
+      "id": "A7",
+      "name": "Concurrent head correction produces one winner and one conflict",
+      "result": "pass"
+    },
+    {
+      "id": "A10",
+      "name": "51+ claims and revisions paginated with stable ceilings and rejected tampered cursor",
+      "result": "pass"
+    },
+    {
+      "id": "A10",
+      "name": "Rendered Next 50 and refresh expose page scope",
+      "result": "pass"
+    },
+    {
+      "id": "A12",
+      "name": "Immutable revision/audit guards reject update and delete",
+      "result": "pass"
+    },
+    {
+      "id": "A12",
+      "name": "Original Node records/instructions/audits and Python review/history bytes unchanged",
+      "result": "pass"
+    },
+    {
+      "id": "A10",
+      "name": "API rejects 1001st claim/revision against clearly synthetic retention fixtures; no full 1000-entry user journey claimed",
+      "result": "pass"
+    },
+    {
+      "id": "A6",
+      "name": "Absent review schema and missing immutability guard fail closed",
+      "result": "pass"
+    },
+    {
+      "id": "A10",
+      "name": "Rendered revision history pagination",
+      "result": "pass"
+    },
+    {
+      "id": "A11",
+      "name": "Keyboard focus and 320/375px overflow basics",
+      "result": "pass"
+    },
+    {
+      "id": "A12",
+      "name": "No external browser requests, provider execution or page errors",
+      "result": "pass"
+    }
+  ],
+  "sourceHashes": {
+    "python/dots_engineering/request_claims.py": "65d9883208d4f59c87bc307510be6e73c80f0b5e0dcc5cbed2d3195a9b5a3e63",
+    "python/worker.py": "04f4ecdbf453228c7b1eb2796ab01ecf9af4e2712779f386b3bfc80643b52051",
+    "server/api.ts": "5e8e00778a21fbaf346ee3a0a6d7314f48ac0f4bfac765bae1c3473f9f457e22",
+    "server/engineering.mjs": "d56c5153021312bdbae5e0e79b8a907860e511ebaa20c384d6cf57dc12613887",
+    "server/start.mjs": "4e4c84f4022f6df75aa1b62e77296f452c1dd46267dc8f35f3280a6a55ffb34a",
+    "ui/request-action-claims.tsx": "7ebe14ec29645cf92997e12a5f112d72a363da8576695e2d70937531d659478c",
+    "ui/commitments.tsx": "70a71e3e08dfff0a620346fa897e528f0cbac77e34220e4ec4780e6c62ecf6a7",
+    "ui/styles.css": "ba8a4f4b2931492fd6c6151ecb8c00969a3affc870de22e33dc499ed5b299d53",
+    "dist/main.js": "fc70b139d5a54c1f9659c533bff63d892c37f62912622a01dbab0d6bc7f5a42d",
+    "python/migrate_request_claims.py": "2a8c115f758897bb4332a7ab1e68681da289b2237fc1aabe2f54583a38354f50"
+  },
+  "acceptance": {
+    "A1": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        4
+      ]
+    },
+    "A2": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        6
+      ]
+    },
+    "A3": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        6,
+        18
+      ]
+    },
+    "A4": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        2,
+        3,
+        13,
+        14
+      ]
+    },
+    "A5": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        15,
+        16
+      ]
+    },
+    "A6": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        1,
+        2,
+        17,
+        26
+      ]
+    },
+    "A7": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        8,
+        9,
+        17,
+        20
+      ]
+    },
+    "A8": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        5,
+        12,
+        15
+      ]
+    },
+    "A9": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        10,
+        11
+      ]
+    },
+    "A10": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        21,
+        22,
+        25,
+        27
+      ]
+    },
+    "A11": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        7,
+        13,
+        19,
+        28
+      ]
+    },
+    "A12": {
+      "status": "exercised_in_bounded_synthetic_scope",
+      "observationIds": [
+        23,
+        24,
+        29
+      ]
+    }
+  },
+  "staticChecks": {
+    "existingTests": "14 passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "pythonAST": "3 changed/new Python files parsed",
+    "sourceBuildHashes": "matched",
+    "diff": "passed"
+  },
+  "visualInspection": [
+    "Settled desktop claim with reported pass and failed retained event visible",
+    "320px persisted claim/history controls wrap; 375px overflow assertion passed"
+  ],
+  "scopeClarifications": [
+    "A10 retention rejection used seeded synthetic rows to reach 1000; no claim of 1000 interactive saves. More than 50 claims and revisions were created through the actual API and rendered pagination was exercised.",
+    "A11 verifies keyboard focus, exact event/history navigation, escaped text, rejected URL input and 320/375px overflow basics; not full screen-reader or accessibility certification.",
+    "A12 original Node work/instruction/decision/audit rows and Python reviews/operations/audit were compared before and after companion operations. Synthetic perturbations restored original target rows."
+  ],
+  "priorAttempts": [
+    {
+      "stage": "select locator",
+      "outcome": "Driver exact-label selector did not match a dropdown; corrected selector."
+    },
+    {
+      "stage": "response loss injection",
+      "outcome": "Socket-drop did not produce stable client uncertainty; replaced with truncated response after commit."
+    },
+    {
+      "stage": "correction labels",
+      "outcome": "Two attempts exposed inaccessible exact-label selection after populated textarea values; added explicit aria-labels and reran."
+    },
+    {
+      "stage": "return navigation/focus",
+      "outcome": "Focus assertion preceded completed read; route changes now clear old selection and start their own read, driver waits for enabled control."
+    },
+    {
+      "stage": "pre-final source review",
+      "outcome": "27 observations passed before exact missing-claim and stored-owner guards were added; final 29-observation rerun bound to hashes above supersedes it for this slice."
+    }
+  ],
+  "skills": [
+    {
+      "source": ".agents/skills/session-intent-review/SKILL.md",
+      "hash": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+      "selected": "A1\u2013A12 outcome/evidence boundaries and negative-case preservation",
+      "read": true,
+      "applied": "Kept reports distinct from verification; actual isolated UI/API/storage workflow; appended history and reported limits",
+      "verified": "29 scoped observations and unchanged originals; manual guidance, not skill adapter invocation"
+    },
+    {
+      "source": "vercel:react-best-practices",
+      "selected": "React projections, effect lifetime and accessible controls",
+      "read": true,
+      "applied": "Stable pending refs, generation-bound reads, escaped text/native forms; explicit accessible field names",
+      "verified": "Typecheck and actual mounted recovery/navigation checks; no automatic invocation claim",
+      "version": "Provider resource supplied no immutable version/hash"
+    }
+  ],
+  "externalRequests": 0,
+  "pageErrors": [],
+  "cleanup": "Owned browser, server and both SQLite handles closed",
+  "limits": [
+    "Owner reports only; no producer-verified completion, inferred authorship or source processing.",
+    "Actual-user V301, live identity/provider gates, trusted action receipt mapping and whole-request acceptance remain open.",
+    "Mounted pending envelope is lost on unmount/reload; recent 50 operations and exact known-ID lookup provide bounded inspection, not durable client recovery.",
+    "Request/review pins reflect separate database observations, not an atomic cross-store snapshot.",
+    "No new source readers, provider calls, browser storage, background jobs, merge or deployment."
+  ],
+  "migrationRisk": "Explicit new immutable companion schema only; no HTTP migration or original-record rewrite. Production/shared migration unperformed. Disable writes to roll back availability; preserve history.",
+  "followups": [
+    {
+      "label": "TEST DATA: historical revision mutation controls",
+      "baseRevision": "550a6d23218afbcb12e7496cf32f5df2cb03d8c4",
+      "date": "2026-10-21T10:42:40.148Z",
+      "baseline": "Actual API-created active and terminally withdrawn 51-revision claims both offered Correct/Withdraw for revision 1 on page 2. Server rejected stale writes; all durable records unchanged.",
+      "change": "Historical revision views expose no Correct/Withdraw controls. Only current active claim-list rows offer mutations. The first displayed history row is used only for exact-event inspection, never as a mutation head.",
+      "method": "Built React, actual loopback Node/Python transport and disposable SQLite. Both 51-revision histories created through API; no seeded history rows.",
+      "observations": [
+        {
+          "name": "API fixtures",
+          "detail": "Two actual API-created 51-revision claims: one active, one terminally withdrawn",
+          "result": "pass"
+        },
+        {
+          "name": "active first page",
+          "detail": "Historical first page exposes no mutation controls",
+          "result": "pass"
+        },
+        {
+          "name": "active second page",
+          "detail": "Revision 1 inspectable without mutation controls; stable sequence ceiling",
+          "result": "pass"
+        },
+        {
+          "name": "active original evidence",
+          "detail": "Exact revision-1 failed event and pins survive keyboard inspection/navigation/reload",
+          "result": "pass"
+        },
+        {
+          "name": "active server guards",
+          "detail": "Historical correction and withdrawal rejected; no corruption",
+          "result": "pass"
+        },
+        {
+          "name": "withdrawn first page",
+          "detail": "Historical first page exposes no mutation controls",
+          "result": "pass"
+        },
+        {
+          "name": "withdrawn second page",
+          "detail": "Revision 1 inspectable without mutation controls; stable sequence ceiling",
+          "result": "pass"
+        },
+        {
+          "name": "withdrawn original evidence",
+          "detail": "Exact revision-1 failed event and pins survive keyboard inspection/navigation/reload",
+          "result": "pass"
+        },
+        {
+          "name": "withdrawn server guards",
+          "detail": "Historical correction and withdrawal rejected; no corruption",
+          "result": "pass"
+        },
+        {
+          "name": "current claim list",
+          "detail": "Only current active claim offers revision-51 mutation; withdrawn claim offers none",
+          "result": "pass"
+        },
+        {
+          "name": "narrow history",
+          "detail": "320/375px read-only history fits without horizontal overflow",
+          "result": "pass"
+        },
+        {
+          "name": "persistence and isolation",
+          "detail": "Reads and rejected stale writes leave all original/companion records unchanged; no external requests or page errors",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "ui/request-action-claims.tsx": "6e264d56be2bfcde9f86fbc4c5905478c4132d3b3f90fa69f5808105be07f3fa",
+        "python/dots_engineering/request_claims.py": "65d9883208d4f59c87bc307510be6e73c80f0b5e0dcc5cbed2d3195a9b5a3e63",
+        "dist/main.js": "425d4b48244549a9d37acd3e3d3c992a3a0550d018927c7b69b9d7aa3e020d8b"
+      },
+      "staticChecks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "diff": "passed"
+      },
+      "visualInspection": "Settled desktop page 2 inspected: revision 1, explicit read-only history note, failed evidence and no Correct/Withdraw controls. 320/375px overflow checks passed.",
+      "priorAttempt": "First fixed run passed both history cases and current-list controls, then stopped on a nested driver locator. Locator corrected; fresh full run passed 12 observations. No new test file.",
+      "skillApplication": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "hash": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "basis": "Previously read project guidance manually applied: reproduce source-backed defect, distinguish misleading UI from rejected storage mutation, preserve historical evidence and verify actual outcomes. Not adapter invocation."
+      },
+      "externalRequests": 0,
+      "pageErrors": [],
+      "cleanup": "Owned browser/server and SQLite handles closed",
+      "limits": [
+        "Current claim-list snapshots may become stale after their read; server CAS/terminal guards remain authoritative.",
+        "No backend/schema/migration change, source access or execution expansion.",
+        "Earlier 29 observations retain historical source bindings; broader V301/live identity/full accessibility remain open."
+      ]
+    }
+  ]
+}

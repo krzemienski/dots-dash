@@ -1,0 +1,1042 @@
+{
+  "label": "TEST DATA: request evidence projection",
+  "baseRevision": "56c0baa3ee2f425dc8f3aae7eadfef7ccfb24b56",
+  "date": "2026-10-21T10:08:26.300Z",
+  "acceptance": "docs/verification/request-evidence-scenarios.md",
+  "method": "Actual built React UI, loopback Node API, synthetic host principal and fresh disposable SQLite. Inline driver, no new test file.",
+  "observations": [
+    {
+      "name": "existing import capability",
+      "result": "pass",
+      "detail": "Disabled import rejected, explicitly enabled synthetic import persisted"
+    },
+    {
+      "name": "unsupported completion",
+      "result": "pass",
+      "detail": "Recorded completed status retains claim, explicit missing support and neutral status"
+    },
+    {
+      "name": "partial request evidence",
+      "result": "pass",
+      "detail": "Visible source and supplied note; failure, pending work, attribution and per-claim binding limits retained"
+    },
+    {
+      "name": "paused and unflagged",
+      "result": "pass",
+      "detail": "No status-derived certification or invented input need"
+    },
+    {
+      "name": "related context and return",
+      "result": "pass",
+      "detail": "Present opportunity opens; missing references remain explicit; browser back restores exact request route"
+    },
+    {
+      "name": "keyboard disclosure/source focus",
+      "result": "pass",
+      "detail": "Native disclosure expands via keyboard; source link focusable without fetching"
+    },
+    {
+      "name": "claim search",
+      "result": "pass",
+      "detail": "Recorded completion text searchable; typing keeps focus"
+    },
+    {
+      "name": "exact ID reload",
+      "result": "pass",
+      "detail": "Original request focused after reload"
+    },
+    {
+      "name": "failed read recovery",
+      "result": "pass",
+      "detail": "Old request evidence remains beside failed-refresh error; read-only retry restores"
+    },
+    {
+      "name": "interrupted navigation",
+      "result": "pass",
+      "detail": "Delayed read across route change followed by exact request selection retains evidence"
+    },
+    {
+      "name": "narrow layouts",
+      "result": "pass",
+      "detail": "320/375px long context wraps without horizontal overflow"
+    },
+    {
+      "name": "missing target and unchanged persistence",
+      "result": "pass",
+      "detail": "Unknown exact ID explicitly unavailable; read/navigation/reload left all four durable tables unchanged"
+    },
+    {
+      "name": "instruction boundary",
+      "result": "pass",
+      "detail": "Existing UI save persisted once across reload as saved_not_delivered"
+    },
+    {
+      "name": "owner isolation",
+      "result": "pass",
+      "detail": "Other principal cannot read request records"
+    },
+    {
+      "name": "isolated execution",
+      "result": "pass",
+      "detail": "No external browser requests or page errors"
+    }
+  ],
+  "sourceHashes": {
+    "ui/commitments.tsx": "f64e652a446ff8863e0b9fe06ba249c95685a95353b12b17d9351b05c260b924",
+    "ui/dashboard.tsx": "4e518bb2046eeb439e79dcfa1d36c882ed1ec10def5f5d32ea1d51e726d0a1ae",
+    "ui/styles.css": "394ac53c514a5cd84ed8754b762f93f10bf27ff53eff1823307a9a9e54706a3e",
+    "dist/main.js": "49b662b47cec547c52dccd4b0ac7d5da8c3baed4bbe19336735515d3ae81c60f",
+    "dist/main.css": "9762a1a40835e9a5e10415cc015bd4d3803f71c158a25ab0bbd03f29397832f4"
+  },
+  "node": "v26.11.1",
+  "fixtureHash": "ff7af9379f87e6c4af6a1d2d9ff60d2442e0f2b5c51ef0c23744a470aa49db32",
+  "staticChecks": {
+    "existingTests": "14 passed",
+    "typecheck": "passed",
+    "build": "passed"
+  },
+  "visualInspection": "Desktop and 320px full-page screenshots inspected; 375px overflow assertion also passed.",
+  "priorAttempt": {
+    "result": "Driver stopped after 12 observations on incorrect column assertion instructions.delivery_state; actual column is status.",
+    "applicationOutcome": "UI instruction save and reload occurred in disposable storage; driver schema error, not an established application defect.",
+    "cleanup": "Owned browser, server and writer closed; process exited. Fresh rerun used independent storage."
+  },
+  "skills": [
+    {
+      "source": ".agents/skills/session-intent-review/SKILL.md",
+      "hash": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+      "available": true,
+      "selected": "FR04 source-linked accountability and claim/evidence distinction",
+      "read": true,
+      "applied": "Acceptance before implementation, preserved historical/unknown evidence, actual UI/API/storage observations",
+      "verified": "Observed claim/gap/pending visibility and unchanged read-only persistence; manual application, not provider invocation"
+    },
+    {
+      "source": "vercel:react-best-practices",
+      "resource": "skill://plugin_connector_690a90ec05c881918afb6a55dc9bbaa1/react-best-practices/SKILL.md",
+      "available": true,
+      "selected": "Review modified TSX projections and focus effects",
+      "read": true,
+      "applied": "Derived evidence during render; no new fetch/effect/storage; native disclosure and existing focus behavior retained",
+      "verified": "Search focus, keyboard disclosure, exact navigation and layout observed",
+      "limits": "Provider resource returned no pinned version/hash; manual guidance use only"
+    },
+    {
+      "source": ".agents/skills/skill-use-review/SKILL.md",
+      "hash": "55d3305a59e1679a790296f1b1d2fb554df2e7ddeb58099faf08091419d0303a",
+      "available": true,
+      "selected": "Record actual guidance application and verification separately",
+      "read": true,
+      "applied": "This bounded skill evidence record; no catalog discovery or skill edits",
+      "verified": "Source hashes captured and matching; no automatic invocation assertion"
+    }
+  ],
+  "externalRequests": 0,
+  "pageErrors": [],
+  "cleanup": "Owned browser, server and writer closed",
+  "limits": [
+    "Existing source URLs and notes are request context, not per-action proof.",
+    "Actual-user V301, production identity, external source content and full accessibility remain unverified.",
+    "Present task modal and positive project/schedule list navigation branches were source-inspected, not exercised in this fixture.",
+    "No private sources, new provider, schema or API; no merge/deploy. Prior verification retains original source hashes."
+  ],
+  "nextTask": "Define per-action claim-to-evidence association before adding completion certification; preserve provenance, uncertainty and contrary evidence.",
+  "designFollowups": [
+    {
+      "label": "Proposed request action-to-evidence binding v1",
+      "date": "2026-10-21T10:16:48.247075+00:00",
+      "baseRevision": "c3296c24bd2771206811796444341d685c942126",
+      "artifact": "docs/REQUEST_ACTION_EVIDENCE_CONTRACT.md",
+      "status": "design_only",
+      "duplicateSpecReview": "Existing generic Action/Attempt/Evidence targets and review/association receipts do not specify a Request action-claim binding. This contract narrows them to owner reports; no new trusted verifier.",
+      "sourceHashes": {
+        "docs/REQUEST_ACTION_EVIDENCE_CONTRACT.md": "bdb11e677f108a1c4f17b06567696b44a13c0379fbeeed8e9769fab309dbe4a4",
+        "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+        "server/api.ts": "d2a2d1822a2de84b8bab01b0fd0d237c822ccf3db3c9050f4c45078899c298f8",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "python/dots_engineering/context_links.py": "dc4116937082a5159d18671ae8c5f6dfdd4909f76d875a245df107fc63b6d7dd",
+        "python/dots_engineering/snapshot_associations.py": "d9228133e3c64eb151fa3381224532ca5b30f39abf10b3c84a16b0b2d5d86b65",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "docs/build-package/03-functional-technical-spec.md": "e6f332c5a9f39c0317891e645b23d9ba2a7588344fc7d881d0860c02f989ca91",
+        "docs/build-package/contracts.proposed.ts": "fbd7ff6c9a5cbf99f9108d85a9ebd590f98e66fe1bb2df3ceb7f97ab6401998c",
+        "docs/build-package/contracts_v3_proposed.py": "c6458d931168fa16abc9557eeacdf4eba7b0f64c1d6e6fc21e01b2953b3d237f",
+        "docs/OWNER_REVIEW_REPORTS.md": "de826ad83991815e7cfb2b24e12cb44de4245bdd2ff541952de1c2372362c673",
+        "docs/OWNED_BROWSER_RECEIPTS.md": "3006cd3a5b7c7db05fb247d2e6c5c3a9f03ab5149aaf063b0ab41251b63c2da4",
+        "docs/ARTIFACT_EVIDENCE_DISPLAY.md": "1026f65085e1044020265a8dd3de885f0cc57d0f0adb187b0fb96aa2fe9fd5db"
+      },
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "hash": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": "Source-linked intent, claim/evidence boundaries and observable acceptance",
+        "read": true,
+        "applied": "Separated design from implemented behavior and defined A1\u2013A12 without promoting imported evidence",
+        "verification": "Documentation consistency/link/hash review only; no runtime or adapter invocation"
+      },
+      "acceptance": {
+        "A1": "unperformed",
+        "A2": "unperformed",
+        "A3": "unperformed",
+        "A4": "unperformed",
+        "A5": "unperformed",
+        "A6": "unperformed",
+        "A7": "unperformed",
+        "A8": "unperformed",
+        "A9": "unperformed",
+        "A10": "unperformed",
+        "A11": "unperformed",
+        "A12": "unperformed"
+      },
+      "checks": [
+        "Relative document/source targets exist",
+        "JSON parses; recorded hashes match",
+        "Diff whitespace check"
+      ],
+      "limitations": [
+        "No schema, migration, API, UI binding or runtime validation implemented/executed",
+        "No historical request links promoted to per-action evidence",
+        "Actual-user V301, trusted producer mapping and live identity gates remain open"
+      ],
+      "nextSlice": "Separately disabled owner-report companion: strict schema, explicit isolated migration, immutable pins/lifecycle/replay and one-event Request composer/history; verify A1\u2013A12 before feature claims."
+    }
+  ],
+  "implementationFollowups": [
+    {
+      "artifact": "docs/REQUEST_ACTION_CLAIMS.md",
+      "ledger": "docs/verification/request-action-claims.json",
+      "contract": "docs/REQUEST_ACTION_EVIDENCE_CONTRACT.md",
+      "basis": "29 isolated TEST DATA observations; owner-report companion only",
+      "actualUserV301": "unperformed",
+      "priorEvidence": "Historical source bindings above unchanged"
+    },
+    {
+      "slice": "bounded request pagination and exact selection",
+      "baseRevision": "346a6c902e38280d09ffa0e7d9898e9a8df3805a",
+      "date": "2026-10-21T11:59:16.388232+00:00",
+      "status": "implemented locally; direct API/persistence verified; rendered acceptance blocked; not published",
+      "acceptance": "REQUEST_CONTEXT_LINKS.md follow-up scenarios 1\u20138; direct API results cover only backend portions",
+      "method": "Inline disposable real API handler, fixed Python worker and SQLite; no HTTP listener or browser; no new test file",
+      "observations": [
+        {
+          "name": "51-request discovery",
+          "detail": "First page 50; second page exact Request 51; totals and partial projection explicit.",
+          "result": "pass"
+        },
+        {
+          "name": "independent exact selection",
+          "detail": "Off-page exact target adds one metadata record; confirmed missing target is distinguished.",
+          "result": "pass"
+        },
+        {
+          "name": "save and replay",
+          "detail": "Exact off-page target saves; identical operation returns same association; changed-content replay conflicts.",
+          "result": "pass"
+        },
+        {
+          "name": "persisted exact navigation",
+          "detail": "Reopened SQLite and new Python worker preserve one link/audit; exact target current, off-page target unknown.",
+          "result": "pass"
+        },
+        {
+          "name": "stale pins and historical replay",
+          "detail": "Changed canonical target marks stale; new old-pin write conflicts; original operation still replays.",
+          "result": "pass"
+        },
+        {
+          "name": "ID ceiling and restart",
+          "detail": "New later Request excluded by old ceiling and visible after restart; totals distinguish stored from bounded.",
+          "result": "pass"
+        },
+        {
+          "name": "query bounds",
+          "detail": "Unknown, duplicated, malformed, unordered and POST query controls reject.",
+          "result": "pass"
+        },
+        {
+          "name": "owner and capability gates",
+          "detail": "Wrong owner and cross-origin denied; read remains available with writes disabled, including replay denial.",
+          "result": "pass"
+        },
+        {
+          "name": "immutable evidence",
+          "detail": "All historical association bytes and single audit entry unchanged after conflicts, replay and denied writes.",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "server/api.ts": "d604c1c1defdba14e434194eac4ed2ec57f9095c6e12d744b113d83c9a5d2f2c",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "ui/context-links.tsx": "ad55039f41f5fcd8aa9974234f7c5d34f231e7cedd35a7a207e0c4268556d118",
+        "dist/main.js": "97659fe98b8b2b0a0b8a6ef1ce45b0cc3315c34c9f4c3948331ca8aef7a3877a"
+      },
+      "staticChecks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "pythonAst": "passed",
+        "diff": "passed"
+      },
+      "skills": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Outcome-first bounded scenario, source pins, distinguish direct API evidence from rendered acceptance",
+          "verified": "Nine scoped API/storage observations; UI acceptance not verified",
+          "automaticInvocation": false
+        },
+        {
+          "source": "playwright skill",
+          "selected": true,
+          "read": true,
+          "applied": "Prepared fresh owned browser and loopback workflow; no shared profile",
+          "verified": false,
+          "limit": "Execution blocked by automatic approval review; browser never launched"
+        },
+        {
+          "source": "vercel:react-best-practices",
+          "selected": true,
+          "read": true,
+          "applied": "Primitive effect dependencies, stale-read guard, bounded client projection, focus/aria controls",
+          "verified": "Typecheck/build only; rendered focus and accessibility not verified"
+        },
+        {
+          "source": ".agents/skills/skill-use-review/SKILL.md",
+          "read": true,
+          "selected": false,
+          "applied": false,
+          "reason": "Inspected project guidance; its skill-audit/improvement trigger does not apply to this routine feature edit."
+        }
+      ],
+      "blockedValidation": {
+        "action": "Owned isolated headless browser plus loopback server with synthetic TEST DATA",
+        "reason": "Automatic approval review interpreted earlier inventory-only browser prohibition as still applying",
+        "executed": false,
+        "retryAttemptedAfterRejection": false,
+        "approvalRequested": true
+      },
+      "priorAttempt": "Initial non-escalated harness exited at unsettled listener await before imports or browser launch; empty owned SQLite artifact may remain ignored. Corrected escalation was rejected before execution.",
+      "limits": [
+        "No rendered baseline reproduction or final UI acceptance.",
+        "No keyboard, narrow-screen, interrupted navigation, UI lost-response or failed-GET observation in this follow-up.",
+        "ID ceiling is not a frozen snapshot; inserts before cursor need Restart.",
+        "Context views retain mounted-memory uncertainty only; no durable recovery.",
+        "No schema migration, external execution, provider access, real-owner V301 or production identity proof."
+      ],
+      "cleanup": "Direct API run closed owned SQLite handles; Python workers exited. No browser or listening server started.",
+      "nextTask": "After explicit isolated-browser approval, execute documented UI scenarios on final source, fix bounded defects, inspect sanitized outgoing diff, then publish and verify exact-head CI."
+    },
+    {
+      "slice": "bounded request pagination \u2014 rendered acceptance",
+      "baseRevision": "5b4fb312cf5fa221d527387fa48e133f45c1dd1f",
+      "date": "2026-10-21T12:07:22.809012+00:00",
+      "status": "13 fresh scoped rendered observations passed; ready for sanitized publication",
+      "method": "Actual rendered React, owned fresh Chromium context, real loopback API/Python transport and disposable SQLite; existing synthetic examples; inline driver, no new test file",
+      "observations": [
+        {
+          "name": "rendered 51-request discovery",
+          "detail": "Next/Previous exposes Request 51 with truthful page counts and page-region focus.",
+          "result": "pass"
+        },
+        {
+          "name": "UI import and uncertain-save reconciliation",
+          "detail": "UI-imported sanitized review linked to Request 51; committed response dropped; original operation retry produced exactly one persisted link/audit.",
+          "result": "pass"
+        },
+        {
+          "name": "reload and exact return",
+          "detail": "Reloaded persisted task links to exact Request 51 outside first page, with focus and selection scope.",
+          "result": "pass"
+        },
+        {
+          "name": "review round trip",
+          "detail": "Saved task opens selected review and return control focuses same task.",
+          "result": "pass"
+        },
+        {
+          "name": "Day exact shortcut",
+          "detail": "Request 51 Day shortcut reaches and focuses canonical target outside page 1.",
+          "result": "pass"
+        },
+        {
+          "name": "keyboard and narrow display",
+          "detail": "Keyboard Next moves focus; 320/375px document has no horizontal overflow.",
+          "result": "pass"
+        },
+        {
+          "name": "ceiling and restart UI",
+          "detail": "Later Request is excluded under old ceiling, disclosed in total, reachable after Restart.",
+          "result": "pass"
+        },
+        {
+          "name": "confirmed save failed refresh",
+          "detail": "UI explicitly reports saved-but-refresh-failed; refresh restarts list, exposes persisted link without write retry.",
+          "result": "pass"
+        },
+        {
+          "name": "UI stale evidence and replay",
+          "detail": "Changed target visible as stale; old pins reject for new operation, exact historical replay retained.",
+          "result": "pass"
+        },
+        {
+          "name": "exact missing target",
+          "detail": "Explicit selected target missing notice; partial-page historical task stays unknown and retained.",
+          "result": "pass"
+        },
+        {
+          "name": "disabled capability and owner isolation",
+          "detail": "Read-only navigation remains; disabled write and wrong-owner API rejected.",
+          "result": "pass"
+        },
+        {
+          "name": "interrupted navigation",
+          "detail": "Leaving during pending GET and remounting discards old view state and opens valid first page.",
+          "result": "pass"
+        },
+        {
+          "name": "final persistence",
+          "detail": "Two intended links and audit entries, original historical link bytes unchanged; no external execution.",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "server/api.ts": "d604c1c1defdba14e434194eac4ed2ec57f9095c6e12d744b113d83c9a5d2f2c",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "ui/context-links.tsx": "ad55039f41f5fcd8aa9974234f7c5d34f231e7cedd35a7a207e0c4268556d118",
+        "dist/main.js": "97659fe98b8b2b0a0b8a6ef1ce45b0cc3315c34c9f4c3948331ca8aef7a3877a"
+      },
+      "staticChecks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "pythonAst": "passed",
+        "ledgerBindingsAndLinks": "passed",
+        "diff": "passed"
+      },
+      "externalRequests": 0,
+      "pageErrors": [],
+      "visualInspection": "Inspected desktop and 375px screenshots: explicit page counts, selected/missing-target scope and unavailable execution; 320/375px overflow and keyboard focus checks passed. Not full mobile/screen-reader certification.",
+      "priorAttempts": [
+        "Prior automatic approval denial did not execute. Later explicit isolated-verification instruction permitted one retry.",
+        "Approved launch attempts found old Playwright revision 1200 absent. Existing installed revision 1217 used with fresh isolated context; no new install.",
+        "Intermediate drivers interrupted on exact wrapped-select label, premature animation-frame focus assertion and nested locator. Final fresh run passed all 13 observations. No app defect established by those interruptions."
+      ],
+      "skillApplication": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Define observable outcome, preserve provenance/authority, verify real rendered and persisted results",
+          "verified": "13 scoped observations; not automatic host invocation"
+        },
+        {
+          "source": "playwright skill",
+          "selected": true,
+          "read": true,
+          "applied": "Fresh isolated browser, rendered controls, settled state/focus, inspected screenshots and owned-resource cleanup",
+          "verified": "Actual rendered observations, zero external requests; terminal driver used existing package and no test specs"
+        },
+        {
+          "source": "vercel:react-best-practices",
+          "selected": true,
+          "read": true,
+          "applied": "Stale-read guard, primitive dependencies, bounded projections, navigation/focus controls",
+          "verified": "Typecheck/build plus interrupted-navigation and keyboard observations; no automatic invocation claim"
+        }
+      ],
+      "cleanup": "Owned browser context/browser, loopback server and SQLite handles closed; fixed Python workers exited",
+      "limits": [
+        "Synthetic principal is not production authentication or actual-user V301.",
+        "ID ceiling is not a frozen snapshot; inserts before cursor require restart.",
+        "Mounted-memory pending operations are lost on unmount/reload; no durable recovery.",
+        "Narrow overflow and keyboard checks are not full screen-reader/mobile acceptance.",
+        "No schema migration, provider access, source reader, external execution, merge or deployment."
+      ],
+      "nextTask": "Define read-only durable operation reconciliation before adding cross-navigation recovery; retain actual-owner and live-identity gates."
+    }
+  ],
+  "verificationFollowups": [
+    {
+      "id": "agent-public-project-request-review-walkthrough",
+      "date": "2026-10-21",
+      "runtimeRevision": "1f2728338cf62c31b374249197256b1adbbf6f68",
+      "label": "TEST DATA / AGENT-CURATED PUBLIC PROJECT COPY",
+      "acceptance": "docs/REVIEW_NEXT_STEPS.md agent-performed project-copy walkthrough; primary scenarios stated before execution",
+      "inputSourceHashesAtRuntimeRevision": {
+        "docs/REVIEW_NEXT_STEPS.md": "e32eb959de6c6f02e024cbd302ce2bf41c0869de12b6fef65bc5bbf79fc3713b",
+        "docs/verification/session-save-recovery.json": "d79e015a7af04da72dd4aed59eb2efd1eb271816d14c7d8f35a420ec2e77efc8",
+        "ui/review-next-steps.tsx": "103796d76d927265e1495860fd0dcdb90484f2373744e98ea19b2df2c9032ffb"
+      },
+      "scope": {
+        "sources": [
+          "docs/REVIEW_NEXT_STEPS.md",
+          "docs/verification/session-save-recovery.json",
+          "ui/review-next-steps.tsx"
+        ],
+        "privateProductionReads": 0,
+        "originalTranscripts": 0,
+        "recordSelection": "One copied request, three project-artifact events, one goal, one synthetic checklist; no original session denominator"
+      },
+      "method": "Existing supported history API import, rendered review import/link/selection/local-checklist/observation/reload through real Node/Python and disposable SQLite. Agent-performed only.",
+      "observations": [
+        {
+          "name": "W1: copied public project request persists with source URL and human acceptance pending",
+          "result": "pass",
+          "detail": {
+            "requestId": "commitment:TEST-DATA-next-steps-request",
+            "originalCorrespondence": "not accessed",
+            "humanAcceptance": "unperformed"
+          }
+        },
+        {
+          "name": "W2: rendered association binds exact canonical request, review and declared source revision",
+          "result": "pass",
+          "detail": {
+            "taskId": "context-317de62ed1354a64ba150f7e99b26aa1",
+            "requestPin": "ca5def22b1924fe3ec5768c2352efafeeb5f892753689b1e771e4767857690de",
+            "reviewVersion": 1
+          }
+        },
+        {
+          "name": "W3: request to repository task to review to intent navigates exact targets",
+          "result": "pass",
+          "detail": {
+            "scope": "Agent-performed isolated copy, not human-owner acceptance"
+          }
+        },
+        {
+          "name": "W4: imported historical claim remains unverified; selection and bounded execution are distinct",
+          "result": "pass",
+          "detail": {
+            "runId": "run-960ef212d7fa4e9182b8988c2cf6a522",
+            "acceptance": "gap",
+            "scope": "declarative_checklist_only"
+          }
+        },
+        {
+          "name": "W5: agent observation preserves human gate, request bytes and historical association pins",
+          "result": "pass",
+          "detail": {
+            "observation": "observation-fbb5a0068aa7418c95c4dc9b656cd46d",
+            "basis": "owner_reported",
+            "actorEvidence": "Explicit agent-performed text; synthetic host principal is not proof of human authorship",
+            "reviewState": "stale"
+          }
+        },
+        {
+          "name": "W6: reload preserves exact association and review; request return neither upgrades status nor adds writes",
+          "result": "pass",
+          "detail": {
+            "reviewVersion": 4,
+            "audit": 4,
+            "operations": 5
+          }
+        }
+      ],
+      "humanAcceptance": "unperformed; saved observation explicitly says agent-performed and result gap",
+      "sourceHashes": {
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/session-review.tsx": "6d9390ed3be4db9ad8991e221f868f0eb6a82fcff48167ec78b97b8c1f18bb3d",
+        "ui/review-next-steps.tsx": "103796d76d927265e1495860fd0dcdb90484f2373744e98ea19b2df2c9032ffb",
+        "ui/commitments.tsx": "70a71e3e08dfff0a620346fa897e528f0cbac77e34220e4ec4780e6c62ecf6a7",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+        "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+        "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709"
+      },
+      "buildOutputs": {
+        "dist/main.js": "40782456256f18a333a7840dd18b3d778545e35a251acf936eea3f2a27e4fc29",
+        "dist/main.css": "90df6cea75859feaead03c3261c20e5c84782e001b2bb355dab8b504bc83758b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "driverCorrection": "Initial source-link count assertion was non-discriminating; final complete run used exact URL presence. Initial run is not source-link proof.",
+      "pageErrors": [],
+      "externalRequests": 0,
+      "visualInspection": "Request and review summary screenshots inspected",
+      "staticChecks": "Runtime and build input hashes match; documentation link/JSON/diff checks run separately. No runtime edits; previous 14 tests/typecheck/build remain historical, not rerun in this pass.",
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Defined request/intent acceptance and separated agent evidence, historical claims and human acceptance; no private production source reads.",
+        "verified": "Six scoped UI/API/persistence observations; manual guidance application, no automatic host invocation claim."
+      },
+      "result": "No functional defect established in this bounded journey; documentation/evidence only.",
+      "cleanup": "Owned browser/server/database handles closed. No shared browser use.",
+      "limits": [
+        "Public project-artifact copy, not original correspondence or transcript ingestion.",
+        "No actual human-owner V301 or intent agreement; no human certification on behalf of the owner.",
+        "Owner_reported basis is not verified human authorship; agent origin is explicit in observation text.",
+        "Existing permissions/capability paths unchanged; broad denial, accessibility, concurrency and provider acceptance not rerun."
+      ],
+      "nextTask": "Human judgment of represented request/goal/expected behavior/next step; stop dependent completion until obtained. Durable registration decisions remain separate."
+    },
+    {
+      "id": "local-daily-evidence-check-in",
+      "date": "2026-10-21",
+      "baseRevision": "116e50235f3c08acde9a6d8a0628cd8ca6ab5a80",
+      "label": "TEST DATA / LOCAL ONLY",
+      "acceptance": "docs/DAILY_EVIDENCE.md D1-D7; temporal and evidence distinctions stated before implementation",
+      "baseline": "Stored multi-domain synthetic records imported through API; old Day request-review projection had no daily evidence region or message list.",
+      "method": "Owned headless Chromium, random-port localhost real Node API and fresh disposable SQLite. Inline adapted synthetic fixtures; planned task explicitly seeded in owned fixture store.",
+      "observations": [
+        {
+          "name": "D1: UTC message day uses strict occurrence time; date-only and impossible dates stay unplaced",
+          "result": "pass",
+          "detail": {
+            "included": 2,
+            "unplaced": 2
+          }
+        },
+        {
+          "name": "D2: explicit zone changes membership; both repeated-hour DST instants remain",
+          "result": "pass",
+          "detail": {
+            "zone": "America/New_York",
+            "dstRecords": 2
+          }
+        },
+        {
+          "name": "D3: invalid zone retains scope; review-day leads/work separated from current pending snapshot",
+          "result": "pass",
+          "detail": {
+            "humanAcceptance": "not established"
+          }
+        },
+        {
+          "name": "D4: calendar events, deadlines, all-day source labels and plans stay distinct; old coverage stays supplied",
+          "result": "pass",
+          "detail": {
+            "providersCalled": 0
+          }
+        },
+        {
+          "name": "D5: draft cites bounded records, exact request navigation and reload are read-only",
+          "result": "pass",
+          "detail": {
+            "dateZonePersistence": "none",
+            "clipboard": "not exercised; visible draft only"
+          }
+        },
+        {
+          "name": "D6: keyboard date control and narrow viewport",
+          "result": "pass",
+          "detail": {
+            "widths": [
+              320,
+              375
+            ],
+            "screenReader": "unperformed"
+          }
+        },
+        {
+          "name": "D7: empty/invalid date does not assert no activity or drop current pending context",
+          "result": "pass",
+          "detail": {
+            "dbBytesUnchanged": true
+          }
+        }
+      ],
+      "negativeEvidence": "D3 additionally asserts recorded_failure and failure remains open alongside historical_pass.",
+      "sourceHashes": {
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "ui/day-workspace.tsx": "1d13259190bcdc3a199e5177c8da79955830af79db02cb4ec0fe1a0bc80f3720",
+        "ui/styles.css": "25ce2ae764ebebe8e805f81c9eb93dc996f07a0342253d09539de57847d88f6e",
+        "lib/work/history-time.mjs": "09b8b6866f5dab02173b57a83ae5f95998b80c1adfa0800e7bf4a0a6d79cd30d",
+        "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+        "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+        "tests/ui-render.test.mjs": "c75e28c486a448d84108d109ecde4a445190b7eb118ceabd767114e2d58b27d9"
+      },
+      "buildOutputs": {
+        "dist/main.js": "1c0041f2d2aba49d9aa039fd6dc39c13030f08ce7f1d0f6f1a9fff4dd0c26917",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "checks": {
+        "tests": "14 existing passed; existing empty-state assertions updated, no new test files",
+        "typecheck": "passed",
+        "build": "passed",
+        "hashes": "final source and build manifest matched",
+        "documents": "relative targets, ledger JSON and diff checked before commit",
+        "visual": "Narrow final-source layout inspected"
+      },
+      "priorAttempts": [
+        {
+          "scope": "Fixture import",
+          "result": "Unsupported hyphens in synthetic Gmail thread IDs rejected with 400; changed fixture IDs, no validation weakening."
+        },
+        {
+          "scope": "Draft accessible name",
+          "result": "Four scenarios passed before exact-label timeout; changed wrapping textarea label to explicit unique ID/htmlFor association."
+        },
+        {
+          "scope": "Existing render test",
+          "result": "Old fixed UTC label assertion failed; updated existing test for selectable day/timezone and unknown coverage."
+        },
+        {
+          "scope": "Browser run after failed chained build",
+          "result": "Used earlier bundle; discarded as final-source evidence. Final run follows successful tests/typecheck/build and source-hash verification."
+        }
+      ],
+      "pageErrors": [],
+      "externalRequests": 0,
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Defined V312 temporal/evidence boundaries; separated supplied claims/review dates from outcomes and validated persisted workflows.",
+        "verified": "Seven scoped UI/API/SQLite observations. Manual guidance application, not automatic invocation."
+      },
+      "limits": [
+        "No full V312 verified-work event history, real-owner acceptance or private data.",
+        "Current pending snapshots are not historical state; leads are reviewed, not newly discovered.",
+        "Timed calendar starts only; no earlier-starting ongoing/recurring expansion; all-day labels retain source date/zone.",
+        "At most 20 displayed records per group and explicit subset draft; maximum preview boundary not exercised.",
+        "Clipboard delivery, screen reader, spring DST and live provider scenarios not performed. Empty-coverage state checked by existing render test only.",
+        "Date/zone are transient; default UTC is explicit. No API/schema/capability/migration/scheduler change."
+      ],
+      "cleanup": "Owned browser/server/store handles closed. Shared Chrome, production, providers and other workers untouched.",
+      "publication": "Local only; earlier 116e502 documentation commit and publication hold preserved. No push or PR update.",
+      "nextTask": "Define bounded owner/store event-input contract with occurrence/review times, producer evidence and corrections before claiming verified-work V312."
+    },
+    {
+      "id": "local-selected-review-evidence-history",
+      "date": "2026-10-21",
+      "baseRevision": "86dea069c00baa13542c7eb95ab736f0fad15209",
+      "label": "TEST DATA / LOCAL ONLY",
+      "acceptance": "docs/REVIEW_EVIDENCE_HISTORY.md H1-H6; primary outcomes stated before implementation",
+      "baseline": "Actual isolated import retained timestamps and supersession but had no date-scoped evidence history.",
+      "method": "Owned isolated headless UI, real localhost Node/Python API, disposable SQLite. Existing synthetic visible-export fixture with later correction timestamp; actual UI owner reports and local checklist.",
+      "observations": [
+        {
+          "name": "H1: selected-day original negative/superseded evidence retains a later correction link",
+          "result": "pass",
+          "detail": {
+            "original": "old-block",
+            "correctionOutsideDay": "new-decision",
+            "bytesUnchanged": true
+          }
+        },
+        {
+          "name": "H2: supplied observation day respects zone boundary and rejects unknown zone",
+          "result": "pass",
+          "detail": {
+            "occurrenceTime": "not inferred"
+          }
+        },
+        {
+          "name": "H3: microsecond server timestamps group saved reports/receipt without changing historical acceptance",
+          "result": "pass",
+          "detail": {
+            "reportSavedAt": "2026-10-21T21:02:05.280911+00:00",
+            "receiptRecordedAt": "2026-10-21T21:02:05.801122+00:00",
+            "acceptance": "fail",
+            "productVerification": "not_independently_verified"
+          }
+        },
+        {
+          "name": "H4: exact report/receipt navigation is read-only",
+          "result": "pass",
+          "detail": {
+            "exportUnchanged": true
+          }
+        },
+        {
+          "name": "H5: reload/narrow keyboard/empty-day preserve evidence and unknown scope",
+          "result": "pass",
+          "detail": {
+            "humanAcceptance": "unperformed",
+            "screenReader": "unperformed"
+          }
+        }
+      ],
+      "unperformed": [
+        {
+          "case": "H6",
+          "reason": "Cached Playwright module disappeared; next attempt failed at module resolution before executing. Remaining installed driver expects absent Chromium 1247. No install or shared-browser substitution."
+        }
+      ],
+      "sourceHashes": {
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da",
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "lib/work/history-time.mjs": "09b8b6866f5dab02173b57a83ae5f95998b80c1adfa0800e7bf4a0a6d79cd30d",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd"
+      },
+      "buildOutputs": {
+        "dist/main.js": "948e853c7267b573fb01d692e6bf24494d199bc83887317ff4c1ab6dd6054088",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "checks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed; hashes match five completed workflow cases",
+        "screenshot": "Partial narrow long-page capture inspected; no full visual certification",
+        "documents": "Relative targets, JSON and diff checked before commit"
+      },
+      "pageErrors": [],
+      "externalRequests": 0,
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Scoped existing evidence by time basis, retained negative/correction history and separated owner reports from independent receipt and occurrence claims.",
+        "verified": "Five real isolated workflow cases; manual guidance application, not automatic invocation. H6 not performed."
+      },
+      "limits": [
+        "Single saved review only, not all daily work, all transcripts or full V312.",
+        "Supplied observedAt and saved recordedAt do not establish actual workflow occurrence.",
+        "No retained-item correction stream or browser-receipt aggregation; no cross-store identity invented.",
+        "H6, maximum-preview boundary, unusable legacy timestamp, excluded correction endpoint, screen-reader and human-owner acceptance unperformed."
+      ],
+      "cleanup": "Owned completed-run resources closed; failed later driver never launched. Shared Chrome and other workers untouched.",
+      "publication": "Local only; no push, merge, deploy or production write.",
+      "nextTask": "Restore authorized isolated driver/browser pairing and verify scoped-correction H6; broader event contract remains a separate reviewed dependency."
+    },
+    {
+      "id": "selected-review-history-H6-completion",
+      "date": "2026-10-21",
+      "runtimeRevision": "8aa1d83ed1595f16c124503d624e96c4ce6c3bcb",
+      "label": "TEST DATA / LOCAL ONLY",
+      "completes": "H6 previously unperformed in local-selected-review-evidence-history; previous blocker/history retained",
+      "observations": [
+        {
+          "name": "H6a: earlier blocked record stays visible and links later scoped correction without global supersession",
+          "result": "pass",
+          "detail": {
+            "reviewId": "review-a55250f6d2827a8999c9a4b9",
+            "revision": "aaaaaaa",
+            "scope": [
+              "goal-save"
+            ],
+            "priorRevision": "ccccccc"
+          }
+        },
+        {
+          "name": "H6b: correction context reaches intended-goal drafts only; other goal and prior revision remain byte-identical",
+          "result": "pass",
+          "detail": {
+            "intendedGoal": "goal-save",
+            "unaffectedGoal": "goal-other",
+            "unaffectedReview": "review-03855f122856956df31f288d",
+            "otherTaskCount": 2
+          }
+        },
+        {
+          "name": "H6c: persisted reload and reverse keyboard navigation retain exact original outcome, pins and scope",
+          "result": "pass",
+          "detail": {
+            "databaseBytesUnchanged": true,
+            "apiReadbackMatches": true,
+            "humanAcceptance": "unperformed"
+          }
+        }
+      ],
+      "runtime": {
+        "playwright": "1.59.0",
+        "browserVersion": "147.0.7727.15",
+        "chromiumRevision": "1217",
+        "driverSha256": "a0f5715ea22354f922791a9c53dc012d5d5c067ff9cc4cd35ffb7cd272071a9f",
+        "coreManifestSha256": "469f17a82348978f79738981bc8af9b4e8516aac5a020018911fff39b755fe60"
+      },
+      "sourceHashes": {
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da",
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "lib/work/remediation-context.ts": "06a873f82fb110b81171746fc8052f53f40ab4a16492dcbb1d995769cec0c883",
+        "python/dots_engineering/admission.py": "052793abe1b12c4f709dfc91802a9f4430b4a93d1fc827dfa999865cd6c48867",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10"
+      },
+      "buildOutputs": {
+        "dist/main.js": "948e853c7267b573fb01d692e6bf24494d199bc83887317ff4c1ab6dd6054088",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "dependencyRestoration": {
+        "sources": [
+          "https://playwright.dev/docs/browsers",
+          "https://registry.npmjs.org/playwright-core/1.59.0"
+        ],
+        "officialManifestIntegrityVerified": true,
+        "pinnedVersion": "1.59.0",
+        "browserReused": "installed isolated Chromium 1217 / 147.0.7727.15",
+        "scope": "Ignored project node_modules; npm chose nearest existing project rather than intended validation subdirectory. Local cache and empty user/global npm configuration. No browser download, install scripts, global changes or tracked package/lockfile edit."
+      },
+      "priorAttempts": [
+        {
+          "result": "Driver expected a second persisted review but selected fixture import had rejected; no H6 pass claimed."
+        },
+        {
+          "result": "Exact POST response exposed Correction predates its target. Corrected only synthetic chronology; server validation unchanged."
+        }
+      ],
+      "checks": {
+        "runtimeBuildBindings": "matched",
+        "screenshot": "scoped correction inspected",
+        "documents": "relative links, JSON and diff checked before commit",
+        "existingTests": "not rerun; application runtime unchanged from recorded 14-test/typecheck/build pass"
+      },
+      "pageErrors": [],
+      "externalRequests": 0,
+      "skills": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": "read in originating evidence-history implementation",
+          "applied": "Preserved old negative result, scoped attribution and unchanged unrelated goal/revision; separated agent verification from human acceptance.",
+          "verified": "H6a-H6c actual persisted workflow; manual guidance use."
+        },
+        {
+          "source": "Playwright skill",
+          "selected": true,
+          "read": true,
+          "applied": "Checked driver prerequisite and version pairing; used owned fresh browser and ignored artifacts with the existing inline project harness, not new test files.",
+          "verified": "Actual H6 driver/browser workflow; no automatic skill invocation claim."
+        }
+      ],
+      "cleanup": "Owned browser/server/database closed; no shared Chrome or provider use. Restored ignored driver retained for authorized isolated validation.",
+      "limits": [
+        "H6 source assertions are supplied TEST DATA, not independently observed transcript authorship or human acceptance.",
+        "Maximum preview, legacy unusable timestamp, excluded correction endpoint and screen-reader scenarios remain unperformed.",
+        "No original-source completeness, processed progress or full V312 claim."
+      ],
+      "publication": "Local documentation/evidence only; no push, merge, deploy or production mutation.",
+      "nextTask": "Broader owner/store event contract remains separate; preserve occurrence/save-time and correction boundaries rather than claiming unified verified-work history."
+    },
+    {
+      "recordedAt": "2026-10-25T20:52:10.520170+00:00",
+      "runtimeRevision": "1f95ef052823c0f136971a61b93f521982ba1e5e",
+      "method": "Rendered owned headless Chromium, actual localhost Node/Python API and disposable SQLite; synthetic principal, labeled TEST DATA only.",
+      "runtime": {
+        "playwright": "1.59.0",
+        "browser": "147.0.7727.15"
+      },
+      "sourceHashes": {
+        "ui/review-next-steps.tsx": "103796d76d927265e1495860fd0dcdb90484f2373744e98ea19b2df2c9032ffb",
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "ui/day-workspace.tsx": "1d13259190bcdc3a199e5177c8da79955830af79db02cb4ec0fe1a0bc80f3720",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "lib/work/remediation-context.ts": "06a873f82fb110b81171746fc8052f53f40ab4a16492dcbb1d995769cec0c883",
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/commitments.tsx": "70a71e3e08dfff0a620346fa897e528f0cbac77e34220e4ec4780e6c62ecf6a7",
+        "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+        "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+        "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "ui/styles.css": "25ce2ae764ebebe8e805f81c9eb93dc996f07a0342253d09539de57847d88f6e",
+        "lib/work/history-time.mjs": "09b8b6866f5dab02173b57a83ae5f95998b80c1adfa0800e7bf4a0a6d79cd30d",
+        "tests/ui-render.test.mjs": "c75e28c486a448d84108d109ecde4a445190b7eb118ceabd767114e2d58b27d9",
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da"
+      },
+      "buildOutputs": {
+        "dist/main.js": "948e853c7267b573fb01d692e6bf24494d199bc83887317ff4c1ab6dd6054088",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "checks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed; rebuilt output matches workflow-served hashes",
+        "sourceBindings": "Matched after both workflows; no runtime source changed between them",
+        "screenshots": "Narrow next-step intent/history and request-review summary inspected",
+        "jsonLinksDiff": "Checked separately before commit"
+      },
+      "skillUse": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Current-source goal/step/receipt/observation/reload verification; preserve negative and human-acceptance boundaries.",
+        "verified": "Agent-run bounded workflow evidence, not automatic skill activation or full-skill invocation."
+      },
+      "pageErrors": [],
+      "externalRequests": 0,
+      "cleanup": "Owned browser/server/database handles closed; shared authenticated Chrome and other workers untouched.",
+      "limits": [
+        "Agent-performed TEST DATA, not human-owner V301 or original transcript review.",
+        "No real authentication/provider acceptance, full V312, actual screen reader, durable recovery or general agent execution.",
+        "Daily D1-D7 and history H1-H6 retain their own historical environment bindings; their listed source hashes still match.",
+        "No application code defect established; this follow-up changes documentation/evidence only."
+      ],
+      "id": "current-source-request-review-reverification-20261025",
+      "scope": "W1-W6 completed in a separate fresh isolated store using an explicitly labeled historical public-project input copy.",
+      "observations": [
+        {
+          "name": "W1: project-copy request, exact URL, human acceptance pending",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "W2: exact immutable request/review pins",
+          "result": "pass",
+          "detail": {
+            "linkId": "context-28f3cdb6179f45cc930b4f1d3d7023bb",
+            "reviewId": "review-0c2d2e8d6b50869f50da5c1d"
+          }
+        },
+        {
+          "name": "W3: exact request/task/review/intent navigation",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "W4: claim remains unverified; selection distinct from bounded run",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "W5: agent gap, human gate, request bytes and stale historical pins preserved",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "W6: exact persisted reload and return without new writes",
+          "result": "pass",
+          "detail": {
+            "reviews": 1,
+            "operations": 5,
+            "audit": 4
+          }
+        }
+      ],
+      "humanAcceptance": "unperformed",
+      "driverInterruptions": [
+        "Exact nested textarea/select label matching caused locator timeouts; corrected driver prefix matching without changing application code.",
+        "After an API history import, hash-only navigation retained the dashboard snapshot; driver added an explicit reload.",
+        "Stored normalized export included server-derived event basis/status and skill invocationScope; strict importer correctly rejected it. Driver reconstituted only original permitted input fields."
+      ],
+      "result": "Scoped current-source acceptance passed; earlier failed/interrupted attempts remain historical and are not counted as complete runs."
+    }
+  ]
+}

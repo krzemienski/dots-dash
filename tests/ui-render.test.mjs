@@ -25,6 +25,7 @@ test('all empty views render; synthetic source content is escaped',async()=>{
  const dir=await mkdtemp(path.resolve('.ui-test-'));try{
  const out=path.join(dir,'day.mjs');await build({entryPoints:['ui/day-workspace.tsx'],outfile:out,bundle:true,platform:'node',format:'esm',jsx:'automatic',packages:'external'});
  const {default:View}=await import(pathToFileURL(out));const html=renderToString(React.createElement(View,{records:[],instructions:[],onNavigate:()=>{}}));
- assert.ok(html.includes('Review day (UTC)'));assert.ok(html.includes('No request reviews recorded'));
+ assert.ok(html.includes('Summary day'));assert.ok(html.includes('Summary time zone'));
+ assert.ok(html.includes('Source coverage and freshness are unknown'));assert.ok(html.includes('No request reviews recorded'));
  }finally{await rm(dir,{recursive:true,force:true})}
  });

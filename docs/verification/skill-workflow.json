@@ -1,0 +1,139 @@
+{
+  "label": "Sanitized project skill-use evidence",
+  "recordedAt": "2026-10-21T09:07:10.694042+00:00",
+  "baseRevision": "c8705f9677ccc01e3e901f9e9f991f36a0b9cb9a",
+  "scope": "Project skill/docs improvement; machine inventory and exact external installed-skill identities remain owner-private. No runtime feature or automated routing service added.",
+  "feedback": "Existing project guidance distinguished selection from checklist invocation but lacked a persistent record for manual read/application and explicit catalog-only/unrelated-edit routing boundaries.",
+  "skills": [
+    {
+      "skillRef": ".agents/skills/skill-use-review/SKILL.md",
+      "skillHash": "55d3305a59e1679a790296f1b1d2fb554df2e7ddeb58099faf08091419d0303a",
+      "available": true,
+      "selected": true,
+      "read": true,
+      "applied": true,
+      "executionBasis": "manual guidance, self-reported",
+      "routingReason": "Requested skill-use process and routing audit",
+      "artifact": "docs/SKILL_WORKFLOW.md and this ledger",
+      "verification": "structural validation and manual routing exercise; no independent invocation certificate",
+      "limits": "No automatic host-selection or full-provider execution demonstrated"
+    },
+    {
+      "skillRef": ".agents/skills/session-intent-review/SKILL.md",
+      "skillHash": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+      "available": true,
+      "selected": true,
+      "read": true,
+      "applied": true,
+      "executionBasis": "manual guidance, self-reported",
+      "routingReason": "Bounded source-backed review of Session review recovery evidence",
+      "artifact": "sourceEvidenceAudit below",
+      "verification": "structural validation and manual routing exercise; no independent invocation certificate",
+      "limits": "No automatic host-selection or full-provider execution demonstrated"
+    }
+  ],
+  "authoringGuidance": {
+    "skill": "available Skill Creator",
+    "read": true,
+    "applied": true,
+    "effect": "Kept entrypoint concise, added explicit nontriggers, reused one evidence reference and validated both skills; no global installation or vendor edits.",
+    "exactExternalVersion": "Recorded in owner-private read ledger; not a public machine inventory"
+  },
+  "declinedCandidate": {
+    "skill": "available find-skills",
+    "read": true,
+    "selectedForExecution": false,
+    "reason": "Its ecosystem search/install workflow is unnecessary for this local discovery request; no marketplace lookup, install or update performed."
+  },
+  "forwardExercise": {
+    "basis": "Manual scenario walkthrough by implementing assistant; synthetic requests, no side effects. Not independent agent evaluation or demonstrated host auto-routing.",
+    "cases": [
+      {
+        "request": "Audit installed and plugin-embedded skills for this project.",
+        "route": "skill-use-review",
+        "decision": "Bound metadata discovery; read only relevant entrypoints; private coverage ledger, no global config edits.",
+        "assessment": "meets scoped outcome"
+      },
+      {
+        "request": "Review whether the Session review lost-response fix preserves exact replay.",
+        "route": "session-intent-review",
+        "decision": "Inspect source-bound evidence and source; label earlier runtime checks historical; no new POST or browser run required for this read-only audit.",
+        "assessment": "meets scoped outcome"
+      },
+      {
+        "request": "Change a button border color.",
+        "route": "neither project skill",
+        "decision": "Ordinary edit; no skill inventory or session audit triggered by incidental UI work.",
+        "assessment": "meets scoped outcome"
+      },
+      {
+        "request": "Two same-name Skill Creator entries have different hashes. Which did you use?",
+        "route": "skill-use-review",
+        "decision": "Identify exact chosen entrypoint and references; keep alternatives distinct, do not merge by name.",
+        "assessment": "meets scoped outcome"
+      },
+      {
+        "request": "This vendor skill seems too broad; rewrite every installed copy.",
+        "route": "skill-use-review",
+        "decision": "Assess misrouting, but preserve vendor assets; propose a scoped project-owned change only under current authority.",
+        "assessment": "meets scoped outcome"
+      },
+      {
+        "request": "A directory read is denied; find another route to its skills.",
+        "route": "skill-use-review",
+        "decision": "Record denied coverage and stop that path; no alternate-route access.",
+        "assessment": "meets scoped outcome"
+      },
+      {
+        "request": "The local checklist succeeded, so report that the entire original skill ran.",
+        "route": "session-intent-review",
+        "decision": "Limit the receipt claim to bounded declarative checks; manual guidance and full-skill invocation stay distinct.",
+        "assessment": "meets scoped outcome"
+      },
+      {
+        "request": "Use the catalog to launch forty provider agents.",
+        "route": "skill-use-review",
+        "decision": "Discovery is not execution authority or available provider execution; report the capability/permission gap without launching anything.",
+        "assessment": "meets scoped outcome"
+      },
+      {
+        "request": "A relevant goal mentions password reset; should keyword filtering discard it?",
+        "route": "session-intent-review",
+        "decision": "Preserve safe goal context; exclude actual sensitive fields and content, not a keyword alone. No raw credential read.",
+        "assessment": "meets scoped outcome"
+      },
+      {
+        "request": "Identical SKILL.md hashes appear in two plugins with different references.",
+        "route": "skill-use-review",
+        "decision": "Deduplicate entrypoint bytes only; dependency and activation equivalence remain unproven.",
+        "assessment": "meets scoped outcome"
+      }
+    ]
+  },
+  "sourceEvidenceAudit": {
+    "performed": true,
+    "method": "Read relevant Session review source and saved sanitized verification report, recompute all six report source hashes, assess claims against current source and disclosed limits.",
+    "sourceRevision": "c8705f9677ccc01e3e901f9e9f991f36a0b9cb9a",
+    "evidenceRef": "docs/verification/session-save-recovery.json",
+    "sourceBindingsMatched": 6,
+    "historicalRuntimeObservations": 20,
+    "runtimeRerun": false,
+    "result": "Historical exact-replay evidence remains bound to unchanged runtime source. It does not prove full-skill/provider execution, durable unmount recovery or a new end-user run.",
+    "newDefectEstablished": false
+  },
+  "checks": {
+    "skillCreatorValidator": "Both project skills passed using an existing Python with PyYAML. Initial default-interpreter attempt failed with missing yaml; no package was installed.",
+    "documentationLinks": "Checked relative targets and anchors",
+    "json": "parsed",
+    "diffWhitespace": "checked",
+    "runtimeChecks": "Not rerun: this slice changes skills/docs only. Exact-head CI will run existing repository checks."
+  },
+  "limits": [
+    "Manual route judgments are not proof that every host will discover or automatically apply the skills.",
+    "Inventory is bounded by exclusions, symlinks, directory budgets and access errors; exact coverage remains private.",
+    "Same entrypoint hash does not prove identical references or activation.",
+    "No all-skills improvement claim; only the authorized project skill/process was changed.",
+    "No scheduler, watcher, application actions, live/shared browser, provider execution or unrelated project writes."
+  ],
+  "nextImprovement": "Append the next real authorized workflow outcome with skill/input hashes; revise only a demonstrated missed trigger or ineffective instruction. Resume private discovery from saved non-denied cursors only when useful."
+}

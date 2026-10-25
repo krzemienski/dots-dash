@@ -19,3 +19,25 @@ nav .nav-more{display:none}.rail{overflow-y:auto}.rail .brand{margin-bottom:24px
 .source-inventory input,.source-inventory select{width:100%;min-width:0;box-sizing:border-box}
 
 .snapshot-associations{border-top:1px solid var(--line);margin-top:24px;padding-top:20px}.snapshot-associations h4,.snapshot-associations code{overflow-wrap:anywhere}[id^="inventory-snapshot-"]:focus,[id^="saved-session-review-"]:focus,[id^="snapshot-association-"]:focus{outline:2px solid #c5c5c5;outline-offset:3px}
+
+/* Overview uses stored snapshots only. Its accents identify navigation, not health. */
+.owner-overview{--overview-muted:#b7b3bd;--overview-accent:#cfb6fa;--overview-pink:#f2accf}
+.owner-overview .page-heading p,.owner-overview .overview-note{color:var(--overview-muted)}
+.overview-scope{border-bottom:1px solid var(--line);padding:0 0 24px;margin-bottom:32px;color:var(--overview-muted);font-size:13px;line-height:1.7}
+.overview-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:48px}
+.overview-grid section{margin-bottom:40px;min-width:0}.overview-grid .section-head{align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:12px}.overview-grid .section-head h2{font-size:20px}.overview-grid .section-head span{font-size:12px;color:var(--overview-muted)}
+.overview-row{padding:20px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.overview-row h3{font-size:17px;line-height:1.5;margin:8px 0}.overview-row p{font-size:14px;line-height:1.7;margin:8px 0}.overview-meta,.overview-note{font-size:12px;line-height:1.7;color:var(--overview-muted)}
+.overview-row a,.owner-overview button{display:inline-flex;align-items:center;min-height:44px;text-align:left;font-size:13px;color:var(--overview-accent);padding:8px 0;overflow-wrap:anywhere}.owner-overview button:hover,.overview-row a:hover{text-decoration:underline;text-underline-offset:4px;background:transparent}.owner-overview button:focus-visible,.overview-row a:focus-visible{outline-color:var(--overview-accent)}
+.overview-empty{color:var(--overview-muted);font-size:14px;line-height:1.7;padding:24px 0}.overview-subheading{font-size:14px;margin:24px 0 0;color:var(--overview-pink)}
+.overview-next{border-top:1px solid var(--line);padding-top:24px}.overview-next p{color:var(--overview-muted);margin-top:8px}.overview-next>div{display:flex;flex-wrap:wrap;gap:24px;margin-top:12px}.commitment-card:focus{outline:2px solid #cfb6fa;outline-offset:4px;scroll-margin-top:24px}
+@media(max-width:1000px){.overview-grid{grid-template-columns:1fr;gap:0}.overview-grid>aside{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}}
+@media(max-width:600px){.overview-grid>aside{grid-template-columns:1fr;gap:0}.overview-grid section{margin-bottom:32px}.overview-grid .section-head h2{font-size:18px}.overview-next>div{gap:16px}.owner-overview h1{font-size:30px;letter-spacing:-.5px}}
+.owner-overview .overview-jumps{display:flex;flex-wrap:wrap;gap:24px;margin:0 0 32px}.owner-overview .overview-jumps button{width:auto;margin:0;padding:8px 0;background:transparent}.owner-overview h2:focus{outline:2px solid var(--overview-accent);outline-offset:4px;scroll-margin-top:24px}
+
+.request-evidence{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}.request-evidence h4,.commitment-card>h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#cfb6fa}.commitment-card .request-evidence-note{color:#d7b3ce;font-size:13px}.request-evidence a:focus-visible,.commitments button:focus-visible,.commitments summary:focus-visible{outline:2px solid #cfb6fa;outline-offset:4px}.commitment-links>*{max-width:100%;overflow-wrap:anywhere}
+
+.request-claims{border-top:1px solid var(--line);margin-top:20px;padding-top:20px}.request-claims fieldset{display:grid;gap:12px;border:1px solid var(--line);padding:14px;margin:16px 0;min-width:0}.request-claims label{display:grid;gap:6px}.request-claims input,.request-claims textarea,.request-claims select{max-width:100%;min-width:0;width:100%;box-sizing:border-box;background:#111;color:#eee;border:1px solid #555;padding:8px}.request-claims button{margin:8px 12px 8px 0}.request-claims pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}.request-claims [role=alert]{color:#f6b9cb}
+
+.workspace-tabs [role="tab"]:focus-visible,.workspace-panel:focus-visible{outline:2px solid #cfb6fa;outline-offset:4px}
+
+.daily-evidence{display:grid;gap:16px;margin-bottom:32px;min-width:0}.daily-evidence>section{display:grid;gap:12px;border:1px solid var(--line);border-radius:8px;padding:20px;min-width:0}.daily-evidence p{line-height:1.7;color:#aaa}.daily-evidence h3{font-size:18px}.daily-evidence button{justify-self:start;text-align:left}.daily-evidence .history-filters{align-items:start}.daily-evidence form{min-width:0;max-width:100%}.daily-evidence input{max-width:100%;box-sizing:border-box}.daily-evidence [role=alert]{color:#f6b9cb}

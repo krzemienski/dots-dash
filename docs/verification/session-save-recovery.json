@@ -1,0 +1,1304 @@
+{
+  "label": "TEST DATA \u2014 Session review save recovery",
+  "date": "2026-10-21",
+  "baseRevision": "1d79dc5f9f762fe21e7857cbfab4b45eeebb6150",
+  "acceptanceDefinedBeforeChanges": "Commit a local checklist run then lose its response; reconcile exact operation through UI with one receipt/version/audit. Repeat for owner observation. Distinguish confirmed POST/failed GET; check payload conflicts, owner/capability gates, persistence and interrupted/repeated navigation.",
+  "baselineReproduction": {
+    "name": "baseline defect reproduced: committed run loses UI operation and review",
+    "pass": true
+  },
+  "method": "Fresh owned headless Chrome; actual built React UI, loopback Node API and Python worker; isolated owner-bound SQLite. Existing synthetic selected-record fixture only. A browser route let the real POST commit before discarding its response; a separate route failed the following GET after acknowledged POST. Direct read-only SQLite snapshots checked reviews, operations and mutation audit. Synthetic authentication principal; no production identity claim.",
+  "observations": [
+    {
+      "name": "lost run response retains review and blocks conflicting saves",
+      "pass": true
+    },
+    {
+      "name": "read-only refresh does not clear unconfirmed operation",
+      "pass": true
+    },
+    {
+      "name": "refresh leaves settled unconfirmed run pending",
+      "pass": true
+    },
+    {
+      "name": "settled lost-run exact replay adds exactly one receipt version and audit",
+      "pass": true
+    },
+    {
+      "name": "observation replay preserves original payload despite form edits and adds once",
+      "pass": true
+    },
+    {
+      "name": "persisted failing observation remains owner reported",
+      "pass": true
+    },
+    {
+      "name": "confirmed POST plus failed GET is saved with read-only recovery",
+      "pass": true
+    },
+    {
+      "name": "confirmed-save recovery performs GET only and shows persisted receipt",
+      "pass": true
+    },
+    {
+      "name": "changed-payload replay conflicts",
+      "pass": true
+    },
+    {
+      "name": "wrong owner cannot replay or read",
+      "pass": true
+    },
+    {
+      "name": "stale version pins reject new operation",
+      "pass": true
+    },
+    {
+      "name": "guard failures leave receipt observation operation and audit unchanged",
+      "pass": true
+    },
+    {
+      "name": "disabled runner replay retains original envelope without duplicate writes",
+      "pass": true
+    },
+    {
+      "name": "restored isolated capability permits same-envelope reconciliation only",
+      "pass": true
+    },
+    {
+      "name": "within-review navigation retains pending operation and does not write",
+      "pass": true
+    },
+    {
+      "name": "leaving and reopening loses envelope as disclosed but never automatically replays",
+      "pass": true
+    },
+    {
+      "name": "reload shows persisted run and observation without writes",
+      "pass": true
+    },
+    {
+      "name": "no pending request persisted in browser storage",
+      "pass": true
+    },
+    {
+      "name": "navigation during committed in-flight POST does not duplicate or auto replay",
+      "pass": true
+    },
+    {
+      "name": "browser has no page errors",
+      "pass": true
+    }
+  ],
+  "harnessCorrections": [
+    "First final-code run assertion sampled the pending banner before the POST finished. The saved snapshot was premature; inspected SQLite and request IDs, confirmed one committed run, then repeated with the explicit outcome-unconfirmed alert as the synchronization boundary.",
+    "Node REPL crypto getter rejected one request-ID construction before any request executed; used node:crypto randomUUID and continued."
+  ],
+  "invalidatedHarnessAssertion": {
+    "name": "UI run replay uses identical envelope and exactly one receipt version audit",
+    "reason": "Premature pre-settlement snapshot, not a product acceptance result. Repeated with explicit outcome-unconfirmed alert synchronization; corrected scenario passed."
+  },
+  "sourceHashes": {
+    "ui/session-review.tsx": "ea198d015e806a0b77f2631fe9749509ee1a32301e85545af747655ca3277d45",
+    "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+    "python/dots_engineering/service.py": "0caca19ea5aa57177afd7018313bbb67783aaf81313a54c0818b80f27d084d61",
+    "server/api.ts": "d2a2d1822a2de84b8bab01b0fd0d237c822ccf3db3c9050f4c45078899c298f8",
+    "server/engineering.mjs": "610262982773c6c180814c33df5b58ac94078c59cc7aa5fe1976f14d7060577e",
+    "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852"
+  },
+  "buildOutputs": {
+    "index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5",
+    "main.js": "6e30b86369f084932c0559dcef4a1d598f7f55a4182cd73ebbea58465b0beb84",
+    "main.css": "df5964e4bb5d40ad006d53e65992466462a9be949456d163c20c5c29dc922d14"
+  },
+  "checks": {
+    "existingTests": "14 passed",
+    "typecheck": "passed",
+    "build": "passed before final-code browser workflow; runtime source unchanged after that build",
+    "pythonParse": "passed",
+    "diffWhitespace": "passed",
+    "screenshot": "Inspected unconfirmed-operation controls and disclosure in rendered UI"
+  },
+  "cleanup": {
+    "serverListening": false,
+    "browserConnected": false,
+    "ownedBrowserExitCode": 0
+  },
+  "limits": [
+    "Recovery envelope exists only in the mounted Session review view. Leaving/reloading loses it; no automatic replay or browser-storage persistence.",
+    "Exact reconciliation is a POST, not a read-only operation lookup. It may execute an uncommitted operation under current server gates.",
+    "A definitive rejection during replay does not settle an earlier uncertain attempt; the envelope remains pending.",
+    "No multi-tab or cross-device recovery guarantee; fresh reads and server version checks remain necessary.",
+    "Owner observations remain owner reported; checklist receipts cover bounded declarative checks only. No transcript completeness/authorship certification or external agent execution.",
+    "No private logs, shared/production database, provider calls, deployment or actual-user production authentication validation.",
+    "Only listed targeted workflows and existing checks were performed; prior owner-review report evidence remains historical."
+  ],
+  "nextTask": "Review the draft PR. Consider a separately scoped read-only operation-status contract if recovery must survive leaving the view without persisting sensitive payloads in browser storage.",
+  "designFollowups": [
+    {
+      "kind": "design_only",
+      "date": "2026-10-21T12:15:41.950993+00:00",
+      "sourceRevision": "fb086b81a7f4631c2b2030d4f04fd6f948ffedcf",
+      "artifact": "docs/DURABLE_OPERATION_RECONCILIATION.md",
+      "outcome": "Recover evidence for the original attempt after reload without storing private request payloads in the browser or automatically resubmitting.",
+      "inspection": "Compared four existing mounted recovery flows, shared and companion operation stores, owner binding, digest schemes and read-only lookup gaps. Searched relevant existing documentation for duplicate durable-recovery contract.",
+      "sourceHashes": {
+        "ui/session-review.tsx": "ea198d015e806a0b77f2631fe9749509ee1a32301e85545af747655ca3277d45",
+        "ui/context-links.tsx": "ad55039f41f5fcd8aa9974234f7c5d34f231e7cedd35a7a207e0c4268556d118",
+        "ui/owner-review-reports.tsx": "af47e82cba9f91be0cbe0bf732e1ae1edc8306904e77311b72a19b027d4c7a60",
+        "ui/request-action-claims.tsx": "6e264d56be2bfcde9f86fbc4c5905478c4132d3b3f90fa69f5808105be07f3fa",
+        "server/api.ts": "d604c1c1defdba14e434194eac4ed2ec57f9095c6e12d744b113d83c9a5d2f2c",
+        "server/start.mjs": "4e4c84f4022f6df75aa1b62e77296f452c1dd46267dc8f35f3280a6a55ffb34a",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/service.py": "0caca19ea5aa57177afd7018313bbb67783aaf81313a54c0818b80f27d084d61",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "python/dots_engineering/owner_reviews.py": "eeea5c693a32820bbe7b8ef3ea262f97bfe3bc6a8b2a98f537b1ec5736d674ff",
+        "python/dots_engineering/request_claims.py": "65d9883208d4f59c87bc307510be6e73c80f0b5e0dcc5cbed2d3195a9b5a3e63",
+        ".agents/skills/session-intent-review/SKILL.md": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a"
+      },
+      "recommendation": "Read-only minimal receipt lookup first; later explicitly migrated/default-off server metadata registration for action claims only. No durable client payload or retry reconstruction.",
+      "decisionsBeforeImplementation": [
+        "Review server-only metadata registration choice",
+        "Review 100 active-entry bound, 30-day acknowledged-entry retirement and indefinite unresolved retention",
+        "Review stream conflict scope and deferred unresolved deletion/sealing",
+        "Authorize implementation separately from this design-only task; applying migration/enabling an owner instance needs separate authorization",
+        "Define store-generation/backup-restore boundary before claiming restore recovery"
+      ],
+      "acceptance": [
+        {
+          "id": "D1",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D2",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D3",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D4",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D5",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D6",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D7",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D8",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D9",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D10",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D11",
+          "status": "unperformed_design_only"
+        },
+        {
+          "id": "D12",
+          "status": "unperformed_design_only"
+        }
+      ],
+      "checks": [
+        "Markdown local file targets exist",
+        "Linked source line anchors within file bounds",
+        "JSON parses; inspected source hashes match",
+        "Diff whitespace check; only design/docs/ledger changes"
+      ],
+      "runtimeExecution": false,
+      "browserUsed": false,
+      "databaseReadOrWrite": false,
+      "persistentClientStorageImplemented": false,
+      "capabilityOrSecurityChanges": false,
+      "skill": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "User outcome first, source-bound distinction between claims and observed code, preserved uncertainty, explicit unperformed acceptance.",
+        "verified": "Document/source-link and hash checks only; no runtime or automatic invocation claim"
+      },
+      "limits": [
+        "Proposal, not implemented durable reconciliation or processing certification",
+        "Legacy receipts lack complete action/namespace metadata; no inferred binding",
+        "No read of private runtime data or session stores",
+        "Earlier runtime evidence retained at its original bindings"
+      ],
+      "nextTask": "Authorize bounded read-only operation-summary lookup and UI; keep registration/migration/client persistence out of that first implementation."
+    }
+  ],
+  "implementationFollowups": [
+    {
+      "slice": "manual read-only shared-operation lookup",
+      "sourceBase": "d74c31c8f85c2f564d00b449de6a0ebe94a25daf",
+      "date": "2026-10-21T12:25:44.872293+00:00",
+      "acceptanceDefinedBeforeImplementation": "Known saved operation after reload; unknown IDs; owner/store denial; disabled lookup; unchanged persistence; no execution/completion upgrade or raw payload disclosure.",
+      "artifact": "docs/OPERATION_LOOKUP.md",
+      "method": "Fresh owned Chromium context, rendered React, loopback Node API, fixed Python worker, disposable synthetic SQLite. Existing synthetic examples; inline driver, no new test file.",
+      "observations": [
+        {
+          "name": "pending isolation",
+          "detail": "A committed lost import response is inspectable without clearing the original pending save or retrying.",
+          "result": "pass"
+        },
+        {
+          "name": "reload lookup",
+          "detail": "Manual known ID finds committed import after reload; no input/payload browser persistence, action binding unknown, result focus.",
+          "result": "pass"
+        },
+        {
+          "name": "digest comparison",
+          "detail": "Matching/mismatching expected digests are explicit; no action identity or permission inferred.",
+          "result": "pass"
+        },
+        {
+          "name": "unknown is not negative proof",
+          "detail": "Unknown operation has no retry/result control and leaves physical SQLite bytes unchanged.",
+          "result": "pass"
+        },
+        {
+          "name": "bounded execution and negative observation",
+          "detail": "Actual checklist/observation receipts have distinct stored flags; lookup excludes review/observation bodies.",
+          "result": "pass"
+        },
+        {
+          "name": "context receipt and current review",
+          "detail": "Only task/Request/review IDs and version exposed; exact current review preserves failing owner observation, storage bytes unchanged.",
+          "result": "pass"
+        },
+        {
+          "name": "read permission separate from write",
+          "detail": "Lookup succeeds with import/checklist/link writes disabled; mutation capability still denies.",
+          "result": "pass"
+        },
+        {
+          "name": "lookup capability and owner gates",
+          "detail": "Default-off control represented in UI and enforced by worker; other owner denied before lookup.",
+          "result": "pass"
+        },
+        {
+          "name": "store/schema failure states",
+          "detail": "Wrong binding denies; missing file/schema not initialized; malformed receipt fails unavailable without body disclosure.",
+          "result": "pass"
+        },
+        {
+          "name": "bounded transport",
+          "detail": "Unknown fields, invalid IDs/digests, query-string IDs, wrong method and cross-origin lookup reject.",
+          "result": "pass"
+        },
+        {
+          "name": "interruption keyboard and persistence",
+          "detail": "Unmount discards input/stale response; keyboard lookup focuses result; 320/375px overflow checks pass; all canonical SQLite bytes unchanged by lookup.",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "python/dots_engineering/operation_lookup.py": "97132b7d2ef82e6968d3a2175916f6e0f2f5293487bcf574a5abfaea9ff953bc",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/worker.py": "c5a7a8165dd11553c32006dbfbb90baa62c9306c4b5cad3d0a8a839470710548",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "server/start.mjs": "90428006d4e6f4cff7b44ba406d402d09f27503ff4498b1648c3fe780e3cdfec",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/session-review.tsx": "c16c7b6e6a1f63a9d83bcc7c45dd604eb0e64ac8a777322c4179c0edc97f57c8",
+        "dist/main.js": "ea336fe8b622ec0b14554d35bb4e16b20e67978bace1c6eedf64af35ad68f9ad"
+      },
+      "staticChecks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "pythonAst": "passed",
+        "ledgerJsonSourceBindingsLocalLinks": "passed",
+        "diff": "passed"
+      },
+      "visualInspection": "Inspected desktop and 375px result screenshots: stored-result/unknown-binding language, no execution certification, wrapped hashes/IDs, visible focus; 320/375px horizontal overflow checks passed.",
+      "privacy": "Raw review/observation/task contents excluded from lookup response; operation/digest sent only in JSON body; browser local/session storage empty; no durable client storage code.",
+      "persistence": "Canonical engineering SQLite bytes identical before/after lookup sequence including current-review read; wrong-owner/schema fixtures unchanged; absent database remained absent.",
+      "externalRequests": 0,
+      "pageErrors": [],
+      "priorAttempts": [
+        "Driver regular-expression syntax error before workflow execution.",
+        "Intermediate run passed four observations then stopped on driver reference review.goals; corrected to review.export.goals. Final fresh run passed all 11."
+      ],
+      "skills": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Outcome/acceptance first; source-bound unknown legacy action, no automatic pending resolution or completion claim.",
+          "verified": "11 scoped UI/API/storage observations, not automatic invocation."
+        },
+        {
+          "source": "playwright skill",
+          "selected": true,
+          "read": true,
+          "applied": "Fresh isolated installed Chromium, rendered controls, screenshots, settled state/focus, owned-resource cleanup; inline driver follows existing workflow conventions.",
+          "verified": "11 final observations, zero external browser requests/page errors; no test specs."
+        },
+        {
+          "source": "vercel:react-best-practices",
+          "selected": true,
+          "read": true,
+          "applied": "Bounded component state, generation guard after unmount/capability change, accessible labels/status/focus, no persistent client data.",
+          "verified": "Typecheck/build plus keyboard, interruption and narrow-layout observations."
+        }
+      ],
+      "cleanup": "Owned browser/context, loopback server and SQLite handles closed; Python workers exited.",
+      "limits": [
+        "Manual known-ID inspection only; no automatic discovery or durable recovery.",
+        "Legacy action/namespace remains unknown; digest equality cannot establish action identity.",
+        "No server registration, migration, retention change, provider access, retry or execution authority.",
+        "D1\u2013D12 durable protocol remains design-only; real-owner V301/live identity/full accessibility/backup restore not proved.",
+        "2,000,000-byte stored-response materialization bound is source-enforced but not exercised in this UI run."
+      ],
+      "nextTask": "Review durable registration product decisions before implementation; keep read-only lookup distinct from reload-safe resubmission."
+    }
+  ],
+  "verificationFollowups": [
+    {
+      "slice": "read-only lookup oversized and malformed receipt follow-up",
+      "runtimeSourceRevision": "e49d4cb0477c99d57fb8713cb89a4bf828c421fa",
+      "date": "2026-10-21T12:32:03.857426+00:00",
+      "status": "8 scoped runtime observations passed; no code or limit change",
+      "acceptanceDefinedBeforeExecution": "Actual owner lookup UI/API handles oversized/malformed synthetic saved receipts without raw response exposure or database mutation; compare exact byte boundary with one byte over.",
+      "method": "Fresh owned Chromium/loopback Node API/fixed Python worker/disposable SQLite; six directly seeded TEST DATA operation rows. Not naturally generated large review histories. Inline workflow, no new test file.",
+      "limitBytes": 2000000,
+      "cases": [
+        {
+          "operationId": "TEST-DATA-exact-bound",
+          "utf8Bytes": 2000000,
+          "characters": 2000000,
+          "status": 200
+        },
+        {
+          "operationId": "TEST-DATA-over-bound",
+          "utf8Bytes": 2000001,
+          "characters": 2000001,
+          "status": 503
+        },
+        {
+          "operationId": "TEST-DATA-utf8-over-bound",
+          "utf8Bytes": 2000001,
+          "characters": 1999001,
+          "status": 503
+        },
+        {
+          "operationId": "TEST-DATA-malformed-json",
+          "utf8Bytes": 63,
+          "characters": 63,
+          "status": 503
+        },
+        {
+          "operationId": "TEST-DATA-malformed-shape",
+          "utf8Bytes": 163,
+          "characters": 163,
+          "status": 503
+        },
+        {
+          "operationId": "TEST-DATA-invalid-hash",
+          "utf8Bytes": 400,
+          "characters": 400,
+          "status": 503
+        }
+      ],
+      "observations": [
+        {
+          "name": "TEST-DATA-exact-bound",
+          "detail": "2000000 stored UTF-8 bytes; HTTP 200; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-over-bound",
+          "detail": "2000001 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-utf8-over-bound",
+          "detail": "2000001 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-malformed-json",
+          "detail": "63 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-malformed-shape",
+          "detail": "163 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "TEST-DATA-invalid-hash",
+          "detail": "400 stored UTF-8 bytes; HTTP 503; actual UI classification, no raw canary/body field, unchanged Node/engineering database bytes.",
+          "result": "pass"
+        },
+        {
+          "name": "unknown after unavailable",
+          "detail": "Missing operation remains unknown and clears prior error; not reported as saved or safe retry.",
+          "result": "pass"
+        },
+        {
+          "name": "read-only recovery after failures",
+          "detail": "Exact-limit summary still succeeds; all six fixture rows and database bytes unchanged, no mutation audit.",
+          "result": "pass"
+        }
+      ],
+      "sourceHashes": {
+        "python/dots_engineering/operation_lookup.py": "97132b7d2ef82e6968d3a2175916f6e0f2f5293487bcf574a5abfaea9ff953bc",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/worker.py": "c5a7a8165dd11553c32006dbfbb90baa62c9306c4b5cad3d0a8a839470710548",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "server/start.mjs": "90428006d4e6f4cff7b44ba406d402d09f27503ff4498b1648c3fe780e3cdfec",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/session-review.tsx": "c16c7b6e6a1f63a9d83bcc7c45dd604eb0e64ac8a777322c4179c0edc97f57c8",
+        "dist/main.js": "ea336fe8b622ec0b14554d35bb4e16b20e67978bace1c6eedf64af35ad68f9ad"
+      },
+      "databaseChecks": {
+        "nodeBeforeAfterSha256": "8786818fe6da4e22a28ddaaac03948e7c31f36d09ba3ea0aa48f346b4025b3db",
+        "engineeringBeforeAfterSha256": "8e199dec024e1bd8593a1d4e194c38d41ab877324a0df357ff49a8955e37c1a7",
+        "comparison": "Byte equality checked after each case and after recovery; six fixture operations retained, zero mutation audit entries."
+      },
+      "disclosureChecks": "Every response <1200 bytes; errors only error field; synthetic raw-content canary/extra field absent from network and rendered UI; stale success summary removed on error.",
+      "externalRequests": 0,
+      "pageErrors": [],
+      "visualInspection": "Inspected oversized unavailable UI: bounded error, no raw content/result/retry control.",
+      "checks": [
+        "Runtime/build source hashes equal prior verified e49d4cb bindings",
+        "Ledger JSON and local documentation targets validated",
+        "Diff whitespace and sanitized outgoing changes checked"
+      ],
+      "existingTestStatus": "No application code changed; prior 14 tests/typecheck/build remain bound to identical runtime source, not claimed rerun in this documentation-only pass. Exact outgoing commit CI checked separately.",
+      "skills": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": "Previously read unchanged project guidance",
+        "applied": "Close one named acceptance gap with source-bound UI/API/persistence outcomes; distinguish synthetic fixture from real history.",
+        "verified": "Eight bounded observations; no automatic invocation claim",
+        "browserGuidance": "Previously read Playwright guidance applied to fresh owned context, actual controls, inspected screenshot and cleanup."
+      },
+      "priorAttempt": "Orchestration template syntax error before tool execution; corrected call completed all eight observations.",
+      "cleanup": "Owned browser/context, loopback server and SQLite handles closed.",
+      "limits": [
+        "Directly seeded synthetic receipts, not natural 2MB user histories",
+        "Not general security, production identity, real-owner V301 or durable recovery acceptance",
+        "No schema/migration/persistence/retention/capability changes"
+      ],
+      "nextTask": "Keep durable registration decisions separate; review retention/conflict/restore requirements before any implementation."
+    },
+    {
+      "id": "workspace-keyboard-navigation",
+      "observedAt": "2026-10-21T14:09:31.799024+00:00",
+      "baselineCommit": "e2b8abad06087878bd1f76ab58f7e2d71a738e1a",
+      "sourceBinding": {
+        "ui/day-workspace.tsx": "40ef658f096604b20c4809d7727d7d46f70005fdbbe5e45e9cdf781cebb839b8",
+        "ui/styles.css": "24a13540951d1a6759bc0a34da540e384b03c52114d8badc45eba65cba925cb9",
+        "ui/session-review.tsx": "c16c7b6e6a1f63a9d83bcc7c45dd604eb0e64ac8a777322c4179c0edc97f57c8",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd",
+        "examples/request-context.synthetic.json": "28dd42fca3cee5384501080b7e1d23754ec11c90d868a84e4ac3a3b7cde639ac"
+      },
+      "dataLabel": "TEST DATA",
+      "goal": "Explore workspace views by keyboard without unintentionally leaving an uncertain Session review save.",
+      "baselineObserved": {
+        "ArrowRight": "Focus remained on Day",
+        "tabStops": 5,
+        "associatedTabPanels": 0
+      },
+      "rootCause": "Tab roles had no keyboard handling, roving focus or panel relationships.",
+      "remediation": "Manual activation: arrows/Home/End focus only; Enter/Space select. One roving tab stop resets to selected tab when leaving the list; all tabs reference associated panels.",
+      "reference": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/",
+      "observations": [
+        {
+          "id": "K1",
+          "outcome": "Arrow keys wrap and Home/End move focus; selection remains Day; one roving tab stop remains.",
+          "result": "pass"
+        },
+        {
+          "id": "K2",
+          "outcome": "Enter/Space activate; Tab reaches active named panel; Shift+Tab returns to selected tab; all five tab/panel relationships resolve.",
+          "result": "pass"
+        },
+        {
+          "id": "K3",
+          "outcome": "Committed import response lost; arrow/Home/End exploration preserves exact pending recovery text and active review; database bytes unchanged.",
+          "result": "pass"
+        },
+        {
+          "id": "K4",
+          "outcome": "Reconcile sends identical operation body; exactly one operation, version-1 review and audit entry remain.",
+          "result": "pass"
+        },
+        {
+          "id": "K5",
+          "outcome": "Known operation opens read-only saved receipt and focuses its result after keyboard-accessible lookup.",
+          "result": "pass"
+        },
+        {
+          "id": "K6",
+          "outcome": "Explicit tab departure, keyboard return and page reload read the persisted review without duplicate writes; in-memory recovery is not promised across departure.",
+          "result": "pass"
+        },
+        {
+          "id": "K7",
+          "outcome": "320px and 375px keyboard exploration has visible 2px focus outline and no horizontal page overflow.",
+          "result": "pass"
+        },
+        {
+          "id": "K8",
+          "outcome": "Final persisted counts unchanged; zero external browser requests and zero page errors. Fresh owned headless context only.",
+          "result": "pass"
+        },
+        {
+          "id": "K9",
+          "outcome": "Stored Request shortcut opens Session review with selected tab as entry stop; original review/operation/audit unchanged and one Request persists.",
+          "result": "pass"
+        }
+      ],
+      "externalRequests": 0,
+      "pageErrors": [],
+      "persistence": "Real rendered UI through Node API and fixed Python worker into owned disposable SQLite. After committed-response loss, exploration left database bytes unchanged. Exact replay retained one operation, one audit entry and review version 1. Stored Request shortcut retained one Request.",
+      "visualInspection": "Inspected 375px screenshot: distinct selected Session review and focused configuration tab, visible focus ring, honest in-memory recovery notice. Both 320/375px overflow and focus-style checks passed.",
+      "attempts": [
+        "Baseline failure reproduced before edits.",
+        "First verification inspected SQLite before controlled POST completed; harness corrected to wait for enabled recovery control. This was not an application failure.",
+        "Second verification exposed selected tab intercepting Tab exit from an unselected focused tab; roving focus corrected.",
+        "Eight scenarios then passed; final expanded nine-scenario run passed on final runtime source."
+      ],
+      "checks": [
+        "npm test: 14 passed, 0 failed",
+        "npm run typecheck: passed",
+        "npm run build: passed",
+        "Ledger JSON, recorded source hashes and changed documentation local targets checked",
+        "git diff --check: passed"
+      ],
+      "skills": [
+        {
+          "source": ".agents/skills/session-intent-review/SKILL.md",
+          "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+          "selected": true,
+          "read": true,
+          "applied": "Defined observable owner outcome, reproduced source-level gap, bound remediation to UI/API/persistence observations.",
+          "verified": "Nine scoped synthetic observations; manual guidance application, no adapter invocation or automatic routing claim."
+        },
+        {
+          "source": "superpowers:systematic-debugging",
+          "selected": true,
+          "read": true,
+          "applied": "Baseline reproduction, focused hypothesis and correction of a demonstrated Tab-exit regression.",
+          "verified": "Final observed keyboard behavior and persisted state."
+        },
+        {
+          "source": "superpowers:verification-before-completion",
+          "selected": true,
+          "read": true,
+          "applied": "Fresh workflow checks before completion/publication claims.",
+          "verified": "Final observed workflow; static and CI checks recorded separately."
+        }
+      ],
+      "cleanup": "Owned browser/context, random-port loopback server and SQLite handles closed in finally blocks. No shared authenticated browser/profile used.",
+      "limits": [
+        "Chromium keyboard/DOM and narrow-width checks only; no screen-reader, Safari/Firefox, touch or complete accessibility certification.",
+        "Only arrow-key exploration preserves pending state. Explicit departure/reload still loses the in-memory envelope; existing UI disclosure remains.",
+        "No new persistence, registration, execution capability, provider access, auth adapter or migration.",
+        "Synthetic evidence is not actual-user V301, transcript review, authorship or product-completeness certification."
+      ],
+      "nextTask": "Review a bounded screen-reader/focus journey with an explicitly owned supported assistive-technology environment; durable recovery still needs separate product decisions."
+    },
+    {
+      "id": "review-accessibility-names",
+      "observedAt": "2026-10-21T15:09:57.906169+00:00",
+      "baselineCommit": "fd0c1d7f120920562cf9e867636e8363508a8eb8",
+      "sourceBinding": {
+        "ui/session-review.tsx": "3ba13c9c03393b59e2357b9e059c950b010fde7cde44adc37f669e495c012c70",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/day-workspace.tsx": "40ef658f096604b20c4809d7727d7d46f70005fdbbe5e45e9cdf781cebb839b8",
+        "ui/styles.css": "24a13540951d1a6759bc0a34da540e384b03c52114d8badc45eba65cba925cb9",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd",
+        "examples/request-context.synthetic.json": "28dd42fca3cee5384501080b7e1d23754ec11c90d868a84e4ac3a3b7cde639ac"
+      },
+      "dataLabel": "TEST DATA",
+      "goal": "Identify the current review and source-link destination by visible heading; follow Request/task/review links and distinguish saved, unknown and unavailable lookup results.",
+      "baselineObserved": [
+        "Keyboard intent link focused a generic AX node whose computed name included event prose and provenance.",
+        "Review article AX node had an empty accessible name."
+      ],
+      "rootCause": "Review article and event target sections lacked explicit heading relationships; existing goal and remediation sections already had them.",
+      "remediation": "Add aria-labelledby relationships and IDs to existing visible review/event headings. No navigation, data, permission or persistence behavior changed.",
+      "reference": "https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html",
+      "observations": [
+        {
+          "id": "A1",
+          "outcome": "Imported review article exposes its visible project/session heading as its accessible name.",
+          "result": "pass"
+        },
+        {
+          "id": "A2",
+          "outcome": "Keyboard source link focuses a named region; every retained event has its visible kind/ID/status heading as name, without event prose in the name.",
+          "result": "pass"
+        },
+        {
+          "id": "A3",
+          "outcome": "Existing keyboard remediation \u2192 goal \u2192 remediation focus and heading names remain intact.",
+          "result": "pass"
+        },
+        {
+          "id": "A4",
+          "outcome": "Keyboard save and Request/task/review return controls land on correctly named targets; review article retains project/session identity.",
+          "result": "pass"
+        },
+        {
+          "id": "A5",
+          "outcome": "Keyboard lookup of persisted association focuses named result; AX tree exposes polite status, saved receipt and non-completion wording remain visible.",
+          "result": "pass"
+        },
+        {
+          "id": "A6",
+          "outcome": "Unknown lookup focuses the same named result while preserving unknown-outcome and no-safe-retry wording.",
+          "result": "pass"
+        },
+        {
+          "id": "A7",
+          "outcome": "Synthetic transport unavailability exposes assertive alert semantics and removes stale result; spoken announcement not tested.",
+          "result": "pass"
+        },
+        {
+          "id": "A8",
+          "outcome": "Named source targets persist at 320/375px without page overflow and after reload. Both SQLite files remain byte-identical through read-only navigation/lookups.",
+          "result": "pass"
+        },
+        {
+          "id": "A9",
+          "outcome": "No browser storage, external browser requests or page errors. Exact persisted history retained; screen-reader speech and shared desktop remain untested/untouched.",
+          "result": "pass"
+        }
+      ],
+      "verificationBasis": "Rendered React + Node API + fixed Python worker + disposable SQLite. Chromium CDP Accessibility.getPartialAXTree reads actual browser roles/names/live properties. This is accessibility-tree and keyboard evidence, not a screen-reader result.",
+      "persistence": "UI import and task-link save produced two operations, one review audit and one link audit. After those intended saves, both SQLite files stayed byte-identical through source navigation, operation lookups and reload; original review JSON and link records unchanged.",
+      "externalRequests": 0,
+      "pageErrors": [],
+      "visualInspection": "Inspected 375px source-focus screenshot: visible outlined intent event, retained TEST DATA/provenance/unknown outcome and no horizontal overflow. Both 320/375px overflow checks passed.",
+      "attempts": [
+        "First baseline harness waited on all selects, including intentionally disabled unrelated controls, and timed out; corrected wait scoped to review refresh. No application defect inferred from that timeout.",
+        "Corrected baseline reproduced both AX naming observations. Final nine-scenario run passed on final runtime source."
+      ],
+      "checks": [
+        "npm test: 14 passed, 0 failed",
+        "npm run typecheck: passed",
+        "npm run build: passed",
+        "Final source bindings, build manifest input hashes, ledger JSON and changed documentation links checked",
+        "git diff --check: passed"
+      ],
+      "skills": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Outcome-first source-backed reproduction, minimal heading bindings, actual UI/API/persistence verification and explicit coverage limits. Previously read systematic-debugging and verification-before-completion guidance also applied.",
+        "verified": "Nine scoped synthetic observations; manual guidance use, not automatic skill invocation or a runner receipt."
+      },
+      "cleanup": "Fresh owned headless Chromium/context, random-port localhost server and SQLite handles closed in finally. No shared browser/profile, desktop focus or system accessibility setting accessed.",
+      "limits": [
+        "No isolated screen-reader driver was exposed by the available tools; actual speech, rotor/browse-mode behavior, reading order and announcement timing remain unperformed. No claim that screen-reader software is absent from the machine.",
+        "Chromium only; no Safari/Firefox or full accessibility certification.",
+        "Fixture-scale named regions only; dense maximum-size review landmark usability unperformed.",
+        "Transport error was a synthetic 503 injection, not a real provider outage.",
+        "Lookup-to-current-review button focus was not exercised in this pass; Request/task/review return navigation was.",
+        "No durable pending-envelope recovery, real-owner V301, live identity/provider, original-source coverage or authorship claim."
+      ],
+      "nextTask": "In a separately owned supported assistive-technology environment, validate spoken review/event names, Request return context, saved/unknown/error announcements and dense-review navigation; retain failed or unperformed outcomes without changing system-wide settings."
+    },
+    {
+      "id": "review-heading-id-collision",
+      "observedAt": "2026-10-21T15:15:29.620100+00:00",
+      "baselineCommit": "d2fe6e9091043979fa581f27bb531663c379ccc3",
+      "sourceBinding": {
+        "ui/session-review.tsx": "02c003350dd462fbc83683fc36a875fc213e186ad424a71a9051eda7ecb04a7b",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/day-workspace.tsx": "40ef658f096604b20c4809d7727d7d46f70005fdbbe5e45e9cdf781cebb839b8",
+        "ui/styles.css": "24a13540951d1a6759bc0a34da540e384b03c52114d8badc45eba65cba925cb9",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd",
+        "examples/request-context.synthetic.json": "28dd42fca3cee5384501080b7e1d23754ec11c90d868a84e4ac3a3b7cde639ac"
+      },
+      "dataLabel": "TEST DATA",
+      "goal": "Valid source event IDs foo and heading-foo must navigate to their exact focusable sections with correct names in either order, without changing existing target URLs.",
+      "sourceFinding": "Independent review identified anchor(event-heading,foo) colliding with anchor(event,heading-foo). Earlier nine observations did not exercise these valid IDs and do not establish collision safety.",
+      "baselineObserved": {
+        "fooFirst": "Two matching IDs; getElementById resolved H4 and keyboard focus stayed on source A.",
+        "headingFooFirst": "Two matching IDs; getElementById resolved SECTION and focus reached it. Duplicate IDs remained."
+      },
+      "rootCause": "Target and label namespaces were concatenated with ambiguous hyphen boundaries.",
+      "remediation": "Use a separate review-label prefix plus React useId for heading relationships throughout ReviewDetails. Stable session target IDs/hrefs remain unchanged. Existing goal/task/run heading labels use the same isolated namespace.",
+      "fixtureConstruction": "In memory only: clone existing TEST DATA intent into foo and heading-foo, update goal source references, import each order as a separate synthetic session. No new test files.",
+      "collisionObservations": [
+        {
+          "id": "C1",
+          "outcome": "Original event order: unique IDs, unchanged source hrefs, exact section focus and correct heading-derived AX names for foo and heading-foo.",
+          "result": "pass"
+        },
+        {
+          "id": "C3",
+          "outcome": "Goal/remediation heading relationships and keyboard return remain valid in original review.",
+          "result": "pass"
+        },
+        {
+          "id": "C2",
+          "outcome": "Reversed event order: unique IDs, unchanged source hrefs, exact section focus and correct heading-derived AX names for foo and heading-foo.",
+          "result": "pass"
+        },
+        {
+          "id": "C4",
+          "outcome": "Goal/remediation heading relationships and keyboard return remain valid in reversed review.",
+          "result": "pass"
+        },
+        {
+          "id": "C5",
+          "outcome": "Reload regenerates label IDs safely while stable event targets, exact focus, accessible names and persisted bytes remain unchanged; two imports retain exactly two operations/audit entries.",
+          "result": "pass"
+        }
+      ],
+      "existingWorkflowObservations": [
+        {
+          "id": "A1",
+          "outcome": "Imported review article exposes its visible project/session heading as its accessible name.",
+          "result": "pass"
+        },
+        {
+          "id": "A2",
+          "outcome": "Keyboard source link focuses a named region; every retained event has its visible kind/ID/status heading as name, without event prose in the name.",
+          "result": "pass"
+        },
+        {
+          "id": "A3",
+          "outcome": "Existing keyboard remediation \u2192 goal \u2192 remediation focus and heading names remain intact.",
+          "result": "pass"
+        },
+        {
+          "id": "A4",
+          "outcome": "Keyboard save and Request/task/review return controls land on correctly named targets; review article retains project/session identity.",
+          "result": "pass"
+        },
+        {
+          "id": "A5",
+          "outcome": "Keyboard lookup of persisted association focuses named result; AX tree exposes polite status, saved receipt and non-completion wording remain visible.",
+          "result": "pass"
+        },
+        {
+          "id": "A6",
+          "outcome": "Unknown lookup focuses the same named result while preserving unknown-outcome and no-safe-retry wording.",
+          "result": "pass"
+        },
+        {
+          "id": "A7",
+          "outcome": "Synthetic transport unavailability exposes assertive alert semantics and removes stale result; spoken announcement not tested.",
+          "result": "pass"
+        },
+        {
+          "id": "A8",
+          "outcome": "Named source targets persist at 320/375px without page overflow and after reload. Both SQLite files remain byte-identical through read-only navigation/lookups.",
+          "result": "pass"
+        },
+        {
+          "id": "A9",
+          "outcome": "No browser storage, external browser requests or page errors. Exact persisted history retained; screen-reader speech and shared desktop remain untested/untouched.",
+          "result": "pass"
+        },
+        {
+          "id": "A10",
+          "outcome": "Existing skill selection/local declarative run persists one receipt with correctly named region and unique IDs; original release-fail evidence remains fail. No provider execution.",
+          "result": "pass"
+        }
+      ],
+      "verificationBasis": "Actual rendered UI, real Node/Python API and owned disposable SQLite; Chromium keyboard and CDP accessibility tree. Five collision observations plus ten existing-flow observations.",
+      "persistence": "Collision run: exactly two import operations/audit entries; reload kept bytes unchanged. Existing-flow run: import/link writes then byte-identical read-only navigation/lookup; later explicit select/run stored one local checklist receipt and retained original release-fail outcome.",
+      "externalRequests": 0,
+      "pageErrors": [],
+      "checks": [
+        "npm test: 14 passed, 0 failed",
+        "npm run typecheck: passed",
+        "npm run build: passed",
+        "Final source hashes/build-manifest input, ledger JSON and local documentation links verified",
+        "git diff --check: passed"
+      ],
+      "skills": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": "Previously read unchanged guidance",
+        "applied": "Reproduce independent source critique, preserve historical evidence and exact links, narrowly remediate and verify actual flows. Previously read systematic-debugging/verification-before-completion guidance applied.",
+        "verified": "Five collision and ten existing-flow observations; manual guidance, not automatic invocation."
+      },
+      "cleanup": "Owned fresh headless contexts, random-port localhost servers and SQLite handles closed. No shared browser, desktop focus or system settings used.",
+      "limits": [
+        "Actual screen-reader speech/rotor/timing and dense-review usability remain unperformed.",
+        "Two adversarial event orders plus existing fixture flows, not exhaustive generated-ID input testing.",
+        "No provider execution, source ingestion, new storage/security assumptions, durable recovery or V301 certification."
+      ],
+      "nextTask": "Independent review of namespace separation; actual assistive-technology acceptance remains a separate owned-environment gate."
+    },
+    {
+      "id": "selected-review-refresh",
+      "observedAt": "2026-10-21T18:11:15.912621+00:00",
+      "baselineCommit": "f0cc8f13b88a9dd4a1dc50f6e5be0729a1a481b6",
+      "sourceBinding": {
+        "ui/session-review.tsx": "54424b20eab1ac4cd5bfac099877b11c9044a670361af70ae67614e14a9936db",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/day-workspace.tsx": "40ef658f096604b20c4809d7727d7d46f70005fdbbe5e45e9cdf781cebb839b8",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd"
+      },
+      "dataLabel": "TEST DATA",
+      "goal": "Keep the selected intent/remediation/verification context during ordinary refresh; do not discard an unsaved owner observation or silently substitute a newer review.",
+      "baselineObserved": "With older A selected and an observation draft entered, Refresh session reviews selected newer B and removed A draft. Database bytes were unchanged.",
+      "rootCause": "load without an explicit or pending review ID delegated to the backend latest-review default.",
+      "remediation": "Fallback to the currently displayed review ID after pending-save and explicit navigation IDs. Initial mount/reload still uses the existing latest-review default; no persistent selection storage.",
+      "observations": [
+        {
+          "id": "S1",
+          "outcome": "Refresh reads the explicitly displayed older review by ID; its unsaved observation draft, goal context and stored bytes remain unchanged.",
+          "result": "pass"
+        },
+        {
+          "id": "S2",
+          "outcome": "Saved draft belongs to review A only, retains fail/owner-reported result and does not create an observation on B.",
+          "result": "pass"
+        },
+        {
+          "id": "S3",
+          "outcome": "Explicit selection still switches; subsequent skill selection/run remains on A, preserves failing acceptance and refresh does not switch to B.",
+          "result": "pass"
+        },
+        {
+          "id": "S4",
+          "outcome": "A newer C arriving during lost-response recovery does not change A selection; refresh retains exact pending envelope/lock, replay is identical and creates no duplicate observation.",
+          "result": "pass"
+        },
+        {
+          "id": "S5",
+          "outcome": "Missing selected target surfaces its error without substituting B/C or changing stored bytes; restored synthetic target refreshes by the same ID.",
+          "result": "pass"
+        },
+        {
+          "id": "S6",
+          "outcome": "Unavailable selected-review response stays an explicit error with last displayed A; no implicit fallback, mutation or replacement save.",
+          "result": "pass"
+        },
+        {
+          "id": "S7",
+          "outcome": "Keyboard/narrow refresh preserves A; explicit reload retains existing latest-review behavior (C), with no persistent client selection. Returning to A retains its observations/receipt.",
+          "result": "pass"
+        }
+      ],
+      "externalRequests": 0,
+      "pageErrors": [],
+      "persistence": "Actual UI imports A/B, saves a failing observation on A, selects/runs its local checklist, and reconciles a second A observation after simulated committed-response loss. C was imported through the actual API while A was pending. A receipt acceptance remains fail; B receives neither observations nor runs. Exact replay retained the stored A snapshot unchanged. Read-only refresh checks preserved SQLite bytes.",
+      "fixtureBoundaries": "Fresh owned headless browser, loopback Node/Python API and disposable synthetic SQLite. Missing target was directly deleted/restored in that disposable store, preserving original rowid. Unavailability was a synthetic 503 browser interception. No migrations or private records.",
+      "attempts": [
+        "Baseline reproduced before edits.",
+        "Two full runs timed out on exact getByLabel after rerender; DOM probes confirmed same article, open details and entered values. Controlled textarea content was included in the label text; locator changed to stable prefix.",
+        "A subsequent run passed six observations then failed expected latest-C reload because synthetic delete/restore assigned A a new rowid. Fixture restore corrected to preserve original row order.",
+        "Final seven-scenario run passed on the unchanged one-line runtime fix."
+      ],
+      "checks": [
+        "npm test: 14 passed, 0 failed",
+        "npm run typecheck: passed",
+        "npm run build: passed",
+        "Final source/build-manifest hashes, ledger JSON and local documentation links checked",
+        "git diff --check: passed"
+      ],
+      "skills": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Defined owner context-preservation outcome, reproduced wrong-review drift, verified negative evidence and exact retry pins through real persisted flows.",
+        "verified": "Seven bounded synthetic observations; manual guidance application, not automatic invocation."
+      },
+      "cleanup": "Owned browser/context, random-port server and SQLite handles closed. Shared Chrome/Jobs untouched.",
+      "limits": [
+        "Same mounted Session review only; explicit switching or reload still discards unsaved drafts and pending envelopes.",
+        "Errors retain last displayed data with an error; they do not certify current source availability.",
+        "Latest-review index remains bounded to 50 and this does not add older-review discovery or durable selection.",
+        "No actual-user V301, screen-reader, live provider, original-transcript coverage or arbitrary agent-execution claim."
+      ],
+      "nextTask": "Independent review of refresh precedence and pending-save guard; keep remaining actual-owner/provider/durable-recovery gates separate."
+    },
+    {
+      "id": "selected-review-next-steps",
+      "date": "2026-10-21",
+      "baseRevision": "0587a232ca91cf8871b64fb6421cd2669c951988",
+      "scope": "Read-only selected-review next-work composition; no API/schema/capability changes.",
+      "acceptance": "docs/REVIEW_NEXT_STEPS.md N1-N7; user outcome and primary scenarios stated before implementation.",
+      "baseline": "Rendered import saved goals/tasks but exposed no consolidated next-steps region. Missing composition, not a persistence defect.",
+      "method": "Owned isolated headless Chromium, random-port localhost real Node/Python API, disposable synthetic SQLite. Existing TEST DATA fixtures. No unsolicited test files.",
+      "observations": [
+        {
+          "name": "N1: imported selection exposes bounded next work, missing observation and unknown attribution",
+          "result": "pass",
+          "detail": {
+            "reviewId": "review-d27eb2e08a0abafd4a67056e",
+            "version": 1,
+            "goals": 1
+          }
+        },
+        {
+          "name": "N2: keyboard exact navigation preserves unsaved observation, correction context and database bytes",
+          "result": "pass",
+          "detail": {
+            "taskId": "task-finding-2"
+          }
+        },
+        {
+          "name": "N3: selection is not invocation; local receipt succeeds while owner-reported acceptance remains fail",
+          "result": "pass",
+          "detail": {
+            "runId": "run-69483ec3f0fb4dcc8046e815681233b6",
+            "reviewVersion": 4,
+            "audit": 4
+          }
+        },
+        {
+          "name": "N4: a later owner pass neither erases failure nor upgrades remediation/checklist evidence",
+          "result": "pass",
+          "detail": {
+            "observations": 2
+          }
+        },
+        {
+          "name": "N5: gap and historical evidence survive real reload without additional writes",
+          "result": "pass",
+          "detail": {
+            "reviewVersion": 6,
+            "audit": 6,
+            "operations": 6
+          }
+        },
+        {
+          "name": "N6: keyboard target and 320/375px layout",
+          "result": "pass",
+          "detail": {
+            "screenReader": "not performed"
+          }
+        },
+        {
+          "name": "N7: another review stays separate; unscoped action remains unresolved; original evidence returns",
+          "result": "pass",
+          "detail": {
+            "otherReview": "review-cec653fda8ce7822f34e68b4",
+            "unscopedTask": "task-finding-5"
+          }
+        }
+      ],
+      "errors": [],
+      "externalRequests": 0,
+      "sourceHashes": {
+        "ui/review-next-steps.tsx": "103796d76d927265e1495860fd0dcdb90484f2373744e98ea19b2df2c9032ffb",
+        "ui/session-review.tsx": "6d9390ed3be4db9ad8991e221f868f0eb6a82fcff48167ec78b97b8c1f18bb3d",
+        "ui/day-workspace.tsx": "40ef658f096604b20c4809d7727d7d46f70005fdbbe5e45e9cdf781cebb839b8",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "lib/work/remediation-context.ts": "06a873f82fb110b81171746fc8052f53f40ab4a16492dcbb1d995769cec0c883",
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd"
+      },
+      "buildOutputs": {
+        "dist/main.js": "40782456256f18a333a7840dd18b3d778545e35a251acf936eea3f2a27e4fc29",
+        "dist/main.css": "90df6cea75859feaead03c3261c20e5c84782e001b2bb355dab8b504bc83758b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "checks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed",
+        "screenshot": "Final selected-review summary inspected",
+        "linksJSONDiff": "checked separately before commit"
+      },
+      "skillUse": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Chose evidence-linked next-work outcome from engineering spec; separated review suggestions from authority and owner reports from receipts; verified real persisted workflows.",
+        "verified": "Seven bounded synthetic observations of resulting UI. Manual application, not automatic host invocation."
+      },
+      "cleanup": "Owned browser/context/server and SQLite handles closed; shared browser and Jobs untouched.",
+      "limits": [
+        "Single selected review, last-read data; no daily or whole-transcript coverage.",
+        "No actual-user V301, all-source V312 or screen-reader acceptance.",
+        "No new provider/skill executor, completion transitions, durable recovery or privacy policy.",
+        "No repeat of all historical capability/owner-denial cases; backend guards unchanged."
+      ],
+      "nextTask": "Owner-selected sanitized request-to-review next-step acceptance; durable registration still requires its separate retention/unresolved-stream decisions."
+    },
+    {
+      "recordedAt": "2026-10-25T20:52:10.520170+00:00",
+      "runtimeRevision": "1f95ef052823c0f136971a61b93f521982ba1e5e",
+      "method": "Rendered owned headless Chromium, actual localhost Node/Python API and disposable SQLite; synthetic principal, labeled TEST DATA only.",
+      "runtime": {
+        "playwright": "1.59.0",
+        "browser": "147.0.7727.15"
+      },
+      "sourceHashes": {
+        "ui/review-next-steps.tsx": "103796d76d927265e1495860fd0dcdb90484f2373744e98ea19b2df2c9032ffb",
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "ui/day-workspace.tsx": "1d13259190bcdc3a199e5177c8da79955830af79db02cb4ec0fe1a0bc80f3720",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "lib/work/remediation-context.ts": "06a873f82fb110b81171746fc8052f53f40ab4a16492dcbb1d995769cec0c883",
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/commitments.tsx": "70a71e3e08dfff0a620346fa897e528f0cbac77e34220e4ec4780e6c62ecf6a7",
+        "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+        "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+        "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "ui/styles.css": "25ce2ae764ebebe8e805f81c9eb93dc996f07a0342253d09539de57847d88f6e",
+        "lib/work/history-time.mjs": "09b8b6866f5dab02173b57a83ae5f95998b80c1adfa0800e7bf4a0a6d79cd30d",
+        "tests/ui-render.test.mjs": "c75e28c486a448d84108d109ecde4a445190b7eb118ceabd767114e2d58b27d9",
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da"
+      },
+      "buildOutputs": {
+        "dist/main.js": "948e853c7267b573fb01d692e6bf24494d199bc83887317ff4c1ab6dd6054088",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "checks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed; rebuilt output matches workflow-served hashes",
+        "sourceBindings": "Matched after both workflows; no runtime source changed between them",
+        "screenshots": "Narrow next-step intent/history and request-review summary inspected",
+        "jsonLinksDiff": "Checked separately before commit"
+      },
+      "skillUse": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Current-source goal/step/receipt/observation/reload verification; preserve negative and human-acceptance boundaries.",
+        "verified": "Agent-run bounded workflow evidence, not automatic skill activation or full-skill invocation."
+      },
+      "pageErrors": [],
+      "externalRequests": 0,
+      "cleanup": "Owned browser/server/database handles closed; shared authenticated Chrome and other workers untouched.",
+      "limits": [
+        "Agent-performed TEST DATA, not human-owner V301 or original transcript review.",
+        "No real authentication/provider acceptance, full V312, actual screen reader, durable recovery or general agent execution.",
+        "Daily D1-D7 and history H1-H6 retain their own historical environment bindings; their listed source hashes still match.",
+        "No application code defect established; this follow-up changes documentation/evidence only."
+      ],
+      "id": "current-source-next-steps-reverification-20261025",
+      "scope": "N1-N7 completed before the separate W driver stopped; no N failure.",
+      "observations": [
+        {
+          "name": "N1: selected import, retained goal, unknown attribution and missing observation",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "N2: exact navigation, scoped context and draft; DB unchanged",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "N3: selection distinct from execution; bounded success retains failing acceptance",
+          "result": "pass",
+          "detail": {
+            "run": "run-4297b1ff09ab4e02993f477607ad7dbf"
+          }
+        },
+        {
+          "name": "N4: later pass preserves failure, receipt, original export/prompts and not-remediated state",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "N5: persisted gap/reload exact readback without writes",
+          "result": "pass",
+          "detail": {
+            "reviews": 1,
+            "operations": 6,
+            "audit": 6
+          }
+        },
+        {
+          "name": "N6: exact keyboard focus at 320/375px without overflow",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "N7: second-review/unscoped isolation and preserved return",
+          "result": "pass",
+          "detail": {}
+        }
+      ],
+      "humanAcceptance": "unperformed",
+      "driverInterruptions": [
+        "Exact nested textarea/select label matching caused locator timeouts; corrected driver prefix matching without changing application code.",
+        "After an API history import, hash-only navigation retained the dashboard snapshot; driver added an explicit reload.",
+        "Stored normalized export included server-derived event basis/status and skill invocationScope; strict importer correctly rejected it. Driver reconstituted only original permitted input fields."
+      ],
+      "result": "Scoped current-source acceptance passed; earlier failed/interrupted attempts remain historical and are not counted as complete runs."
+    },
+    {
+      "id": "known-operation-same-store-restart-20261025",
+      "recordedAt": "2026-10-25T22:14:07.878Z",
+      "runtimeRevision": "6efe4568e238441b05ed746b51c8fcb433b51f9a",
+      "label": "TEST DATA / AGENT-PERFORMED SAME-STORE RESTART",
+      "method": "Rendered Session review import/observation/known-ID lookup; real Node/Python API and fresh disposable SQLite. Fixture transport dropped the observation response after API commit. Graceful owned server stop/start on the same port/store plus fresh headless browser; no shared instance.",
+      "sourceHashes": {
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da",
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/operation_lookup.py": "97132b7d2ef82e6968d3a2175916f6e0f2f5293487bcf574a5abfaea9ff953bc",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672"
+      },
+      "buildOutputs": {
+        "dist/main.js": "948e853c7267b573fb01d692e6bf24494d199bc83887317ff4c1ab6dd6054088",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "runtime": {
+        "playwright": "1.59.0",
+        "browser": "147.0.7727.15"
+      },
+      "observations": [
+        {
+          "name": "S1 rendered import persists one synthetic review",
+          "result": "pass"
+        },
+        {
+          "name": "S2 observation commit loses response and remains unconfirmed in UI",
+          "result": "pass"
+        },
+        {
+          "name": "S3 fresh server and browser recover exact saved review and negative history",
+          "result": "pass"
+        },
+        {
+          "name": "S4 unknown remains unknown; lookup/reload cause no duplicate writes",
+          "result": "pass"
+        }
+      ],
+      "before": {
+        "version": 2,
+        "reviews": 1,
+        "operations": 2,
+        "audit": 2,
+        "observations": 1,
+        "runs": 0
+      },
+      "after": {
+        "version": 2,
+        "reviews": 1,
+        "operations": 2,
+        "audit": 2,
+        "observations": 1,
+        "runs": 0
+      },
+      "identityAndHistory": "Exact review ID, full JSON, operation rows and audit history matched before/after; negative owner report remained fail. Stored receipt version 2 and executed flag false.",
+      "databaseBytesUnchanged": true,
+      "browserStorage": {
+        "local": 0,
+        "session": 0,
+        "indexed": 0
+      },
+      "cookies": 0,
+      "pageErrors": [],
+      "externalRequests": 0,
+      "priorAttempts": [
+        {
+          "result": "Exact Result label locator timed out before observation submit; only import completed. No application defect inferred."
+        },
+        {
+          "result": "Driver inspected acknowledgement before routed fetch completed; browser teardown rejected pending route promise. Read-only outcome inspection found one review/two operations/two audits. Owned listener exited; no uncertain write retried. Final fresh run injected response loss server-side and waited for actual UI error."
+        },
+        {
+          "result": "One orchestration script rejected before any command execution; no workflow or mutation."
+        }
+      ],
+      "skillUse": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Recovered existing outcome boundary; separated daily read-only projection, known-ID receipt recovery and unimplemented durable protocol. Preserved failures and human acceptance gap.",
+        "verified": "Four agent-run isolated observations; manual guidance, not automatic invocation.",
+        "browserGuidance": "Playwright skill read; existing pinned driver and inline project workflow reused without installs or new test files."
+      },
+      "checks": {
+        "sourceBuildBindings": "Matched before/after workflow; runtime source unchanged.",
+        "screenshot": "Recovered date-scoped history inspected; one owner-reported fail remains visible.",
+        "static": "Ledger JSON, relative document targets and diff checked before commit.",
+        "testsTypecheckBuild": "Not rerun locally for documentation-only follow-up; preceding exact-head CI passed at runtime revision."
+      },
+      "cleanup": "Owned browser/server handles closed. No unowned process was signalled; shared browser and other workers untouched.",
+      "limits": [
+        "Known operation ID was explicitly retained by the driver and manually entered; no automatic discovery or durable registration.",
+        "Graceful same-store process/browser restart only; no in-flight crash, precommit failure, backup restore or changed owner/store proof.",
+        "No exact replay was performed; prior replay/owner/capability cases retain their own evidence.",
+        "Daily check-in remains a read-only projection, not a create/update record workflow.",
+        "Synthetic host principal is not production authentication or independently verified human authorship.",
+        "Human-owner acceptance, full V312 and durable-protocol D1-D12 remain unperformed."
+      ],
+      "result": "Verification-only; no demonstrated application defect or runtime/schema/capability change.",
+      "nextTask": "Review server metadata retention/cap, conflict-stream sealing and store-generation/restore decisions before implementing default-off request-action-claim registration; do not add browser payload persistence or automatic retry."
+    }
+  ]
+}
