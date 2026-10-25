@@ -1072,6 +1072,124 @@
         "No repeat of all historical capability/owner-denial cases; backend guards unchanged."
       ],
       "nextTask": "Owner-selected sanitized request-to-review next-step acceptance; durable registration still requires its separate retention/unresolved-stream decisions."
+    },
+    {
+      "recordedAt": "2026-10-25T20:52:10.520170+00:00",
+      "runtimeRevision": "1f95ef052823c0f136971a61b93f521982ba1e5e",
+      "method": "Rendered owned headless Chromium, actual localhost Node/Python API and disposable SQLite; synthetic principal, labeled TEST DATA only.",
+      "runtime": {
+        "playwright": "1.59.0",
+        "browser": "147.0.7727.15"
+      },
+      "sourceHashes": {
+        "ui/review-next-steps.tsx": "103796d76d927265e1495860fd0dcdb90484f2373744e98ea19b2df2c9032ffb",
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "ui/day-workspace.tsx": "1d13259190bcdc3a199e5177c8da79955830af79db02cb4ec0fe1a0bc80f3720",
+        "lib/work/engineering.ts": "7eced1d7e4d955a2da1fa1180790346acc508cd2008f4abcbf2de3198295ce4c",
+        "lib/work/remediation-context.ts": "06a873f82fb110b81171746fc8052f53f40ab4a16492dcbb1d995769cec0c883",
+        "python/dots_engineering/review.py": "e0566c9b817cf9f18e2bd3943530e2ccf9cfbfb75336f2140a75ee40005f9652",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672",
+        "python/dots_engineering/runner.py": "6a7391cfac2812fda328726709028c0ffb179360fd0f10cdf6b90f4e70bf8709",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/contracts.py": "dc915b6df55067ab42f301d41229bf2a22adf1b0d657acd24163ab86254871ac",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "examples/selected-records.synthetic.json": "8db4ed2fa223769fc4c14de38856b49674bcbb20d19ec83efb36de1864c38852",
+        "examples/session-review.synthetic.json": "f934b4ff40140c9425a52fa814d95a8424c37753ce0b435c27e2230ff388f8bd",
+        "ui/context-links.tsx": "4086fe1e1521f916e75b8f6e1e4f33e1de8997ceb3904f5f3b6f5d8c1a593c57",
+        "ui/commitments.tsx": "70a71e3e08dfff0a620346fa897e528f0cbac77e34220e4ec4780e6c62ecf6a7",
+        "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+        "lib/work/history.ts": "f7494210954d8d996791936254f2345cad00d058e68b7b4125d9f01b06ffc529",
+        "lib/work/history-validation.mjs": "6eedaa3a6e1a47f8db93a0ca48e65dcd8037846e0d813f3f611078f87a6aef01",
+        "python/dots_engineering/context_links.py": "1b11b079a519a29d80c7c3548695e27d2b900598a4d9694c6c3bc567e26dbf9d",
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "ui/styles.css": "25ce2ae764ebebe8e805f81c9eb93dc996f07a0342253d09539de57847d88f6e",
+        "lib/work/history-time.mjs": "09b8b6866f5dab02173b57a83ae5f95998b80c1adfa0800e7bf4a0a6d79cd30d",
+        "tests/ui-render.test.mjs": "c75e28c486a448d84108d109ecde4a445190b7eb118ceabd767114e2d58b27d9",
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da"
+      },
+      "buildOutputs": {
+        "dist/main.js": "948e853c7267b573fb01d692e6bf24494d199bc83887317ff4c1ab6dd6054088",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "checks": {
+        "existingTests": "14 passed",
+        "typecheck": "passed",
+        "build": "passed; rebuilt output matches workflow-served hashes",
+        "sourceBindings": "Matched after both workflows; no runtime source changed between them",
+        "screenshots": "Narrow next-step intent/history and request-review summary inspected",
+        "jsonLinksDiff": "Checked separately before commit"
+      },
+      "skillUse": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Current-source goal/step/receipt/observation/reload verification; preserve negative and human-acceptance boundaries.",
+        "verified": "Agent-run bounded workflow evidence, not automatic skill activation or full-skill invocation."
+      },
+      "pageErrors": [],
+      "externalRequests": 0,
+      "cleanup": "Owned browser/server/database handles closed; shared authenticated Chrome and other workers untouched.",
+      "limits": [
+        "Agent-performed TEST DATA, not human-owner V301 or original transcript review.",
+        "No real authentication/provider acceptance, full V312, actual screen reader, durable recovery or general agent execution.",
+        "Daily D1-D7 and history H1-H6 retain their own historical environment bindings; their listed source hashes still match.",
+        "No application code defect established; this follow-up changes documentation/evidence only."
+      ],
+      "id": "current-source-next-steps-reverification-20261025",
+      "scope": "N1-N7 completed before the separate W driver stopped; no N failure.",
+      "observations": [
+        {
+          "name": "N1: selected import, retained goal, unknown attribution and missing observation",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "N2: exact navigation, scoped context and draft; DB unchanged",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "N3: selection distinct from execution; bounded success retains failing acceptance",
+          "result": "pass",
+          "detail": {
+            "run": "run-4297b1ff09ab4e02993f477607ad7dbf"
+          }
+        },
+        {
+          "name": "N4: later pass preserves failure, receipt, original export/prompts and not-remediated state",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "N5: persisted gap/reload exact readback without writes",
+          "result": "pass",
+          "detail": {
+            "reviews": 1,
+            "operations": 6,
+            "audit": 6
+          }
+        },
+        {
+          "name": "N6: exact keyboard focus at 320/375px without overflow",
+          "result": "pass",
+          "detail": {}
+        },
+        {
+          "name": "N7: second-review/unscoped isolation and preserved return",
+          "result": "pass",
+          "detail": {}
+        }
+      ],
+      "humanAcceptance": "unperformed",
+      "driverInterruptions": [
+        "Exact nested textarea/select label matching caused locator timeouts; corrected driver prefix matching without changing application code.",
+        "After an API history import, hash-only navigation retained the dashboard snapshot; driver added an explicit reload.",
+        "Stored normalized export included server-derived event basis/status and skill invocationScope; strict importer correctly rejected it. Driver reconstituted only original permitted input fields."
+      ],
+      "result": "Scoped current-source acceptance passed; earlier failed/interrupted attempts remain historical and are not counted as complete runs."
     }
   ]
 }

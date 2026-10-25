@@ -1,5 +1,10 @@
 # Local release-readiness record
 
+Current-source update, 25 October: [N1–N7 and W1–W6 re-verification](REVIEW_NEXT_STEPS.md#current-source-re-verification--25-october-2026)
+passed on runtime `1f95ef0` using isolated TEST DATA and a labeled public-project
+copy. Earlier blocks and changed-binding assessments below remain historical.
+Actual-owner and broader release gates remain open; this is not production acceptance.
+
 21 October 2026. Inspected baseline: `53c78ca57579bf2be635b936c2121492c25b49a9`.
 This is a source/evidence consolidation, not a new runtime acceptance run.
 The [product audit](PRODUCT_AUDIT.md) and [PRD](build-package/02-prd-v2.md)
@@ -7,8 +12,8 @@ remain the requirement basis. Correspondence, personal commitments and Needs you
 are primary outcomes; engineering review supports that larger accountability goal.
 
 **Decision:** useful bounded local workflows have recorded execution evidence;
-general release and actual-owner acceptance remain open. The local daily/history
-changes are not published. Publication is held. This audit made no remote query,
+general release and actual-owner acceptance remain open. At this historical baseline, local daily/history
+changes were not published and publication was held. This audit made no remote query,
 push, merge, deployment, runtime change or private-session read.
 
 ## Evidence meanings

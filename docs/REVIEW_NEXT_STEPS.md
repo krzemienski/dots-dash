@@ -118,3 +118,35 @@ expected behavior and suggested next step match the intended request. That depen
 step stops here. Real-owner V301 and original-correspondence provenance remain open;
 the agent cannot resolve them by marking another local check passed. Shared Chrome,
 production state, provider access and deployment remain outside this walkthrough.
+
+## Current-source re-verification — 25 October 2026
+
+On runtime source `1f95ef052823c0f136971a61b93f521982ba1e5e`, N1–N7 and
+W1–W6 were exercised again through rendered UI, real local Node/Python APIs and
+disposable SQLite. The N cases completed together; W then completed in a separate
+fresh store. These replace the previously missing current-source acceptance for
+these two bounded workflows, not the original historical evidence or human gate.
+
+N confirmed retained selection/unknown attribution, exact keyboard navigation and
+unsaved draft preservation, selection versus a real local checklist, failure
+surviving later pass/gap, persisted reload without added writes, narrow layouts,
+and separate review/unresolved-goal scope. W confirmed a labeled public-project
+request copy and exact URL, immutable association pins, request/task/review/intent
+navigation, unverified historical claims, an explicit agent gap observation,
+stale-link disclosure, and exact persisted return/reload without added writes.
+
+Driver interruptions were not application regressions: nested-label exact matching,
+hash navigation using a pre-import dashboard snapshot, and reimport of stored
+server-derived fields. The last input was rejected by the strict contract; the
+final driver used only original allowed fields. Earlier interruptions remain saved.
+No application code change was needed. No external browser requests/page errors
+occurred in completed scenarios, and owned resources were closed.
+
+Fourteen existing tests, typecheck and build passed. Rebuilt output and listed
+source hashes matched the workflow inputs. The narrow intent/history and review
+summary screenshots were inspected. Evidence is appended under the current-source
+reverification IDs in [session recovery](verification/session-save-recovery.json)
+and [request evidence](verification/request-evidence.json). Actual human-owner
+V301, original-source coverage, production identity/providers, full V312,
+screen-reader use and durable recovery remain open. No private runtime artifacts
+are included in publication.

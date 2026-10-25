@@ -2,7 +2,8 @@
 
 Current local consolidation: [release readiness at `53c78ca`](RELEASE_READINESS.md).
 It preserves historical results and distinguishes source-matching isolated evidence
-from actual-owner and production acceptance; publication remains held.
+from actual-owner and production acceptance. The later 25 October update records
+current-source N/W re-verification; earlier publication holds remain historical records.
 
 Audit date: 21 October 2026. Source baseline: `a059e971af73b4a830690426e9fdf1f89afcdee4`.
 This document reconciles the product requirements with the current reusable application and saved execution evidence. It is not production acceptance or a new grant of access. [Proposed experience mockups](mockups/product-review.html) are synthetic design artifacts, not shipped screens.
