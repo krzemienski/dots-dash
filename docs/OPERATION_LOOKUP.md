@@ -130,3 +130,40 @@ all eight observations. Source/build hash comparison, ledger JSON, documentation
 links and diff checks passed. No application code, schema, migration, persistence
 policy, runtime limit or capability changed. This adds boundary evidence only, not
 durable-recovery, production-authentication or general security certification.
+
+### Follow-up: known receipt after same-store server restart
+
+On runtime `6efe4568e238441b05ed746b51c8fcb433b51f9a`, four new isolated
+observations exercised the existing lookup through rendered UI, actual Node/Python
+APIs and fresh disposable SQLite. This is verification-only, not a new durable
+recovery implementation. The [daily check-in](DAILY_EVIDENCE.md) is a read-only
+projection and has no daily record create/update workflow.
+
+1. Import a labeled synthetic session through the UI: one review at version 1,
+   one operation and one audit entry.
+2. Save a deliberately failing TEST DATA observation. The fixture transport drops
+   the response only after the real API commits. The UI displays unconfirmed save
+   and blocks conflicting saves. The store has one review at version 2, two
+   operations, two audits, one observation and zero checklist runs.
+3. Close only the owned server/browser, start a new process on the same port with
+   the same databases, and open a fresh browser. Manually enter the known operation
+   ID. The receipt references the same review/version with stored executed=false;
+   opening it preserves the exact review JSON and visible owner-reported failure.
+4. An unknown ID remains unknown with no retry control. Further reload and reads
+   preserve all record IDs/history/counts and both database files byte-for-byte.
+   Local/session storage, IndexedDB and cookies remain empty.
+
+The final history screenshot was inspected; no page errors or external requests
+were observed. Two prior driver interruptions (an exact-label mismatch and an
+acknowledgement timing race) are retained in the ledger; neither proves an
+application defect. The latter's uncertain write was inspected, not retried. All
+owned resources closed; no unowned worker was stopped.
+
+The [appended evidence](verification/session-save-recovery.json) binds source and
+build hashes and distinguishes this **known-ID, graceful same-store restart** from
+the [proposed durable protocol](DURABLE_OPERATION_RECONCILIATION.md). Loss of the ID,
+automatic discovery, precommit crashes, replay after reload, owner/store changes,
+backup restore and D1–D12 remain outside this result. Retention, unresolved-stream
+sealing and restore-generation decisions are still prerequisites to registration.
+Human-owner acceptance and full V312 remain open. No runtime, migration, capability
+or browser-persistence change was made.

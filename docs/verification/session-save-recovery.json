@@ -1190,6 +1190,115 @@
         "Stored normalized export included server-derived event basis/status and skill invocationScope; strict importer correctly rejected it. Driver reconstituted only original permitted input fields."
       ],
       "result": "Scoped current-source acceptance passed; earlier failed/interrupted attempts remain historical and are not counted as complete runs."
+    },
+    {
+      "id": "known-operation-same-store-restart-20261025",
+      "recordedAt": "2026-10-25T22:14:07.878Z",
+      "runtimeRevision": "6efe4568e238441b05ed746b51c8fcb433b51f9a",
+      "label": "TEST DATA / AGENT-PERFORMED SAME-STORE RESTART",
+      "method": "Rendered Session review import/observation/known-ID lookup; real Node/Python API and fresh disposable SQLite. Fixture transport dropped the observation response after API commit. Graceful owned server stop/start on the same port/store plus fresh headless browser; no shared instance.",
+      "sourceHashes": {
+        "ui/session-review.tsx": "9baa7c8412b2530025c443b37515c1b1bacf9f9edc1e49a6a934d7dffb83641c",
+        "ui/operation-lookup.tsx": "90b39f3f4d997754fb02da1a954252e49160f9da41f3b6b294717f40fa4bea2e",
+        "ui/review-evidence-history.tsx": "c59a599a0951172ca97ef327596a85dda58827d7e344086e5de98557347eb5da",
+        "ui/daily-evidence.tsx": "23417c5cf4715eab8dad4b024a2b880ce8e42812818cde95e3d3022064dac29c",
+        "server/api.ts": "17a0f62f6d8229bf87ee319025486d8ae9e832d1bfd111e68ea666f7eaf86332",
+        "server/engineering.mjs": "842667f404c965adc9e0d83c7883a2d8682c29d0251d14bd7b57f946d3a6efe5",
+        "server/store.mjs": "33a585e7831963d4caf50b1d615a2ddc3315332fedb82049a2a91ddc89009c9b",
+        "python/dots_engineering/store.py": "7b1f03d245913a2b0112cbd081d6b41a796c6eebd47f1c19ea35da5e8b318e10",
+        "python/dots_engineering/operation_lookup.py": "97132b7d2ef82e6968d3a2175916f6e0f2f5293487bcf574a5abfaea9ff953bc",
+        "python/dots_engineering/service.py": "7dc3d212e7091efac661a5207950e21768c2efd1048c6d6e7ae9cdbefc8d7672"
+      },
+      "buildOutputs": {
+        "dist/main.js": "948e853c7267b573fb01d692e6bf24494d199bc83887317ff4c1ab6dd6054088",
+        "dist/main.css": "abd8f8555a3c2bf06b121a03559eb2612717a0edd9c8a74055720712b069ed5b",
+        "dist/index.html": "20c4b6751c77f876bbd3d6ee14ecbc6107697ea299f0b9c74cd6e6631b20e1c5"
+      },
+      "runtime": {
+        "playwright": "1.59.0",
+        "browser": "147.0.7727.15"
+      },
+      "observations": [
+        {
+          "name": "S1 rendered import persists one synthetic review",
+          "result": "pass"
+        },
+        {
+          "name": "S2 observation commit loses response and remains unconfirmed in UI",
+          "result": "pass"
+        },
+        {
+          "name": "S3 fresh server and browser recover exact saved review and negative history",
+          "result": "pass"
+        },
+        {
+          "name": "S4 unknown remains unknown; lookup/reload cause no duplicate writes",
+          "result": "pass"
+        }
+      ],
+      "before": {
+        "version": 2,
+        "reviews": 1,
+        "operations": 2,
+        "audit": 2,
+        "observations": 1,
+        "runs": 0
+      },
+      "after": {
+        "version": 2,
+        "reviews": 1,
+        "operations": 2,
+        "audit": 2,
+        "observations": 1,
+        "runs": 0
+      },
+      "identityAndHistory": "Exact review ID, full JSON, operation rows and audit history matched before/after; negative owner report remained fail. Stored receipt version 2 and executed flag false.",
+      "databaseBytesUnchanged": true,
+      "browserStorage": {
+        "local": 0,
+        "session": 0,
+        "indexed": 0
+      },
+      "cookies": 0,
+      "pageErrors": [],
+      "externalRequests": 0,
+      "priorAttempts": [
+        {
+          "result": "Exact Result label locator timed out before observation submit; only import completed. No application defect inferred."
+        },
+        {
+          "result": "Driver inspected acknowledgement before routed fetch completed; browser teardown rejected pending route promise. Read-only outcome inspection found one review/two operations/two audits. Owned listener exited; no uncertain write retried. Final fresh run injected response loss server-side and waited for actual UI error."
+        },
+        {
+          "result": "One orchestration script rejected before any command execution; no workflow or mutation."
+        }
+      ],
+      "skillUse": {
+        "source": ".agents/skills/session-intent-review/SKILL.md",
+        "sha256": "fe803d764ce4eaba4010c84501aa1c207c2eaa342d6e008154e1cd52cc783b9a",
+        "selected": true,
+        "read": true,
+        "applied": "Recovered existing outcome boundary; separated daily read-only projection, known-ID receipt recovery and unimplemented durable protocol. Preserved failures and human acceptance gap.",
+        "verified": "Four agent-run isolated observations; manual guidance, not automatic invocation.",
+        "browserGuidance": "Playwright skill read; existing pinned driver and inline project workflow reused without installs or new test files."
+      },
+      "checks": {
+        "sourceBuildBindings": "Matched before/after workflow; runtime source unchanged.",
+        "screenshot": "Recovered date-scoped history inspected; one owner-reported fail remains visible.",
+        "static": "Ledger JSON, relative document targets and diff checked before commit.",
+        "testsTypecheckBuild": "Not rerun locally for documentation-only follow-up; preceding exact-head CI passed at runtime revision."
+      },
+      "cleanup": "Owned browser/server handles closed. No unowned process was signalled; shared browser and other workers untouched.",
+      "limits": [
+        "Known operation ID was explicitly retained by the driver and manually entered; no automatic discovery or durable registration.",
+        "Graceful same-store process/browser restart only; no in-flight crash, precommit failure, backup restore or changed owner/store proof.",
+        "No exact replay was performed; prior replay/owner/capability cases retain their own evidence.",
+        "Daily check-in remains a read-only projection, not a create/update record workflow.",
+        "Synthetic host principal is not production authentication or independently verified human authorship.",
+        "Human-owner acceptance, full V312 and durable-protocol D1-D12 remain unperformed."
+      ],
+      "result": "Verification-only; no demonstrated application defect or runtime/schema/capability change.",
+      "nextTask": "Review server metadata retention/cap, conflict-stream sealing and store-generation/restore decisions before implementing default-off request-action-claim registration; do not add browser payload persistence or automatic retry."
     }
   ]
 }
